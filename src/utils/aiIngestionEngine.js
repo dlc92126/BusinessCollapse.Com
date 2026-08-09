@@ -233,7 +233,7 @@ export function executeIngestionCycle() {
   const updatedNews = updatedNewsList;
   const updatedAuctions = updatedAuctionsList;
 
-  const checksumHash = generateHash(`${newCompanyId}-${ingestedTime}`);
+  const checksumHash = generateHash(`${targetCompanyRecord.id}-${ingestedTime}`);
   const previousStateHash = generateHash(`${companies.length}-${news.length}`);
 
   const auditReport = {
@@ -248,7 +248,7 @@ export function executeIngestionCycle() {
       modifiedClaims: 2,
       bytesProcessed: `${(42.5 + Math.random() * 12).toFixed(1)} MB`
     },
-    newEntity: newCompany
+    newEntity: targetCompanyRecord
   };
 
   // Save to LocalStorage
@@ -263,7 +263,7 @@ export function executeIngestionCycle() {
   }
 
   return {
-    newCompany,
+    newCompany: targetCompanyRecord,
     newAlert,
     newAuction,
     updatedCompanies,
