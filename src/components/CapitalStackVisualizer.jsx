@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Layers, AlertTriangle, ShieldCheck, DollarSign, FileText, CheckCircle2, ChevronDown, ChevronUp, Users, ExternalLink, Download } from 'lucide-react';
 
-export default function CapitalStackVisualizer({ company }) {
+export default function CapitalStackVisualizer({ company, onOpenWaterfall }) {
   const [activeTab, setActiveTab] = useState('waterfall'); // 'waterfall' | 'creditors'
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -94,40 +94,64 @@ export default function CapitalStackVisualizer({ company }) {
           </span>
         </div>
 
-        {/* Tab Switcher */}
-        <div style={{ display: 'flex', background: 'rgba(15, 23, 42, 0.8)', padding: '4px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }}>
-          <button
-            onClick={() => setActiveTab('waterfall')}
-            style={{
-              padding: '6px 14px',
-              fontSize: '0.75rem',
-              fontWeight: 800,
-              borderRadius: '6px',
-              border: 'none',
-              cursor: 'pointer',
-              background: activeTab === 'waterfall' ? 'linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%)' : 'transparent',
-              color: activeTab === 'waterfall' ? '#FFF' : '#94A3B8',
-              transition: 'var(--transition-fast)'
-            }}
-          >
-            📊 Debt Waterfall
-          </button>
-          <button
-            onClick={() => setActiveTab('creditors')}
-            style={{
-              padding: '6px 14px',
-              fontSize: '0.75rem',
-              fontWeight: 800,
-              borderRadius: '6px',
-              border: 'none',
-              cursor: 'pointer',
-              background: activeTab === 'creditors' ? 'linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%)' : 'transparent',
-              color: activeTab === 'creditors' ? '#FFF' : '#94A3B8',
-              transition: 'var(--transition-fast)'
-            }}
-          >
-            👥 Top Creditors Matrix ({creditorsList.length})
-          </button>
+        {/* Simulator Button & Tab Switcher */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+          {onOpenWaterfall && (
+            <button
+              onClick={() => onOpenWaterfall(company)}
+              style={{
+                background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(14, 165, 233, 0.3) 100%)',
+                border: '1px solid #38BDF8',
+                color: '#38BDF8',
+                padding: '6px 14px',
+                borderRadius: '8px',
+                fontSize: '0.75rem',
+                fontWeight: 900,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                boxShadow: '0 0 12px rgba(56, 189, 248, 0.3)'
+              }}
+            >
+              🌊 Launch Creditor Recovery Waterfall Simulator
+            </button>
+          )}
+
+          <div style={{ display: 'flex', background: 'rgba(15, 23, 42, 0.8)', padding: '4px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <button
+              onClick={() => setActiveTab('waterfall')}
+              style={{
+                padding: '6px 14px',
+                fontSize: '0.75rem',
+                fontWeight: 800,
+                borderRadius: '6px',
+                border: 'none',
+                cursor: 'pointer',
+                background: activeTab === 'waterfall' ? 'linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%)' : 'transparent',
+                color: activeTab === 'waterfall' ? '#FFF' : '#94A3B8',
+                transition: 'var(--transition-fast)'
+              }}
+            >
+              📊 Debt Waterfall
+            </button>
+            <button
+              onClick={() => setActiveTab('creditors')}
+              style={{
+                padding: '6px 14px',
+                fontSize: '0.75rem',
+                fontWeight: 800,
+                borderRadius: '6px',
+                border: 'none',
+                cursor: 'pointer',
+                background: activeTab === 'creditors' ? 'linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%)' : 'transparent',
+                color: activeTab === 'creditors' ? '#FFF' : '#94A3B8',
+                transition: 'var(--transition-fast)'
+              }}
+            >
+              👥 Top Creditors Matrix ({creditorsList.length})
+            </button>
+          </div>
         </div>
       </div>
 

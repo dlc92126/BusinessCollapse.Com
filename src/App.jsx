@@ -21,6 +21,7 @@ import AboutModal from './components/AboutModal';
 import AIVoiceAgentModal from './components/AIVoiceAgentModal';
 import IngestionSchedulerModal from './components/IngestionSchedulerModal';
 import IngestionDiffAuditModal from './components/IngestionDiffAuditModal';
+import RecoveryWaterfallModal from './components/RecoveryWaterfallModal';
 import SandboxImpersonationBar from './components/SandboxImpersonationBar';
 import MockNotificationHarvesterModal from './components/MockNotificationHarvesterModal';
 import MembershipOnboardingModal from './components/MembershipOnboardingModal';
@@ -123,6 +124,14 @@ export default function App() {
   const [isMasterAiPromptOpen, setIsMasterAiPromptOpen] = useState(false);
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [shareModalData, setShareModalData] = useState(null);
+
+  const [isWaterfallOpen, setIsWaterfallOpen] = useState(false);
+  const [waterfallCompany, setWaterfallCompany] = useState(null);
+
+  const handleOpenWaterfall = (targetCompany) => {
+    setWaterfallCompany(targetCompany || selectedCompany);
+    setIsWaterfallOpen(true);
+  };
 
   const handleOpenShare = (item) => {
     setShareModalData(item);
@@ -818,6 +827,14 @@ export default function App() {
         onOpenPdf={(doc) => setSelectedPdfDoc(doc)}
         viewMode={viewMode}
         onOpenShare={handleOpenShare}
+        onOpenWaterfall={handleOpenWaterfall}
+      />
+
+      {/* Creditor Recovery Waterfall Simulator Modal */}
+      <RecoveryWaterfallModal
+        isOpen={isWaterfallOpen}
+        onClose={() => setIsWaterfallOpen(false)}
+        company={waterfallCompany}
       />
 
 

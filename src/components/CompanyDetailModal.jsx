@@ -8,7 +8,7 @@ import courtDocketsData from '../data/court_dockets.json';
 
 
 
-export default function CompanyDetailModal({ company, onClose, onOpenPdf, viewMode, onOpenShare }) {
+export default function CompanyDetailModal({ company, onClose, onOpenPdf, viewMode, onOpenShare, onOpenWaterfall }) {
 
   const [copiedNotebook, setCopiedNotebook] = useState(false);
   const [copiedCitation, setCopiedCitation] = useState(false);
@@ -575,7 +575,7 @@ Follow this structure:
             </div>
 
             {/* CAPITAL STACK VISUALIZER */}
-            <CapitalStackVisualizer company={company} />
+            <CapitalStackVisualizer company={company} onOpenWaterfall={onOpenWaterfall} />
 
 
             {/* 363 AUCTION RECOVERY COMPS SANDBOX */}
