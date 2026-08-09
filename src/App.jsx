@@ -22,6 +22,7 @@ import AIVoiceAgentModal from './components/AIVoiceAgentModal';
 import IngestionSchedulerModal from './components/IngestionSchedulerModal';
 import IngestionDiffAuditModal from './components/IngestionDiffAuditModal';
 import RecoveryWaterfallModal from './components/RecoveryWaterfallModal';
+import DiligenceBriefModal from './components/DiligenceBriefModal';
 import SandboxImpersonationBar from './components/SandboxImpersonationBar';
 import MockNotificationHarvesterModal from './components/MockNotificationHarvesterModal';
 import MembershipOnboardingModal from './components/MembershipOnboardingModal';
@@ -128,9 +129,15 @@ export default function App() {
   const [isWaterfallOpen, setIsWaterfallOpen] = useState(false);
   const [waterfallCompany, setWaterfallCompany] = useState(null);
 
+  const [diligenceBriefEntity, setDiligenceBriefEntity] = useState(null);
+
   const handleOpenWaterfall = (targetCompany) => {
     setWaterfallCompany(targetCompany || selectedCompany);
     setIsWaterfallOpen(true);
+  };
+
+  const handleOpenDiligenceBrief = (entity) => {
+    setDiligenceBriefEntity(entity || selectedCompany);
   };
 
   const handleOpenShare = (item) => {
@@ -772,6 +779,7 @@ export default function App() {
             onGoBack={() => setActiveTab('graveyard')}
             watchlist={activeWatchlist}
             toggleWatchlist={toggleWatchlist}
+            onOpenDiligenceBrief={handleOpenDiligenceBrief}
           />
         )}
 
@@ -828,6 +836,7 @@ export default function App() {
         viewMode={viewMode}
         onOpenShare={handleOpenShare}
         onOpenWaterfall={handleOpenWaterfall}
+        onOpenDiligenceBrief={handleOpenDiligenceBrief}
       />
 
       {/* Creditor Recovery Waterfall Simulator Modal */}
@@ -836,6 +845,16 @@ export default function App() {
         onClose={() => setIsWaterfallOpen(false)}
         company={waterfallCompany}
       />
+
+      {/* Section 363 Diligence Brief & PDF Export Modal */}
+      {diligenceBriefEntity && (
+        <DiligenceBriefModal
+          entityName={typeof diligenceBriefEntity === 'string' ? diligenceBriefEntity : (diligenceBriefEntity.entityName || diligenceBriefEntity.name || diligenceBriefEntity.auctionTitle || 'Corporate Asset')}
+          isStarred={activeWatchlist && activeWatchlist.includes(diligenceBriefEntity.id || diligenceBriefEntity.entityName || diligenceBriefEntity.name)}
+          isCustomTracked={diligenceBriefEntity.isCustomTracked || (diligenceBriefEntity.id && String(diligenceBriefEntity.id).includes('custom'))}
+          onClose={() => setDiligenceBriefEntity(null)}
+        />
+      )}
 
 
       {/* Official Court Bid Portal & Credentials Modal */}

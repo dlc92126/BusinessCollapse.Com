@@ -8,7 +8,7 @@ import courtDocketsData from '../data/court_dockets.json';
 
 
 
-export default function CompanyDetailModal({ company, onClose, onOpenPdf, viewMode, onOpenShare, onOpenWaterfall }) {
+export default function CompanyDetailModal({ company, onClose, onOpenPdf, viewMode, onOpenShare, onOpenWaterfall, onOpenDiligenceBrief }) {
 
   const [copiedNotebook, setCopiedNotebook] = useState(false);
   const [copiedCitation, setCopiedCitation] = useState(false);
@@ -192,7 +192,6 @@ Follow this structure:
 
               {/* Action Buttons */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-                {/* AP Citation Copy */}
                 <button
                   onClick={handleCopyCitation}
                   style={{
@@ -214,6 +213,27 @@ Follow this structure:
                   {copiedCitation ? <Check size={14} /> : <FileText size={14} color="#38BDF8" />}
                   {copiedCitation ? 'Copied AP Citation!' : '📰 Copy AP Press Citation'}
                 </button>
+
+                {onOpenDiligenceBrief && (
+                  <button
+                    onClick={() => onOpenDiligenceBrief(company)}
+                    style={{
+                      background: 'rgba(16, 185, 129, 0.15)',
+                      color: '#A7F3D0',
+                      border: '1px solid #10B981',
+                      padding: '6px 12px',
+                      borderRadius: '6px',
+                      fontSize: '0.75rem',
+                      fontWeight: 900,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px'
+                    }}
+                  >
+                    📜 View Section 363 Diligence Brief
+                  </button>
+                )}
 
                 {/* 1-Click Multi-Platform Share */}
                 <button

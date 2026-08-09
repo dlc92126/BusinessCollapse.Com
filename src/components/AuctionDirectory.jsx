@@ -1,7 +1,7 @@
 import React from 'react';
 import { Gavel, ExternalLink, Calendar, MapPin, Key, ShieldCheck, DollarSign, Clock, AlertTriangle, ArrowLeft, Star } from 'lucide-react';
 
-export default function AuctionDirectory({ auctions, onSelectAuction, onOpenPublicCatalog, onGoBack, watchlist = [], toggleWatchlist }) {
+export default function AuctionDirectory({ auctions, onSelectAuction, onOpenPublicCatalog, onGoBack, watchlist = [], toggleWatchlist, onOpenDiligenceBrief }) {
   return (
     <div style={{ marginTop: '24px' }}>
       
@@ -142,27 +142,53 @@ export default function AuctionDirectory({ auctions, onSelectAuction, onOpenPubl
               </div>
             </div>
 
-            {/* Action Buttons: Free Public Catalog + Gated Court Bidder Credentials */}
-            <div style={{ paddingTop: '14px', borderTop: '1px solid var(--border-subtle)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+            {/* Action Buttons: Diligence Brief + Free Public Catalog + Gated Court Bidder Credentials */}
+            <div style={{ paddingTop: '14px', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <button
                 onClick={() => {
-                  if (onOpenPublicCatalog) onOpenPublicCatalog(auction);
+                  if (onOpenDiligenceBrief) onOpenDiligenceBrief(auction);
                 }}
-                className="btn-secondary"
-                style={{ justifyContent: 'center', fontSize: '0.8rem', background: 'rgba(15, 23, 42, 0.9)' }}
+                style={{
+                  width: '100%',
+                  background: 'rgba(16, 185, 129, 0.15)',
+                  border: '1px solid #10B981',
+                  color: '#A7F3D0',
+                  padding: '8px 14px',
+                  borderRadius: '8px',
+                  fontSize: '0.8rem',
+                  fontWeight: 900,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '6px',
+                  boxShadow: '0 0 10px rgba(16, 185, 129, 0.2)'
+                }}
               >
-                👁️ Browse Free Public Catalog
+                📜 View Section 363 Diligence Brief
               </button>
 
-              <button
-                onClick={() => {
-                  if (onSelectAuction) onSelectAuction(auction);
-                }}
-                className="btn-primary"
-                style={{ justifyContent: 'center', background: 'linear-gradient(135deg, #10B981 0%, #047857 100%)', fontSize: '0.8rem' }}
-              >
-                🔐 Bidder Log-In & Escrow <ExternalLink size={13} />
-              </button>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                <button
+                  onClick={() => {
+                    if (onOpenPublicCatalog) onOpenPublicCatalog(auction);
+                  }}
+                  className="btn-secondary"
+                  style={{ justifyContent: 'center', fontSize: '0.78rem', background: 'rgba(15, 23, 42, 0.9)' }}
+                >
+                  👁️ Free Catalog
+                </button>
+
+                <button
+                  onClick={() => {
+                    if (onSelectAuction) onSelectAuction(auction);
+                  }}
+                  className="btn-primary"
+                  style={{ justifyContent: 'center', background: 'linear-gradient(135deg, #10B981 0%, #047857 100%)', fontSize: '0.78rem' }}
+                >
+                  🔐 Bidder Log-In <ExternalLink size={12} />
+                </button>
+              </div>
             </div>
           </div>
         ))}
