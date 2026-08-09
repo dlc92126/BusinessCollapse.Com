@@ -8,7 +8,6 @@ const __dirname = path.dirname(__filename);
 
 const D_DRIVE_DATA_DIR = 'D:\\Projects\\BusinessCollapse.Com\\data';
 const LOCAL_DATA_DIR = path.join(__dirname, '..', 'src', 'data');
-const SCRATCH_DATA_DIR = 'C:\\Users\\dlc92\\.gemini\\antigravity\\scratch\\businesscollapse';
 
 console.log('🏛️ [BusinessCollapse SEC & Financial News Crawler] Initializing live market monitor...');
 
@@ -183,7 +182,7 @@ function executeCrawlerSync() {
   console.log('📡 Fetching SEC EDGAR Financial Disclosures & Bankruptcy Filings...');
 
   // Ensure directories
-  [D_DRIVE_DATA_DIR, LOCAL_DATA_DIR, SCRATCH_DATA_DIR].forEach(dir => {
+  [D_DRIVE_DATA_DIR, LOCAL_DATA_DIR].forEach(dir => {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   });
 
@@ -217,8 +216,8 @@ function executeCrawlerSync() {
   logs.unshift(crawlerLog);
   if (logs.length > 25) logs.pop();
 
-  // Save to all 3 paths (D drive, src, scratch)
-  [D_DRIVE_DATA_DIR, LOCAL_DATA_DIR, SCRATCH_DATA_DIR].forEach(dir => {
+  // Save to D: drive & src/data
+  [D_DRIVE_DATA_DIR, LOCAL_DATA_DIR].forEach(dir => {
     saveJSON(path.join(dir, 'companies.json'), currentCompanies);
     saveJSON(path.join(dir, 'agent_logs.json'), logs);
   });

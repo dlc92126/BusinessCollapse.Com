@@ -54,15 +54,39 @@ export default function CompanyGraveyard({
     return `${start} ➔ ${courtLabel}`;
   };
 
-  // 1. Smart Entity Deduplication & Event Aggregation Engine
-  // First merge ALL base companies + breaking news / WARN signals into a single unified map
+  // Helper to compute a normalized, robust entity key (ticker or cleaned company name)
+  const getEntityKey = (item) => {
+    if (!item) return '';
+    const ticker = item.ticker ? item.ticker.toUpperCase().replace(/[^A-Z0-9]/g, '') : '';
+    const rawName = item.name || item.entityName || '';
+    const cleanName = rawName.toUpperCase()
+      .replace(/BRANDS|CORPORATION|CORP|INC|LLC|MANAGEMENT|SYSTEMS|SYSTEM|GROUP|HOLDINGS|HOLDING|PLC|CO/g, '')
+      .replace(/[^A-Z0-9]/g, '');
+    return ticker || cleanName || (item.id ? item.id.split('-')[0].toUpperCase() : '');
+  };
+
+  // 1. Smart Entity Deduplication & Event Aggregation Engine (HIGHLANDER RULE: One Card Per Company)
   const companyMap = new Map();
 
-  // Populate base companies
+  // Populate base companies (merge duplicates if encountered)
   (companies || []).forEach(c => {
     if (!c) return;
-    const key = (c.id || c.ticker || c.name).toUpperCase().replace(/[^A-Z0-9]/g, '');
-    companyMap.set(key, { ...c });
+    const key = getEntityKey(c);
+    if (!key) return;
+
+    if (companyMap.has(key)) {
+      // Merge newer ingested data into existing record
+      const existing = companyMap.get(key);
+      const merged = {
+        ...existing,
+        ...c,
+        id: existing.id, // Preserve consistent original ID
+        timeline: Array.from(new Set([...(c.timeline || []), ...(existing.timeline || [])]))
+      };
+      companyMap.set(key, merged);
+    } else {
+      companyMap.set(key, { ...c });
+    }
   });
 
   // Aggregate breaking news / WARN signals into existing or new records
@@ -184,15 +208,22 @@ export default function CompanyGraveyard({
       if (!causeText.includes(causeFilter.toLowerCase())) return false;
     }
 
+    // Helper for exact latest material event timestamp
+    const getCompanyMaterialTime = (c) => {
+      if (!c) return 0;
+      const t = c.lastMaterialChangeDate || c.lastUpdated || c.dateTimestamp || c.officialFilingDate || c.lastSweepDate;
+      return t ? new Date(t).getTime() : 0;
+    };
+
     // Timeframe & Custom Date Range Filter
     if (timeframeFilter !== 'ALL') {
-      const itemTime = c.dateTimestamp ? new Date(c.dateTimestamp).getTime() : new Date('2024-01-01').getTime();
+      const itemTime = getCompanyMaterialTime(c) || new Date('2024-01-01').getTime();
 
       if (timeframeFilter === 'CUSTOM') {
         if (customStartDate && itemTime < new Date(customStartDate).getTime()) return false;
         if (customEndDate && itemTime > new Date(customEndDate).getTime() + (24 * 3600 * 1000)) return false;
       } else if (timeframeFilter === '2024_2026') {
-        const companyYear = c.dateTimestamp ? new Date(c.dateTimestamp).getFullYear() : (c.yearCollapsed || 2024);
+        const companyYear = new Date(itemTime).getFullYear();
         if (companyYear < 2024 || companyYear > 2026) return false;
       } else {
         const now = new Date().getTime();
@@ -209,15 +240,14 @@ export default function CompanyGraveyard({
     return true;
   });
 
-  // 3. Three-Tier Court Docket & Pre-Judicial Floating Sorting Rule:
-  // Tier 1: Fresh Breaking / New Signals (hoursAgo <= 12 or isEmergent/isPreJudicial) ALWAYS FLOAT TO THE VERY TOP!
-  // Tier 2: Active Federal Court Dockets (ACTIVE_DOCKET_IN_PROGRESS) rank SECOND
-  // Tier 3: Discharged Cases (FINAL_DECREE_ISSUED) rank THIRD
+  // 3. Strict Latest Timestamp & Emergent Court Docket Floating Sorting Rule:
+  // Fresh Breaking / Ingested Signals (hoursAgo <= 12 or isEmergent/isPreJudicial) ALWAYS FLOAT TO VERY TOP!
+  // Ranked strictly by newest material timestamp first!
   const nowMs = new Date().getTime();
 
   const getCompanyMaterialTime = (c) => {
     if (!c) return 0;
-    const t = c.lastMaterialChangeDate || c.lastUpdated || c.dateTimestamp || c.officialFilingDate;
+    const t = c.lastMaterialChangeDate || c.lastUpdated || c.dateTimestamp || c.officialFilingDate || c.lastSweepDate;
     return t ? new Date(t).getTime() : 0;
   };
 
@@ -228,6 +258,9 @@ export default function CompanyGraveyard({
   };
 
   const sortedCompanies = [...filteredCompanies].sort((a, b) => {
+    const timeA = getCompanyMaterialTime(a);
+    const timeB = getCompanyMaterialTime(b);
+
     const hAgoA = getCompanyHoursAgo(a);
     const hAgoB = getCompanyHoursAgo(b);
 
@@ -238,8 +271,8 @@ export default function CompanyGraveyard({
     if (!isAEmergent && isBEmergent) return 1;
 
     if (isAEmergent && isBEmergent) {
-      // Sort within breaking items by newest material timestamp first!
-      return getCompanyMaterialTime(b) - getCompanyMaterialTime(a);
+      // Sort within breaking items strictly by newest material timestamp first!
+      return timeB - timeA;
     }
 
     const isAActive = a && a.courtCaseStatus !== 'FINAL_DECREE_ISSUED';
@@ -248,9 +281,7 @@ export default function CompanyGraveyard({
     if (isAActive && !isBActive) return -1; // Active Dockets SECOND!
     if (!isAActive && isBActive) return 1;  // Discharged Cases THIRD!
 
-    const timeA = getCompanyMaterialTime(a);
-    const timeB = getCompanyMaterialTime(b);
-    return timeB - timeA; // Newest filing date first!
+    return timeB - timeA;
   });
 
 
@@ -723,138 +754,85 @@ export default function CompanyGraveyard({
                           </span>
                         )}
                       </div>
+
+                      {/* Timestamps Justified to Left Side */}
+                      <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap', marginTop: '6px' }}>
+                        <span style={{ background: 'rgba(239, 68, 68, 0.18)', color: '#FCA5A5', border: '1px solid rgba(239, 68, 68, 0.4)', padding: '2px 8px', borderRadius: '4px', fontSize: '0.68rem', fontWeight: 800, fontFamily: 'var(--font-mono)' }}>
+                          ⚡ Material Change: {company.formattedMaterialChange || (new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' • ' + new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) + ' EST')}
+                        </span>
+                        <span style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8', border: '1px solid rgba(56, 189, 248, 0.35)', padding: '2px 8px', borderRadius: '4px', fontSize: '0.68rem', fontWeight: 800, fontFamily: 'var(--font-mono)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                          <Clock size={10} /> Sweep: {company.formattedLastSweep || `${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} • ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })} EST`}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
 
                   {/* Middle: Primary Cause (Broad Strokes) */}
-                  <div style={{ flex: '2 1 240px', fontSize: '0.8rem', color: 'var(--text-main)', lineHeight: 1.4, minWidth: '220px' }}>
+                  <div style={{ flex: '2 1 220px', fontSize: '0.8rem', color: 'var(--text-main)', lineHeight: 1.4, minWidth: '200px' }}>
                     <span style={{ color: '#FF3B5C', fontWeight: 700 }}>Cause: </span>
                     {company.primaryCause}
                   </div>
 
-                  {/* Right: Peak vs Collapse Valuation, Material Change & Action Buttons */}
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px', flex: '1 1 320px', minWidth: '280px' }}>
-                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', justifyContent: 'flex-end', width: '100%' }}>
-                      <div style={{ textAlign: 'right' }}>
-                        <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>Valuation Drop</div>
-                        <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#FF2A4B', fontFamily: 'var(--font-mono)' }}>
-                          {company.peakValuation ? company.peakValuation.split(' ')[0] : 'N/A'} ➔ {company.collapseValuation ? company.collapseValuation.split(' ')[0] : '$0'}
-                        </div>
-                      </div>
-
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>
-                        {onOpenWaterfall && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              onOpenWaterfall(company);
-                            }}
-                            style={{
-                              background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(14, 165, 233, 0.3) 100%)',
-                              color: '#38BDF8',
-                              border: '1px solid #38BDF8',
-                              padding: '4px 10px',
-                              borderRadius: '6px',
-                              fontSize: '0.72rem',
-                              fontWeight: 900,
-                              cursor: 'pointer',
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: '4px',
-                              boxShadow: '0 0 8px rgba(56, 189, 248, 0.25)'
-                            }}
-                            title="Launch Creditor Recovery Waterfall Simulator"
-                          >
-                            🌊 Waterfall
-                          </button>
-                        )}
-
-                        {onOpenDiligenceBrief && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              onOpenDiligenceBrief(company);
-                            }}
-                            style={{
-                              background: 'rgba(16, 185, 129, 0.18)',
-                              color: '#A7F3D0',
-                              border: '1px solid #10B981',
-                              padding: '4px 10px',
-                              borderRadius: '6px',
-                              fontSize: '0.72rem',
-                              fontWeight: 900,
-                              cursor: 'pointer',
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: '4px'
-                            }}
-                            title="View Section 363 Diligence Brief"
-                          >
-                            📜 Brief
-                          </button>
-                        )}
-
-                        {onOpenShare && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              onOpenShare(company);
-                            }}
-                            style={{
-                              background: 'rgba(56, 189, 248, 0.15)',
-                              color: '#38BDF8',
-                              border: '1px solid rgba(56, 189, 248, 0.4)',
-                              padding: '4px 10px',
-                              borderRadius: '6px',
-                              fontSize: '0.7rem',
-                              fontWeight: 800,
-                              cursor: 'pointer',
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: '4px'
-                            }}
-                            title="Share asset dossier across social platforms or copy direct link"
-                          >
-                            <Share2 size={12} /> 🔗 Share
-                          </button>
-                        )}
-
-                        {toggleDismissCompany && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              toggleDismissCompany(company.id);
-                            }}
-                            style={{
-                              background: 'rgba(239, 68, 68, 0.12)',
-                              color: '#FCA5A5',
-                              border: '1px solid rgba(239, 68, 68, 0.35)',
-                              padding: '4px 10px',
-                              borderRadius: '6px',
-                              fontSize: '0.7rem',
-                              fontWeight: 800,
-                              cursor: 'pointer',
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: '4px'
-                            }}
-                            title="Dismiss asset from active main feed (Mute stream)"
-                          >
-                            <EyeOff size={12} /> 🙈 Dismiss
-                          </button>
-                        )}
+                  {/* Right: Peak vs Collapse Valuation & Sleek Action Buttons */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: '1 1 260px', minWidth: '220px', justifyContent: 'flex-end' }}>
+                    <div style={{ textAlign: 'right' }}>
+                      <div style={{ fontSize: '0.72rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>Valuation Drop</div>
+                      <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#FF2A4B', fontFamily: 'var(--font-mono)' }}>
+                        {company.peakValuation ? company.peakValuation.split(' ')[0] : 'N/A'} ➔ {company.collapseValuation ? company.collapseValuation.split(' ')[0] : '$0'}
                       </div>
                     </div>
 
-                    {/* Right-Justified Material Change & System Refresh Timestamps */}
-                    <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-                      <span style={{ background: 'rgba(239, 68, 68, 0.18)', color: '#FCA5A5', border: '1px solid rgba(239, 68, 68, 0.4)', padding: '2px 8px', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 800, fontFamily: 'var(--font-mono)' }}>
-                        ⚡ Material Change: {company.formattedMaterialChange || (new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' • ' + new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) + ' EST')}
-                      </span>
-                      <span style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8', border: '1px solid rgba(56, 189, 248, 0.35)', padding: '2px 8px', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 800, fontFamily: 'var(--font-mono)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                        <Clock size={10} /> System Refresh Verified: {company.formattedLastSweep || `${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} • ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })} EST`}
-                      </span>
+                    <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                      {onOpenShare && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onOpenShare(company);
+                          }}
+                          style={{
+                            background: 'rgba(56, 189, 248, 0.15)',
+                            color: '#38BDF8',
+                            border: '1px solid rgba(56, 189, 248, 0.4)',
+                            padding: '4px 10px',
+                            borderRadius: '6px',
+                            fontSize: '0.7rem',
+                            fontWeight: 800,
+                            cursor: 'pointer',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '4px'
+                          }}
+                          title="Share asset dossier across social platforms or copy direct link"
+                        >
+                          <Share2 size={12} /> 🔗 Share
+                        </button>
+                      )}
+
+                      {toggleDismissCompany && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleDismissCompany(company.id);
+                          }}
+                          style={{
+                            background: 'rgba(239, 68, 68, 0.12)',
+                            color: '#FCA5A5',
+                            border: '1px solid rgba(239, 68, 68, 0.35)',
+                            padding: '4px 10px',
+                            borderRadius: '6px',
+                            fontSize: '0.7rem',
+                            fontWeight: 800,
+                            cursor: 'pointer',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '4px'
+                          }}
+                          title="Dismiss asset from active main feed (Mute stream)"
+                        >
+                          <EyeOff size={12} /> 🙈 Dismiss
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>

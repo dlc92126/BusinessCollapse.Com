@@ -481,22 +481,39 @@ export default function App() {
     setLastIngestionTime(result.lastIngestionTime);
     if (result.auditReport) {
       setAuditReport(result.auditReport);
-      setIsAuditModalOpen(true);
+      // Certification modal pop-up suppressed for smooth workflow. Audit report is logged in Back Office.
     }
   };
 
-  // Global 15-Minute Background Automated System Refresh Daemon
+  // Global 15-Minute Background Automated System Refresh Daemon (Synced to Top of Hour: :00, :15, :30, :45)
   useEffect(() => {
-    const interval = setInterval(() => {
-      console.log('[AI-INGEST-DAEMON] Executing scheduled 15-minute automated ingestion run...');
+    let intervalId;
+
+    const runCycle = () => {
+      console.log('[AI-INGEST-DAEMON] Executing scheduled 15-minute top-of-the-hour synchronized ingestion run...');
       const result = executeIngestionCycle();
       setCompanies(result.updatedCompanies);
       setBreakingNews(result.updatedNews);
       setAuctions(result.updatedAuctions);
       setLastIngestionTime(result.lastIngestionTime);
-    }, 15 * 60 * 1000);
+    };
 
-    return () => clearInterval(interval);
+    // Calculate exact ms until next :00, :15, :30, or :45 clock mark
+    const now = new Date();
+    const min = now.getMinutes();
+    const sec = now.getSeconds();
+    const ms = now.getMilliseconds();
+    const msUntilNextSlot = ((15 - (min % 15)) * 60 * 1000) - (sec * 1000 + ms);
+
+    const initialTimeout = setTimeout(() => {
+      runCycle();
+      intervalId = setInterval(runCycle, 15 * 60 * 1000);
+    }, msUntilNextSlot);
+
+    return () => {
+      clearTimeout(initialTimeout);
+      if (intervalId) clearInterval(intervalId);
+    };
   }, []);
 
 

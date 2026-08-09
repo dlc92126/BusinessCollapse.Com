@@ -63,12 +63,11 @@ export default function Header({
 
   const allTabs = [
     { id: 'graveyard', label: '🔥 LIVE DISTRESS WIRE' },
-    { id: 'graveyard_archive', label: '🪦 CORPORATE GRAVEYARD' },
+    { id: 'sub10m', label: '📡 SUB-$10M RADAR' },
+    { id: 'heatmap', label: '📊 DISTRESS HEATMAP' },
     { id: 'dip', label: '💳 DIP LOAN TERMINAL' },
-    { id: 'sub10m', label: '🏬 SUB-$10M RADAR' },
-    { id: 'sectors', label: '⚡ SECTOR WIRE' },
-    { id: 'auctions', label: '🔨 COURT AUCTIONS' },
-    { id: 'heatmap', label: '🗺️ DISTRESS HEATMAP' }
+    { id: 'auctions', label: '🏛️ COURT AUCTIONS' },
+    { id: 'graveyard_archive', label: '🪦 CORPORATE GRAVEYARD' }
   ];
 
 
@@ -579,6 +578,7 @@ export default function Header({
       {/* Live 12-Hour Marquee Ticker (Auto-collapses to 0px if 0 alerts < 12h old) */}
       <TopTickerMarquee
         breakingNews={breakingNews}
+        companies={companies}
         onSelectEntity={(ticker) => {
           if (setSearchQuery) setSearchQuery(ticker);
           if (setActiveTab) setActiveTab('graveyard');

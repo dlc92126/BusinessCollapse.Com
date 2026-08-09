@@ -20,17 +20,26 @@ export default function IngestionSchedulerModal({
   });
   const [isIngesting, setIsIngesting] = useState(false);
   const [ingestSuccessMsg, setIngestSuccessMsg] = useState('');
-  const [countdown, setCountdown] = useState(864); // 14m 24s in seconds
+  const [countdown, setCountdown] = useState(600);
   const [copiedUrl, setCopiedUrl] = useState(false);
   const [copiedKey, setCopiedKey] = useState(false);
 
   const webhookUrl = typeof window !== 'undefined' ? `${window.location.origin}/.netlify/functions/webhook-ingest` : 'https://businesscollapse.com/.netlify/functions/webhook-ingest';
   const webhookSecret = 'bcc_sec_pacer_live_secret_9981';
 
-  // Auto-countdown timer simulation
+  // Auto-countdown timer simulation (Synced to Top of Hour: :00, :15, :30, :45)
   useEffect(() => {
     let timer;
     if (isAutoEnabled) {
+      const getSecsToNext15Slot = () => {
+        const now = new Date();
+        const min = now.getMinutes();
+        const sec = now.getSeconds();
+        return (15 - (min % 15)) * 60 - sec;
+      };
+
+      setCountdown(getSecsToNext15Slot());
+
       timer = setInterval(() => {
         setCountdown((prev) => {
           if (prev <= 1) {

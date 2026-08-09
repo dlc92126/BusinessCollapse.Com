@@ -1,18 +1,45 @@
 import React from 'react';
 import { Flame, Clock, ShieldAlert, ChevronRight, Zap } from 'lucide-react';
 
-export default function TopTickerMarquee({ breakingNews = [], onSelectEntity }) {
-  const alertsList = Array.isArray(breakingNews) ? breakingNews : [breakingNews];
-  
-  // STRICT 12-HOUR FILTER & AUTO-COLLAPSE RULE
+export default function TopTickerMarquee({ breakingNews = [], companies = [], onSelectEntity }) {
   const nowTime = new Date().getTime();
-  const activeAlerts = alertsList.filter(a => {
-    if (!a) return false;
-    const aTime = a.lastMaterialChangeDate || a.lastUpdated || a.dateTimestamp;
-    if (!aTime) return false; // Strictly require valid timestamp
-    const hoursAgo = (nowTime - new Date(aTime).getTime()) / (1000 * 3600);
-    return hoursAgo >= 0 && hoursAgo <= 12; // STRICTLY COLLAPSE AWAY IF > 12 HOURS OLD!
+
+  // Combine breakingNews and companies into one unified pool
+  const allCandidates = [
+    ...(Array.isArray(breakingNews) ? breakingNews : [breakingNews]),
+    ...(Array.isArray(companies) ? companies : [])
+  ];
+
+  // STRICT 12-HOUR FILTER RULE: Everything less than 12 hours old goes into the ticker!
+  const activeAlertsMap = new Map();
+
+  allCandidates.forEach(item => {
+    if (!item) return;
+    const timeStr = item.lastMaterialChangeDate || item.lastUpdated || item.dateTimestamp || item.lastSweepDate;
+    if (!timeStr) return;
+    const itemMs = new Date(timeStr).getTime();
+    if (isNaN(itemMs)) return;
+    const hoursAgo = (nowTime - itemMs) / (1000 * 3600);
+
+    // Include if less than 12 hours old (or marked isEmergent with recent timestamp)
+    if (hoursAgo >= 0 && hoursAgo <= 12) {
+      const key = (item.ticker || item.entityName || item.name || '').toUpperCase();
+      if (!key) return;
+      if (!activeAlertsMap.has(key) || itemMs > activeAlertsMap.get(key).itemMs) {
+        activeAlertsMap.set(key, {
+          id: item.id || `ticker-${key}`,
+          itemMs,
+          entityName: item.entityName || item.name,
+          ticker: item.ticker || 'DISTRESS',
+          headline: item.headline || item.summary || `${item.name || item.entityName} — Court Docket Update`,
+          hoursAgo: Math.max(1, Math.round(hoursAgo)),
+          lastMaterialChangeDate: timeStr
+        });
+      }
+    }
   });
+
+  const activeAlerts = Array.from(activeAlertsMap.values()).sort((a, b) => b.itemMs - a.itemMs);
 
   // AUTO-COLLAPSE ENTIRE TICKER TO ZERO PIXELS IF 0 ALERTS < 12 HOURS OLD!
   if (activeAlerts.length === 0) return null;
@@ -42,7 +69,7 @@ export default function TopTickerMarquee({ breakingNews = [], onSelectEntity }) 
           align-items: center;
           gap: 24px;
           white-space: nowrap;
-          animation: marqueeScroll 39s linear infinite;
+          animation: marqueeScroll 120s linear infinite;
           width: max-content;
         }
         .marquee-track:hover {

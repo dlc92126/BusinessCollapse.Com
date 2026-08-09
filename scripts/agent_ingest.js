@@ -7,12 +7,11 @@ const __dirname = path.dirname(__filename);
 
 const D_DRIVE_DATA_DIR = 'D:\\Projects\\BusinessCollapse.Com\\data';
 const LOCAL_DATA_DIR = path.join(__dirname, '..', 'src', 'data');
-const SCRATCH_DATA_DIR = 'C:\\Users\\dlc92\\.gemini\\antigravity\\scratch\\businesscollapse';
 
 console.log('🤖 [BusinessCollapse AI Agent Framework] Autonomous Ingest Engine Starting...');
 
 function ensureDirectories() {
-  [D_DRIVE_DATA_DIR, LOCAL_DATA_DIR, SCRATCH_DATA_DIR].forEach(dir => {
+  [D_DRIVE_DATA_DIR, LOCAL_DATA_DIR].forEach(dir => {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
@@ -43,11 +42,6 @@ function saveJSON(filename, data) {
   const srcPath = path.join(LOCAL_DATA_DIR, filename);
   fs.writeFileSync(srcPath, content, 'utf8');
   console.log(`  🔄 Synced to App Src -> ${srcPath}`);
-  
-  // Sync to Scratch
-  const scratchPath = path.join(SCRATCH_DATA_DIR, filename);
-  fs.writeFileSync(scratchPath, content, 'utf8');
-  console.log(`  📦 Synced to Scratch -> ${scratchPath}`);
 }
 
 function runIngestSimulation() {
