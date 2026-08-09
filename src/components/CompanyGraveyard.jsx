@@ -23,7 +23,9 @@ export default function CompanyGraveyard({
   onOpenShare,
   dismissedCompanyIds = [],
   toggleDismissCompany,
-  activeTab
+  activeTab,
+  onOpenWaterfall,
+  onOpenDiligenceBrief
 }) {
 
   const [statusFilter, setStatusFilter] = useState('ALL');
@@ -742,6 +744,57 @@ export default function CompanyGraveyard({
                       </div>
 
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>
+                        {onOpenWaterfall && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onOpenWaterfall(company);
+                            }}
+                            style={{
+                              background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(14, 165, 233, 0.3) 100%)',
+                              color: '#38BDF8',
+                              border: '1px solid #38BDF8',
+                              padding: '4px 10px',
+                              borderRadius: '6px',
+                              fontSize: '0.72rem',
+                              fontWeight: 900,
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '4px',
+                              boxShadow: '0 0 8px rgba(56, 189, 248, 0.25)'
+                            }}
+                            title="Launch Creditor Recovery Waterfall Simulator"
+                          >
+                            🌊 Waterfall
+                          </button>
+                        )}
+
+                        {onOpenDiligenceBrief && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onOpenDiligenceBrief(company);
+                            }}
+                            style={{
+                              background: 'rgba(16, 185, 129, 0.18)',
+                              color: '#A7F3D0',
+                              border: '1px solid #10B981',
+                              padding: '4px 10px',
+                              borderRadius: '6px',
+                              fontSize: '0.72rem',
+                              fontWeight: 900,
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '4px'
+                            }}
+                            title="View Section 363 Diligence Brief"
+                          >
+                            📜 Brief
+                          </button>
+                        )}
+
                         {onOpenShare && (
                           <button
                             onClick={(e) => {
@@ -752,9 +805,9 @@ export default function CompanyGraveyard({
                               background: 'rgba(56, 189, 248, 0.15)',
                               color: '#38BDF8',
                               border: '1px solid rgba(56, 189, 248, 0.4)',
-                              padding: '6px 12px',
+                              padding: '4px 10px',
                               borderRadius: '6px',
-                              fontSize: '0.75rem',
+                              fontSize: '0.7rem',
                               fontWeight: 800,
                               cursor: 'pointer',
                               display: 'inline-flex',
@@ -763,7 +816,7 @@ export default function CompanyGraveyard({
                             }}
                             title="Share asset dossier across social platforms or copy direct link"
                           >
-                            <Share2 size={13} /> 🔗 Share
+                            <Share2 size={12} /> 🔗 Share
                           </button>
                         )}
 

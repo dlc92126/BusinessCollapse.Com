@@ -699,6 +699,8 @@ export default function App() {
             dismissedCompanyIds={dismissedCompanyIds}
             toggleDismissCompany={toggleDismissCompany}
             activeTab={activeTab}
+            onOpenWaterfall={handleOpenWaterfall}
+            onOpenDiligenceBrief={handleOpenDiligenceBrief}
 
 
 
