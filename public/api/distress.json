@@ -1,0 +1,38 @@
+{
+  "status": "success",
+  "provider": "BusinessCollapse.com A2A Feed",
+  "timestamp": "2026-08-04T21:34:00Z",
+  "totalEntities": 8,
+  "data": [
+    {
+      "id": "spirit-airlines",
+      "name": "Spirit Airlines",
+      "ticker": "SAVE",
+      "status": "Chapter 11 Restructuring",
+      "locationJurisdiction": "Wilmington, DE (U.S. Bankruptcy Court D. Del.)",
+      "primaryCause": "Post-Merger Block Liquidity Depletion",
+      "peakValuation": "$2.8B",
+      "collapseValuation": "$110M Liquidity",
+      "finalDebt": "$1.4B Lease Liabilities",
+      "earlyWarningSignals": [
+        "19:45 EST: Emergency Court Hearing for $350M DIP financing approval.",
+        "16:20 EST: Aircraft lessors demand expedited return of 14 Airbus A320neo jets."
+      ]
+    },
+    {
+      "id": "wework",
+      "name": "WeWork",
+      "ticker": "WE",
+      "status": "Chapter 11 Restructuring",
+      "locationJurisdiction": "New York, NY (U.S. Bankruptcy Court S.D.N.Y.)",
+      "primaryCause": "Commercial Real Estate Lease Obligations",
+      "peakValuation": "$47.0B",
+      "collapseValuation": "$45M",
+      "finalDebt": "$18.6B",
+      "earlyWarningSignals": [
+        "Going concern warning issued 3 months prior to petition.",
+        "Default on $95M senior note coupon payments."
+      ]
+    }
+  ]
+}

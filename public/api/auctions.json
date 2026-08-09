@@ -1,0 +1,28 @@
+{
+  "status": "success",
+  "provider": "BusinessCollapse.com A2A Feed",
+  "timestamp": "2026-08-04T21:34:00Z",
+  "totalAuctions": 2,
+  "data": [
+    {
+      "id": "auction-big-lots-2026",
+      "entityName": "Big Lots, Inc.",
+      "ticker": "BIG",
+      "auctionTitle": "300 Store Footprint Fixtures & Inventory Liquidation Auction",
+      "dateTimestamp": "2026-08-12T10:00:00Z",
+      "locationJurisdiction": "Columbus, OH & Online Portal (D. Del. Court Docket #88)",
+      "onlinePortalUrl": "https://auctions.businesscollapse.com/big-lots-88",
+      "registrationParticulars": "Pre-registration required by Aug 10, 17:00 EST. $1,000 refundable escrow deposit required."
+    },
+    {
+      "id": "auction-red-lobster-2026",
+      "entityName": "Red Lobster Management LLC",
+      "ticker": "PRIVATE",
+      "auctionTitle": "Kitchen Equipment, Commercial Refrigeration & Leasehold Rights",
+      "dateTimestamp": "2026-08-18T14:00:00Z",
+      "locationJurisdiction": "Wilmington, DE (U.S. Bankruptcy Court Docket #204)",
+      "onlinePortalUrl": "https://auctions.businesscollapse.com/red-lobster-204",
+      "registrationParticulars": "Pre-qualification required via Docket #204 portal. Access Code: RL-2026-LIQ."
+    }
+  ]
+}

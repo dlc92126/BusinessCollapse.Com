@@ -1,0 +1,34 @@
+# BusinessCollapse.com Robots.txt
+# Optimized for Search Engine Indexing & AI Engine Discovery (AISEO)
+
+User-agent: *
+Allow: /
+Disallow: /api/admin/
+Disallow: /manager/private/
+
+# AI Crawlers & LLM Data Mining Agents (Explicitly Authorized for AISEO Citation)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Cohere-AI
+Allow: /
+
+# Sitemap & AI Markdown Documentation Specifications
+Sitemap: https://businesscollapse.com/sitemap.xml
+LLM-Documentation: https://businesscollapse.com/llms.txt
+LLM-Full-Documentation: https://businesscollapse.com/llms-full.txt

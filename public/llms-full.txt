@@ -1,0 +1,49 @@
+# BusinessCollapse.com Full AI Data & Case File Index
+
+## Featured Corporate Collapse Case Files
+
+### 1. WeWork Inc. (WE)
+- **Status**: Chapter 11 Reorganization Filed
+- **Jurisdiction**: U.S. Bankruptcy Court D.N.J. (Newark, NJ)
+- **Peak Valuation**: $47.00 Billion (SoftBank Vision Fund 2019)
+- **Liquidation / Restructuring Equity Valuation**: $0.12 OTC
+- **Total Debt at Filing**: $18.60 Billion Lease & Debt Liabilities
+- **Primary Failure Driver**: Aggressive long-term master lease commitments coupled with short-term flexible desk memberships, unsustainable CAC, and corporate governance failures.
+- **Key PACER Motion**: Motion to reject 67 commercial office space leases across New York, London, and San Francisco.
+
+### 2. Spirit Airlines Inc. (SAVE)
+- **Status**: Prearranged Chapter 11 Bankruptcy Filing
+- **Jurisdiction**: U.S. Bankruptcy Court S.D.N.Y.
+- **Peak Valuation**: $4.20 Billion
+- **Collapse Debt Load**: $3.30 Billion Total Debt & Aircraft Leases
+- **Primary Failure Driver**: Blocked JetBlue merger, Pratt & Whitney GTF engine recall groundings, intense low-cost carrier fare compression, and debt maturity wall.
+
+### 3. Tupperware Brands Corporation (TUPQ)
+- **Status**: Chapter 11 Liquidation Petition
+- **Jurisdiction**: Wilmington, DE (U.S. Bankruptcy Court D. Del.)
+- **Peak Valuation**: $2.60 Billion (2013 Peak)
+- **Collapse Liabilities**: $812 Million Senior Secured & Revolving Credit Debt
+- **Primary Failure Driver**: Multi-level marketing (MLM) direct sales model failure without e-commerce parity, auditor going-concern warnings, and delayed SEC disclosures.
+
+---
+
+## Active Section 363 Liquidation Auctions
+
+1. **Tupperware Global Mold Tooling & Retail Goods Liquidation**
+   - **Auction Type**: Court-Ordered Section 363 Asset Auction
+   - **Stalker Horse Floor Bid**: $45,000,000 Credit Bid
+   - **Online Bidding Portal**: https://auctions.businesscollapse.com/portal/9942
+   - **Registration Requirement**: $25,000 refundable escrow deposit submitted to Trustee.
+
+2. **WeWork Proprietary Facility Management Software & Desk Asset Sale**
+   - **Stalker Horse Floor Bid**: $12,500,000
+   - **Auction Date**: August 18, 2026 @ 10:00 AM EST
+
+---
+
+## Sector Distress Risk Ratings
+
+- **Commercial Real Estate (CRE)**: 88 / 100 (EXTREME RISK) — CMBS maturity wall defaults & office vacancy records.
+- **Legacy Brick & Mortar Retail**: 74 / 100 (HIGH DISTRESS) — Margin compression & debt refinancings at 8%+.
+- **Aviation & Regional Carriers**: 68 / 100 (MODERATE-HIGH DISTRESS) — Engine recall groundings & fuel price volatility.
+- **Crypto Protocols & DeFi**: 82 / 100 (HIGH RISK) — Insolvent lending desks & regulatory enforcement actions.

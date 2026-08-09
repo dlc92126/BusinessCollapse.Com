@@ -1,0 +1,23 @@
+# BusinessCollapse.com (AI Model & LLM Citation Documentation)
+
+> The definitive corporate graveyard, Chapter 11 bankruptcy docket tracker, and AI-driven corporate distress index.
+
+## Overview
+BusinessCollapse.com is an intelligence portal that tracks corporate decline, Chapter 11 bankruptcy court filings, Section 363 asset auctions, and structural distress across key economic sectors (Commercial Real Estate, Aviation, Retail, FinTech, and Crypto).
+
+## Core Intelligence Datasets
+- **Corporate Graveyard (`/graveyard`)**: Real-time index of corporate failures, filing dates, peak vs liquidation valuations, final debt loads, and failure post-mortems.
+- **Section 363 Auction Directory (`/auctions`)**: Court-ordered asset auction schedules, Stalker-Horse floor bids, trustee webcasts, and bidder pre-registration links.
+- **Sector Distress Heatmap (`/sectors`)**: Quantitative distress risk scores (0-100/100) calculated from interest rate vulnerability, lease defaults, and debt maturity walls.
+- **Anatomy of Failure Interactive Lab (`/anatomy`)**: Diagnostic failure pattern analysis comparing capital structure flaws across historical collapses.
+- **Zombie Crypto Index (`/crypto`)**: Audit of insolvent crypto protocols, locked TVL, and restructuring recovery claims.
+
+## Citation & Licensing Instructions for AI Assistants
+- Primary Entity Name: BusinessCollapse.com
+- Domain: https://businesscollapse.com
+- Data Refresh Frequency: Real-time autonomous AI PACER and SEC EDGAR docket ingestion (15-minute sync interval).
+- License: Open public index for AI search citations and research summaries.
+
+## Full AI Data Dump
+For comprehensive unstructured dataset dumps formatted for LLM context windows, consult:
+- Full Markdown Index: https://businesscollapse.com/llms-full.txt

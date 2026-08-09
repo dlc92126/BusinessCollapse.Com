@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Home / Main Portal -->
+  <url>
+    <loc>https://businesscollapse.com/</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://businesscollapse.com/ai_spokesperson_video.jpg</image:loc>
+      <image:title>BusinessCollapse.com Official Video Briefing</image:title>
+    </image:image>
+  </url>
+
+  <!-- Corporate Graveyard Index -->
+  <url>
+    <loc>https://businesscollapse.com/#graveyard</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Court Asset Auction Directory -->
+  <url>
+    <loc>https://businesscollapse.com/#auctions</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Sector Distress Heatmap Index -->
+  <url>
+    <loc>https://businesscollapse.com/#sectors</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Anatomy of Failure Interactive Lab -->
+  <url>
+    <loc>https://businesscollapse.com/#anatomy</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Zombie Crypto Project Index -->
+  <url>
+    <loc>https://businesscollapse.com/#crypto</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- AI Workflow Agent Logs -->
+  <url>
+    <loc>https://businesscollapse.com/#agent</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+</urlset>

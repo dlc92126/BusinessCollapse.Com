@@ -1,0 +1,363 @@
+[
+  {
+    "id": "lone-star-freight",
+    "name": "Lone Star Freight Systems Inc.",
+    "ticker": "SUBV-TX",
+    "sectorId": "logistics",
+    "sectorName": "Freight, Logistics & Fleet",
+    "status": "SUBCHAPTER_V",
+    "statusBadge": "🏬 SUBCHAPTER V REORGANIZATION",
+    "distressScore": 92,
+    "peakValuation": "$6.80 Million",
+    "collapseValuation": "$2.10 Million Asset Liquidation",
+    "debtAtCollapse": "$4.50 Million",
+    "yearFounded": 2014,
+    "yearCollapsed": 2026,
+    "dateTimestamp": "2026-08-04T10:30:00Z",
+    "locationJurisdiction": "Houston, TX (S.D. Tex.)",
+    "ceoAtFailure": "Travis McCallister",
+    "primaryCause": "Diesel Fuel Inflation & Spot Freight Rate Collapse",
+    "claimsAgent": "Court Appointed Subchapter V Trustee",
+    "claimsAgentUrl": "https://pacer.uscourts.gov",
+    "sourceType": "PACER_SUBCHAPTER_V",
+    "sourceName": "U.S. Bankruptcy Court S.D. Tex. Subchapter V Petition",
+    "summary": "Houston-based regional freight carrier filed Subchapter V small business bankruptcy to restructure $4.5M in equipment debt across 24 Peterbilt commercial trucks & refrigerated trailers.",
+    "assetLiquidationType": "FLEET_TRUCKS",
+    "assetLiquidationBadge": "🚚 24 Commercial Freight Trucks & Trailers",
+    "regionalZone": "TEXAS",
+    "debtRangeCategory": "2M_5M",
+    "earlyWarningSignals": [
+      "Spot freight rates dropped 38% year-over-year",
+      "Diesel fuel credit line default in June 2026",
+      "Notice of default from PACCAR Financial Services"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Mid-market fleet operator reliant on spot market rates without long-term shipper contracts.",
+      "financial": "$4.5M secured truck financing debt against declining freight revenues.",
+      "market": "Overcapacity in domestic trucking market drove spot rates below operating costs.",
+      "regulatory": "Subchapter V fast-track 90-day reorganization plan filed under 11 U.S.C. § 1189."
+    },
+    "timeline": [
+      {
+        "date": "Jun 2026",
+        "event": "Default notice issued by PACCAR Financial on 14 truck leases."
+      },
+      {
+        "date": "Aug 04, 2026",
+        "event": "Files Subchapter V bankruptcy petition in Houston, TX."
+      }
+    ],
+    "keyTakeaways": [
+      "Subchapter V allows small fleet operators to retain equity while restructuring secured equipment debt.",
+      "Equipment resellers can target 24 Peterbilt trucks entering 363 auction procedures."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ SUBCHAPTER V 90-DAY REORGANIZATION",
+    "officialFilingDate": "2026-08-04",
+    "firstDistressSignalDate": "Jun 2026",
+    "formattedTimestamp": "Aug 04, 2026 • 10:30 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 01:36 PM EST",
+    "lastMaterialChangeDate": "2026-08-04T10:30:00Z",
+    "formattedMaterialChange": "Aug 4, 2026 • 10:30 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$750,000",
+      "lender": "Texas Regional Commercial Bank",
+      "interestRate": "SOFR + 6.50%",
+      "weeklyCashBurn": "$45,000 / Week",
+      "cashRunwayDays": 35,
+      "superPriorityStatus": "Subchapter V Trustee Super-Priority Line",
+      "cashCollateralCarveout": "$100,000 Payroll Escrow"
+    }
+  },
+  {
+    "id": "sunshine-dining-group",
+    "name": "Sunshine Dining Group LLC (6-Unit Franchisee)",
+    "ticker": "SUBV-FL",
+    "sectorId": "casual-dining",
+    "sectorName": "Casual Dining & Franchises",
+    "status": "SUBCHAPTER_V",
+    "statusBadge": "🏬 SUBCHAPTER V LIQUIDATION",
+    "distressScore": 95,
+    "peakValuation": "$4.20 Million",
+    "collapseValuation": "$850,000 Kitchen Equipment Auction",
+    "debtAtCollapse": "$3.20 Million",
+    "yearFounded": 2017,
+    "yearCollapsed": 2026,
+    "dateTimestamp": "2026-08-02T14:15:00Z",
+    "locationJurisdiction": "Orlando, FL (M.D. Fla.)",
+    "ceoAtFailure": "Carlos Hernandez",
+    "primaryCause": "Commercial Rent Increases & Minimum Wage Spikes",
+    "claimsAgent": "Orlando Bankruptcy Trustee",
+    "claimsAgentUrl": "https://pacer.uscourts.gov",
+    "sourceType": "PACER_SUBCHAPTER_V",
+    "sourceName": "U.S. Bankruptcy Court M.D. Fla. Subchapter V Petition",
+    "summary": "Orlando-based 6-location fast-casual restaurant franchisee filed Subchapter V to reject 4 overpriced retail leases and auction commercial kitchen equipment.",
+    "assetLiquidationType": "KITCHEN_EQUIPMENT",
+    "assetLiquidationBadge": "🍳 Commercial Kitchens, Fryers & Walk-In Freezers",
+    "regionalZone": "FLORIDA",
+    "debtRangeCategory": "2M_5M",
+    "earlyWarningSignals": [
+      "Landlord eviction notices served on 3 locations in July 2026",
+      "Food supply distributor debt default ($620K uncollateralized)"
+    ],
+    "anatomyBreakdown": {
+      "structural": "High commercial rent leases eating up 18% of gross revenues.",
+      "financial": "$3.2M total liabilities against $850K in liquidation asset value.",
+      "market": "Foot traffic dropped 22% due to local consumer belt-tightening.",
+      "regulatory": "Subchapter V plan submitted with lease rejection motions."
+    },
+    "timeline": [
+      {
+        "date": "Jul 2026",
+        "event": "Served 3-day eviction notices by Florida commercial landlords."
+      },
+      {
+        "date": "Aug 02, 2026",
+        "event": "Files Subchapter V bankruptcy in Orlando, FL."
+      }
+    ],
+    "keyTakeaways": [
+      "Restaurant equipment resellers can bid on walk-in freezers, stainless steel ovens, and POS systems.",
+      "Commercial real estate brokers can pick up prime Florida retail leases."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ LEASE REJECTION & KITCHEN AUCTION IN PROGRESS",
+    "officialFilingDate": "2026-08-02",
+    "firstDistressSignalDate": "Jul 2026",
+    "formattedTimestamp": "Aug 02, 2026 • 02:15 PM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 01:36 PM EST",
+    "lastMaterialChangeDate": "2026-08-02T14:15:00Z",
+    "formattedMaterialChange": "Aug 2, 2026 • 02:15 PM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$350,000",
+      "lender": "Florida Capital Private Lenders",
+      "interestRate": "SOFR + 7.00%",
+      "weeklyCashBurn": "$22,000 / Week",
+      "cashRunwayDays": 24,
+      "superPriorityStatus": "1st Lien DIP Escrow Facility",
+      "cashCollateralCarveout": "$50,000 Vendor Carveout"
+    }
+  },
+  {
+    "id": "pacific-cre-partners",
+    "name": "Pacific Coast CRE Partners LLC",
+    "ticker": "SUBV-CA",
+    "sectorId": "commercial-real-estate",
+    "sectorName": "Commercial Real Estate & Retail",
+    "status": "SUBCHAPTER_V",
+    "statusBadge": "🏬 SUBCHAPTER V REAL ESTATE DEFAULT",
+    "distressScore": 94,
+    "peakValuation": "$9.50 Million",
+    "collapseValuation": "$4.80 Million Stalker-Horse Bid",
+    "debtAtCollapse": "$6.90 Million",
+    "yearFounded": 2018,
+    "yearCollapsed": 2026,
+    "dateTimestamp": "2026-07-28T16:45:00Z",
+    "locationJurisdiction": "Los Angeles, CA (C.D. Cal.)",
+    "ceoAtFailure": "Jennifer Sterling",
+    "primaryCause": "Commercial Mortgage Refinancing Maturity Wall & 40% Vacancy",
+    "claimsAgent": "Los Angeles Bankruptcy Administration",
+    "claimsAgentUrl": "https://pacer.uscourts.gov",
+    "sourceType": "PACER_SUBCHAPTER_V",
+    "sourceName": "U.S. Bankruptcy Court C.D. Cal. Subchapter V Petition",
+    "summary": "Los Angeles commercial real estate holding company defaulted on a $6.9M CMBS loan securing a 35,000 sq ft suburban retail shopping center.",
+    "assetLiquidationType": "RETAIL_LEASES",
+    "assetLiquidationBadge": "🏬 35,000 Sq Ft Retail Shopping Center & Leases",
+    "regionalZone": "CALIFORNIA",
+    "debtRangeCategory": "5M_10M",
+    "earlyWarningSignals": [
+      "Anchor retail tenant filed Chapter 11 in May 2026",
+      "CMBS loan special servicing transfer in June 2026"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Suburban retail shopping center hit by e-commerce migration and tenant bankruptcies.",
+      "financial": "$6.9M senior mortgage matured without refinancing availability.",
+      "market": "Property cap rates expanded from 5.5% to 8.8%, destroying equity value.",
+      "regulatory": "Section 363 credit bid auction ordered by Central District of California."
+    },
+    "timeline": [
+      {
+        "date": "Jun 2026",
+        "event": "Loan transferred to Special Servicing for non-payment at maturity."
+      },
+      {
+        "date": "Jul 28, 2026",
+        "event": "Files Subchapter V Chapter 11 in Los Angeles, CA."
+      }
+    ],
+    "keyTakeaways": [
+      "Commercial real estate investors can acquire 35,000 sq ft California retail property via credit bid auction.",
+      "Subchapter V protects property owners from immediate lender foreclosure sales."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ 363 REAL ESTATE AUCTION PENDING",
+    "officialFilingDate": "2026-07-28",
+    "firstDistressSignalDate": "Jun 2026",
+    "formattedTimestamp": "Jul 28, 2026 • 04:45 PM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 01:36 PM EST",
+    "lastMaterialChangeDate": "2026-07-28T16:45:00Z",
+    "formattedMaterialChange": "Jul 28, 2026 • 04:45 PM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$1,100,000",
+      "lender": "Pacific Bridge Capital",
+      "interestRate": "SOFR + 8.25%",
+      "weeklyCashBurn": "$35,000 / Week",
+      "cashRunwayDays": 40,
+      "superPriorityStatus": "1st Mortgage Super-Priority DIP Line",
+      "cashCollateralCarveout": "$150,000 Property Management Reserve"
+    }
+  },
+  {
+    "id": "empire-state-medical",
+    "name": "Empire State Diagnostic Imaging PC",
+    "ticker": "SUBV-NY",
+    "sectorId": "healthcare",
+    "sectorName": "Healthcare & Medical Services",
+    "status": "SUBCHAPTER_V",
+    "statusBadge": "🏬 SUBCHAPTER V MEDICAL REORG",
+    "distressScore": 89,
+    "peakValuation": "$3.80 Million",
+    "collapseValuation": "$1.40 Million Medical Equipment Valuation",
+    "debtAtCollapse": "$2.70 Million",
+    "yearFounded": 2016,
+    "yearCollapsed": 2026,
+    "dateTimestamp": "2026-07-19T11:00:00Z",
+    "locationJurisdiction": "Brooklyn, NY (E.D. N.Y.)",
+    "ceoAtFailure": "Dr. Arthur Feinstein",
+    "primaryCause": "Insurance Reimbursement Cutbacks & Equipment Lease Default",
+    "claimsAgent": "Brooklyn Bankruptcy Trustee",
+    "claimsAgentUrl": "https://pacer.uscourts.gov",
+    "sourceType": "PACER_SUBCHAPTER_V",
+    "sourceName": "U.S. Bankruptcy Court E.D. N.Y. Subchapter V Petition",
+    "summary": "Brooklyn outpatient diagnostic imaging center filed Subchapter V to restructure $2.7M in Siemens MRI & CT scanner equipment leases following insurer reimbursement rate reductions.",
+    "assetLiquidationType": "MEDICAL_MACHINERY",
+    "assetLiquidationBadge": "🩺 Siemens MRI, CT Scanners & Ultrasound Systems",
+    "regionalZone": "NEW_YORK",
+    "debtRangeCategory": "2M_5M",
+    "earlyWarningSignals": [
+      "Commercial insurer Medicare Advantage reimbursement cut 18%",
+      "Equipment lease default notice from Siemens Financial"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Outpatient clinic vulnerable to insurer fee schedule adjustments.",
+      "financial": "High fixed monthly leases on 3T MRI machines exceeding patient volume revenue.",
+      "market": "Consolidation of local healthcare networks diverted physician referrals.",
+      "regulatory": "Subchapter V plan filed to cram down uncollateralized lease debt."
+    },
+    "timeline": [
+      {
+        "date": "May 2026",
+        "event": "Siemens Financial issues formal notice of default on MRI equipment."
+      },
+      {
+        "date": "Jul 19, 2026",
+        "event": "Files Subchapter V Chapter 11 in Brooklyn, NY."
+      }
+    ],
+    "keyTakeaways": [
+      "Medical equipment resellers can acquire Siemens 3T MRI and 64-slice CT scanners.",
+      "Subchapter V allows medical practices to renegotiate equipment leases under Section 365."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ SUBCHAPTER V CRAMDOWN PLAN PENDING",
+    "officialFilingDate": "2026-07-19",
+    "firstDistressSignalDate": "May 2026",
+    "formattedTimestamp": "Jul 19, 2026 • 11:00 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 01:36 PM EST",
+    "lastMaterialChangeDate": "2026-07-19T11:00:00Z",
+    "formattedMaterialChange": "Jul 19, 2026 • 11:00 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$400,000",
+      "lender": "Empire Health Credit Syndicate",
+      "interestRate": "SOFR + 6.75%",
+      "weeklyCashBurn": "$18,000 / Week",
+      "cashRunwayDays": 30,
+      "superPriorityStatus": "Medical Operations DIP Line",
+      "cashCollateralCarveout": "$60,000 Physician Fee Reserve"
+    }
+  },
+  {
+    "id": "midwest-metal-stamping",
+    "name": "Midwest Metal Stamping & Tooling Inc.",
+    "ticker": "SUBV-IL",
+    "sectorId": "manufacturing",
+    "sectorName": "Industrial & Manufacturing",
+    "status": "SUBCHAPTER_V",
+    "statusBadge": "🏬 SUBCHAPTER V FACTORY AUCTION",
+    "distressScore": 96,
+    "peakValuation": "$8.20 Million",
+    "collapseValuation": "$3.10 Million Heavy Machinery Auction",
+    "debtAtCollapse": "$5.80 Million",
+    "yearFounded": 2005,
+    "yearCollapsed": 2026,
+    "dateTimestamp": "2026-07-12T09:15:00Z",
+    "locationJurisdiction": "Chicago, IL (N.D. Ill.)",
+    "ceoAtFailure": "Richard Vance",
+    "primaryCause": "Automotive Tier-2 Supplier Contract Cancellation",
+    "claimsAgent": "Chicago Bankruptcy Trustee",
+    "claimsAgentUrl": "https://pacer.uscourts.gov",
+    "sourceType": "PACER_SUBCHAPTER_V",
+    "sourceName": "U.S. Bankruptcy Court N.D. Ill. Subchapter V Petition",
+    "summary": "Chicago-based Tier-2 automotive metal stamping facility filed Subchapter V to liquidate 18 CNC stamping presses, industrial tooling, and 40,000 sq ft industrial plant.",
+    "assetLiquidationType": "HEAVY_MACHINERY",
+    "assetLiquidationBadge": "⚙️ 18 CNC Stamping Presses & Industrial Tooling",
+    "regionalZone": "MIDWEST",
+    "debtRangeCategory": "5M_10M",
+    "earlyWarningSignals": [
+      "Tier-1 auto supplier cancelled major stamping contract in April 2026",
+      "Comerica Bank revolving credit facility default notice"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Capital-intensive auto parts supplier with high fixed debt service on heavy presses.",
+      "financial": "$5.8M bank debt against $3.1M machine auction value.",
+      "market": "EV transition reduced demand for traditional internal combustion stamping parts.",
+      "regulatory": "Section 363 industrial auction scheduled by U.S. Bankruptcy Court in Chicago."
+    },
+    "timeline": [
+      {
+        "date": "Apr 2026",
+        "event": "Primary automotive buyer cancels annual purchase agreement."
+      },
+      {
+        "date": "Jul 12, 2026",
+        "event": "Files Subchapter V bankruptcy in Chicago, IL."
+      }
+    ],
+    "keyTakeaways": [
+      "Industrial machinery liquidators can purchase 18 CNC presses and metal tooling for 25 cents on the dollar.",
+      "Midwest industrial real estate buyers can bid on 40,000 sq ft Chicago manufacturing plant."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ 363 HEAVY MACHINERY AUCTION PENDING",
+    "officialFilingDate": "2026-07-12",
+    "firstDistressSignalDate": "Apr 2026",
+    "formattedTimestamp": "Jul 12, 2026 • 09:15 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 01:36 PM EST",
+    "lastMaterialChangeDate": "2026-07-12T09:15:00Z",
+    "formattedMaterialChange": "Jul 12, 2026 • 09:15 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$850,000",
+      "lender": "Midwest Industrial Credit Fund",
+      "interestRate": "SOFR + 7.75%",
+      "weeklyCashBurn": "$28,000 / Week",
+      "cashRunwayDays": 26,
+      "superPriorityStatus": "1st Lien Factory DIP Line",
+      "cashCollateralCarveout": "$90,000 Machinery Maintenance Escrow"
+    }
+  }
+]

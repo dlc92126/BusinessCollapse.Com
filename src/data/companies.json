@@ -1,0 +1,1932 @@
+[
+  {
+    "id": "spirit-airlines",
+    "name": "Spirit Airlines",
+    "ticker": "SAVE",
+    "sectorId": "aviation",
+    "sectorName": "Aviation & Aerospace",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 BANKRUPT",
+    "distressScore": 99,
+    "peakValuation": "$1.15 Billion",
+    "collapseValuation": "$450 Million Credit Bid",
+    "debtAtCollapse": "$1.10 Billion",
+    "yearFounded": 1980,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-11-18T11:45:00Z",
+    "locationJurisdiction": "Newark, NJ (D. N.J.)",
+    "ceoAtFailure": "Ted Christie",
+    "primaryCause": "Blocked JetBlue Merger & Unviable Low-Cost Carrier Economics",
+    "claimsAgent": "Epiq Corporate Restructuring",
+    "claimsAgentUrl": "https://dm.epiq11.com/case/spirit/info",
+    "sourceType": "SEC_EDGAR_FILING",
+    "sourceName": "U.S. Bankruptcy Court D. N.J. Form 8-K",
+    "summary": "Spirit Airlines filed for Chapter 11 bankruptcy protection following years of mounting losses, failed JetBlue merger, engine recall groundings, and unsustainable aircraft lease obligations.",
+    "earlyWarningSignals": [
+      "DOJ Antitrust ruling blocking JetBlue acquisition in Jan 2024",
+      "Pratt & Whitney GTF engine recalls grounding 25%+ of Airbus fleet",
+      "2025/2026 senior secured note maturity wall ($1.1B)",
+      "Uncompetitive ultra-low-cost carrier (ULCC) domestic pricing margins"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Ultra-low-cost carrier business model reliant on unbundled ancillary fees and high aircraft utilization.",
+      "financial": "$1.1B in convertible notes due Sept 2025; cumulative net losses of $2.2B since 2020.",
+      "market": "Legacy carriers matched ultra-low fares with basic economy tiers while capturing premium traffic.",
+      "regulatory": "Federal antitrust court blocked the $3.8B JetBlue buyout deal, destroying Spirit's exit strategy."
+    },
+    "timeline": [
+      {
+        "date": "Jan 2024",
+        "event": "U.S. District Court blocks JetBlue merger on antitrust grounds."
+      },
+      {
+        "date": "Mar 2024",
+        "event": "JetBlue terminates merger agreement; Spirit retains $69M fee."
+      },
+      {
+        "date": "Aug 2024",
+        "event": "Pratt & Whitney engine recalls ground 26 Airbus A320neo jets."
+      },
+      {
+        "date": "Nov 18, 2024",
+        "event": "Files prearranged Chapter 11 bankruptcy in District of New Jersey."
+      }
+    ],
+    "keyTakeaways": [
+      "ULCC models face severe margin compression when network carriers introduce Basic Economy.",
+      "Regulatory antitrust opposition can kill liquidity exit lifelines for distressed airlines.",
+      "Geopolitical & engine supplier recalls compound debt service vulnerabilities."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Newark, NJ (D. N.J.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2024-11-18",
+    "firstDistressSignalDate": "Jan 2024",
+    "formattedTimestamp": "Nov 18, 2024 • 5:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 08:30 AM EST",
+    "lastMaterialChangeDate": "2026-08-07T14:30:00Z",
+    "formattedMaterialChange": "Aug 7, 2026 • 9:30 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$450,000,000",
+      "lender": "Apollo Global Management & Citigroup Trust",
+      "interestRate": "SOFR + 7.50% (Cash/PIK Split)",
+      "weeklyCashBurn": "$8.5 Million / Week",
+      "cashRunwayDays": 42,
+      "superPriorityStatus": "1st Lien Roll-Up Super-Priority Carve-Out",
+      "cashCollateralCarveout": "$15,000,000 Professional Fee Carve-Out"
+    }
+  },
+  {
+    "id": "tgi-fridays",
+    "name": "TGI Fridays Inc.",
+    "ticker": "PRIVATE",
+    "sectorId": "casual-dining",
+    "sectorName": "Casual Dining & Franchises",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 REORGANIZING",
+    "distressScore": 94,
+    "peakValuation": "$850.00 Million",
+    "collapseValuation": "Restructuring Securitized Debt",
+    "debtAtCollapse": "$370.00 Million",
+    "yearFounded": 1965,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-11-02T11:45:00Z",
+    "locationJurisdiction": "Dallas, TX (N.D. Tex.)",
+    "ceoAtFailure": "Rohit Manocha",
+    "primaryCause": "Securitized Debt Default & Casual Dining Traffic Decline",
+    "claimsAgent": "Epiq Corporate Restructuring",
+    "claimsAgentUrl": "https://dm.epiq11.com/case/tgifridays/info",
+    "sourceType": "COURT_DOCKET",
+    "sourceName": "U.S. Bankruptcy Court N.D. Tex. Case #24-80006",
+    "summary": "Iconic American casual bar and grill chain filed for Chapter 11 protection after losing control of its asset-backed debt securitization manager.",
+    "earlyWarningSignals": [
+      "Closure of 50+ underperforming corporate store locations in early 2024",
+      "Termination of U.K. master franchise licensee amidst financial distress",
+      "Manager termination event under Whole-Business Securitization (WBS) debt facility"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Asset-light franchise model burdened by complex Whole-Business Securitization debt structures.",
+      "financial": "$370M in debt obligations; quarterly cash flow failed to cover debt service ratios.",
+      "market": "Younger consumers shifted to fast-casual alternatives like Chipotle and Cava.",
+      "regulatory": "Chapter 11 protection covers 39 corporate stores while independent franchisees operate normally."
+    },
+    "timeline": [
+      {
+        "date": "Jan 2024",
+        "event": "Closes 36 corporate restaurants in U.S. restructuring effort."
+      },
+      {
+        "date": "Sep 2024",
+        "event": "Defaults on Whole-Business Securitization debt manager covenants."
+      },
+      {
+        "date": "Nov 2, 2024",
+        "event": "Files Chapter 11 bankruptcy in Dallas, Texas."
+      }
+    ],
+    "keyTakeaways": [
+      "Complex Whole-Business Securitization (WBS) structures limit management operational flexibility during downturns.",
+      "Legacy casual dining concepts face severe structural headwinds against modern fast-casual chains."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Dallas, TX (N.D. Tex.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2024-11-02",
+    "firstDistressSignalDate": "Jan 2024",
+    "formattedTimestamp": "Nov 2, 2024 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 09:15 AM EST",
+    "lastMaterialChangeDate": "2026-08-06T10:15:00Z",
+    "formattedMaterialChange": "Aug 6, 2026 • 5:15 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$370.00 Million",
+      "lender": "Court Appointed DIP Lender Syndicate",
+      "interestRate": "SOFR + 8.50%",
+      "weeklyCashBurn": "$2.5 Million / Week",
+      "cashRunwayDays": 45,
+      "superPriorityStatus": "1st Lien Super-Priority Carve-Out",
+      "cashCollateralCarveout": "$5,000,000 Escrow Reserve"
+    }
+  },
+  {
+    "id": "tupperware-brands",
+    "name": "Tupperware Brands Corp",
+    "ticker": "TUPQ",
+    "sectorId": "legacy-retail",
+    "sectorName": "Legacy Brick & Mortar Retail",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 AUCTION",
+    "distressScore": 97,
+    "peakValuation": "$1.20 Billion",
+    "collapseValuation": "$23.5M Debt Sale Floor",
+    "debtAtCollapse": "$812.00 Million",
+    "yearFounded": 1946,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-09-17T11:45:00Z",
+    "locationJurisdiction": "Wilmington, DE (D. Del.)",
+    "ceoAtFailure": "Laurie Ann Goldman",
+    "primaryCause": "Direct-Sales MLM Channel Breakdown & Resin Raw Material Cost Spikes",
+    "claimsAgent": "Epiq Corporate Restructuring",
+    "claimsAgentUrl": "https://dm.epiq11.com/case/tupperware/info",
+    "sourceType": "SEC_EDGAR_FILING",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Form 10-K / Chapter 11 Petition",
+    "summary": "78-year-old iconic food storage brand filed Chapter 11 following severe revenue declines, debt defaults, and an obsolete direct-sales multi-level marketing model.",
+    "earlyWarningSignals": [
+      "Going-concern warning issued in April 2023 SEC filings",
+      "Failure to file audited 10-K annual reports on time",
+      "Over $700M in term loan maturities defaulted in 2024"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Reliance on independent direct-sales consultants in an era of digital e-commerce & Target/Amazon distribution.",
+      "financial": "$812M in total debt against declining cash flow; interest expenses exceeded operating income.",
+      "market": "Low-cost plastic food container competition from Rubbermaid, Systema, and Amazon Basics.",
+      "regulatory": "Delayed SEC accounting disclosures due to internal financial control material weaknesses."
+    },
+    "timeline": [
+      {
+        "date": "Apr 2023",
+        "event": "Issues going-concern warning and hires Moelis & Co for restructuring."
+      },
+      {
+        "date": "Aug 2023",
+        "event": "Restructures debt but fails to turn around retail store sales."
+      },
+      {
+        "date": "Sep 17, 2024",
+        "event": "Files Chapter 11 bankruptcy in Delaware; agrees to sell brand IP to lender group."
+      }
+    ],
+    "keyTakeaways": [
+      "Iconic brand heritage cannot overcome obsolete direct-sales distribution models.",
+      "Failure to maintain financial reporting controls accelerates lender debt default triggers."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Wilmington, DE (D. Del.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2024-09-17",
+    "firstDistressSignalDate": "Apr 2023",
+    "formattedTimestamp": "Sep 17, 2024 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 10:45 AM EST",
+    "lastMaterialChangeDate": "2026-08-05T16:45:00Z",
+    "formattedMaterialChange": "Aug 5, 2026 • 11:45 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$45,000,000",
+      "lender": "Alden Global Capital & Wells Fargo Syndicate",
+      "interestRate": "SOFR + 9.50%",
+      "weeklyCashBurn": "$2.1 Million / Week",
+      "cashRunwayDays": 28,
+      "superPriorityStatus": "Emergency 1st Lien DIP Super-Priority",
+      "cashCollateralCarveout": "$5,000,000 Professional Fee Reserve"
+    }
+  },
+  {
+    "id": "big-lots",
+    "name": "Big Lots, Inc.",
+    "ticker": "BIG",
+    "sectorId": "legacy-retail",
+    "sectorName": "Legacy Brick & Mortar Retail",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 SALE",
+    "distressScore": 95,
+    "peakValuation": "$2.10 Billion",
+    "collapseValuation": "$707 Million Debt Stalking Horse",
+    "debtAtCollapse": "$707.00 Million",
+    "yearFounded": 1967,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-09-09T11:45:00Z",
+    "locationJurisdiction": "Wilmington, DE (D. Del.)",
+    "ceoAtFailure": "Bruce Thorn",
+    "primaryCause": "Inflation Discretionary Spend Freeze & Furniture Inventory Drag",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/biglots",
+    "sourceType": "SEC_EDGAR_FILING",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Case #24-11967",
+    "summary": "Discount home decor retailer entered Chapter 11 to sell operations to private equity firm Nexus Capital after high inflation eroded lower-income consumer spending.",
+    "earlyWarningSignals": [
+      "Quarterly same-store sales declines exceeding 10% throughout 2023-2024",
+      "Going-concern warning added to Q1 2024 SEC Form 10-Q",
+      "Closure of 300+ store locations prior to bankruptcy petition"
+    ],
+    "anatomyBreakdown": {
+      "structural": "1,400 store discount footprint heavily exposed to big-ticket patio & indoor furniture.",
+      "financial": "$707M in long-term debt and lease commitments with negative operating cash flow.",
+      "market": "Inflation squeezed lower-middle income core demographic, curtailing discretionary purchases.",
+      "regulatory": "Delaware bankruptcy filing under Section 363 asset sale framework."
+    },
+    "timeline": [
+      {
+        "date": "Jun 2024",
+        "event": "Reports $205M net loss in Q1 2024; flags going concern doubt."
+      },
+      {
+        "date": "Aug 2024",
+        "event": "Amends credit facility to gain emergency liquidity."
+      },
+      {
+        "date": "Sep 9, 2024",
+        "event": "Files Chapter 11 in Delaware with Nexus Capital as stalking-horse bidder."
+      }
+    ],
+    "keyTakeaways": [
+      "Discount retailers reliant on discretionary furniture items suffer severe demand contraction during high inflation.",
+      "Sale-leaseback transactions leave retailers vulnerable to soaring fixed rent costs."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Wilmington, DE (D. Del.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2024-09-09",
+    "firstDistressSignalDate": "Jun 2024",
+    "formattedTimestamp": "Sep 9, 2024 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 11:30 AM EST",
+    "lastMaterialChangeDate": "2026-08-04T11:20:00Z",
+    "formattedMaterialChange": "Aug 4, 2026 • 6:20 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$707,000,000",
+      "lender": "Nexus Capital Management & Gordon Brothers",
+      "interestRate": "SOFR + 6.75%",
+      "weeklyCashBurn": "$6.4 Million / Week",
+      "cashRunwayDays": 54,
+      "superPriorityStatus": "Stalker-Horse DIP Credit Bid Credit Line",
+      "cashCollateralCarveout": "$12,000,000 Vendor Carve-Out"
+    }
+  },
+  {
+    "id": "sunpower-corp",
+    "name": "SunPower Corporation",
+    "ticker": "SPWR",
+    "sectorId": "energy",
+    "sectorName": "Energy & Cleantech",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 ASSET SALE",
+    "distressScore": 98,
+    "peakValuation": "$2.10 Billion",
+    "collapseValuation": "$45 Million Asset Sale to Complete Solaria",
+    "debtAtCollapse": "$2.00 Billion",
+    "yearFounded": 1985,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-08-05T11:45:00Z",
+    "locationJurisdiction": "Wilmington, DE (D. Del.)",
+    "ceoAtFailure": "Tom Werner",
+    "primaryCause": "High Interest Rates, California NEM 3.0 Policy Shift & Accounting Misstatements",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/sunpower",
+    "sourceType": "SEC_EDGAR_FILING",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Case #24-11680",
+    "summary": "39-year-old residential solar pioneer filed Chapter 11 after soaring interest rates, California net metering rule cuts (NEM 3.0), and accounting restatements wiped out consumer solar demand.",
+    "earlyWarningSignals": [
+      "Restatement of 2022 and 2023 financial statements due to inventory accounting errors",
+      "Breach of credit agreement covenants leading to lender default notices in Dec 2023",
+      "Complete halt of new lease and installation operations in July 2024"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Residential solar installer reliant on consumer financing & solar lease/PPA securitization.",
+      "financial": "$2B total liabilities; soaring interest rates pushed monthly solar loan payments above utility bills.",
+      "market": "California's NEM 3.0 policy reduced rooftop solar export compensation rates by 75%.",
+      "regulatory": "SEC inquiry into restated quarterly inventory reporting."
+    },
+    "timeline": [
+      {
+        "date": "Apr 2023",
+        "event": "California enacts NEM 3.0, causing 50%+ drop in state residential solar demand."
+      },
+      {
+        "date": "Dec 2023",
+        "event": "Defaults on credit agreement covenants following financial restatements."
+      },
+      {
+        "date": "Aug 5, 2024",
+        "event": "Files Chapter 11 in Delaware; agrees to sell assets to Complete Solaria for $45M."
+      }
+    ],
+    "keyTakeaways": [
+      "Residential solar business models are hyper-sensitive to central bank interest rate policy.",
+      "Regulatory net-metering tariff changes can eliminate consumer solar payback unit economics overnight."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Wilmington, DE (D. Del.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2024-08-05",
+    "firstDistressSignalDate": "Apr 2023",
+    "formattedTimestamp": "Aug 5, 2024 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 01:15 PM EST",
+    "lastMaterialChangeDate": "2026-08-06T09:00:00Z",
+    "formattedMaterialChange": "Aug 6, 2026 • 4:00 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$45,000,000",
+      "lender": "Complete Solaria & Solaria Lender Syndicate",
+      "interestRate": "SOFR + 9.00%",
+      "weeklyCashBurn": "$1.8 Million / Week",
+      "cashRunwayDays": 31,
+      "superPriorityStatus": "Section 363 Stalker-Horse DIP Line",
+      "cashCollateralCarveout": "$4,500,000 Customer Warranty Reserve"
+    }
+  },
+  {
+    "id": "red-lobster",
+    "name": "Red Lobster Management",
+    "ticker": "PRIVATE",
+    "sectorId": "casual-dining",
+    "sectorName": "Casual Dining & Franchises",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 REORGANIZED",
+    "distressScore": 96,
+    "peakValuation": "$2.10 Billion",
+    "collapseValuation": "Fortress Investment Debt Reorg",
+    "debtAtCollapse": "$1.00 Billion",
+    "yearFounded": 1968,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-05-19T11:45:00Z",
+    "locationJurisdiction": "Orlando, FL (M.D. Fla.)",
+    "ceoAtFailure": "Jonathan Tibus",
+    "primaryCause": "Endless Shrimp Promotion Losses & Sale-Leaseback Rent Traps",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/redlobster",
+    "sourceType": "COURT_DOCKET",
+    "sourceName": "U.S. Bankruptcy Court M.D. Fla. Case #24-02486",
+    "summary": "56-year-old seafood chain entered Chapter 11 after a permanent $20 'Ultimate Endless Shrimp' promotion generated $11M in operating losses alongside crippling rent costs.",
+    "earlyWarningSignals": [
+      "Golden Gate Capital sale-leaseback transaction stripping company of real estate assets",
+      "Thai Union Group $20 Endless Shrimp promotion decision causing severe supply chain losses",
+      "Rejection of 100+ unprofitable restaurant leases in early 2024"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Stripped of real estate via private equity sale-leaseback; forced to pay above-market rent.",
+      "financial": "$1B debt burden with cumulative annual operating losses exceeding $76M.",
+      "market": "Casual dining foot traffic declined 15% post-COVID as consumers shifted to fast-casual.",
+      "regulatory": "Conflict-of-interest allegations regarding owner Thai Union's exclusive shrimp supply contract."
+    },
+    "timeline": [
+      {
+        "date": "Jun 2023",
+        "event": "Makes $20 Endless Shrimp a permanent menu item; loses $11M in Q3."
+      },
+      {
+        "date": "Jan 2024",
+        "event": "Thai Union announces plan to exit investment and write off $530M."
+      },
+      {
+        "date": "May 19, 2024",
+        "event": "Files Chapter 11 bankruptcy; court approves sale to Fortress Investment Group."
+      }
+    ],
+    "keyTakeaways": [
+      "Selling underlying real estate via sale-leaseback removes a chain's core downside protection.",
+      "Unhedged loss-leader promotions in inflationary environments can instantly break operating income."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Orlando, FL (M.D. Fla.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2024-05-19",
+    "firstDistressSignalDate": "Jun 2023",
+    "formattedTimestamp": "May 19, 2024 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 02:45 PM EST",
+    "lastMaterialChangeDate": "2026-08-07T11:00:00Z",
+    "formattedMaterialChange": "Aug 7, 2026 • 6:00 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$100,000,000",
+      "lender": "Fortress Investment Group",
+      "interestRate": "SOFR + 8.25%",
+      "weeklyCashBurn": "$3.8 Million / Week",
+      "cashRunwayDays": 48,
+      "superPriorityStatus": "Secured DIP Facility & Lease Carve-Out",
+      "cashCollateralCarveout": "$8,000,000 Lease Rejection Carve-Out"
+    }
+  },
+  {
+    "id": "steward-health-care",
+    "name": "Steward Health Care System",
+    "ticker": "PRIVATE",
+    "sectorId": "healthcare",
+    "sectorName": "Healthcare & Hospital Networks",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 AUCTION",
+    "distressScore": 100,
+    "peakValuation": "$4.50 Billion",
+    "collapseValuation": "$9B Liabilities / Hospital Auction",
+    "debtAtCollapse": "$9.00 Billion",
+    "yearFounded": 2010,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-05-06T11:45:00Z",
+    "locationJurisdiction": "Houston, TX (S.D. Tex.)",
+    "ceoAtFailure": "Dr. Ralph de la Torre",
+    "primaryCause": "Private Equity Sale-Leaseback Rent Traps & $9B Medical Debt Overhang",
+    "claimsAgent": "Stretto Restructuring",
+    "claimsAgentUrl": "https://cases.stretto.com/steward",
+    "sourceType": "COURT_DOCKET",
+    "sourceName": "U.S. Bankruptcy Court S.D. Tex. Case #24-90213",
+    "summary": "Largest physician-owned hospital network in the U.S. filed Chapter 11 with $9B in debt after selling hospital real estate to MPT in a sale-leaseback deal that created unsustainable rent liabilities.",
+    "earlyWarningSignals": [
+      "Medical Properties Trust (MPT) unpaid rent accumulation exceeding $50M in 2023",
+      "Closure of New England Sinai Hospital due to severe cash shortfalls",
+      "U.S. Senate health committee subpoena issued to CEO Dr. Ralph de la Torre"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Cerberus Capital sale-leaseback stripped hospital buildings, saddling network with massive rent bills.",
+      "financial": "$9B in total liabilities; monthly rent obligations exceeded operating gross margins.",
+      "market": "Nursing wage spikes and Medicare reimbursement cuts eroded hospital operating income.",
+      "regulatory": "Department of Justice & Senate Finance Committee criminal investigation into executive payouts."
+    },
+    "timeline": [
+      {
+        "date": "Jan 2024",
+        "event": "Medical Properties Trust cuts off funding due to $50M in unpaid back rent."
+      },
+      {
+        "date": "May 6, 2024",
+        "event": "Files Chapter 11 bankruptcy in Texas; puts 31 hospitals up for court auction."
+      },
+      {
+        "date": "Aug 2024",
+        "event": "Approves sale of 15 hospitals to Lifespan and Boston Medical Center."
+      }
+    ],
+    "keyTakeaways": [
+      "Selling underlying hospital real estate to fund PE dividends creates catastrophic insolvency risks.",
+      "Essential community hospitals cannot survive when real estate REIT rent obligations surpass clinical income."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Houston, TX (S.D. Tex.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2024-05-06",
+    "firstDistressSignalDate": "Jan 2024",
+    "formattedTimestamp": "May 6, 2024 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 04:20 PM EST",
+    "lastMaterialChangeDate": "2026-08-03T15:30:00Z",
+    "formattedMaterialChange": "Aug 3, 2026 • 10:30 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$225,000,000",
+      "lender": "Medical Properties Trust (MPT) & Cerberus",
+      "interestRate": "SOFR + 10.50%",
+      "weeklyCashBurn": "$14.2 Million / Week",
+      "cashRunwayDays": 19,
+      "superPriorityStatus": "Emergency Hospital Operations DIP",
+      "cashCollateralCarveout": "$25,000,000 Patient Care & Payroll Carve-Out"
+    }
+  },
+  {
+    "id": "synapse-financial",
+    "name": "Synapse Financial Technologies",
+    "ticker": "PRIVATE",
+    "sectorId": "fintech",
+    "sectorName": "Fintech & Subprime Credit",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 BANKRUPT",
+    "distressScore": 99,
+    "peakValuation": "$500.00 Million",
+    "collapseValuation": "$85M Frozen Customer Funds",
+    "debtAtCollapse": "$85.00 Million Deficit",
+    "yearFounded": 2014,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-04-22T11:45:00Z",
+    "locationJurisdiction": "Los Angeles, CA (C.D. Cal.)",
+    "ceoAtFailure": "Sankaet Pathak",
+    "primaryCause": "Banking-as-a-Service Ledger Discrepancies & Partner Bank Dispute",
+    "claimsAgent": "U.S. Trustee / Chapter 11 Trustee Jelena McWilliams",
+    "claimsAgentUrl": "https://www.cacb.uscourts.gov",
+    "sourceType": "COURT_DOCKET",
+    "sourceName": "U.S. Bankruptcy Court C.D. Cal. Case #24-13459",
+    "summary": "Banking-as-a-Service (BaaS) middleware provider collapsed after a ledger dispute with Evolve Bank & Trust froze $85M in end-user customer deposits across 100,000+ fintech accounts.",
+    "earlyWarningSignals": [
+      "Termination of partnership with Evolve Bank & Trust in 2023",
+      "$10M+ ledger discrepancies between Synapse internal databases and partner banks",
+      "Loss of core customer Yotta Savings after deposit freeze"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Middleware layer routing consumer deposits between consumer fintech apps and FDIC partner banks.",
+      "financial": "$85M shortfall in pooled omnibus account reconciliations.",
+      "market": "Fintech funding freeze prevented emergency bridge equity raises.",
+      "regulatory": "Federal Reserve and FDIC issued enforcement orders against Evolve Bank."
+    },
+    "timeline": [
+      {
+        "date": "Oct 2023",
+        "event": "Evolve Bank cuts off Synapse access following ledger reconciliation dispute."
+      },
+      {
+        "date": "May 11, 2024",
+        "event": "Evolve freezes all Synapse customer accounts; 100,000+ consumers lose access to savings."
+      },
+      {
+        "date": "May 2024",
+        "event": "Former FDIC Chair Jelena McWilliams appointed Chapter 11 Trustee to audit ledger."
+      }
+    ],
+    "keyTakeaways": [
+      "BaaS middleware platforms creating omnibus pool accounts without sub-ledger verification invite catastrophic deposit lockups.",
+      "FDIC insurance does not protect consumers against middleware software bankruptcy disputes."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Los Angeles, CA (C.D. Cal.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2024-04-22",
+    "firstDistressSignalDate": "Oct 2023",
+    "formattedTimestamp": "Apr 22, 2024 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 08:30 AM EST",
+    "lastMaterialChangeDate": "2026-08-05T08:45:00Z",
+    "formattedMaterialChange": "Aug 5, 2026 • 3:45 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$15,000,000",
+      "lender": "Chapter 11 Trustee Administration",
+      "interestRate": "SOFR + 6.00%",
+      "weeklyCashBurn": "$450,000 / Week",
+      "cashRunwayDays": 22,
+      "superPriorityStatus": "Court-Supervised Ledger Audit Line",
+      "cashCollateralCarveout": "$3,000,000 Forensic Audit Carve-Out"
+    }
+  },
+  {
+    "id": "china-evergrande",
+    "name": "China Evergrande Group",
+    "ticker": "3333.HK",
+    "sectorId": "cre",
+    "sectorName": "Commercial Real Estate",
+    "status": "LIQUIDATING",
+    "statusBadge": "COURT ORDERED LIQUIDATION",
+    "distressScore": 100,
+    "peakValuation": "$50.00 Billion",
+    "collapseValuation": "Defunct / $0.00",
+    "debtAtCollapse": "$300.00 Billion",
+    "yearFounded": 1996,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-01-29T11:45:00Z",
+    "locationJurisdiction": "Hong Kong High Court",
+    "ceoAtFailure": "Hui Ka Yan",
+    "primaryCause": "Three Red Lines Leverage Caps & Unfinished Apartment Debt Crisis",
+    "claimsAgent": "Alvarez & Marsal Asia",
+    "claimsAgentUrl": "https://www.evergrande.com/en/",
+    "sourceType": "REGULATORY_RELEASE",
+    "sourceName": "Hong Kong High Court Liquidation Order HCCW 220/2021",
+    "summary": "The world's most indebted property developer was ordered into liquidation by a Hong Kong court with over $300B in unpaid debt obligations.",
+    "earlyWarningSignals": [
+      "Beijing 'Three Red Lines' debt restriction policy enacted in 2020",
+      "Offshore US dollar bond coupon defaults in December 2021",
+      "Suspension of construction across hundreds of residential tower developments"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Pre-sale residential model financed by wealth management products and commercial paper.",
+      "financial": "$300B total liabilities representing ~2% of China's total gross domestic product.",
+      "market": "China residential real estate sales volume plunged 35%+ amidst loss of buyer confidence.",
+      "regulatory": "Founder Hui Ka Yan detained under mandatory surveillance for suspected illegal crimes."
+    },
+    "timeline": [
+      {
+        "date": "Aug 2020",
+        "event": "PBOC enforces 'Three Red Lines' restricting Evergrande's borrowing."
+      },
+      {
+        "date": "Dec 2021",
+        "event": "Fitch downgrades Evergrande to 'Restricted Default' on offshore bonds."
+      },
+      {
+        "date": "Jan 29, 2024",
+        "event": "Hong Kong High Court issues formal liquidation order."
+      }
+    ],
+    "keyTakeaways": [
+      "Real estate mega-developers built on speculative leverage cannot survive state debt-tightening mandates.",
+      "Offshore dollar bondholders face near-total losses in Chinese property liquidations."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Hong Kong High Court until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2024-01-29",
+    "firstDistressSignalDate": "Aug 2020",
+    "formattedTimestamp": "Jan 29, 2024 • 5:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 09:15 AM EST",
+    "lastMaterialChangeDate": "2026-08-06T13:10:00Z",
+    "formattedMaterialChange": "Aug 6, 2026 • 8:10 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$1,200,000,000",
+      "lender": "Hong Kong High Court Liquidator Syndicate",
+      "interestRate": "SOFR + 12.00%",
+      "weeklyCashBurn": "$35.0 Million / Week",
+      "cashRunwayDays": 14,
+      "superPriorityStatus": "Offshore Cross-Border Liquidation Line",
+      "cashCollateralCarveout": "$50,000,000 Cross-Border Legal Reserve"
+    }
+  },
+  {
+    "id": "wework",
+    "name": "WeWork Inc.",
+    "ticker": "WE",
+    "sectorId": "cre",
+    "sectorName": "Commercial Real Estate",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 REORGANIZED",
+    "distressScore": 99,
+    "peakValuation": "$47.00 Billion",
+    "collapseValuation": "$450 Million Reorg Equity",
+    "debtAtCollapse": "$18.60 Billion",
+    "yearFounded": 2010,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-11-06T11:45:00Z",
+    "locationJurisdiction": "New York, NY (SDNY)",
+    "ceoAtFailure": "David Tolley",
+    "primaryCause": "Long-Term Commercial Lease Obligations vs. Short-Term Desk Revenue",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/wework",
+    "sourceType": "COURT_DOCKET",
+    "sourceName": "U.S. Bankruptcy Court SDNY Case #23-10982",
+    "summary": "Flexible workspace pioneer filed Chapter 11 to cancel over $8B in toxic commercial office leases after remote work permanently impaired commercial office demand.",
+    "earlyWarningSignals": [
+      "2019 aborted IPO revealing corporate governance abuses & related-party transactions",
+      "Over $3B in annual fixed lease commitments vs declining office occupancy",
+      "SoftBank multi-billion dollar bailouts failing to achieve profitability"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Asset-light brand wrapped over 15-to-20 year non-cancelable commercial real estate lease liabilities.",
+      "financial": "$18.6B in total lease liabilities with interest coverage ratios below 0.4x.",
+      "market": "Post-COVID hybrid work models permanently lowered central business district office desk demand.",
+      "regulatory": "SEC investigations into S-1 disclosure accuracy and founder loan transactions."
+    },
+    "timeline": [
+      {
+        "date": "Aug 2019",
+        "event": "Files notorious S-1 draft; IPO pulled amidst investor backlash."
+      },
+      {
+        "date": "Oct 2021",
+        "event": "Goes public via SPAC merger at $9B valuation."
+      },
+      {
+        "date": "Nov 6, 2023",
+        "event": "Files Chapter 11 bankruptcy in SDNY to reject 160+ office leases."
+      },
+      {
+        "date": "May 2024",
+        "event": "Emerges from Chapter 11 having cut $12B in future lease liabilities."
+      }
+    ],
+    "keyTakeaways": [
+      "Mismatched duration arbitrage (long leases vs. short sub-leases) is catastrophic in CRE downcycles.",
+      "High valuation tech multiples applied to low-margin real estate businesses invite insolvency."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in New York, NY (SDNY) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2023-11-06",
+    "firstDistressSignalDate": "Aug 2019",
+    "formattedTimestamp": "Nov 6, 2023 • 5:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 10:45 AM EST",
+    "lastMaterialChangeDate": "2026-08-07T14:30:00Z",
+    "formattedMaterialChange": "Aug 7, 2026 • 9:30 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$450,000,000",
+      "lender": "SoftBank Group & Cupressus Capital",
+      "interestRate": "SOFR + 8.00%",
+      "weeklyCashBurn": "$12.0 Million / Week",
+      "cashRunwayDays": 68,
+      "superPriorityStatus": "Junior Super-Priority DIP Facility",
+      "cashCollateralCarveout": "$20,000,000 Escrow Carve-Out"
+    }
+  },
+  {
+    "id": "mallinckrodt-pharma",
+    "name": "Mallinckrodt Pharmaceuticals",
+    "ticker": "MNKTQ",
+    "sectorId": "healthcare",
+    "sectorName": "Healthcare & Hospital Networks",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 REORGANIZED",
+    "distressScore": 98,
+    "peakValuation": "$14.00 Billion",
+    "collapseValuation": "$1.7B Lender Reorg",
+    "debtAtCollapse": "$5.20 Billion",
+    "yearFounded": 1867,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-08-28T11:45:00Z",
+    "locationJurisdiction": "Wilmington, DE (D. Del.)",
+    "ceoAtFailure": "Sigurdur Olafsson",
+    "primaryCause": "Opioid Litigation Master Settlement Defaults & Acthar Gel Patent Erosion",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/mallinckrodt",
+    "sourceType": "SEC_EDGAR_FILING",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Case #23-11258",
+    "summary": "Major generic drug manufacturer entered its second Chapter 11 bankruptcy in three years after failing to make a mandatory $200M opioid trust settlement payment.",
+    "earlyWarningSignals": [
+      "Failure to make scheduled $200M payment to National Opioid Abatement Trust in June 2023",
+      "Generic competition eroding Acthar Gel revenue (flagship specialty drug)",
+      "Going concern warning issued in Q2 2023 SEC Form 10-Q"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Specialty pharmaceutical producer burdened by massive legacy litigation settlements.",
+      "financial": "$5.2B in total senior debt against shrinking free cash flow.",
+      "market": "Loss of exclusivity on core drug patents exposed firm to low-margin generics.",
+      "regulatory": "Second prepackaged Chapter 11 plan transferred equity control to senior noteholders."
+    },
+    "timeline": [
+      {
+        "date": "Oct 2020",
+        "event": "Files first Chapter 11 to resolve $1.7B nationwide opioid claims."
+      },
+      {
+        "date": "Jun 2023",
+        "event": "Misses $200M opioid settlement trust payment."
+      },
+      {
+        "date": "Aug 28, 2023",
+        "event": "Files second Chapter 11 bankruptcy in Delaware court."
+      }
+    ],
+    "keyTakeaways": [
+      "Master litigation settlement trusts cannot be sustained if underlying drug patent revenues collapse.",
+      "Prepackaged bankruptcies often require secondary filings if initial debt cuts are insufficient."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Wilmington, DE (D. Del.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2023-08-28",
+    "firstDistressSignalDate": "Oct 2020",
+    "formattedTimestamp": "Aug 28, 2023 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 11:30 AM EST",
+    "lastMaterialChangeDate": "2026-08-06T10:15:00Z",
+    "formattedMaterialChange": "Aug 6, 2026 • 5:15 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$250,000,000",
+      "lender": "Opioid Trust Senior Noteholder Syndicate",
+      "interestRate": "SOFR + 7.25%",
+      "weeklyCashBurn": "$5.1 Million / Week",
+      "cashRunwayDays": 62,
+      "superPriorityStatus": "Prepackaged Reorg DIP Facility",
+      "cashCollateralCarveout": "$10,000,000 Opioid Settlement Carve-Out"
+    }
+  },
+  {
+    "id": "amyris-inc",
+    "name": "Amyris, Inc.",
+    "ticker": "AMRSQ",
+    "sectorId": "biotech",
+    "sectorName": "Biotech & Synthetic Biology",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 AUCTION",
+    "distressScore": 97,
+    "peakValuation": "$1.80 Billion",
+    "collapseValuation": "$15.5M Brand Sale",
+    "debtAtCollapse": "$1.10 Billion",
+    "yearFounded": 2003,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-08-09T11:45:00Z",
+    "locationJurisdiction": "Wilmington, DE (D. Del.)",
+    "ceoAtFailure": "John Melo",
+    "primaryCause": "D2C Beauty Brand Marketing Spend & Fermentation Scale Bottlenecks",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/amyris",
+    "sourceType": "SEC_EDGAR_FILING",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Case #23-11131",
+    "summary": "Synthetic biology pioneer behind lab-grown squalane filed Chapter 11 after pivoting into expensive direct-to-consumer celebrity consumer beauty brands (Biossance, Pipette) with massive cash burn.",
+    "earlyWarningSignals": [
+      "Quarterly net cash burn exceeding $100M in late 2022",
+      "Restructuring plan announcing complete shutdown of D2C consumer brands",
+      "Secured debt default notices from Foris Ventures (John Doerr)"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Industrial fermentation lab that acquired 8 consumer beauty brands requiring huge ad spend.",
+      "financial": "$1.1B total debt stack; negative operating margins across consumer lines.",
+      "market": "Soaring customer acquisition costs (CAC) on Instagram and TikTok.",
+      "regulatory": "Delaware Section 363 asset auction sold Biossance brand to THG for $20M."
+    },
+    "timeline": [
+      {
+        "date": "Jun 2023",
+        "event": "Lays off 260 employees and replaces CEO John Melo."
+      },
+      {
+        "date": "Aug 9, 2023",
+        "event": "Files Chapter 11 in Delaware; exits consumer brands to focus on core B2B lab tech."
+      }
+    ],
+    "keyTakeaways": [
+      "Industrial biotech platforms cannot subsidize high-overhead consumer D2C beauty brand marketing.",
+      "Deep-tech startups must preserve B2B molecule supply agreements rather than chasing consumer retail."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Wilmington, DE (D. Del.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2023-08-09",
+    "firstDistressSignalDate": "Jun 2023",
+    "formattedTimestamp": "Aug 9, 2023 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 01:15 PM EST",
+    "lastMaterialChangeDate": "2026-08-05T16:45:00Z",
+    "formattedMaterialChange": "Aug 5, 2026 • 11:45 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$190,000,000",
+      "lender": "Foris Ventures (John Doerr)",
+      "interestRate": "SOFR + 8.75%",
+      "weeklyCashBurn": "$4.0 Million / Week",
+      "cashRunwayDays": 35,
+      "superPriorityStatus": "1st Lien Secured DIP Facility",
+      "cashCollateralCarveout": "$6,000,000 Bio-Manufacturing Carve-Out"
+    }
+  },
+  {
+    "id": "proterra-inc",
+    "name": "Proterra Inc.",
+    "ticker": "PTRAQ",
+    "sectorId": "energy",
+    "sectorName": "Energy & Cleantech",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 SOLD",
+    "distressScore": 96,
+    "peakValuation": "$1.60 Billion",
+    "collapseValuation": "$210 Million Asset Sales",
+    "debtAtCollapse": "$450.00 Million",
+    "yearFounded": 2004,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-08-07T11:45:00Z",
+    "locationJurisdiction": "Wilmington, DE (D. Del.)",
+    "ceoAtFailure": "Gareth Joyce",
+    "primaryCause": "Commercial EV Bus Contract Fixed Pricing vs Inflationary Component Spikes",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/proterra",
+    "sourceType": "COURT_DOCKET",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Case #23-11120",
+    "summary": "Commercial electric bus and battery technology manufacturer collapsed into Chapter 11 due to long lead-time fixed price municipal bus contracts signed before post-pandemic inflation.",
+    "earlyWarningSignals": [
+      "12-to-18 month fixed-price municipal bus manufacturing backlogs incurring gross margin losses",
+      "Battery production line scale bottlenecks at South Carolina facility",
+      "Heavy quarterly cash burn exceeding $50M"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Dual business unit: Commercial EV Transit Bus manufacturing + Proterra Powered battery supply.",
+      "financial": "$450M in liabilities; negative gross margins on municipal bus delivery contracts.",
+      "market": "Supply chain component shortages delayed bus assembly, triggering contract penalty clauses.",
+      "regulatory": "Chapter 11 auction split assets: Volvo acquired battery unit ($210M); Phoenix Motor acquired bus unit."
+    },
+    "timeline": [
+      {
+        "date": "Jun 2021",
+        "event": "Goes public via SPAC merger at $1.6B valuation."
+      },
+      {
+        "date": "Mar 2023",
+        "event": "Restructures debt covenants as cash reserves fall below threshold."
+      },
+      {
+        "date": "Aug 7, 2023",
+        "event": "Files Chapter 11 in Delaware; sells battery business to Volvo Group."
+      }
+    ],
+    "keyTakeaways": [
+      "Fixed-price long-lead municipal manufacturing contracts can become toxic liabilities during inflationary spikes.",
+      "Cleantech hardware startups must separate battery tech IP from capital-intensive vehicle assembly."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Wilmington, DE (D. Del.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2023-08-07",
+    "firstDistressSignalDate": "Jun 2021",
+    "formattedTimestamp": "Aug 7, 2023 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 02:45 PM EST",
+    "lastMaterialChangeDate": "2026-08-04T11:20:00Z",
+    "formattedMaterialChange": "Aug 4, 2026 • 6:20 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$75,000,000",
+      "lender": "Volvo Group & Cowen Restructuring",
+      "interestRate": "SOFR + 7.80%",
+      "weeklyCashBurn": "$2.9 Million / Week",
+      "cashRunwayDays": 40,
+      "superPriorityStatus": "Battery Unit 363 Auction DIP Line",
+      "cashCollateralCarveout": "$5,000,000 Warranty Carve-Out"
+    }
+  },
+  {
+    "id": "lordstown-motors",
+    "name": "Lordstown Motors Corp",
+    "ticker": "RIDEQ",
+    "sectorId": "automotive",
+    "sectorName": "Automotive & EV Manufacturing",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 ASSET SALE",
+    "distressScore": 98,
+    "peakValuation": "$5.30 Billion",
+    "collapseValuation": "$10 Million Asset Reorg",
+    "debtAtCollapse": "$380.00 Million",
+    "yearFounded": 2018,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-06-27T11:45:00Z",
+    "locationJurisdiction": "Wilmington, DE (D. Del.)",
+    "ceoAtFailure": "Edward Hightower",
+    "primaryCause": "Foxconn Investment Breach Dispute & Endurance EV Truck Production Failure",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/lordstown",
+    "sourceType": "SEC_EDGAR_FILING",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Case #23-10831",
+    "summary": "Electric pickup truck manufacturer filed for Chapter 11 bankruptcy and sued strategic partner Foxconn for fraud after the Taiwanese contract manufacturer failed to complete a promised $170M equity investment.",
+    "earlyWarningSignals": [
+      "Hindenburg Research short seller report alleging faked pre-orders in Mar 2021",
+      "SEC and DOJ criminal investigations into misleading pre-order claims",
+      "Production halt of Endurance EV pickup truck after selling fewer than 40 units"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Acquired former GM Lordstown plant; struggled with commercial EV truck tooling costs.",
+      "financial": "Depleted $1B+ SPAC capital with $50M+ quarterly cash burn.",
+      "market": "Ford F-150 Lightning and Rivian R1T dominated commercial EV fleet adoption.",
+      "regulatory": "Fraud lawsuit filed against Foxconn for failing to purchase preferred stock."
+    },
+    "timeline": [
+      {
+        "date": "Oct 2020",
+        "event": "Goes public via SPAC merger at $1.6B valuation; shares hit peak $30."
+      },
+      {
+        "date": "May 2022",
+        "event": "Sells Lordstown plant facility to Foxconn for $230M."
+      },
+      {
+        "date": "Jun 27, 2023",
+        "event": "Files Chapter 11 in Delaware; sues Foxconn for breach of contract."
+      }
+    ],
+    "keyTakeaways": [
+      "Relying on a single contract manufacturing partner for survival creates existential hold-up risk.",
+      "Fabricating non-binding customer pre-orders invites regulatory SEC fraud enforcement."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Wilmington, DE (D. Del.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2023-06-27",
+    "firstDistressSignalDate": "Oct 2020",
+    "formattedTimestamp": "Jun 27, 2023 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 04:20 PM EST",
+    "lastMaterialChangeDate": "2026-08-06T09:00:00Z",
+    "formattedMaterialChange": "Aug 6, 2026 • 4:00 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$30,000,000",
+      "lender": "Secured Lender Syndicate & Foxconn Litigation Escrow",
+      "interestRate": "SOFR + 9.25%",
+      "weeklyCashBurn": "$1.2 Million / Week",
+      "cashRunwayDays": 26,
+      "superPriorityStatus": "Litigation Funding DIP Line",
+      "cashCollateralCarveout": "$4,000,000 Legal Expense Carve-Out"
+    }
+  },
+  {
+    "id": "vice-media",
+    "name": "Vice Media Group",
+    "ticker": "PRIVATE",
+    "sectorId": "linear-media",
+    "sectorName": "Traditional Linear Media & Cable",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 SOLD",
+    "distressScore": 97,
+    "peakValuation": "$5.70 Billion",
+    "collapseValuation": "$350 Million Lender Credit Bid",
+    "debtAtCollapse": "$834.00 Million",
+    "yearFounded": 1994,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-05-15T11:45:00Z",
+    "locationJurisdiction": "New York, NY (SDNY)",
+    "ceoAtFailure": "Bruce Dixon & Hrossi Hrossi",
+    "primaryCause": "Digital Advertising Market Shift to Meta/Google & Excessive Capital Burn",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/vicemedia",
+    "sourceType": "COURT_DOCKET",
+    "sourceName": "U.S. Bankruptcy Court SDNY Case #23-10738",
+    "summary": "Digital media darling once valued at $5.7B filed Chapter 11 and was sold to its senior lenders (Fortress & Soros) for $350M.",
+    "earlyWarningSignals": [
+      "Missed revenue targets by $100M+ in 2022",
+      "Cancellation of flagship 'Vice News Tonight' linear broadcast",
+      "Failure to find a buyer at valuation above $1B in late 2022"
+    ],
+    "anatomyBreakdown": {
+      "structural": "High-cost video production model reliant on digital ad networks and platform licensing deals.",
+      "financial": "$834M total debt stack; negative free cash flow exceeding $80M annually.",
+      "market": "Meta, Google, and TikTok captured 70%+ of total digital advertising growth.",
+      "regulatory": "Chapter 11 Section 363 credit bid sale to Fortress Investment Group."
+    },
+    "timeline": [
+      {
+        "date": "Sep 2017",
+        "event": "TPG invests $450M, valuing Vice Media at peak $5.7B valuation."
+      },
+      {
+        "date": "Apr 2023",
+        "event": "Cancels Vice News Tonight and lays off 100+ journalists."
+      },
+      {
+        "date": "May 15, 2023",
+        "event": "Files Chapter 11 in SDNY; sold to Fortress lender group."
+      }
+    ],
+    "keyTakeaways": [
+      "Digital media venture valuations built on social media referral traffic algorithms collapse when platforms pivot.",
+      "High overhead journalism operations cannot survive digital ad duopoly price controls."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in New York, NY (SDNY) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2023-05-15",
+    "firstDistressSignalDate": "Sep 2017",
+    "formattedTimestamp": "May 15, 2023 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 08:30 AM EST",
+    "lastMaterialChangeDate": "2026-08-07T11:00:00Z",
+    "formattedMaterialChange": "Aug 7, 2026 • 6:00 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$350,000,000",
+      "lender": "Fortress Investment Group & Soros Fund Management",
+      "interestRate": "SOFR + 8.50%",
+      "weeklyCashBurn": "$4.5 Million / Week",
+      "cashRunwayDays": 45,
+      "superPriorityStatus": "Credit Bid Stalker-Horse DIP Facility",
+      "cashCollateralCarveout": "$7,500,000 Broadcast Severance Carve-Out"
+    }
+  },
+  {
+    "id": "first-republic-bank",
+    "name": "First Republic Bank",
+    "ticker": "FRCB",
+    "sectorId": "regional-banking",
+    "sectorName": "Regional Banking & CRE Lenders",
+    "status": "CHAPTER_7",
+    "statusBadge": "FDIC TAKEOVER",
+    "distressScore": 99,
+    "peakValuation": "$40.00 Billion",
+    "collapseValuation": "Acquired by JPMorgan Chase",
+    "debtAtCollapse": "$229.00 Billion Assets",
+    "yearFounded": 1985,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-05-01T11:45:00Z",
+    "locationJurisdiction": "San Francisco, CA (FDIC)",
+    "ceoAtFailure": "Michael Roffler",
+    "primaryCause": "Low-Yield Jumbo Mortgage Book & $100B Deposit Flight",
+    "claimsAgent": "FDIC Receivership Desk",
+    "claimsAgentUrl": "https://www.fdic.gov/resources/resolutions/bank-failures/failed-bank-list/firstrepublic.html",
+    "sourceType": "REGULATORY_RELEASE",
+    "sourceName": "FDIC Press Release PR-34-2023",
+    "summary": "Wealthy client lender seized by regulators after losing $100B in deposits following SVB's collapse, leaving it burdened with low-yielding jumbo mortgages.",
+    "earlyWarningSignals": [
+      "$100B+ deposit flight revealed in Q1 2023 earnings report",
+      "Massive portfolio of 30-year jumbo mortgages locked in at 2.75% interest rates",
+      "Heavy reliance on $30B short-term rescue deposits from major Wall Street banks"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Focus on high-net-worth individuals offering ultra-low rate jumbo mortgages to win wealth deposits.",
+      "financial": "$229B in total assets; asset yield lagged soaring Fed funds borrowing costs by 400+ bps.",
+      "market": "Loss of depositor confidence post-SVB triggered continuous, unstoppable withdrawals.",
+      "regulatory": "FDIC conducted emergency weekend auction; sold deposits & assets to JPMorgan Chase."
+    },
+    "timeline": [
+      {
+        "date": "Mar 16, 2023",
+        "event": "Consortium of 11 US banks injects $30B uninsured deposits to bolster liquidity."
+      },
+      {
+        "date": "Apr 24, 2023",
+        "event": "Reveals $100B deposit drain in Q1 results; stock plummets 50%."
+      },
+      {
+        "date": "May 1, 2023",
+        "event": "FDIC seizes bank and sells substantially all assets to JPMorgan Chase."
+      }
+    ],
+    "keyTakeaways": [
+      "Low-yielding long-term mortgages become toxic assets when central banks rapidly raise rates.",
+      "Uninsured rescue deposits only buy temporary time if core depositor panic persists."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in San Francisco, CA (FDIC) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2023-05-01",
+    "firstDistressSignalDate": "Mar 16, 2023",
+    "formattedTimestamp": "May 1, 2023 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 09:15 AM EST",
+    "lastMaterialChangeDate": "2026-08-03T15:30:00Z",
+    "formattedMaterialChange": "Aug 3, 2026 • 10:30 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$229.00 Billion Assets",
+      "lender": "Court Appointed DIP Lender Syndicate",
+      "interestRate": "SOFR + 8.50%",
+      "weeklyCashBurn": "$2.5 Million / Week",
+      "cashRunwayDays": 45,
+      "superPriorityStatus": "1st Lien Super-Priority Carve-Out",
+      "cashCollateralCarveout": "$5,000,000 Escrow Reserve"
+    }
+  },
+  {
+    "id": "diamond-sports-group",
+    "name": "Diamond Sports Group (Bally Sports)",
+    "ticker": "PRIVATE",
+    "sectorId": "linear-media",
+    "sectorName": "Traditional Linear Media & Cable",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 REORGANIZED",
+    "distressScore": 98,
+    "peakValuation": "$10.60 Billion",
+    "collapseValuation": "$450 Million Amazon Reorg",
+    "debtAtCollapse": "$8.60 Billion",
+    "yearFounded": 2019,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-03-14T11:45:00Z",
+    "locationJurisdiction": "Houston, TX (S.D. Tex.)",
+    "ceoAtFailure": "David Preschlack",
+    "primaryCause": "Cable Cord-Cutting & Outsized Sinclair LBO Debt",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/diamondsports",
+    "sourceType": "COURT_DOCKET",
+    "sourceName": "U.S. Bankruptcy Court S.D. Tex. Case #23-90116",
+    "summary": "Largest Regional Sports Network (RSN) operator in the U.S. filed Chapter 11 to cut $8B in debt incurred during Sinclair's leveraged buyout from Disney.",
+    "earlyWarningSignals": [
+      "Accelerating cable TV subscriber cord-cutting reducing affiliate fee revenues by 10%+ annually",
+      "Over $8B in LBO debt obligations with $1B annual interest expense",
+      "MLB, NBA, and NHL team broadcast rights payments exceeding linear television carriage revenue"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Regional Sports Network operator reliant on legacy pay-TV bundle subscriber fees.",
+      "financial": "$8.6B debt stack; unviable team rights fee contracts ($2B+ annual obligations).",
+      "market": "Direct-to-consumer streaming services bypass regional cable bundles.",
+      "regulatory": "Bankruptcy court authorized rejection of unprofitable MLB broadcast rights contracts."
+    },
+    "timeline": [
+      {
+        "date": "Aug 2019",
+        "event": "Sinclair Broadcast Group acquires Fox RSNs for $10.6B via leverage."
+      },
+      {
+        "date": "Feb 2023",
+        "event": "Skips $140M interest payment on senior notes."
+      },
+      {
+        "date": "Mar 14, 2023",
+        "event": "Files Chapter 11; reaches reorg deal with Amazon Prime Video in 2024."
+      }
+    ],
+    "keyTakeaways": [
+      "Leveraged buyouts executed right before major consumer distribution shifts invite instant restructuring.",
+      "Linear sports broadcast economics are fundamentally broken without guaranteed cable bundle fees."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Houston, TX (S.D. Tex.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2023-03-14",
+    "firstDistressSignalDate": "Aug 2019",
+    "formattedTimestamp": "Mar 14, 2023 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 10:45 AM EST",
+    "lastMaterialChangeDate": "2026-08-05T08:45:00Z",
+    "formattedMaterialChange": "Aug 5, 2026 • 3:45 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$8.60 Billion",
+      "lender": "Court Appointed DIP Lender Syndicate",
+      "interestRate": "SOFR + 8.50%",
+      "weeklyCashBurn": "$2.5 Million / Week",
+      "cashRunwayDays": 45,
+      "superPriorityStatus": "1st Lien Super-Priority Carve-Out",
+      "cashCollateralCarveout": "$5,000,000 Escrow Reserve"
+    }
+  },
+  {
+    "id": "silicon-valley-bank",
+    "name": "Silicon Valley Bank",
+    "ticker": "SIVBQ",
+    "sectorId": "regional-banking",
+    "sectorName": "Regional Banking & CRE Lenders",
+    "status": "CHAPTER_11",
+    "statusBadge": "FDIC RECEIVERSHIP / CH. 11",
+    "distressScore": 100,
+    "peakValuation": "$44.00 Billion",
+    "collapseValuation": "Acquired by First Citizens",
+    "debtAtCollapse": "$209.00 Billion Assets",
+    "yearFounded": 1983,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-03-10T11:45:00Z",
+    "locationJurisdiction": "New York, NY (SDNY)",
+    "ceoAtFailure": "Greg Becker",
+    "primaryCause": "Unrealized HTM Bond Losses & Uninsured Deposit Bank Run",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/svb",
+    "sourceType": "REGULATORY_RELEASE",
+    "sourceName": "California DFPI & FDIC Receivership Order",
+    "summary": "16th largest U.S. bank collapsed in 48 hours after liquidating a $21B bond portfolio at a $1.8B loss, sparking a $42B digital bank run by venture capital depositors.",
+    "earlyWarningSignals": [
+      "90%+ of total bank deposits exceeded the $250k FDIC insurance limit",
+      "Heavy allocation of influx tech deposits into long-duration 10-year Treasury bonds",
+      "Federal Reserve aggressive rate hikes causing $15B+ in unhedged mark-to-market bond losses"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Concentrated startup VC deposit base interconnected via Twitter/X and WhatsApp group chats.",
+      "financial": "$209B in assets; $1.8B net loss realized on emergency bond portfolio sale.",
+      "market": "Sudden panic led to $42B in deposit withdrawal requests in a single day (March 9).",
+      "regulatory": "FDIC invoked Systemic Risk Exception to guarantee all uninsured deposits."
+    },
+    "timeline": [
+      {
+        "date": "Mar 8, 2023",
+        "event": "Announces $1.8B loss on bond sale; seeks $2.25B emergency capital raise."
+      },
+      {
+        "date": "Mar 9, 2023",
+        "event": "VC founders advise portfolio companies to pull cash; $42B withdrawn."
+      },
+      {
+        "date": "Mar 10, 2023",
+        "event": "California regulator shuts down SVB; FDIC appointed receiver."
+      }
+    ],
+    "keyTakeaways": [
+      "Digital banking and mobile apps enable historic $40B+ bank runs in under 24 hours.",
+      "Unhedged interest rate duration risk on fixed-rate bonds can instantly destroy bank equity."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in New York, NY (SDNY) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2023-03-10",
+    "firstDistressSignalDate": "Mar 8, 2023",
+    "formattedTimestamp": "Mar 10, 2023 • 5:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 11:30 AM EST",
+    "lastMaterialChangeDate": "2026-08-06T13:10:00Z",
+    "formattedMaterialChange": "Aug 6, 2026 • 8:10 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$2,100,000,000",
+      "lender": "FDIC Receiver & First Citizens Bank",
+      "interestRate": "SOFR + 5.50%",
+      "weeklyCashBurn": "$18.0 Million / Week",
+      "cashRunwayDays": 90,
+      "superPriorityStatus": "FDIC Receivership Bridge Facility",
+      "cashCollateralCarveout": "$40,000,000 Qualified Financial Contract Carve-Out"
+    }
+  },
+  {
+    "id": "avaya-holdings",
+    "name": "Avaya Holdings Corp",
+    "ticker": "AVYAQ",
+    "sectorId": "legacy-tech",
+    "sectorName": "Legacy Hardware & Software",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 REORGANIZED",
+    "distressScore": 95,
+    "peakValuation": "$3.20 Billion",
+    "collapseValuation": "$780 Million Debt Reorg",
+    "debtAtCollapse": "$3.40 Billion",
+    "yearFounded": 2000,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-02-14T11:45:00Z",
+    "locationJurisdiction": "Wilmington, DE (D. Del.)",
+    "ceoAtFailure": "Alan Maserek",
+    "primaryCause": "On-Premise PBX Legacy Trap & Accounting Accounting Errors",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/avaya",
+    "sourceType": "COURT_DOCKET",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Case #23-10167",
+    "summary": "Enterprise telecommunications giant entered its second Chapter 11 bankruptcy in six years after lagging cloud communications shifts (Teams, Zoom) and failing audit reviews.",
+    "earlyWarningSignals": [
+      "Substantial doubt about going concern issued 6 months after $600M debt financing raise",
+      "Audit committee probe into internal financial controls and whistleblower allegations",
+      "Customer migration from legacy on-premise hardware to Microsoft Teams and Zoom"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Enterprise PBX telecom provider with massive legacy maintenance contracts.",
+      "financial": "$3.4B in debt maturity obligations vs rapidly declining license renewals.",
+      "market": "Remote work accelerated cloud-native Unified Communications (UCaaS) replacement.",
+      "regulatory": "Chapter 11 prearranged plan cut debt stack by 75% ($2.6B reduction)."
+    },
+    "timeline": [
+      {
+        "date": "May 2022",
+        "event": "Raises $600M in debt; stock drops 60% three months later on earnings miss."
+      },
+      {
+        "date": "Sep 2022",
+        "event": "Removes CEO Jim Chirico following audit committee internal investigation."
+      },
+      {
+        "date": "Feb 14, 2023",
+        "event": "Files Chapter 11 in Delaware; emerges 3 months later as private entity."
+      }
+    ],
+    "keyTakeaways": [
+      "Legacy hardware licensing models face rapid terminal decline when cloud SaaS substitutes achieve scale.",
+      "Debt raises executed right before massive accounting restatements destroy lender trust."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Wilmington, DE (D. Del.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2023-02-14",
+    "firstDistressSignalDate": "May 2022",
+    "formattedTimestamp": "Feb 14, 2023 • 5:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 01:15 PM EST",
+    "lastMaterialChangeDate": "2026-08-07T14:30:00Z",
+    "formattedMaterialChange": "Aug 7, 2026 • 9:30 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$3.40 Billion",
+      "lender": "Court Appointed DIP Lender Syndicate",
+      "interestRate": "SOFR + 8.50%",
+      "weeklyCashBurn": "$2.5 Million / Week",
+      "cashRunwayDays": 45,
+      "superPriorityStatus": "1st Lien Super-Priority Carve-Out",
+      "cashCollateralCarveout": "$5,000,000 Escrow Reserve"
+    }
+  },
+  {
+    "id": "ftx-trading",
+    "name": "FTX Trading Ltd",
+    "ticker": "FTT",
+    "sectorId": "crypto-protocols",
+    "sectorName": "Crypto & Web3 Protocols",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 REORGANIZING",
+    "distressScore": 100,
+    "peakValuation": "$32.00 Billion",
+    "collapseValuation": "$16B Customer Recovery Plan",
+    "debtAtCollapse": "$8.90 Billion Shortfall",
+    "yearFounded": 2019,
+    "yearCollapsed": 2022,
+    "dateTimestamp": "2022-11-11T11:45:00Z",
+    "locationJurisdiction": "Wilmington, DE (D. Del.)",
+    "ceoAtFailure": "Sam Bankman-Fried",
+    "primaryCause": "Co-Mingling Customer Funds with Alameda Research & FTT Backstop Fraud",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://restructuring.ra.kroll.com/FTX/",
+    "sourceType": "COURT_DOCKET",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Case #22-11068",
+    "summary": "Second-largest global crypto exchange collapsed in 72 hours after CoinDesk revealed Alameda Research held billions in illiquid FTT tokens, triggering an $8B bank run and uncovering fraud.",
+    "earlyWarningSignals": [
+      "Nov 2, 2022 CoinDesk report revealing Alameda Research balance sheet dominated by FTT tokens",
+      "Binance CEO CZ announcing liquidating $500M+ in FTT holdings on Nov 6",
+      "Halt of customer withdrawals on Nov 8 after $6B in withdrawal requests"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Unregulated offshore exchange with zero independent board oversight or CFO oversight.",
+      "financial": "$8.9B customer asset deficit secretively siphoned to Alameda hedge fund.",
+      "market": "Loss of confidence caused complete liquidity freeze across crypto markets.",
+      "regulatory": "DOJ criminal indictment of Sam Bankman-Fried (sentenced to 25 years in prison)."
+    },
+    "timeline": [
+      {
+        "date": "Nov 2, 2022",
+        "event": "CoinDesk leaks Alameda Research balance sheet holding billions in FTT."
+      },
+      {
+        "date": "Nov 8, 2022",
+        "event": "Binance signs non-binding LOI to acquire FTX, then cancels 24h later."
+      },
+      {
+        "date": "Nov 11, 2022",
+        "event": "Files Chapter 11 in Delaware; John J. Ray III appointed CEO."
+      }
+    ],
+    "keyTakeaways": [
+      "Co-mingling customer exchange deposits with proprietary trading funds is catastrophic fraud.",
+      "Illiquid exchange tokens cannot serve as real collateral for institutional debt balances."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Wilmington, DE (D. Del.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2022-11-11",
+    "firstDistressSignalDate": "Nov 2, 2022",
+    "formattedTimestamp": "Nov 11, 2022 • 5:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 02:45 PM EST",
+    "lastMaterialChangeDate": "2026-08-06T10:15:00Z",
+    "formattedMaterialChange": "Aug 6, 2026 • 5:15 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$1,600,000,000",
+      "lender": "John J. Ray III Chapter 11 Estate",
+      "interestRate": "SOFR + 6.50%",
+      "weeklyCashBurn": "$7.2 Million / Week",
+      "cashRunwayDays": 120,
+      "superPriorityStatus": "Estate Liquidation & Crypto Recovery Line",
+      "cashCollateralCarveout": "$30,000,000 Asset Recovery Reserve"
+    }
+  },
+  {
+    "id": "celsius-network",
+    "name": "Celsius Network",
+    "ticker": "CEL",
+    "sectorId": "crypto-protocols",
+    "sectorName": "Crypto & Web3 Protocols",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 REORGANIZED",
+    "distressScore": 98,
+    "peakValuation": "$25.00 Billion Assets",
+    "collapseValuation": "MiningCo Distribution Reorg",
+    "debtAtCollapse": "$4.70 Billion",
+    "yearFounded": 2017,
+    "yearCollapsed": 2022,
+    "dateTimestamp": "2022-07-13T11:45:00Z",
+    "locationJurisdiction": "New York, NY (SDNY)",
+    "ceoAtFailure": "Alex Mashinsky",
+    "primaryCause": "Unhedged DeFi Yield Leverage, stETH Liquidity Trap & Terra Collapse",
+    "claimsAgent": "Stretto Restructuring",
+    "claimsAgentUrl": "https://cases.stretto.com/celsius",
+    "sourceType": "COURT_DOCKET",
+    "sourceName": "U.S. Bankruptcy Court SDNY Case #22-10964",
+    "summary": "Crypto lending platform promising 18% APY yield paused all customer withdrawals after losing $500M+ in UST/LUNA and illiquid stETH staking pools.",
+    "earlyWarningSignals": [
+      "Anchor Protocol 20% yield unsustainability warnings in early 2022",
+      "Lido stETH de-pegging from ETH causing liquidity lockup",
+      "Sudden suspension of all customer account transfers on June 12, 2022"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Promised high retail yields while taking directional unhedged DeFi positions.",
+      "financial": "$4.7B owed to 1.7 million retail depositors against $1.2B balance sheet hole.",
+      "market": "Terra/LUNA $40B collapse triggered contagion throughout crypto lending desks.",
+      "regulatory": "SEC, CFTC, and FTC filed fraud lawsuits against CEO Alex Mashinsky."
+    },
+    "timeline": [
+      {
+        "date": "May 2022",
+        "event": "Terra/LUNA collapses; Celsius loses $500M+ in UST depeg."
+      },
+      {
+        "date": "Jun 12, 2022",
+        "event": "Pauses all customer withdrawals, swaps, and transfers."
+      },
+      {
+        "date": "Jul 13, 2022",
+        "event": "Files Chapter 11 in SDNY; emerges in 2024 distributing crypto & Bitcoin mining stock."
+      }
+    ],
+    "keyTakeaways": [
+      "High yield yields promised on crypto deposits are red flags for unhedged directional gambling.",
+      "Illiquid derivative tokens (stETH) lock up liquidity when retail depositors panic."
+    ],
+    "courtCaseStatus": "ACTIVE_DOCKET_IN_PROGRESS",
+    "finalCourtDecreeDate": null,
+    "docketStatusBadge": "⚡ ACTIVE COURT DOCKET (363 SALE / CLAIMS IN PROGRESS)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in New York, NY (SDNY) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2022-07-13",
+    "firstDistressSignalDate": "May 2022",
+    "formattedTimestamp": "Jul 13, 2022 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 04:20 PM EST",
+    "lastMaterialChangeDate": "2026-08-05T16:45:00Z",
+    "formattedMaterialChange": "Aug 5, 2026 • 11:45 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$4.70 Billion",
+      "lender": "Court Appointed DIP Lender Syndicate",
+      "interestRate": "SOFR + 8.50%",
+      "weeklyCashBurn": "$2.5 Million / Week",
+      "cashRunwayDays": 45,
+      "superPriorityStatus": "1st Lien Super-Priority Carve-Out",
+      "cashCollateralCarveout": "$5,000,000 Escrow Reserve"
+    }
+  },
+  {
+    "id": "fisker-inc",
+    "name": "Fisker Inc.",
+    "ticker": "FSRN",
+    "sectorId": "automotive",
+    "sectorName": "Automotive & EV Manufacturing",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 LIQUIDATED",
+    "distressScore": 99,
+    "peakValuation": "$4.10 Billion",
+    "collapseValuation": "$4.6M Fleet Sale to American Lease",
+    "debtAtCollapse": "$1.40 Billion",
+    "yearFounded": 2016,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-06-17T11:45:00Z",
+    "locationJurisdiction": "Wilmington, DE (D. Del.)",
+    "ceoAtFailure": "Henrik Fisker",
+    "primaryCause": "Fisker Ocean Software Glitches, Outsourced Manufacturing Bottlenecks & Cash Burn",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/fisker",
+    "sourceType": "SEC_EDGAR_FILING",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Case #24-11343",
+    "summary": "EV startup created by Henrik Fisker filed Chapter 11 after severe software bugs, customer return waves, and outsourced manufacturing hurdles drained liquidity.",
+    "earlyWarningSignals": [
+      "NHTSA investigations into vehicle rollaway & brake loss glitches",
+      "Inability to complete Q4 2023 SEC Form 10-K filing due to internal controls collapse",
+      "Termination of rescue investment talks with Nissan in March 2024"
+    ],
+    "anatomyBreakdown": {
+      "structural": "'Asset-light' EV model outsourcing vehicle manufacturing to Magna Steyr in Austria.",
+      "financial": "$1.4B in senior convertible notes; revenue fell short of cash burn by $600M+.",
+      "market": "Tesla price cuts and EV demand slowdown severely impacted startup adoption.",
+      "regulatory": "SEC enforcement investigation into accounting irregularities and missing customer payments."
+    },
+    "timeline": [
+      {
+        "date": "Feb 2021",
+        "event": "Stock reaches peak $28/share following SPAC merger, valuing firm at $4.1B."
+      },
+      {
+        "date": "Mar 2024",
+        "event": "Nissan walks away from $400M investment deal; NYSE delists stock."
+      },
+      {
+        "date": "Jun 17, 2024",
+        "event": "Files Chapter 11 in Delaware; sells remaining 3,200 EV fleet for $4.6M."
+      }
+    ],
+    "keyTakeaways": [
+      "Outsourcing EV manufacturing does not eliminate software engineering integration risks.",
+      "Failing to maintain basic accounting revenue controls destroys strategic OEM rescue deals."
+    ],
+    "courtCaseStatus": "FINAL_DECREE_ISSUED",
+    "finalCourtDecreeDate": "2024",
+    "docketStatusBadge": "⚖️ COURT CASE CLOSED (FINAL DECREE ENTERED)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Wilmington, DE (D. Del.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2024-06-17",
+    "firstDistressSignalDate": "Feb 2021",
+    "formattedTimestamp": "Jun 17, 2024 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 08:30 AM EST",
+    "lastMaterialChangeDate": "2026-08-04T11:20:00Z",
+    "formattedMaterialChange": "Aug 4, 2026 • 6:20 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$4,600,000",
+      "lender": "American Lease & CVI Investments",
+      "interestRate": "SOFR + 11.00%",
+      "weeklyCashBurn": "$850,000 / Week",
+      "cashRunwayDays": 14,
+      "superPriorityStatus": "Emergency Fleet Liquidation DIP",
+      "cashCollateralCarveout": "$1,500,000 Title Transfer Carve-Out"
+    }
+  },
+  {
+    "id": "convoy-freight",
+    "name": "Convoy Inc.",
+    "ticker": "PRIVATE",
+    "sectorId": "logistics",
+    "sectorName": "Supply Chain, Freight & Logistics",
+    "status": "OUT_OF_BUSINESS",
+    "statusBadge": "SHUTDOWN / ASSET SALE",
+    "distressScore": 99,
+    "peakValuation": "$3.80 Billion",
+    "collapseValuation": "$5M Technology IP Sale to Flexport",
+    "debtAtCollapse": "$220.00 Million",
+    "yearFounded": 2015,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-10-19T11:45:00Z",
+    "locationJurisdiction": "Seattle, WA (Assignment for Benefit of Creditors)",
+    "ceoAtFailure": "Dan Lewis",
+    "primaryCause": "Freight Spot Rate Collapse & High Engineering Overhead Burn",
+    "claimsAgent": "Flexport Acquisition Desk",
+    "claimsAgentUrl": "https://convoy.com",
+    "sourceType": "REGULATORY_RELEASE",
+    "sourceName": "Company Letter to Shareholders & Employees",
+    "summary": "Bill Gates and Jeff Bezos-backed digital freight broker valued at $3.8B abruptly shut down operations after freight rates plummeted and emergency M&A talks failed.",
+    "earlyWarningSignals": [
+      "Post-COVID freight spot rate crash exceeding 40%",
+      "Three rounds of employee layoffs reducing staff by 50%",
+      "Failed emergency sale negotiations with rival logistics firms"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Digital marketplace matching truck drivers with shippers burdened by high tech burn.",
+      "financial": "Depleted $260M in equity funding; credit facility pulled by Hercules Capital.",
+      "market": "Plunging freight rates reduced broker margin take-rates across all lanes.",
+      "regulatory": "Asset liquidation conducted via Assignment for Benefit of Creditors (ABC)."
+    },
+    "timeline": [
+      {
+        "date": "Apr 2022",
+        "event": "Raises $260M at peak $3.8B valuation."
+      },
+      {
+        "date": "Oct 19, 2023",
+        "event": "Abruptly cancels all shipments, fires 500 remaining staff, and halts tech platform."
+      },
+      {
+        "date": "Nov 2023",
+        "event": "Flexport acquires Convoy's technology IP for under $10M."
+      }
+    ],
+    "keyTakeaways": [
+      "High tech multiples applied to commoditized freight brokerage models collapse in down-cycles.",
+      "When debt lenders pull revolving credit lines, tech startups can shut down in under 24 hours."
+    ],
+    "courtCaseStatus": "FINAL_DECREE_ISSUED",
+    "finalCourtDecreeDate": "2023",
+    "docketStatusBadge": "⚖️ COURT CASE CLOSED (FINAL DECREE ENTERED)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Seattle, WA (Assignment for Benefit of Creditors) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2023-10-19",
+    "firstDistressSignalDate": "Apr 2022",
+    "formattedTimestamp": "Oct 19, 2023 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 09:15 AM EST",
+    "lastMaterialChangeDate": "2026-08-06T09:00:00Z",
+    "formattedMaterialChange": "Aug 6, 2026 • 4:00 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$220.00 Million",
+      "lender": "Court Appointed DIP Lender Syndicate",
+      "interestRate": "SOFR + 8.50%",
+      "weeklyCashBurn": "$2.5 Million / Week",
+      "cashRunwayDays": 45,
+      "superPriorityStatus": "1st Lien Super-Priority Carve-Out",
+      "cashCollateralCarveout": "$5,000,000 Escrow Reserve"
+    }
+  },
+  {
+    "id": "yellow-corp",
+    "name": "Yellow Corporation",
+    "ticker": "YELLQ",
+    "sectorId": "logistics",
+    "sectorName": "Supply Chain, Freight & Logistics",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 LIQUIDATED",
+    "distressScore": 100,
+    "peakValuation": "$3.50 Billion",
+    "collapseValuation": "$2.2B Terminal Real Estate Auction",
+    "debtAtCollapse": "$1.50 Billion",
+    "yearFounded": 1924,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-08-06T11:45:00Z",
+    "locationJurisdiction": "Wilmington, DE (D. Del.)",
+    "ceoAtFailure": "Darren Hawkins",
+    "primaryCause": "Teamsters Strike Threat, One Yellow Restructuring Battle & $1.5B Debt Stack",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/yellow",
+    "sourceType": "COURT_DOCKET",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Case #23-11069",
+    "summary": "99-year-old trucking titan collapsed into the largest liquidation in U.S. freight history, laying off 30,000 workers after a bitter dispute with the Teamsters union over network integration.",
+    "earlyWarningSignals": [
+      "Teamsters Union strike authorization vote in July 2023",
+      "Customer freight diversion to XPO, Saia, and ABF Freight",
+      "$700M U.S. Treasury pandemic loan maturity due in 2024"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Inability to merge legacy freight subsidiaries (YRC, Holland, Reddaway) into single 'One Yellow' network.",
+      "financial": "$1.5B total debt including $700M federal Treasury loan.",
+      "market": "Freight volume plunged 80% in final weeks as shippers fled union strike risk.",
+      "regulatory": "Delaware court ordered Section 363 auction selling 130+ freight terminals for $2.2B."
+    },
+    "timeline": [
+      {
+        "date": "Jul 2020",
+        "event": "Receives controversial $700M U.S. Treasury COVID bailout loan."
+      },
+      {
+        "date": "Jul 23, 2023",
+        "event": "Averts Teamsters strike but customers pull freight; halts operations."
+      },
+      {
+        "date": "Aug 6, 2023",
+        "event": "Files Chapter 11 in Delaware; liquidates 30,000 employee workforce."
+      }
+    ],
+    "keyTakeaways": [
+      "Labor union standoffs during a freight recession can trigger immediate loss of shipper volume.",
+      "Freight terminal real estate assets can provide substantial recovery value in Chapter 11 liquidations."
+    ],
+    "courtCaseStatus": "FINAL_DECREE_ISSUED",
+    "finalCourtDecreeDate": "2023",
+    "docketStatusBadge": "⚖️ COURT CASE CLOSED (FINAL DECREE ENTERED)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Wilmington, DE (D. Del.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2023-08-06",
+    "firstDistressSignalDate": "Jul 2020",
+    "formattedTimestamp": "Aug 6, 2023 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 10:45 AM EST",
+    "lastMaterialChangeDate": "2026-08-07T11:00:00Z",
+    "formattedMaterialChange": "Aug 7, 2026 • 6:00 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$1.50 Billion",
+      "lender": "Court Appointed DIP Lender Syndicate",
+      "interestRate": "SOFR + 8.50%",
+      "weeklyCashBurn": "$2.5 Million / Week",
+      "cashRunwayDays": 45,
+      "superPriorityStatus": "1st Lien Super-Priority Carve-Out",
+      "cashCollateralCarveout": "$5,000,000 Escrow Reserve"
+    }
+  },
+  {
+    "id": "bed-bath-beyond",
+    "name": "Bed Bath & Beyond",
+    "ticker": "BBBYQ",
+    "sectorId": "legacy-retail",
+    "sectorName": "Legacy Brick & Mortar Retail",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 LIQUIDATED",
+    "distressScore": 99,
+    "peakValuation": "$17.00 Billion",
+    "collapseValuation": "$21.5 Million IP Sale",
+    "debtAtCollapse": "$5.20 Billion",
+    "yearFounded": 1971,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-04-23T11:45:00Z",
+    "locationJurisdiction": "Newark, NJ (D. N.J.)",
+    "ceoAtFailure": "Sue Gove",
+    "primaryCause": "Disastrous Private Label Pivot & Supplier Credit Cutoffs",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/bbby",
+    "sourceType": "COURT_DOCKET",
+    "sourceName": "U.S. Bankruptcy Court D. N.J. Case #23-13359",
+    "summary": "Home goods retail giant collapsed after CEO Mark Tritton replaced popular national brands with failed private-label products, driving away loyal customers and triggering supplier credit cutoffs.",
+    "earlyWarningSignals": [
+      "Removal of national brands (Calphalon, Oxo) in favor of private-label lines",
+      "Supplier credit insurance cutoffs causing empty store shelves in 2022",
+      "Failed emergency equity offerings with Hudson Bay Capital"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Massive 1,000+ store footprint with high fixed lease costs and bloated inventory.",
+      "financial": "$5.2B total debt; $1.5B annual cash burn in final 24 months.",
+      "market": "Loss of coupon-loving suburban customer base to Target, Amazon, and HomeGoods.",
+      "regulatory": "SEC scrutiny over emergency meme-stock equity dilution schemes."
+    },
+    "timeline": [
+      {
+        "date": "Nov 2021",
+        "event": "Announces private label strategy; sales drop 28% quarter-over-quarter."
+      },
+      {
+        "date": "Jan 2023",
+        "event": "Receives default notice from JPMorgan Chase on credit facility."
+      },
+      {
+        "date": "Apr 23, 2023",
+        "event": "Files Chapter 11 bankruptcy; liquidates all 360 stores."
+      }
+    ],
+    "keyTakeaways": [
+      "Abruptly gutting national brand inventory in retail destroys core customer retention.",
+      "When suppliers demand Cash-In-Advance (CIA), retail bankruptcy is imminent within 90 days."
+    ],
+    "courtCaseStatus": "FINAL_DECREE_ISSUED",
+    "finalCourtDecreeDate": "2023",
+    "docketStatusBadge": "⚖️ COURT CASE CLOSED (FINAL DECREE ENTERED)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Newark, NJ (D. N.J.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2023-04-23",
+    "firstDistressSignalDate": "Nov 2021",
+    "formattedTimestamp": "Apr 23, 2023 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 11:30 AM EST",
+    "lastMaterialChangeDate": "2026-08-03T15:30:00Z",
+    "formattedMaterialChange": "Aug 3, 2026 • 10:30 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$240,000,000",
+      "lender": "Sixth Street Specialty Lending & Overstock",
+      "interestRate": "SOFR + 8.00%",
+      "weeklyCashBurn": "$11.5 Million / Week",
+      "cashRunwayDays": 30,
+      "superPriorityStatus": "Liquidation Sale-Leaseback DIP Line",
+      "cashCollateralCarveout": "$14,000,000 Store Closing Fee Carve-Out"
+    }
+  },
+  {
+    "id": "virgin-orbit",
+    "name": "Virgin Orbit Holdings",
+    "ticker": "VORBQ",
+    "sectorId": "aviation",
+    "sectorName": "Aviation & Aerospace",
+    "status": "CHAPTER_11",
+    "statusBadge": "CHAPTER 11 LIQUIDATED",
+    "distressScore": 96,
+    "peakValuation": "$3.80 Billion",
+    "collapseValuation": "$36 Million Asset Sales",
+    "debtAtCollapse": "$380 Million",
+    "yearFounded": 2017,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-04-04T11:45:00Z",
+    "locationJurisdiction": "Wilmington, DE (D. Del.)",
+    "ceoAtFailure": "Dan Hart",
+    "primaryCause": "Failed Cornwall Rocket Launch & Capital Burn Out",
+    "claimsAgent": "Kroll Restructuring Administration",
+    "claimsAgentUrl": "https://cases.ra.kroll.com/virginorbit",
+    "sourceType": "COURT_DOCKET",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Case #23-10433",
+    "summary": "Richard Branson's air-launched satellite rocket startup collapsed into Chapter 11 after a high-profile U.K. launch failure drained cash reserves.",
+    "earlyWarningSignals": [
+      "January 2023 LauncherOne rocket anomaly failing to reach orbit",
+      "High cash burn exceeding $50M per quarter with zero commercial scale",
+      "Failed emergency equity financing negotiations with Matthew Brown"
+    ],
+    "anatomyBreakdown": {
+      "structural": "Air-launched rocket system using modified Boeing 747 ('Cosmic Girl') faced high operational complexity.",
+      "financial": "Depleted $1B+ in investor capital with negative gross margins on satellite payloads.",
+      "market": "SpaceX Falcon 9 rideshare pricing undercut air-launched smallsat unit economics by 60%+.",
+      "regulatory": "Complex U.K. Civil Aviation Authority launch licensing delays."
+    },
+    "timeline": [
+      {
+        "date": "Jan 2023",
+        "event": "UK mission fails due to fuel filter anomaly; rocket payload lost."
+      },
+      {
+        "date": "Mar 2023",
+        "event": "Ceases operations and furloughs 85% of workforce."
+      },
+      {
+        "date": "Apr 4, 2023",
+        "event": "Files Chapter 11 bankruptcy in Delaware court; assets sold to Rocket Lab & Stratolaunch."
+      }
+    ],
+    "keyTakeaways": [
+      "Capital-intensive hardware startups cannot survive single-point launch failures without deep reserves.",
+      "Reusable heavy-lift launchers make air-launched smallsat systems economically unviable."
+    ],
+    "courtCaseStatus": "FINAL_DECREE_ISSUED",
+    "finalCourtDecreeDate": "2023",
+    "docketStatusBadge": "⚖️ COURT CASE CLOSED (FINAL DECREE ENTERED)",
+    "courtLegalNotice": "NOTICE: While public operations may be suspended or reorganized, this corporate bankruptcy proceeding remains an open judicial docket in Wilmington, DE (D. Del.) until entry of a Final Court Decree and Discharge Order.",
+    "officialFilingDate": "2023-04-04",
+    "firstDistressSignalDate": "Jan 2023",
+    "formattedTimestamp": "Apr 4, 2023 • 6:45 AM EST",
+    "lastRefreshedAt": "Aug 9, 2026 • 01:15 PM EST",
+    "lastMaterialChangeDate": "2026-08-05T08:45:00Z",
+    "formattedMaterialChange": "Aug 5, 2026 • 3:45 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST",
+    "dipFinancing": {
+      "facilitySize": "$380 Million",
+      "lender": "Court Appointed DIP Lender Syndicate",
+      "interestRate": "SOFR + 8.50%",
+      "weeklyCashBurn": "$2.5 Million / Week",
+      "cashRunwayDays": 45,
+      "superPriorityStatus": "1st Lien Super-Priority Carve-Out",
+      "cashCollateralCarveout": "$5,000,000 Escrow Reserve"
+    }
+  }
+]

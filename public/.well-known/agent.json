@@ -1,0 +1,22 @@
+{
+  "name": "BusinessCollapse.com A2A Intelligence Feed",
+  "version": "1.0.0",
+  "description": "Agent-to-Agent machine-readable API provider for corporate bankruptcy dockets, distress analytics, and liquidation auction credentials.",
+  "homepage": "https://businesscollapse.com",
+  "capabilities": {
+    "search": true,
+    "realtimeAlerts": true,
+    "auctionCredentials": true,
+    "structuredJSON": true
+  },
+  "endpoints": {
+    "llms_index": "/llms.txt",
+    "distress_feed": "/api/distress.json",
+    "auctions_feed": "/api/auctions.json",
+    "mcp_manifest": "/mcp.json"
+  },
+  "pricing": {
+    "public_rate_limit": "60 requests/minute",
+    "pro_agent_api": "Unlimited with BusinessCollapse PRO Key ($199/mo)"
+  }
+}

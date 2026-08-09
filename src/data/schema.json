@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CorporateDistressEntry",
+  "type": "object",
+  "required": ["id", "name", "sectorId", "status", "distressScore", "peakValuation", "primaryCause", "summary", "timeline"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "ticker": { "type": "string" },
+    "sectorId": { "type": "string" },
+    "sectorName": { "type": "string" },
+    "status": { 
+      "type": "string",
+      "enum": ["Warning Sign", "Distress", "Restructuring", "Chapter 11", "Liquidation"]
+    },
+    "statusBadge": {
+      "type": "string",
+      "enum": ["warning", "distress", "restructuring", "chapter-11", "liquidation"]
+    },
+    "distressScore": { 
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "peakValuation": { "type": "string" },
+    "collapseValuation": { "type": "string" },
+    "debtAtCollapse": { "type": "string" },
+    "yearFounded": { "type": "integer" },
+    "yearCollapsed": { "type": "integer" },
+    "primaryCause": { "type": "string" },
+    "dateTimestamp": { "type": "string" },
+    "locationJurisdiction": { "type": "string" },
+    "earlyWarningSignals": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "sourceType": { 
+      "type": "string",
+      "enum": ["SEC Official Filing", "Federal Court Docket", "Tier-1 Financial Press", "Secondary Creator (Disclaimed)"]
+    },
+    "sourceName": { "type": "string" },
+
+    "summary": { "type": "string" },
+
+    "anatomyBreakdown": {
+      "type": "object",
+      "properties": {
+        "debtOverload": { "type": "integer" },
+        "mismanagement": { "type": "integer" },
+        "techDisruption": { "type": "integer" },
+        "macroShift": { "type": "integer" }
+      }
+    },
+    "timeline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "title", "description", "type"],
+        "properties": {
+          "date": { "type": "string" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "type": { "type": "string" }
+        }
+      }
+    },
+    "keyTakeaways": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

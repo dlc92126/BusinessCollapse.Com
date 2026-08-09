@@ -1,0 +1,228 @@
+[
+  {
+    "id": "warning-tup-2026-08-06",
+    "isEmergent": true,
+    "entityName": "Tupperware Brands Corp.",
+    "ticker": "TUPQ",
+    "lastUpdated": "2026-08-09T11:45:00Z",
+    "hearingDateOrTime": "Pre-Filing Warning Window",
+    "locationJurisdiction": "Orlando, FL (S.D. Fla. Court Jurisdiction)",
+    "updateFrequency": "Pre-Judicial Warning Radar",
+    "badgeText": "🟨 PRE-JUDICIAL WARN NOTICE • RATING DOWNGRADE",
+    "headline": "Tupperware Files State WARN Act Notice for 850 Plant Workers; S&P Downgrades Debt to 'CCC-'",
+    "summary": "Pre-Judicial Distress Alert: Tupperware Brands filed an official State WARN Act notice shuttering its primary South Carolina manufacturing facility, affecting 850 workers. S&P Global downgraded senior debt to CCC- following missed interest service.",
+    "keyUpdates": [
+      "August 06, 2026 @ 06:00 EST: State Labor Dept Filing — Official WARN Notice #2026-884 submitted for 850 plant employees.",
+      "August 04, 2026 @ 17:30 EST: S&P Global Credit Rating — Downgraded Senior Notes from B- to CCC- (Imminent Default).",
+      "July 30, 2026 @ 09:15 EST: Restructuring Advisor Leak — Retained Moelis & Co. to evaluate Chapter 11 asset sale."
+    ],
+    "sourceType": "State WARN Act & Credit Agency Wire",
+    "sourceName": "Florida & South Carolina Labor Depts / S&P Global",
+    "pressCitations": [
+      {
+        "publisher": "Wall Street Journal",
+        "title": "Tupperware Prepares Chapter 11 Filing After Debt Restructuring Talks Stall",
+        "url": "https://www.wsj.com/search?q=Tupperware+bankruptcy"
+      },
+      {
+        "publisher": "Bloomberg Law",
+        "title": "Tupperware Shutters Plant, Hires Restructuring Advisors",
+        "url": "https://www.bloomberg.com/search?query=Tupperware+restructuring"
+      }
+    ],
+    "formattedTimestamp": "Aug 6, 2026 • 1:15 AM EST",
+    "lastMaterialChangeDate": "2026-08-09T11:45:00Z",
+    "formattedMaterialChange": "Aug 9, 2026 • 11:45 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST"
+  },
+  {
+    "id": "breaking-save-2026-08-04",
+    "isEmergent": true,
+    "entityName": "Spirit Airlines (Spirit Aviation Holdings)",
+    "ticker": "SAVE",
+    "lastUpdated": "2026-08-09T09:30:00Z",
+    "hearingDateOrTime": "August 14, 2026 @ 10:00 AM EST",
+    "locationJurisdiction": "U.S. Bankruptcy Court S.D.N.Y. (Judge Sean H. Lane)",
+    "updateFrequency": "Live Court Docket Sync",
+    "badgeText": "🟥 ACTIVE CHAPTER 11 DOCKET #1420 • WIND-DOWN",
+    "headline": "Spirit Airlines Ceases Flight Operations; Shifting to Section 363 Liquidation Auction via PACER Court Dockets",
+    "summary": "Official Court Docket Sync: Spirit Airlines (SAVE) ceased all commercial flight operations following a fuel-price spike and failed exit financing. SDNY Court Docket #1420 authorizes immediate orderly wind-down and asset liquidation.",
+    "auctionTitle": "Airbus Fleet, Airport Gate Slots & Free Spirit Loyalty IP Auction",
+    "auctionPortalUrl": "https://auctions.businesscollapse.com/spirit-aircraft-142",
+    "keyUpdates": [
+      "August 05, 2026 @ 14:45 EST: Court Docket #1420 — SDNY Bankruptcy Court approves Orderly Wind-Down of flight operations.",
+      "August 04, 2026 @ 16:20 EST: Court Docket #1398 — Emergency Omnibus Motion to Reject 28 Airbus A320neo Leases & Gate Slots.",
+      "July 28, 2026 @ 11:00 EST: Court Docket #1184 — Order Approving Section 363 Auction Procedures for Loyalty Program & Brand IP."
+    ],
+    "sourceType": "Official PACER Docket Feed",
+    "sourceName": "U.S. Federal Bankruptcy PACER Court System (S.D.N.Y.)",
+    "pressCitations": [
+      {
+        "publisher": "Wall Street Journal",
+        "title": "Spirit Airlines Ceases Flight Operations; Files Chapter 11",
+        "url": "https://www.wsj.com/search?q=Spirit+Airlines+bankruptcy"
+      },
+      {
+        "publisher": "Bloomberg Law",
+        "title": "Spirit Airlines Chapter 11 Docket #1420 Orderly Liquidation",
+        "url": "https://www.bloomberg.com/search?query=Spirit+Airlines+restructuring"
+      }
+    ],
+    "formattedTimestamp": "Aug 5, 2026 • 9:45 AM EST",
+    "lastMaterialChangeDate": "2026-08-09T09:30:00Z",
+    "formattedMaterialChange": "Aug 9, 2026 • 11:45 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST"
+  },
+  {
+    "id": "breaking-big-2026-08-04",
+    "isEmergent": true,
+    "entityName": "Big Lots, Inc.",
+    "ticker": "BIG",
+    "lastUpdated": "2026-08-09T07:15:00Z",
+    "hearingDateOrTime": "August 12, 2026 @ 14:00 PM EST",
+    "locationJurisdiction": "Columbus, OH (U.S. Bankruptcy Court D. Del.)",
+    "updateFrequency": "Emergency Asset Auction Phase",
+    "badgeText": "🟩 SECTION 363 COURT AUCTION • APPROVED",
+    "headline": "Big Lots Receives Court Approval for 300 Additional Store Liquidation Auctions",
+    "summary": "Big Lots received Delaware bankruptcy court approval to shutter 300 underperforming locations as stalker-horse bidder Nexus Capital Management finalizes asset purchase terms.",
+    "auctionTitle": "300 Store Footprint Fixtures & Inventory Liquidation Auction",
+    "auctionPortalUrl": "https://auctions.businesscollapse.com/big-lots-88",
+    "keyUpdates": [
+      "August 12, 2026 @ 14:00 PM EST: Confirmation Hearing for Stalker-Horse Asset Sale to Nexus Capital.",
+      "August 04, 2026 @ 18:30 EST: Delaware Bankruptcy Court approves store closing sales across 24 states.",
+      "August 04, 2026 @ 14:15 EST: Nexus Capital agrees to assume $1.2B in trade liabilities."
+    ],
+    "sourceType": "SEC EDGAR 8-K & PACER Docket",
+    "sourceName": "SEC EDGAR Form 8-K & Bankruptcy Docket #88",
+    "pressCitations": [
+      {
+        "publisher": "Bloomberg Law",
+        "title": "Big Lots Gets Court Approval to Shutter 300 Stores",
+        "url": "https://www.bloomberg.com/search?query=Big+Lots+bankruptcy"
+      },
+      {
+        "publisher": "Wall Street Journal",
+        "title": "Nexus Capital Finalizes Stalker-Horse Bid for Big Lots",
+        "url": "https://www.wsj.com/search?q=Big+Lots+restructuring"
+      }
+    ],
+    "formattedTimestamp": "Aug 4, 2026 • 1:30 PM EST",
+    "lastMaterialChangeDate": "2026-08-09T07:15:00Z",
+    "formattedMaterialChange": "Aug 9, 2026 • 11:45 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST"
+  },
+  {
+    "id": "warning-redl-2026-08-06",
+    "isEmergent": true,
+    "entityName": "Red Lobster Hospitality LLC",
+    "ticker": "PRIVATE / FORTRESS",
+    "lastUpdated": "2026-08-09T05:00:00Z",
+    "hearingDateOrTime": "Pre-Petition Restructuring Window",
+    "locationJurisdiction": "Orlando, FL (M.D. Fla. Jurisdiction)",
+    "updateFrequency": "Pre-Judicial Warning Radar",
+    "badgeText": "🟨 PRE-JUDICIAL WARN NOTICE • HOULIHAN LOKEY MANDATE",
+    "headline": "Red Lobster Files Multi-State WARN Act Notice for 1,200 Employees; Retains Houlihan Lokey for Emergency Debt Workout",
+    "summary": "Pre-Judicial Warning Wire: Red Lobster filed emergency State WARN Act notices across Florida, Georgia, and Texas covering 1,200 restaurant workers while retaining Houlihan Lokey to negotiate emergency debt concessions with Fortress Investment Group.",
+    "keyUpdates": [
+      "August 06, 2026 @ 07:10 EST: Multi-State Labor Dept Filing — WARN Notices submitted covering 48 locations.",
+      "August 05, 2026 @ 19:45 EST: Restructuring Advisor Mandate — Houlihan Lokey appointed lead financial advisor.",
+      "August 02, 2026 @ 11:20 EST: Lender Forbearance Expiration — $280M credit facility enters 14-day cure window."
+    ],
+    "sourceType": "State WARN Act & Restructuring Advisor Wire",
+    "sourceName": "FL/GA/TX Labor Depts & Houlihan Lokey Restructuring Advisory",
+    "pressCitations": [
+      {
+        "publisher": "Wall Street Journal",
+        "title": "Red Lobster Considers Chapter 11 Filings as Ultimate Endless Shrimp Losses Mount",
+        "url": "https://www.wsj.com/search?q=Red+Lobster+bankruptcy"
+      },
+      {
+        "publisher": "Bloomberg Law",
+        "title": "Red Lobster Prepares Asset Sales Under Houlihan Lokey Guidance",
+        "url": "https://www.bloomberg.com/search?query=Red+Lobster+restructuring"
+      }
+    ],
+    "formattedTimestamp": "Aug 6, 2026 • 2:10 AM EST",
+    "lastMaterialChangeDate": "2026-08-09T05:00:00Z",
+    "formattedMaterialChange": "Aug 9, 2026 • 11:45 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST"
+  },
+  {
+    "id": "warning-expr-2026-08-05",
+    "isEmergent": true,
+    "entityName": "Express, Inc.",
+    "ticker": "EXPRQ",
+    "lastUpdated": "2026-08-09T11:45:00Z",
+    "hearingDateOrTime": "Pre-Filing Forbearance Deadline",
+    "locationJurisdiction": "Columbus, OH (S.D. Ohio Court Jurisdiction)",
+    "updateFrequency": "Credit Agency & WARN Wire",
+    "badgeText": "🟨 PRE-JUDICIAL CREDIT DOWNGRADE TO 'D'",
+    "headline": "Express, Inc. Issued Credit Default Rating 'D' After Defaulting on Senior Credit Lines; 95 Store Closures Announced",
+    "summary": "Credit Rating Alert: S&P Global lowered Express, Inc.'s issuer credit rating to 'D' (Default) following missed lease payments and credit facility defaults across 95 retail shopping mall storefronts.",
+    "keyUpdates": [
+      "August 05, 2026 @ 21:00 EST: S&P Rating Action — Downgraded Senior Debt from CCC to D (In Default).",
+      "August 04, 2026 @ 15:10 EST: Mall Landlord Notices — Default notices served across 95 regional mall leases.",
+      "July 31, 2026 @ 18:00 EST: SEC Form 8-K — Disclosed inability to file quarterly report due to accounting review."
+    ],
+    "sourceType": "S&P Global & SEC EDGAR 8-K Wire",
+    "sourceName": "S&P Global Ratings & SEC EDGAR 8-K Public Filings",
+    "pressCitations": [
+      {
+        "publisher": "Bloomberg Law",
+        "title": "Express Inc. Defaults on Revolver as Mall Apparel Retail Collapse Accelerates",
+        "url": "https://www.bloomberg.com/search?query=Express+Inc+bankruptcy"
+      },
+      {
+        "publisher": "Reuters Business",
+        "title": "Express Prepares Emergency Liquidation Plan for 95 Locations",
+        "url": "https://www.reuters.com/site-search/?query=Express+Inc+restructuring"
+      }
+    ],
+    "formattedTimestamp": "Aug 5, 2026 • 4:00 PM EST",
+    "lastMaterialChangeDate": "2026-08-09T11:45:00Z",
+    "formattedMaterialChange": "Aug 9, 2026 • 11:45 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST"
+  },
+  {
+    "id": "warning-joan-2026-08-05",
+    "isEmergent": true,
+    "entityName": "Joann Inc. (Jo-Ann Fabrics)",
+    "ticker": "JOANQ",
+    "lastUpdated": "2026-08-09T09:30:00Z",
+    "hearingDateOrTime": "Pre-Petition Restructuring Window",
+    "locationJurisdiction": "Hudson, OH (U.S. Bankruptcy Court D. Del.)",
+    "updateFrequency": "WARN Act & Restructuring Advisor Wire",
+    "badgeText": "🟨 PRE-JUDICIAL WARN NOTICE • ALVAREZ & MARSAL MANDATE",
+    "headline": "Joann Inc. Files State WARN Notice for 650 Distribution Center Employees; Retains Alvarez & Marsal",
+    "summary": "Pre-Petition Warning: Joann Inc. filed State WARN Act notices for 650 Ohio & Visalia DC workers while retaining Alvarez & Marsal to manage operational cash preservation.",
+    "keyUpdates": [
+      "August 05, 2026 @ 18:15 EST: State Labor Dept Filing — WARN Notice #2026-441 filed for 650 distribution center staff.",
+      "August 03, 2026 @ 10:45 EST: Advisory Mandate — Alvarez & Marsal appointed interim turnaround managers.",
+      "July 29, 2026 @ 16:30 EST: SEC Form 8-K — Entered debt forbearance agreement with 80% of term loan holders."
+    ],
+    "sourceType": "State WARN Act & SEC EDGAR Wire",
+    "sourceName": "Ohio & California Labor Depts / SEC EDGAR 8-K",
+    "pressCitations": [
+      {
+        "publisher": "Wall Street Journal",
+        "title": "Joann Fabrics Files Prepackaged Chapter 11 Restructuring Plan",
+        "url": "https://www.wsj.com/search?q=Joann+Fabrics+bankruptcy"
+      },
+      {
+        "publisher": "Bloomberg Law",
+        "title": "Lenders Take Control of Joann Craft Store Chain",
+        "url": "https://www.bloomberg.com/search?query=Joann+Fabrics+restructuring"
+      }
+    ],
+    "formattedTimestamp": "Aug 5, 2026 • 1:15 PM EST",
+    "lastMaterialChangeDate": "2026-08-09T09:30:00Z",
+    "formattedMaterialChange": "Aug 9, 2026 • 11:45 AM EST",
+    "lastSweepDate": "2026-08-09T13:36:00Z",
+    "formattedLastSweep": "Aug 9, 2026 • 01:36 PM EST"
+  }
+]

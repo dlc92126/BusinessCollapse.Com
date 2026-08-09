@@ -1,0 +1,149 @@
+[
+  {
+    "id": "tupperware-ingested",
+    "name": "Tupperware Brands Corporation",
+    "ticker": "TUPQ",
+    "sectorId": "consumer",
+    "sectorName": "Consumer & Retail Goods",
+    "status": "Chapter 11 Filed",
+    "peakValuation": "$2.60 Billion (2013 Peak)",
+    "collapseValuation": "$0.04 (OTC Equity)",
+    "finalDebt": "$812 Million Total Liabilities",
+    "primaryCause": "Debt Overhang, Failed Retail Distribution Transition & Direct Sales Model Decline",
+    "locationJurisdiction": "Wilmington, DE (U.S. Bankruptcy Court D. Del.)",
+    "ceoAtFailure": "Laurie Ann Goldman",
+    "summary": "Iconic food container manufacturer Tupperware Brands filed for Chapter 11 bankruptcy protection in Delaware following years of declining direct sales revenues, unsustainable debt burdens, and failure to secure a digital retail distribution strategy.",
+    "earlyWarningSignals": [
+      "Auditor 'Going Concern' warning issued in SEC Form 10-K disclosures.",
+      "Delayed SEC annual report filings due to internal accounting controls material weaknesses.",
+      "Default on $700M revolving credit facility covenants."
+    ],
+    "timeline": [
+      { "date": "2013-11-15", "title": "Peak Market Capitalization", "description": "Tupperware reaches all-time high valuation of $2.6B driven by international direct sales growth.", "type": "peak" },
+      { "date": "2023-04-07", "title": "SEC Going Concern Warning", "description": "Company warns investors it faces substantial doubt about its ability to continue as a going concern.", "type": "distress" },
+      { "date": "2024-09-17", "title": "Chapter 11 Bankruptcy Filing", "description": "Tupperware files emergency Chapter 11 petition in Delaware seeking court-supervised asset sale.", "type": "chapter-11" }
+    ],
+    "keyTakeaways": [
+      "Legacy multi-level marketing (MLM) distribution models fail without modern e-commerce parity.",
+      "Carrying $800M+ in senior debt during high-rate environments guarantees default when sales decline."
+    ],
+    "alert": {
+      "headline": "Tupperware Brands Files Emergency Chapter 11 Bankruptcy Petition in Delaware",
+      "summary": "Iconic home goods brand Tupperware (TUPQ) seeks court approval for Section 363 asset liquidation sale after accumulating $812M in liabilities.",
+      "sourceType": "SEC EDGAR 8-K & PACER Docket",
+      "sourceName": "U.S. Bankruptcy Court D. Del.",
+      "auctionTitle": "Tupperware Global IP, Mold Tooling & Inventory Sale",
+      "auctionPortalUrl": "https://auctions.businesscollapse.com"
+    },
+    "auction": {
+      "auctionTitle": "Tupperware Global Patent IP, Mold Tooling & Retail Goods Liquidation",
+      "auctionType": "Court-Ordered Section 363 Asset Auction",
+      "locationJurisdiction": "Wilmington, DE Court",
+      "auctioneer": "Hilco Industrial & Bankruptcy Trustee",
+      "onlinePortalUrl": "https://auctions.businesscollapse.com",
+      "registrationParticulars": "Requires Court Docket Pre-registration. $25,000 refundable escrow deposit for IP bidding rights.",
+      "assetSummary": "Commercial plastics molding machinery, global trademark IP portfolio, and finished goods inventory.",
+      "stalkerHorseBid": "$45,000,000 Credit Bid Floor",
+      "status": "Auction Active",
+      "statusBadge": "warning"
+    }
+  },
+  {
+    "id": "red-lobster-ingested",
+    "name": "Red Lobster Management LLC",
+    "ticker": "RLOB-FL",
+    "sectorId": "consumer",
+    "sectorName": "Hospitality & Restaurant Chains",
+    "status": "Chapter 11 Restructuring",
+    "peakValuation": "$2.10 Billion (2014 Acquisition)",
+    "collapseValuation": "$45.00 Million (Credit Bid Floor)",
+    "finalDebt": "$1.00 Billion Total Liabilities",
+    "primaryCause": "Overpriced Sale-Leaseback Rents, Endless Shrimp Promotion Operating Losses & Debt Burden",
+    "locationJurisdiction": "Orlando, FL (U.S. Bankruptcy Court M.D. Fla.)",
+    "ceoAtFailure": "Jonathan Tibus",
+    "summary": "Seafood restaurant chain Red Lobster filed for Chapter 11 bankruptcy in Florida after suffering massive operational losses from fixed lease liabilities and supply chain missteps. The company shut down 99 locations and negotiated a takeover by lender Fortress Investment Group.",
+    "earlyWarningSignals": [
+      "Immediate closure and asset clearing of 99 prime leased locations overnight.",
+      "Thai Union Group written off entire 36% equity stake ($53M impairment charge).",
+      "Court filings reveal $11M operational loss from unlimited shrimp promotion."
+    ],
+    "timeline": [
+      { "date": "2014-07-28", "title": "Golden Gate Sale-Leaseback", "description": "Golden Gate Capital buys Red Lobster for $2.1B and sells real estate to American Realty Capital Properties for $1.5B, burdening restaurants with high long-term rents.", "type": "peak" },
+      { "date": "2024-05-13", "title": "Abrupt 99-Location Shut Down", "description": "Red Lobster abruptly closes 99 restaurant locations across the U.S. and lists commercial kitchen equipment at auction.", "type": "distress" },
+      { "date": "2024-05-19", "title": "Chapter 11 Bankruptcy Filing", "description": "Red Lobster files Chapter 11 petition in Orlando, FL court with $1B in debt.", "type": "chapter-11" }
+    ],
+    "keyTakeaways": [
+      "Sale-leaseback transactions drain restaurant operating margins during inflationary surges.",
+      "Promotional promotions with unhedged supply chain costs destroy operating cash flow."
+    ],
+    "alert": {
+      "headline": "Red Lobster Files Chapter 11 Petition Following 99 Restaurant Closures",
+      "summary": "National seafood chain Red Lobster enters court-supervised restructuring with $1B in liabilities and lender credit bid takeover.",
+      "sourceType": "SEC Disclosure & PACER Docket #001",
+      "sourceName": "U.S. Bankruptcy Court M.D. Fla.",
+      "auctionTitle": "Red Lobster Commercial Kitchen & Restaurant Asset Auction",
+      "auctionPortalUrl": "https://auctions.businesscollapse.com"
+    },
+    "auction": {
+      "auctionTitle": "Red Lobster Commercial Restaurant & Kitchen Equipment Liquidation",
+      "auctionType": "Chapter 11 Section 363 Auction",
+      "locationJurisdiction": "Orlando, FL Court",
+      "auctioneer": "TAGeX Schools & Liquidators",
+      "onlinePortalUrl": "https://auctions.businesscollapse.com",
+      "registrationParticulars": "Online Bidding Pre-qualification Required. Immediate removal within 72 hours of auction close.",
+      "assetSummary": "Walk-in coolers, stainless steel fryers, ice machines, dining booths, and commercial POS systems across 99 sites.",
+      "stalkerHorseBid": "$12,500,000 Equipment Reserve",
+      "status": "Auction Active",
+      "statusBadge": "warning"
+    }
+  },
+  {
+    "id": "steward-health-ingested",
+    "name": "Steward Health Care System LLC",
+    "ticker": "STEW-TX",
+    "sectorId": "health",
+    "sectorName": "Healthcare Systems & Hospitals",
+    "status": "Chapter 11 Asset Sale",
+    "peakValuation": "$3.40 Billion (Hospital Network Peak)",
+    "collapseValuation": "$120.00 Million (Asset Sales)",
+    "finalDebt": "$9.00 Billion Total Liabilities",
+    "primaryCause": "Medical Properties Trust Sale-Leaseback Rents, Management Fee Siphoning & Massive Unpaid Vendors",
+    "locationJurisdiction": "Houston, TX (U.S. Bankruptcy Court S.D. Tex.)",
+    "ceoAtFailure": "Dr. Ralph de la Torre",
+    "summary": "Nation's largest physician-owned private hospital operator Steward Health Care filed Chapter 11 in Houston, TX owing $9B in debt after selling hospital real estate to Medical Properties Trust (MPT) and failing to pay vendors, medical suppliers, and staff.",
+    "earlyWarningSignals": [
+      "Landlord MPT issued $50M emergency credit line to keep hospitals operating.",
+      "Massachusetts Department of Public Health issues emergency compliance subpoena.",
+      "Failure to pay property taxes and medical supply vendor invoices."
+    ],
+    "timeline": [
+      { "date": "2016-09-26", "title": "MPT Real Estate Sale-Leaseback", "description": "Medical Properties Trust acquires Steward real estate for $1.25B, creating high annual rent obligations.", "type": "peak" },
+      { "date": "2024-01-04", "title": "Rent Default Disclosures", "description": "MPT discloses Steward defaulted on $50M in annual rental payments.", "type": "distress" },
+      { "date": "2024-05-06", "title": "Chapter 11 Bankruptcy Filing", "description": "Steward files Chapter 11 petition in Houston, TX court seeking emergency sale of 31 hospitals.", "type": "chapter-11" }
+    ],
+    "keyTakeaways": [
+      "Private equity healthcare rollups backed by high-yield REIT sale-leasebacks face severe systemic insolvency.",
+      "Hospital real estate separation leaves operating entities vulnerable to vendor defaults."
+    ],
+    "alert": {
+      "headline": "Steward Health Care Files Chapter 11 in Texas Court Seeking 31 Hospital Sales",
+      "summary": "Private hospital operator Steward files Chapter 11 in Houston owing $9B after landlord rent defaults.",
+      "sourceType": "PACER Docket #001 & Court Petition",
+      "sourceName": "U.S. Bankruptcy Court S.D. Tex.",
+      "auctionTitle": "Steward Health Care Hospital Operating Assets & Medical Equipment Sale",
+      "auctionPortalUrl": "https://auctions.businesscollapse.com"
+    },
+    "auction": {
+      "auctionTitle": "Steward Health Care Hospital Medical Equipment & Operating Assets Sale",
+      "auctionType": "Section 363 Emergency Hospital Auction",
+      "locationJurisdiction": "Houston, TX Court",
+      "auctioneer": "Weil Gotshal & Restructuring Trustee",
+      "onlinePortalUrl": "https://auctions.businesscollapse.com",
+      "registrationParticulars": "Qualified Healthcare Operator Bidders Only. $100,000 escrow required.",
+      "assetSummary": "MRI machines, CT scanners, surgical suites, hospital beds, and electronic medical records IP.",
+      "stalkerHorseBid": "$65,000,000 Credit Bid Floor",
+      "status": "Auction Active",
+      "statusBadge": "warning"
+    }
+  }
+]
