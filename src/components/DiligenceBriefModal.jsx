@@ -102,12 +102,12 @@ vault URL: ${shareableUrl}
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'rgba(5, 8, 15, 0.88)',
-      backdropFilter: 'blur(12px)',
+      background: 'rgba(5, 8, 15, 0.94)',
+      backdropFilter: 'blur(16px)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      zIndex: 9999,
+      zIndex: 999999,
       padding: '20px'
     }}>
       <style>{`
