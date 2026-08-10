@@ -323,8 +323,6 @@ export default function MembershipOnboardingModal({ isOpen, onClose, onCompleteO
 
               {/* TERMINAL TIER */}
               <div 
-
-
                 onClick={() => setSelectedTier('terminal')}
                 style={{
                   background: selectedTier === 'terminal' ? 'linear-gradient(135deg, rgba(30,41,59,0.8) 0%, rgba(15,23,42,0.9) 100%)' : 'rgba(15,23,42,0.4)',
@@ -346,7 +344,93 @@ export default function MembershipOnboardingModal({ isOpen, onClose, onCompleteO
                   <li style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Check size={12} color="#C084FC" /> 5 Multi-Seat Licenses</li>
                 </ul>
               </div>
+            </div>
 
+            {/* Specialized Industry Solution Passes */}
+            <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#F8FAFC', marginBottom: '12px' }}>
+              Specialized Industry Solution Passes:
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '28px' }}>
+              
+              {/* HEADHUNTER TALENT PASS */}
+              <div 
+                onClick={() => setSelectedTier('headhunter')}
+                style={{
+                  background: selectedTier === 'headhunter' ? 'linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(15,23,42,0.9) 100%)' : 'rgba(15,23,42,0.5)',
+                  border: selectedTier === 'headhunter' ? '2px solid #EF4444' : '1px solid rgba(239, 68, 68, 0.3)',
+                  borderRadius: '12px',
+                  padding: '18px',
+                  cursor: 'pointer',
+                  transition: 'var(--transition-normal)'
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 900, color: '#FCA5A5' }}>🎯 HEADHUNTER PASS</div>
+                  <span style={{ background: '#EF4444', color: '#FFF', fontSize: '0.62rem', fontWeight: 900, padding: '2px 6px', borderRadius: '4px' }}>RECRUITERS</span>
+                </div>
+                <div style={{ fontSize: '0.72rem', color: '#94A3B8', marginBottom: '10px' }}>Executive Talent Raid & KERP Tracker</div>
+                <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#FFF', marginBottom: '10px' }}>
+                  $299 <span style={{ fontSize: '0.75rem', color: '#94A3B8', fontWeight: 500 }}>/ mo</span>
+                </div>
+                <ul style={{ padding: 0, margin: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.75rem', color: '#CBD5E1' }}>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Check size={12} color="#EF4444" /> Full KERP Bonus Disclosures</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Check size={12} color="#EF4444" /> 250 Monthly Credits</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Check size={12} color="#EF4444" /> LinkedIn Boolean Generator</li>
+                </ul>
+              </div>
+
+              {/* MEDIA & PRESS WIRE PASS */}
+              <div 
+                onClick={() => setSelectedTier('media')}
+                style={{
+                  background: selectedTier === 'media' ? 'linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(15,23,42,0.9) 100%)' : 'rgba(15,23,42,0.5)',
+                  border: selectedTier === 'media' ? '2px solid #F59E0B' : '1px solid rgba(245, 158, 11, 0.3)',
+                  borderRadius: '12px',
+                  padding: '18px',
+                  cursor: 'pointer',
+                  transition: 'var(--transition-normal)'
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 900, color: '#FCD34D' }}>📰 MEDIA WIRE PASS</div>
+                  <span style={{ background: '#F59E0B', color: '#000', fontSize: '0.62rem', fontWeight: 900, padding: '2px 6px', borderRadius: '4px' }}>PRESS & X</span>
+                </div>
+                <div style={{ fontSize: '0.72rem', color: '#94A3B8', marginBottom: '10px' }}>Instant AI Newsroom Studio</div>
+                <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#FFF', marginBottom: '10px' }}>
+                  $149 <span style={{ fontSize: '0.75rem', color: '#94A3B8', fontWeight: 500 }}>/ mo</span>
+                </div>
+                <ul style={{ padding: 0, margin: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.75rem', color: '#CBD5E1' }}>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Check size={12} color="#F59E0B" /> AP Wire & X Thread Generator</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Check size={12} color="#F59E0B" /> Embeddable SVG Infographics</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Check size={12} color="#F59E0B" /> Real-time 8-K Feed</li>
+                </ul>
+              </div>
+
+              {/* ENTERPRISE SALES CONQUEST PASS */}
+              <div 
+                onClick={() => setSelectedTier('conquest')}
+                style={{
+                  background: selectedTier === 'conquest' ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.25) 0%, rgba(15,23,42,0.9) 100%)' : 'rgba(15,23,42,0.5)',
+                  border: selectedTier === 'conquest' ? '2px solid #10B981' : '1px solid rgba(16, 185, 129, 0.3)',
+                  borderRadius: '12px',
+                  padding: '18px',
+                  cursor: 'pointer',
+                  transition: 'var(--transition-normal)'
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 900, color: '#A7F3D0' }}>⚡ SALES CONQUEST</div>
+                  <span style={{ background: '#10B981', color: '#000', fontSize: '0.62rem', fontWeight: 900, padding: '2px 6px', borderRadius: '4px' }}>SALES VPS</span>
+                </div>
+                <div style={{ fontSize: '0.72rem', color: '#94A3B8', marginBottom: '10px' }}>Stranded Customer & Account Poaching</div>
+                <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#FFF', marginBottom: '10px' }}>
+                  $499 <span style={{ fontSize: '0.75rem', color: '#94A3B8', fontWeight: 500 }}>/ mo</span>
+                </div>
+                <ul style={{ padding: 0, margin: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.75rem', color: '#CBD5E1' }}>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Check size={12} color="#10B981" /> Docket #1 Top Unsecured Buyers</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Check size={12} color="#10B981" /> Section 365 Battlecard Generator</li>
+                </ul>
+              </div>
             </div>
 
 

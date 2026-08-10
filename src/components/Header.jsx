@@ -22,7 +22,8 @@ export default function Header({
   onOpenWelcome,
   onOpenAccountSettings,
   onOpenSignIn,
-  breakingNews = []
+  breakingNews = [],
+  onOpenNewsroomStudio
 }) {
 
 
@@ -63,6 +64,8 @@ export default function Header({
 
   const allTabs = [
     { id: 'graveyard', label: '🔥 LIVE DISTRESS WIRE' },
+    { id: 'talent_radar', label: '📡 TALENT RAID RADAR' },
+    { id: 'sales_conquest', label: '⚡ SALES CONQUEST RADAR' },
     { id: 'sub10m', label: '📡 SUB-$10M RADAR' },
     { id: 'heatmap', label: '📊 DISTRESS HEATMAP' },
     { id: 'dip', label: '💳 DIP LOAN TERMINAL' },
@@ -279,6 +282,39 @@ export default function Header({
               title="60-Second Executive Welcome Brief & Platform Guide"
             >
               <Zap size={15} color="#38BDF8" /> ⚡ Welcome Brief
+            </button>
+
+            {/* Instant AI Newsroom Studio Button */}
+            <button
+              onClick={() => {
+                if (onOpenNewsroomStudio) {
+                  const targetCompany = companies && companies.length > 0 ? companies[0] : null;
+                  onOpenNewsroomStudio(targetCompany);
+                }
+              }}
+              style={{
+                height: '38px',
+                boxSizing: 'border-box',
+                fontSize: '0.82rem',
+                padding: '0 16px',
+                gap: '6px',
+                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.35) 0%, rgba(217, 119, 6, 0.5) 100%)',
+                color: '#FFF',
+                border: '1.5px solid #F59E0B',
+                borderRadius: '8px',
+                fontWeight: 900,
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                boxShadow: '0 0 16px rgba(245, 158, 11, 0.4)',
+                transition: 'var(--transition-fast)',
+                letterSpacing: '0.02em',
+                whiteSpace: 'nowrap'
+              }}
+              className="glass-panel-interactive"
+              title="Open Instant AI Newsroom Studio (AP Press Wire, X Threads, Substack & Infographics)"
+            >
+              <Sparkles size={15} color="#FCD34D" /> 📰 AI Newsroom Studio
             </button>
 
             {/* VIP Access / Onboarding & Account Utility Buttons */}

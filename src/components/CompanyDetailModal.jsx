@@ -8,7 +8,7 @@ import courtDocketsData from '../data/court_dockets.json';
 
 
 
-export default function CompanyDetailModal({ company, onClose, onOpenPdf, viewMode, onOpenShare, onOpenWaterfall, onOpenDiligenceBrief }) {
+export default function CompanyDetailModal({ company, onClose, onOpenPdf, viewMode, onOpenShare, onOpenWaterfall, onOpenDiligenceBrief, onOpenNewsroomStudio }) {
 
   const [copiedNotebook, setCopiedNotebook] = useState(false);
   const [copiedCitation, setCopiedCitation] = useState(false);
@@ -213,6 +213,29 @@ Follow this structure:
                   {copiedCitation ? <Check size={14} /> : <FileText size={14} color="#38BDF8" />}
                   {copiedCitation ? 'Copied AP Citation!' : '📰 Copy AP Press Citation'}
                 </button>
+
+                {onOpenNewsroomStudio && (
+                  <button
+                    onClick={() => onOpenNewsroomStudio(company)}
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.3) 0%, rgba(217, 119, 6, 0.5) 100%)',
+                      color: '#FFF',
+                      border: '1px solid #F59E0B',
+                      padding: '6px 14px',
+                      borderRadius: '6px',
+                      fontSize: '0.75rem',
+                      fontWeight: 900,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      boxShadow: '0 0 15px rgba(245, 158, 11, 0.4)'
+                    }}
+                    title="Open Instant AI Newsroom Studio (AP Press Wire, X Threads, Substack & Infographics)"
+                  >
+                    📰 Launch AI Newsroom Studio
+                  </button>
+                )}
 
                 {onOpenDiligenceBrief && (
                   <button

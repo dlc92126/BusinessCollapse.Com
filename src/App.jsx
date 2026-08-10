@@ -35,6 +35,9 @@ import DistressHeatmap, { distressRadarStream } from './components/DistressHeatm
 import MasterAiPromptModal from './components/MasterAiPromptModal';
 import DipFinancingMonitor from './components/DipFinancingMonitor';
 import Sub10mRadar from './components/Sub10mRadar';
+import TalentRaidRadar from './components/TalentRaidRadar';
+import SalesConquestRadar from './components/SalesConquestRadar';
+import NewsroomStudioModal from './components/NewsroomStudioModal';
 import sub10mCatalog from './data/sub10m_companies.json';
 import UniversalShareModal from './components/UniversalShareModal';
 
@@ -130,6 +133,11 @@ export default function App() {
   const [waterfallCompany, setWaterfallCompany] = useState(null);
 
   const [diligenceBriefEntity, setDiligenceBriefEntity] = useState(null);
+  const [newsroomStudioCompany, setNewsroomStudioCompany] = useState(null);
+
+  const handleOpenNewsroomStudio = (targetCompany) => {
+    setNewsroomStudioCompany(targetCompany || selectedCompany);
+  };
 
   const handleOpenWaterfall = (targetCompany) => {
     setWaterfallCompany(targetCompany || selectedCompany);
@@ -649,9 +657,7 @@ export default function App() {
         onOpenAccountSettings={() => setIsAccountSettingsOpen(true)}
         onOpenSignIn={() => setIsSignInOpen(true)}
         breakingNews={breakingNews}
-
-
-
+        onOpenNewsroomStudio={handleOpenNewsroomStudio}
         onOpenAbout={() => setIsAboutOpen(true)}
         onOpenVoiceAgent={() => setIsVoiceAgentOpen(true)}
         onOpenIngestionScheduler={() => setIsIngestionSchedulerOpen(true)}
@@ -696,6 +702,26 @@ export default function App() {
 
         ) : (
           <>
+        {activeTab === 'talent_radar' && (
+          <TalentRaidRadar
+            companies={companies}
+            onSelectCompany={(ticker) => {
+              setSearchQuery(ticker);
+              setActiveTab('graveyard');
+            }}
+          />
+        )}
+
+        {activeTab === 'sales_conquest' && (
+          <SalesConquestRadar
+            companies={companies}
+            onSelectCompany={(ticker) => {
+              setSearchQuery(ticker);
+              setActiveTab('graveyard');
+            }}
+          />
+        )}
+
         {(activeTab === 'graveyard' || activeTab === 'graveyard_archive') && (
           <CompanyGraveyard
             companies={filteredCompanies}
@@ -718,6 +744,7 @@ export default function App() {
             activeTab={activeTab}
             onOpenWaterfall={handleOpenWaterfall}
             onOpenDiligenceBrief={handleOpenDiligenceBrief}
+            onOpenNewsroomStudio={handleOpenNewsroomStudio}
 
 
 
@@ -856,6 +883,7 @@ export default function App() {
         onOpenShare={handleOpenShare}
         onOpenWaterfall={handleOpenWaterfall}
         onOpenDiligenceBrief={handleOpenDiligenceBrief}
+        onOpenNewsroomStudio={handleOpenNewsroomStudio}
       />
 
       {/* Creditor Recovery Waterfall Simulator Modal */}
@@ -979,6 +1007,13 @@ export default function App() {
       />
 
       {/* System Refresh Scheduler & Status Control Modal */}
+      {/* Instant AI Newsroom & Story Studio Modal */}
+      <NewsroomStudioModal
+        isOpen={Boolean(newsroomStudioCompany)}
+        onClose={() => setNewsroomStudioCompany(null)}
+        company={newsroomStudioCompany}
+      />
+
       <IngestionSchedulerModal
         isOpen={isIngestionSchedulerOpen}
         onClose={() => setIsIngestionSchedulerOpen(false)}

@@ -7,12 +7,12 @@ import BreakingNewsHero from './BreakingNewsHero';
 export default function CompanyGraveyard({
   companies,
   onSelectCompany,
-  selectedSectorFilter,
+  selectedSectorFilter = 'ALL',
   setSelectedSectorFilter,
-  breakingNews,
-  searchQuery,
+  breakingNews = [],
+  searchQuery = '',
   setSearchQuery,
-  watchlist,
+  watchlist = [],
   toggleWatchlist,
   onOpenAuctions,
   onOpenAdmissionCriteria,
@@ -23,9 +23,10 @@ export default function CompanyGraveyard({
   onOpenShare,
   dismissedCompanyIds = [],
   toggleDismissCompany,
-  activeTab,
+  activeTab = 'graveyard',
   onOpenWaterfall,
-  onOpenDiligenceBrief
+  onOpenDiligenceBrief,
+  onOpenNewsroomStudio
 }) {
 
   const [statusFilter, setStatusFilter] = useState('ALL');
@@ -1036,15 +1037,40 @@ export default function CompanyGraveyard({
                   </div>
                 </div>
 
-                {/* Primary Cause Pill */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.75rem' }}>
+                {/* Primary Cause Pill & Journalist Studio Action */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.75rem', gap: '8px', flexWrap: 'wrap' }}>
                   <span style={{ background: 'rgba(255, 59, 92, 0.12)', color: '#FF5252', padding: '4px 10px', borderRadius: '6px', fontWeight: 600, border: '1px solid rgba(255, 59, 92, 0.25)', display: 'flex', alignItems: 'center', gap: '4px' }}>
                     <AlertTriangle size={12} /> {company.primaryCause}
                   </span>
 
-                  <span style={{ color: '#FFF', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '2px' }}>
-                    Post-Mortem <ChevronRight size={14} />
-                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (onOpenNewsroomStudio) onOpenNewsroomStudio(company);
+                      }}
+                      style={{
+                        background: 'rgba(245, 158, 11, 0.2)',
+                        border: '1px solid #F59E0B',
+                        color: '#FCD34D',
+                        padding: '4px 10px',
+                        borderRadius: '6px',
+                        fontSize: '0.72rem',
+                        fontWeight: 900,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px'
+                      }}
+                      title="Open Instant AI Newsroom Studio (AP Press Wire, X Threads, Substack & Infographics)"
+                    >
+                      📰 Newsroom Studio
+                    </button>
+
+                    <span style={{ color: '#FFF', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '2px' }}>
+                      Post-Mortem <ChevronRight size={14} />
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
