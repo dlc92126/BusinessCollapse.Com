@@ -226,7 +226,7 @@ export const distressRadarStream = [
     }
   ];
 
-export default function DistressHeatmap({ onSelectCompany, watchlist = [], toggleWatchlist }) {
+export default function DistressHeatmap({ onSelectCompany, watchlist = [], toggleWatchlist, onGoBack }) {
   const [selectedRegion, setSelectedRegion] = useState('ALL');
   const [selectedSignal, setSelectedSignal] = useState('ALL');
   const [timeWindow, setTimeWindow] = useState('90D'); // '24H' | '14D' | '90D' | 'ALL'
@@ -317,14 +317,70 @@ export default function DistressHeatmap({ onSelectCompany, watchlist = [], toggl
       
       {/* Title Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', marginBottom: '18px', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '14px' }}>
-        <div>
-          <h2 style={{ fontSize: '1.2rem', fontWeight: 900, color: '#F8FAFC', display: 'flex', alignItems: 'center', gap: '8px', margin: 0 }}>
-            <Flame size={22} color="#EF4444" />
-            <span>PRE-JUDICIAL DISTRESS HEATMAP RADAR (6-TO-9 MONTH EARLY WARNINGS)</span>
-          </h2>
-          <span style={{ fontSize: '0.75rem', color: '#94A3B8' }}>
-            Real-Time Distress Aggregation Before Chapter 11 Filings Reach Bankruptcy Courts
-          </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'linear-gradient(135deg, #F59E0B 0%, #B45309 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(245, 158, 11, 0.65)', border: '1.5px solid rgba(255, 255, 255, 0.25)', flexShrink: 0 }}>
+            <Flame size={22} color="#FFF" style={{ filter: 'drop-shadow(0 0 6px rgba(255,255,255,0.8))' }} />
+          </div>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+              {onGoBack && (
+                <button
+                  onClick={onGoBack}
+                  style={{
+                    background: 'rgba(255, 42, 75, 0.2)',
+                    color: '#FF3B5C',
+                    border: '1.5px solid rgba(255, 42, 75, 0.5)',
+                    padding: '5px 12px',
+                    borderRadius: '8px',
+                    fontSize: '0.78rem',
+                    fontWeight: 900,
+                    cursor: 'pointer',
+                    marginRight: '6px',
+                    boxShadow: '0 0 12px rgba(255, 42, 75, 0.3)'
+                  }}
+                >
+                  ← Back to Core Feed
+                </button>
+              )}
+              <h2 style={{
+                fontSize: '1.65rem',
+                fontWeight: 950,
+                letterSpacing: '0.04em',
+                wordSpacing: '0.18em',
+                margin: 0,
+                background: 'linear-gradient(135deg, #FFFFFF 0%, #F59E0B 50%, #EF4444 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                filter: 'drop-shadow(0 1px 1px rgba(0, 0, 0, 0.85))',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}>
+                📊 PRE-JUDICIAL DISTRESS HEATMAP RADAR
+              </h2>
+              <span style={{
+                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(180, 83, 9, 0.3) 100%)',
+                color: '#FBBF24',
+                border: '1px solid rgba(245, 158, 11, 0.55)',
+                padding: '4px 12px',
+                borderRadius: '20px',
+                fontSize: '0.68rem',
+                fontWeight: 900,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                boxShadow: '0 0 14px rgba(245, 158, 11, 0.35)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}>
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#FBBF24', boxShadow: '0 0 8px #FBBF24' }} />
+                6-TO-9 MONTH EARLY WARNINGS
+              </span>
+            </div>
+            <p style={{ color: '#94A3B8', fontSize: '0.82rem', margin: '4px 0 0 0', lineHeight: 1.5, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+              ⚡ REAL-TIME PRE-PETITION LEAK DETECTOR • WARN NOTICES & DEBT REFINANCING DEFAULTS BEFORE COURT FILINGS
+            </p>
+          </div>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>

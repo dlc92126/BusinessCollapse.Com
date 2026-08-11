@@ -5,7 +5,7 @@ import {
   Layers, Lock, ExternalLink, Calculator, FileCheck
 } from 'lucide-react';
 
-export default function SalesConquestRadar({ companies = [], onSelectCompany }) {
+export default function SalesConquestRadar({ companies = [], onSelectCompany, onGoBack }) {
   const [selectedCompany, setSelectedCompany] = useState(companies[0] || null);
   const [activeTab, setActiveTab] = useState('stranded_customers'); // 'stranded_customers', 'battlecard', 'outreach', 'market_share'
   const [userCredits, setUserCredits] = useState(350);
@@ -165,20 +165,67 @@ BusinessCollapse.Com Sales Conquest Suite`;
         boxShadow: '0 0 30px rgba(239, 68, 68, 0.25)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'linear-gradient(135deg, #EF4444 0%, #B91C1C 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(239, 68, 68, 0.5)' }}>
-            <Zap size={26} color="#FFF" />
+          <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'linear-gradient(135deg, #10B981 0%, #047857 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(16, 185, 129, 0.65)', border: '1.5px solid rgba(255, 255, 255, 0.25)', flexShrink: 0 }}>
+            <Zap size={22} color="#FFF" style={{ filter: 'drop-shadow(0 0 6px rgba(255,255,255,0.8))' }} />
           </div>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <h1 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#FFF', margin: 0 }}>
-                ⚡ SALES CONQUEST & CUSTOMER STEALING TERMINAL
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+              {onGoBack && (
+                <button
+                  onClick={onGoBack}
+                  style={{
+                    background: 'rgba(255, 42, 75, 0.2)',
+                    color: '#FF3B5C',
+                    border: '1.5px solid rgba(255, 42, 75, 0.5)',
+                    padding: '5px 12px',
+                    borderRadius: '8px',
+                    fontSize: '0.78rem',
+                    fontWeight: 900,
+                    cursor: 'pointer',
+                    marginRight: '6px',
+                    boxShadow: '0 0 12px rgba(255, 42, 75, 0.3)'
+                  }}
+                >
+                  ← Back to Core Feed
+                </button>
+              )}
+              <h1 style={{
+                fontSize: '1.65rem',
+                fontWeight: 950,
+                letterSpacing: '0.04em',
+                wordSpacing: '0.18em',
+                margin: 0,
+                background: 'linear-gradient(135deg, #FFFFFF 0%, #34D399 50%, #10B981 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                filter: 'drop-shadow(0 1px 1px rgba(0, 0, 0, 0.85))',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}>
+                ⚡ SALES CONQUEST TERMINAL
               </h1>
-              <span style={{ background: '#EF4444', color: '#FFF', fontSize: '0.72rem', fontWeight: 900, padding: '3px 10px', borderRadius: '6px', letterSpacing: '0.05em' }}>
+              <span style={{
+                background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.25) 0%, rgba(4, 120, 87, 0.3) 100%)',
+                color: '#34D399',
+                border: '1px solid rgba(16, 185, 129, 0.55)',
+                padding: '4px 12px',
+                borderRadius: '20px',
+                fontSize: '0.68rem',
+                fontWeight: 900,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                boxShadow: '0 0 14px rgba(16, 185, 129, 0.35)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}>
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#34D399', boxShadow: '0 0 8px #34D399' }} />
                 ENTERPRISE REVENUE SUITE
               </span>
             </div>
-            <p style={{ fontSize: '0.85rem', color: '#94A3B8', marginTop: '4px', margin: 0 }}>
-              Poach stranded enterprise accounts, leverage Section 365 contract rejections, and claim vacated market share.
+            <p style={{ color: '#94A3B8', fontSize: '0.82rem', margin: '4px 0 0 0', lineHeight: 1.5, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+              ⚡ POACH STRANDED ENTERPRISE ACCOUNTS • SECTION 365 CONTRACT REJECTIONS & VACATED MARKET SHARE
             </p>
           </div>
         </div>

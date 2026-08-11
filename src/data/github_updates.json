@@ -1,0 +1,72 @@
+[
+  {
+    "hash": "97e8cec",
+    "subject": "v3.8 Milestone: Added Talent Raid Radar, Instant AI Newsroom Studio, Sales Conquest Terminal & Specialized Membership Passes",
+    "author": "David Church",
+    "relativeDate": "25 hours ago",
+    "category": "⚡ Feature"
+  },
+  {
+    "hash": "89fe8fd",
+    "subject": "Fix ReferenceError: newCompany is not defined in aiIngestionEngine.js",
+    "author": "David Church",
+    "relativeDate": "29 hours ago",
+    "category": "🐛 Fix"
+  },
+  {
+    "hash": "c1d3832",
+    "subject": "v3.8 Milestone: Ticker speed, novel docket updates, Highlander deduplication, 100% feed mirroring & D: drive routing",
+    "author": "David Church",
+    "relativeDate": "29 hours ago",
+    "category": "⚡ Feature"
+  },
+  {
+    "hash": "1954d3c",
+    "subject": "fix(z-index): elevate DiligenceBriefModal zIndex to 999999 so it renders on top of CompanyDetailModal and parent dialogs",
+    "author": "David Church",
+    "relativeDate": "31 hours ago",
+    "category": "🐛 Fix"
+  },
+  {
+    "hash": "ff83a67",
+    "subject": "feat: expose Waterfall and Brief action buttons on main card views",
+    "author": "David Church",
+    "relativeDate": "32 hours ago",
+    "category": "⚡ Feature"
+  },
+  {
+    "hash": "3a2ac26",
+    "subject": "fix: wire View Section 363 Diligence Brief button across AuctionDirectory, CompanyDetailModal, and App state",
+    "author": "David Church",
+    "relativeDate": "32 hours ago",
+    "category": "🐛 Fix"
+  },
+  {
+    "hash": "7a5db44",
+    "subject": "feat(v3.8): implement creditor recovery waterfall simulator, diligence brief PDF exporter, and webhook ingestion gateway",
+    "author": "David Church",
+    "relativeDate": "32 hours ago",
+    "category": "⚡ Feature"
+  },
+  {
+    "hash": "688ff34",
+    "subject": "docs: add Final Handoff Note & Sprint 3.8 Roadmap",
+    "author": "David Church",
+    "relativeDate": "32 hours ago",
+    "category": "⚡ Feature"
+  },
+  {
+    "hash": "dc3eb9f",
+    "subject": "docs: add Sign-Up, Email, and SMS Alert Traceability Audit report",
+    "author": "David Church",
+    "relativeDate": "32 hours ago",
+    "category": "⚡ Feature"
+  },
+  {
+    "hash": "643fe4f",
+    "subject": "Initial commit: BusinessCollapse.Com Institutional Terminal v3.7",
+    "author": "David Church",
+    "relativeDate": "32 hours ago",
+    "category": "⚡ Feature"
+  }
+]

@@ -5,8 +5,14 @@ export default function DiligenceBriefModal({ entityName, onClose, isStarred, is
   const [copiedLink, setCopiedLink] = useState(false);
   const [isSavedInVault, setIsSavedInVault] = useState(true);
 
-  const titleName = entityName || 'Corporate Distress';
   const timestamp = new Date().toISOString().slice(0, 10);
+  const isObj = typeof entityName === 'object' && entityName !== null;
+  const titleName = isObj ? (entityName.name || entityName.entityName || 'Corporate Distress') : (entityName || 'Corporate Distress');
+  const headline = isObj ? (entityName.headline || (entityName.earlyWarningSignals && entityName.earlyWarningSignals[0]) || (entityName.keyUpdates && entityName.keyUpdates[0]) || entityName.primaryCause || 'Pre-Petition Restructuring Warning') : 'State WARN Notice & Senior Debt Downgrade Filed';
+  const location = isObj ? (entityName.locationJurisdiction || 'U.S. Bankruptcy Court') : 'Wilmington, DE (U.S. Court Jurisdiction)';
+  const cause = isObj ? (entityName.primaryCause || 'Liquidity Depletion & Senior Debt Default') : 'Senior Debt Refinancing Default';
+  const materialDate = isObj ? (entityName.formattedMaterialChange || 'Aug 10, 2026 • Verified Ingestion') : `${timestamp} EST`;
+
   const shareableUrl = `https://businesscollapse.com/vault/diligence/${(titleName).toLowerCase().replace(/\s+/g, '-')}-363-brief`;
   const sha256Checksum = `sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b${titleName.length}88`;
 
@@ -265,6 +271,28 @@ vault URL: ${shareableUrl}
           {/* Cryptographic SHA-256 Checksum Watermark Badge */}
           <div style={{ background: 'rgba(7, 10, 15, 0.9)', border: '1px dashed rgba(16, 185, 129, 0.5)', padding: '8px 12px', borderRadius: '6px', fontSize: '0.7rem', color: '#10B981', fontFamily: 'var(--font-mono)', marginBottom: '14px', wordBreak: 'break-all' }}>
             🔒 CHECKSUM VERIFIED: {sha256Checksum}
+          </div>
+
+          {/* 5-W DATELINE BREAKDOWN BOX (WHAT, WHEN, WHY, WHERE) */}
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(245, 158, 11, 0.12) 100%)',
+            border: '1.5px solid rgba(239, 68, 68, 0.5)',
+            borderRadius: '8px',
+            padding: '14px 16px',
+            marginBottom: '18px'
+          }}>
+            <div style={{ fontSize: '0.72rem', fontWeight: 900, color: '#FCA5A5', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span className="pulse-dot critical"></span> 🔥 TODAY'S NOVEL SWEEP DISCLOSURE (PARSED IN TODAY'S SWEEP)
+            </div>
+            <div style={{ fontSize: '0.96rem', fontWeight: 900, color: '#FFF', lineHeight: 1.4 }}>
+              "{headline}"
+            </div>
+            <div style={{ marginTop: '10px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '8px', fontSize: '0.74rem', color: '#E2E8F0', fontFamily: 'var(--font-mono)' }}>
+              <div>📍 <strong>WHERE:</strong> {location}</div>
+              <div>📅 <strong>WHEN:</strong> {materialDate}</div>
+              <div>💥 <strong>WHY:</strong> {cause}</div>
+              <div>⚡ <strong>WHAT:</strong> Verified Docket Ingestion</div>
+            </div>
           </div>
 
           <h4 style={{ color: '#FFF', fontSize: '0.95rem', fontWeight: 900, margin: '14px 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.04em' }}>

@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 
+const PRIMARY_SEO_TITLE = "BusinessCollapse.com | ⚡ Real-Time Distress Intelligence & Chapter 11 Docket Stream";
+
 export default function SEOHead({ activeTab, selectedCompany, selectedAuction }) {
   useEffect(() => {
-    let title = 'BusinessCollapse.com | Corporate Graveyard, PACER Bankruptcy Dockets & AI Risk Index';
-    let description = 'The definitive corporate graveyard, Chapter 11 bankruptcy docket tracker, and AI-driven corporate distress index.';
+    let title = PRIMARY_SEO_TITLE;
+    let description = 'The definitive corporate failure tracker, Chapter 11 bankruptcy docket wire, and AI-driven corporate distress index.';
 
     if (selectedCompany) {
       title = `${selectedCompany.name} (${selectedCompany.ticker || 'PRIVATE'}) Chapter 11 Post-Mortem | BusinessCollapse.com`;
@@ -12,33 +14,16 @@ export default function SEOHead({ activeTab, selectedCompany, selectedAuction })
       title = `Court Asset Auction: ${selectedAuction.auctionTitle} | BusinessCollapse.com`;
       description = `Section 363 liquidation auction for ${selectedAuction.entityName}. Stalker-horse floor bid: ${selectedAuction.stalkerHorseBid}.`;
     } else {
-      switch (activeTab) {
-        case 'graveyard':
-          title = 'Corporate Graveyard & Chapter 11 Bankruptcy Index | BusinessCollapse.com';
-          description = 'Browse recent corporate bankruptcies, Chapter 11 court dockets, and failure post-mortems.';
-          break;
-        case 'auctions':
-          title = 'Section 363 Bankruptcy Asset Auction Directory | BusinessCollapse.com';
-          description = 'Court-ordered liquidation auctions, bidder pre-registration PINs, and Stalker-Horse floor bids.';
-          break;
-        case 'sectors':
-          title = 'Sector Distress Risk Heatmap & Macro Ratings | BusinessCollapse.com';
-          description = 'Quantitative distress risk scores (0-100/100) for Commercial Real Estate, Retail, Aviation, and Crypto.';
-          break;
-        case 'anatomy':
-          title = 'Anatomy of Corporate Failure Diagnostic Lab | BusinessCollapse.com';
-          description = 'Interactive failure pattern analysis comparing capital structure flaws across historical corporate collapses.';
-          break;
-        case 'crypto':
-          title = 'Zombie Crypto Protocol & Insolvency Tracker | BusinessCollapse.com';
-          description = 'Audit of insolvent crypto protocols, locked TVL, and restructuring recovery claims.';
-          break;
-        case 'agent':
-          title = 'Autonomous System Refresh Agent Logs & Court Crawlers | BusinessCollapse.com';
-          description = 'Real-time telemetry and PACER court docket parsing logs for the BusinessCollapse.com AI ingestion engine.';
-          break;
-        default:
-          break;
+      if (activeTab === 'graveyard') {
+        title = PRIMARY_SEO_TITLE;
+      } else if (activeTab === 'auctions') {
+        title = 'Section 363 Bankruptcy Asset Auction Directory | BusinessCollapse.com';
+      } else if (activeTab === 'heatmap') {
+        title = 'Pre-Judicial Distress Heatmap & WARN Leaks | BusinessCollapse.com';
+      } else if (activeTab === 'talent_radar') {
+        title = 'Executive Talent Raid Radar & KERP Disclosures | BusinessCollapse.com';
+      } else if (activeTab === 'sales_conquest') {
+        title = 'Sales Conquest & Stranded Account Poaching Terminal | BusinessCollapse.com';
       }
     }
 

@@ -61,47 +61,75 @@ export default function Sub10mRadar({ watchlist = [], toggleWatchlist, onSelectC
   return (
     <div style={{ marginTop: '24px' }}>
       
-      {/* Universal Back Button */}
-      {onGoBack && (
-        <button
-          onClick={onGoBack}
-          style={{
-            background: 'rgba(30, 41, 59, 0.8)',
-            color: '#F8FAFC',
-            border: '1px solid var(--border-subtle)',
-            padding: '8px 18px',
-            borderRadius: '8px',
-            fontSize: '0.82rem',
-            fontWeight: 800,
-            cursor: 'pointer',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            marginBottom: '16px',
-            transition: 'all 0.2s ease'
-          }}
-          className="glass-panel-interactive"
-        >
-          <ArrowLeft size={16} color="#EF4444" /> ← Back to Main Distress Wire
-        </button>
-      )}
+
 
       {/* Sub-$10M Command Header */}
-      <div className="glass-panel" style={{ padding: '24px', marginBottom: '24px', borderLeft: '4px solid #F59E0B', background: 'linear-gradient(135deg, rgba(25, 18, 10, 0.95) 0%, rgba(35, 25, 12, 0.85) 100%)' }}>
+      <div className="glass-panel" style={{ padding: '24px', marginBottom: '24px', borderLeft: '5px solid #A855F7', background: 'linear-gradient(135deg, rgba(25, 18, 40, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '20px' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-              <Building2 size={20} color="#FCD34D" />
-              <span style={{ fontSize: '0.8rem', fontWeight: 900, color: '#FCD34D', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                BusinessCollapse PRO • SUB-$10M REGIONAL & SUBCHAPTER V RADAR
-              </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'linear-gradient(135deg, #A855F7 0%, #6B21A8 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(168, 85, 247, 0.65)', border: '1.5px solid rgba(255, 255, 255, 0.25)', flexShrink: 0 }}>
+              <Building2 size={22} color="#FFF" style={{ filter: 'drop-shadow(0 0 6px rgba(255,255,255,0.8))' }} />
             </div>
-            <h2 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '6px', color: '#FFF' }}>
-              Sub-$10M Mid-Market Insolvency & Subchapter V Reorganizations
-            </h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', maxWidth: '820px' }}>
-              Real-time radar tracking small-to-midsize business bankruptcies, Subchapter V reorganizations (&lt; $7.5M debt limit), local commercial fleet liquidations, restaurant kitchen auctions, and regional real estate lease rejections across North America.
-            </p>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                {onGoBack && (
+                  <button
+                    onClick={onGoBack}
+                    style={{
+                      background: 'rgba(255, 42, 75, 0.2)',
+                      color: '#FF3B5C',
+                      border: '1.5px solid rgba(255, 42, 75, 0.5)',
+                      padding: '5px 12px',
+                      borderRadius: '8px',
+                      fontSize: '0.78rem',
+                      fontWeight: 900,
+                      cursor: 'pointer',
+                      marginRight: '6px',
+                      boxShadow: '0 0 12px rgba(255, 42, 75, 0.3)'
+                    }}
+                  >
+                    ← Back to Core Feed
+                  </button>
+                )}
+                <h2 style={{
+                  fontSize: '1.65rem',
+                  fontWeight: 950,
+                  letterSpacing: '0.04em',
+                  wordSpacing: '0.18em',
+                  margin: 0,
+                  background: 'linear-gradient(135deg, #FFFFFF 0%, #C084FC 50%, #A855F7 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  filter: 'drop-shadow(0 1px 1px rgba(0, 0, 0, 0.85))',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}>
+                  📡 SUB-$10M REGIONAL & SUBCHAPTER V RADAR
+                </h2>
+                <span style={{
+                  background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(107, 33, 168, 0.3) 100%)',
+                  color: '#C084FC',
+                  border: '1px solid rgba(168, 85, 247, 0.55)',
+                  padding: '4px 12px',
+                  borderRadius: '20px',
+                  fontSize: '0.68rem',
+                  fontWeight: 900,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  boxShadow: '0 0 14px rgba(168, 85, 247, 0.35)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#C084FC', boxShadow: '0 0 8px #C084FC' }} />
+                  MID-MARKET TERMINAL
+                </span>
+              </div>
+              <p style={{ color: '#94A3B8', fontSize: '0.82rem', margin: '4px 0 0 0', lineHeight: 1.5, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                ⚡ SMALL-TO-MIDSIZE BUSINESS INSOLVENCY • SUBCHAPTER V REORGANIZATIONS (&lt; $7.5M DEBT LIMIT) & LOCAL FLEET/EQUIPMENT LIQUIDATIONS
+              </p>
+            </div>
           </div>
 
           {/* KPI Header Stats */}

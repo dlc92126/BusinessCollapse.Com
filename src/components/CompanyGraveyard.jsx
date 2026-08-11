@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Filter, Calendar, DollarSign, ChevronRight, Skull, AlertCircle, RefreshCw, AlertTriangle, Layers, Star, Search, Clock, Share2, EyeOff } from 'lucide-react';
 import BreakingNewsHero from './BreakingNewsHero';
 
@@ -24,6 +24,7 @@ export default function CompanyGraveyard({
   dismissedCompanyIds = [],
   toggleDismissCompany,
   activeTab = 'graveyard',
+  setActiveTab,
   onOpenWaterfall,
   onOpenDiligenceBrief,
   onOpenNewsroomStudio
@@ -34,7 +35,21 @@ export default function CompanyGraveyard({
   const [timeframeFilter, setTimeframeFilter] = useState('14D'); // '14D' (2-Week Active Wire) | 'ALL' | '7D' | '30D' | '90D' | '1Y' | '2024_2026' | 'CUSTOM'
   const [customStartDate, setCustomStartDate] = useState('');
   const [customEndDate, setCustomEndDate] = useState('');
-  const [layoutMode, setLayoutMode] = useState('compact'); // 'compact' | 'grid'
+  const [layoutMode, setLayoutMode] = useState('compact'); // 'compact' (2-Row Dense) | 'full' (Rich Narrative) | 'grid'
+  const [isControlsCollapsed, setIsControlsCollapsed] = useState(false);
+  const [isMoreWorkstationsOpen, setIsMoreWorkstationsOpen] = useState(false);
+  const PRIMARY_INSTITUTIONAL_SUBTITLE = "⚡ REAL-TIME DISTRESS INTELLIGENCE • CHAPTER 11 DOCKET STREAM & EARLY WARN WIRE";
+  const workstationsRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (workstationsRef.current && !workstationsRef.current.contains(event.target)) {
+        setIsMoreWorkstationsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // Helper to format Start / Closed Date Range
   // Helper to format Start Date, First Early Warning Signal, Official Chapter 11 Filing, and Court Case Docket Status
@@ -111,13 +126,27 @@ export default function CompanyGraveyard({
       }
     }
 
+    const eventIso = item.lastUpdated
+      ? item.lastUpdated
+      : (item.hoursAgo ? new Date(Date.now() - item.hoursAgo * 3600 * 1000).toISOString() : new Date().toISOString());
+
     if (existing) {
       // APPEND NEW WARN SIGNAL / DOCKET / AUCTION UPDATE to existing entity record
       existing.isEmergent = true;
       existing.isPreJudicial = item.badgeText?.includes('WARN') || item.badgeText?.includes('RATING') || false;
       existing.status = item.badgeText || existing.status;
       existing.headline = item.headline || existing.headline;
-      existing.dateTimestamp = item.lastUpdated || existing.dateTimestamp;
+
+      // ALWAYS RESET MATERIAL CHANGE DATE & TIMESTAMP TO NOVEL EVENT TIMESTAMP
+      const itemTime = new Date(eventIso).getTime();
+      const existingTime = existing.lastMaterialChangeDate ? new Date(existing.lastMaterialChangeDate).getTime() : (existing.dateTimestamp ? new Date(existing.dateTimestamp).getTime() : 0);
+      if (itemTime > existingTime || !existing.lastMaterialChangeDate) {
+        existing.lastMaterialChangeDate = eventIso;
+        existing.dateTimestamp = eventIso;
+        const freshDate = new Date(eventIso);
+        existing.formattedMaterialChange = freshDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' • ' + freshDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) + ' EST';
+      }
+
       if (item.auctionTitle) existing.auctionTitle = item.auctionTitle;
       if (item.auctionPortalUrl) existing.auctionPortalUrl = item.auctionPortalUrl;
       
@@ -134,6 +163,9 @@ export default function CompanyGraveyard({
     } else {
       // Create new emergent record for novel entity
       const newKey = tickerKey || nameKey || `EMERGENT-${Date.now()}`;
+      const freshDate = new Date(eventIso);
+      const formattedMatStr = freshDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' • ' + freshDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) + ' EST';
+
       companyMap.set(newKey, {
         id: item.id || `emergent-${newKey}`,
         name: item.entityName || item.name,
@@ -144,18 +176,22 @@ export default function CompanyGraveyard({
         summary: item.summary,
         yearFounded: item.yearFounded || 1995,
         yearCollapsed: 2026,
-        totalDebt: item.totalDebt || 'Pre-Petition Valuation',
+        totalDebt: item.totalDebt || item.capitalAtRisk || 'Pre-Petition Valuation',
+        peakValuation: item.capitalAtRisk || '$250,000,000',
+        collapseValuation: '$0.00 (Pre-Petition)',
         jobsLost: item.jobsLost || 850,
         sectorId: item.sectorId || 'retail',
         courtCaseStatus: 'PRE_PETITION_WARN_SIGNAL',
-        officialFilingDate: item.lastUpdated || '2026-08-06',
-        dateTimestamp: item.lastUpdated || '2026-08-06T07:00:00Z',
+        officialFilingDate: eventIso.slice(0, 10),
+        dateTimestamp: eventIso,
+        lastMaterialChangeDate: eventIso,
+        formattedMaterialChange: formattedMatStr,
         isEmergent: true,
         isPreJudicial: true,
         auctionTitle: item.auctionTitle,
         auctionPortalUrl: item.auctionPortalUrl,
-        locationJurisdiction: item.locationJurisdiction,
-        earlyWarningSignals: item.keyUpdates || [],
+        locationJurisdiction: item.locationJurisdiction || `${item.region || 'US'} State Jurisdiction`,
+        earlyWarningSignals: item.keyUpdates || [item.signalType || item.summary],
         pressCitations: item.pressCitations || []
       });
     }
@@ -182,6 +218,25 @@ export default function CompanyGraveyard({
     if (dismissedCompanyIds && dismissedCompanyIds.includes(c.id)) return false;
 
     if (selectedSectorFilter !== 'ALL' && c.sectorId !== selectedSectorFilter) return false;
+
+    // Graveyard Archive Mode: Show completed cases, discharged dockets, historical post-mortems, and liquidated corporate autopsies
+    if (activeTab === 'graveyard_archive' && statusFilter === 'ALL') {
+      const isArchived = Boolean(
+        c.courtCaseStatus === 'FINAL_DECREE_ISSUED' ||
+        c.statusBadge === 'discharge' ||
+        c.postMortemLesson ||
+        c.executiveSummary ||
+        c.collapseValuation ||
+        c.yearCollapsed ||
+        c.status?.includes('ARCHIVE') ||
+        c.status?.includes('DISCHARGED') ||
+        c.status?.includes('POST-MORTEM') ||
+        c.status?.includes('LIQUIDATED') ||
+        c.status?.includes('CHAPTER 11') ||
+        c.isEmergent === undefined
+      );
+      if (!isArchived) return false;
+    }
 
     // Status & Stage Taxonomy Matching
     if (statusFilter !== 'ALL') {
@@ -294,271 +349,644 @@ export default function CompanyGraveyard({
 
 
   return (
-    <div style={{ marginTop: '24px' }}>
+    <div style={{ marginTop: '4px' }}>
       {/* Control Header & Filters (High-Density Terminal Console) */}
 
 
+      {/* COLLAPSED 1-ROW ULTRA-COMPACT TOOLBAR (FREES UP 20%+ SCREEN REAL ESTATE) */}
+      {isControlsCollapsed ? (
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '8px 16px',
+          background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%)',
+          border: '1px solid rgba(255, 42, 75, 0.35)',
+          borderLeft: '5px solid #FF2A4B',
+          borderRadius: '10px',
+          marginBottom: '12px',
+          boxShadow: '0 4px 16px rgba(0,0,0,0.5)',
+          flexWrap: 'wrap',
+          gap: '10px'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <Skull size={18} color="#FF2A4B" />
+            <span style={{ fontSize: '0.88rem', fontWeight: 950, color: '#FFF', letterSpacing: '0.03em' }}>
+              🔥 CORE FEED ({filteredCompanies.length} MONITORED)
+            </span>
+            <button
+              onClick={() => setIsControlsCollapsed(false)}
+              style={{
+                background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+                color: '#000',
+                border: 'none',
+                padding: '4px 12px',
+                borderRadius: '16px',
+                fontSize: '0.68rem',
+                fontWeight: 900,
+                cursor: 'pointer',
+                boxShadow: '0 0 10px rgba(16, 185, 129, 0.4)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '4px'
+              }}
+            >
+              🔽 Expand Full Header & Filters
+            </button>
+          </div>
+
+          {/* Inline Quick Search & View Switcher */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div style={{ position: 'relative', width: '200px' }}>
+              <input
+                type="text"
+                placeholder="Quick search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                style={{ width: '100%', background: 'rgba(7, 10, 15, 0.8)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '6px', padding: '4px 8px 4px 26px', color: '#FFF', fontSize: '0.75rem', outline: 'none' }}
+              />
+              <Search size={12} color="#94A3B8" style={{ position: 'absolute', left: '8px', top: '7px' }} />
+            </div>
+
+            <div style={{ background: 'rgba(15,23,42,0.9)', padding: '2px', borderRadius: '8px', border: '1px solid var(--border-subtle)', display: 'flex', gap: '2px' }}>
+              <button onClick={() => setLayoutMode('compact')} style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '0.68rem', fontWeight: 800, background: layoutMode === 'compact' ? '#EF4444' : 'transparent', color: layoutMode === 'compact' ? '#FFF' : '#94A3B8', border: 'none', cursor: 'pointer' }}>⚡ 2-Row Dense</button>
+              <button onClick={() => setLayoutMode('full')} style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '0.68rem', fontWeight: 800, background: layoutMode === 'full' ? '#F59E0B' : 'transparent', color: layoutMode === 'full' ? '#000' : '#94A3B8', border: 'none', cursor: 'pointer' }}>📰 Full Cards</button>
+              <button onClick={() => setLayoutMode('grid')} style={{ padding: '3px 8px', borderRadius: '6px', fontSize: '0.68rem', fontWeight: 800, background: layoutMode === 'grid' ? '#3B82F6' : 'transparent', color: layoutMode === 'grid' ? '#FFF' : '#94A3B8', border: 'none', cursor: 'pointer' }}>🔳 Grid</button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        /* EXPANDED FULL HEADER HERO CONSOLE */
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '14px', marginBottom: '16px', paddingLeft: '4px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'linear-gradient(135deg, #FF2A4B 0%, #881337 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(255, 42, 75, 0.65)', border: '1.5px solid rgba(255, 255, 255, 0.25)', flexShrink: 0 }}>
+              <Skull size={22} color="#FFF" style={{ filter: 'drop-shadow(0 0 6px rgba(255,255,255,0.8))' }} />
+            </div>
+            
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                {activeTab === 'graveyard_archive' && (
+                  <button
+                    onClick={() => setActiveTab('graveyard')}
+                    style={{
+                      background: 'rgba(255, 42, 75, 0.2)',
+                      color: '#FF3B5C',
+                      border: '1.5px solid rgba(255, 42, 75, 0.5)',
+                      padding: '4px 12px',
+                      borderRadius: '8px',
+                      fontSize: '0.78rem',
+                      fontWeight: 900,
+                      cursor: 'pointer',
+                      marginRight: '6px',
+                      boxShadow: '0 0 12px rgba(255, 42, 75, 0.3)'
+                    }}
+                  >
+                    ← Back to Live Core Feed
+                  </button>
+                )}
+                <h2 style={{
+                  fontSize: '1.65rem',
+                  fontWeight: 950,
+                  letterSpacing: '0.04em',
+                  wordSpacing: '0.18em',
+                  margin: 0,
+                  background: 'linear-gradient(135deg, #FFFFFF 0%, #FF3B5C 50%, #F59E0B 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  filter: 'drop-shadow(0 1px 1px rgba(0, 0, 0, 0.85))',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}>
+                  {activeTab === 'graveyard_archive' ? '🪦 Corporate Graveyard & Post-Mortem Archive' : '🔥 CORE FEED'}
+                </h2>
+
+                <span style={{
+                  background: 'linear-gradient(135deg, rgba(255, 42, 75, 0.25) 0%, rgba(183, 28, 28, 0.3) 100%)',
+                  color: '#FF4D6D',
+                  border: '1px solid rgba(255, 42, 75, 0.55)',
+                  padding: '4px 12px',
+                  borderRadius: '20px',
+                  fontSize: '0.68rem',
+                  fontWeight: 900,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  boxShadow: '0 0 14px rgba(255, 42, 75, 0.35)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#FF2A4B', boxShadow: '0 0 8px #FF2A4B' }} />
+                  {filteredCompanies.length} OF {allAggregatedCompanies.length || companies.length} MONITORED
+                </span>
+
+                {(statusFilter !== 'ALL' || causeFilter !== 'ALL' || timeframeFilter !== 'ALL' || selectedSectorFilter !== 'ALL' || searchQuery) && (
+                  <button
+                    onClick={() => { setStatusFilter('ALL'); setCauseFilter('ALL'); setTimeframeFilter('ALL'); setSelectedSectorFilter('ALL'); setSearchQuery(''); }}
+                    style={{ background: 'rgba(255, 42, 75, 0.25)', color: '#FF3B5C', border: '1px solid rgba(255, 42, 75, 0.5)', padding: '4px 12px', borderRadius: '20px', fontSize: '0.68rem', fontWeight: 900, cursor: 'pointer', boxShadow: '0 0 10px rgba(255, 42, 75, 0.3)' }}
+                  >
+                    ✕ Reset Filters
+                  </button>
+                )}
+
+                <button
+                  onClick={() => setIsControlsCollapsed(true)}
+                  style={{
+                    background: 'rgba(30, 41, 59, 0.85)',
+                    color: '#F8FAFC',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    padding: '4px 12px',
+                    borderRadius: '20px',
+                    fontSize: '0.68rem',
+                    fontWeight: 900,
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    letterSpacing: '0.02em'
+                  }}
+                >
+                  ▲ Collapse Header & Maximize View
+                </button>
+              </div>
+
+              <div style={{
+                fontSize: '0.68rem',
+                color: '#38BDF8',
+                fontWeight: 800,
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em',
+                marginTop: '2px'
+              }}>
+                {PRIMARY_INSTITUTIONAL_SUBTITLE}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* UNIFIED CONTROL CONSOLE BOX */}
       <div 
         style={{ 
-          padding: '16px 20px', 
-          marginBottom: '20px', 
+          padding: isControlsCollapsed ? '8px 16px' : '16px 20px', 
+          marginBottom: '16px', 
           background: 'linear-gradient(135deg, rgba(255, 42, 75, 0.18) 0%, rgba(183, 28, 28, 0.22) 40%, rgba(11, 17, 30, 0.95) 100%)',
           border: '1px solid rgba(255, 42, 75, 0.35)',
           borderLeft: '5px solid #FF2A4B',
           borderRadius: '12px',
           boxShadow: '0 6px 24px rgba(255, 42, 75, 0.15)',
           display: 'flex',
-          flexDirection: 'column',
-          gap: '14px'
+          alignItems: 'center',
+          justify: 'space-between',
+          flexWrap: 'wrap',
+          gap: isControlsCollapsed ? '8px' : '16px',
+          transition: 'all 0.3s ease'
         }}
       >
-        {/* ROW 1: Title & Main Search Bar + View Switcher */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
-          
-          {/* Title & Live Counter */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: 'linear-gradient(135deg, #FF2A4B 0%, #B71C1C 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 14px rgba(255, 42, 75, 0.5)', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
-              <Skull size={20} color="#FFF" />
-            </div>
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                <h2 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#FFF', letterSpacing: '-0.02em', margin: 0 }}>
-                  {activeTab === 'graveyard_archive' ? '🪦 Corporate Graveyard & Post-Mortem Archive' : '🔥 Live Distress Wire & Chapter 11 Feed'}
-                </h2>
-                <span style={{ background: 'rgba(255, 42, 75, 0.2)', color: '#FF3B5C', border: '1px solid rgba(255, 42, 75, 0.4)', padding: '2px 8px', borderRadius: '6px', fontSize: '0.65rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  {filteredCompanies.length} OF {allAggregatedCompanies.length || companies.length} MONITORED
-                </span>
+        {/* SECTION 1 (LEFT): 2x2 CORE WORKSTATIONS GRID */}
+        {!isControlsCollapsed && (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(180px, 1fr))', gap: '8px', flexShrink: 0 }}>
+          {/* Core Feed */}
+          <button
+            onClick={() => setActiveTab('graveyard')}
+            style={{
+              height: '38px',
+              width: '100%',
+              background: activeTab === 'graveyard' ? 'linear-gradient(135deg, #FF2A4B 0%, #B71C1C 100%)' : 'rgba(7, 10, 15, 0.75)',
+              color: activeTab === 'graveyard' ? '#FFFFFF' : '#94A3B8',
+              border: activeTab === 'graveyard' ? '1.5px solid #FF2A4B' : '1px solid var(--border-subtle)',
+              padding: '0 12px',
+              borderRadius: '8px',
+              fontSize: '0.74rem',
+              fontWeight: 900,
+              letterSpacing: '0.02em',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '6px',
+              whiteSpace: 'nowrap',
+              boxShadow: activeTab === 'graveyard' ? '0 0 14px rgba(255, 42, 75, 0.4)' : 'none',
+              boxSizing: 'border-box'
+            }}
+          >
+            🔥 LIVE DISTRESS WIRE
+          </button>
+
+          {/* Distress Heatmap */}
+          <button
+            onClick={() => setActiveTab('heatmap')}
+            style={{
+              height: '38px',
+              width: '100%',
+              background: activeTab === 'heatmap' ? 'linear-gradient(135deg, #FF2A4B 0%, #B71C1C 100%)' : 'rgba(7, 10, 15, 0.75)',
+              color: activeTab === 'heatmap' ? '#FFFFFF' : '#94A3B8',
+              border: activeTab === 'heatmap' ? '1.5px solid #FF2A4B' : '1px solid var(--border-subtle)',
+              padding: '0 12px',
+              borderRadius: '8px',
+              fontSize: '0.74rem',
+              fontWeight: 900,
+              letterSpacing: '0.02em',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '6px',
+              whiteSpace: 'nowrap',
+              boxShadow: activeTab === 'heatmap' ? '0 0 14px rgba(255, 42, 75, 0.4)' : 'none',
+              boxSizing: 'border-box'
+            }}
+          >
+            📊 DISTRESS HEATMAP
+          </button>
+
+          {/* Court Auctions */}
+          <button
+            onClick={() => setActiveTab('auctions')}
+            style={{
+              height: '38px',
+              width: '100%',
+              background: activeTab === 'auctions' ? 'linear-gradient(135deg, #FF2A4B 0%, #B71C1C 100%)' : 'rgba(7, 10, 15, 0.75)',
+              color: activeTab === 'auctions' ? '#FFFFFF' : '#94A3B8',
+              border: activeTab === 'auctions' ? '1.5px solid #FF2A4B' : '1px solid var(--border-subtle)',
+              padding: '0 12px',
+              borderRadius: '8px',
+              fontSize: '0.74rem',
+              fontWeight: 900,
+              letterSpacing: '0.02em',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '6px',
+              whiteSpace: 'nowrap',
+              boxShadow: activeTab === 'auctions' ? '0 0 14px rgba(255, 42, 75, 0.4)' : 'none',
+              boxSizing: 'border-box'
+            }}
+          >
+            🏛️ COURT AUCTIONS
+          </button>
+
+          {/* More Workstations Dropdown */}
+          <div ref={workstationsRef} style={{ position: 'relative', width: '100%' }}>
+            <button
+              onClick={() => setIsMoreWorkstationsOpen(!isMoreWorkstationsOpen)}
+              style={{
+                height: '38px',
+                width: '100%',
+                background: ['talent_radar', 'sales_conquest', 'sub10m', 'dip', 'graveyard_archive', 'admin'].includes(activeTab)
+                  ? 'linear-gradient(135deg, #FF2A4B 0%, #B71C1C 100%)'
+                  : 'rgba(7, 10, 15, 0.85)',
+                color: '#FFF',
+                border: '1.5px solid rgba(255, 42, 75, 0.5)',
+                padding: '0 12px',
+                borderRadius: '8px',
+                fontSize: '0.74rem',
+                fontWeight: 900,
+                letterSpacing: '0.02em',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justify: 'center',
+                gap: '6px',
+                whiteSpace: 'nowrap',
+                boxSizing: 'border-box'
+              }}
+            >
+              📂 MORE WORKSTATIONS ▾
+            </button>
+
+            {isMoreWorkstationsOpen && (
+              <div style={{
+                position: 'absolute',
+                top: 'calc(100% + 6px)',
+                left: 0,
+                width: '300px',
+                background: '#0F172A',
+                border: '1.5px solid rgba(255, 42, 75, 0.45)',
+                borderRadius: '10px',
+                boxShadow: '0 16px 40px rgba(0,0,0,0.95)',
+                padding: '8px 0',
+                zIndex: 400,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '2px'
+              }}>
+                <div style={{ padding: '6px 14px', fontSize: '0.68rem', fontWeight: 900, color: '#FF2A4B', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                  ⚡ SPECIALIZED TERMINALS
+                </div>
+                <div onClick={() => { setActiveTab('talent_radar'); setIsMoreWorkstationsOpen(false); }} style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 800, display: 'flex', justifyContent: 'space-between' }} className="glass-panel-interactive">
+                  <span>🎯 Corporate Headhunt Suite</span>
+                  <span style={{ fontSize: '0.62rem', background: '#38BDF8', color: '#000', padding: '1px 5px', borderRadius: '4px', fontWeight: 900 }}>$299/MO</span>
+                </div>
+                <div onClick={() => { setActiveTab('sales_conquest'); setIsMoreWorkstationsOpen(false); }} style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 800, display: 'flex', justifyContent: 'space-between' }} className="glass-panel-interactive">
+                  <span>⚡ Sales Conquest Radar</span>
+                  <span style={{ fontSize: '0.62rem', background: '#10B981', color: '#000', padding: '1px 5px', borderRadius: '4px', fontWeight: 900 }}>$499/MO</span>
+                </div>
+                <div onClick={() => { setActiveTab('newsroom'); setIsMoreWorkstationsOpen(false); }} style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 800, display: 'flex', justifyContent: 'space-between' }} className="glass-panel-interactive">
+                  <span>📰 AI Newsroom Studio</span>
+                  <span style={{ fontSize: '0.62rem', background: '#F59E0B', color: '#000', padding: '1px 5px', borderRadius: '4px', fontWeight: 900 }}>$299/MO</span>
+                </div>
+                <div onClick={() => { setActiveTab('sub10m'); setIsMoreWorkstationsOpen(false); }} style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 800, display: 'flex', justifyContent: 'space-between' }} className="glass-panel-interactive">
+                  <span>📡 Sub-$10M Radar</span>
+                  <span style={{ fontSize: '0.62rem', background: '#A855F7', color: '#FFF', padding: '1px 5px', borderRadius: '4px', fontWeight: 900 }}>$999/MO</span>
+                </div>
+                <div onClick={() => { setActiveTab('dip'); setIsMoreWorkstationsOpen(false); }} style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 800, display: 'flex', justifyContent: 'space-between' }} className="glass-panel-interactive">
+                  <span>💳 DIP Loan Terminal</span>
+                  <span style={{ fontSize: '0.62rem', background: '#6366F1', color: '#FFF', padding: '1px 5px', borderRadius: '4px', fontWeight: 900 }}>$999/MO</span>
+                </div>
+                <div onClick={() => { setActiveTab('graveyard_archive'); setIsMoreWorkstationsOpen(false); }} style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 800 }} className="glass-panel-interactive">
+                  🪦 Graveyard Archive
+                </div>
               </div>
+            )}
+          </div>
+        </div>
+        )}
+
+        {/* SECTION 2 (MIDDLE): 2x2 COMPACT FILTER CONSOLE */}
+        {!isControlsCollapsed && (
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', flex: '1 1 320px', minWidth: '280px' }}>
+            
+            {/* Sector Filter */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              background: selectedSectorFilter !== 'ALL' ? 'rgba(59, 130, 246, 0.25)' : 'rgba(7, 10, 15, 0.75)',
+              padding: '0 8px',
+              height: '38px',
+              borderRadius: '8px',
+              border: selectedSectorFilter !== 'ALL' ? '1.5px solid #3B82F6' : '1px solid var(--border-subtle)',
+              boxSizing: 'border-box'
+            }}>
+              <span style={{ fontSize: '0.68rem', color: selectedSectorFilter !== 'ALL' ? '#60A5FA' : 'var(--text-dim)', fontWeight: 900, textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+                Sector:
+              </span>
+              <select
+                value={selectedSectorFilter}
+                onChange={(e) => setSelectedSectorFilter(e.target.value)}
+                style={{ width: '100%', background: 'transparent', color: '#FFF', border: 'none', fontSize: '0.72rem', outline: 'none', cursor: 'pointer', fontWeight: 800 }}
+              >
+                <option value="ALL" style={{ background: '#0F172A' }}>🌐 All Sectors</option>
+                <option value="aviation" style={{ background: '#0F172A' }}>✈️ Aviation</option>
+                <option value="automotive" style={{ background: '#0F172A' }}>🚗 Automotive</option>
+                <option value="cre" style={{ background: '#0F172A' }}>🏢 Real Estate</option>
+                <option value="legacy-retail" style={{ background: '#0F172A' }}>🛍️ Retail</option>
+                <option value="regional-banking" style={{ background: '#0F172A' }}>🏦 Banking</option>
+                <option value="casual-dining" style={{ background: '#0F172A' }}>🍔 Dining</option>
+                <option value="linear-media" style={{ background: '#0F172A' }}>📺 Media</option>
+                <option value="legacy-tech" style={{ background: '#0F172A' }}>💻 Tech</option>
+                <option value="energy" style={{ background: '#0F172A' }}>⚡ Energy</option>
+                <option value="crypto-protocols" style={{ background: '#0F172A' }}>🪙 Crypto</option>
+                <option value="healthcare" style={{ background: '#0F172A' }}>🏥 Healthcare</option>
+                <option value="logistics" style={{ background: '#0F172A' }}>🚛 Logistics</option>
+                <option value="fintech" style={{ background: '#0F172A' }}>💳 Fintech</option>
+                <option value="biotech" style={{ background: '#0F172A' }}>🧬 Biotech</option>
+                <option value="telecom" style={{ background: '#0F172A' }}>📡 Telecom</option>
+              </select>
             </div>
+
+            {/* Status Filter */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              background: statusFilter !== 'ALL' ? 'rgba(124, 58, 237, 0.25)' : 'rgba(7, 10, 15, 0.75)',
+              padding: '0 8px',
+              height: '38px',
+              borderRadius: '8px',
+              border: statusFilter !== 'ALL' ? '1.5px solid #7C3AED' : '1px solid var(--border-subtle)',
+              boxSizing: 'border-box'
+            }}>
+              <span style={{ fontSize: '0.68rem', color: statusFilter !== 'ALL' ? '#C084FC' : 'var(--text-dim)', fontWeight: 900, textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+                Status:
+              </span>
+              <select
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value)}
+                style={{ width: '100%', background: 'transparent', color: '#FFF', border: 'none', fontSize: '0.72rem', outline: 'none', cursor: 'pointer', fontWeight: 800 }}
+              >
+                <option value="ALL" style={{ background: '#0F172A' }}>🌐 All Statuses</option>
+                <option value="pre-judicial" style={{ background: '#0F172A' }}>🟨 Pre-Judicial WARN</option>
+                <option value="active-docket" style={{ background: '#0F172A' }}>🟥 Active Ch. 11 Docket</option>
+                <option value="363-auction" style={{ background: '#0F172A' }}>🟩 Section 363 Auction</option>
+                <option value="discharged" style={{ background: '#0F172A' }}>⚖️ Case Discharged</option>
+              </select>
+            </div>
+
+            {/* Primary Cause Filter */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              background: causeFilter !== 'ALL' ? 'rgba(239, 68, 68, 0.25)' : 'rgba(7, 10, 15, 0.75)',
+              padding: '0 8px',
+              height: '38px',
+              borderRadius: '8px',
+              border: causeFilter !== 'ALL' ? '1.5px solid #EF4444' : '1px solid var(--border-subtle)',
+              boxSizing: 'border-box'
+            }}>
+              <span style={{ fontSize: '0.68rem', color: causeFilter !== 'ALL' ? '#FCA5A5' : 'var(--text-dim)', fontWeight: 900, textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+                Cause:
+              </span>
+              <select
+                value={causeFilter}
+                onChange={(e) => setCauseFilter(e.target.value)}
+                style={{ width: '100%', background: 'transparent', color: '#FFF', border: 'none', fontSize: '0.72rem', outline: 'none', cursor: 'pointer', fontWeight: 800 }}
+              >
+                <option value="ALL" style={{ background: '#0F172A' }}>🌐 All Causes</option>
+                <option value="debt" style={{ background: '#0F172A' }}>💥 Debt Overload</option>
+                <option value="execution" style={{ background: '#0F172A' }}>📉 Execution Failure</option>
+                <option value="macro" style={{ background: '#0F172A' }}>🌊 Macro Shift</option>
+                <option value="tech" style={{ background: '#0F172A' }}>🤖 Disruption</option>
+              </select>
+            </div>
+
+            {/* Timeframe Filter */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              background: timeframeFilter !== 'ALL' ? 'rgba(16, 185, 129, 0.25)' : 'rgba(7, 10, 15, 0.75)',
+              padding: '0 8px',
+              height: '38px',
+              borderRadius: '8px',
+              border: timeframeFilter !== 'ALL' ? '1.5px solid #10B981' : '1px solid var(--border-subtle)',
+              boxSizing: 'border-box'
+            }}>
+              <span style={{ fontSize: '0.68rem', color: timeframeFilter !== 'ALL' ? '#34D399' : 'var(--text-dim)', fontWeight: 900, textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+                Date Range:
+              </span>
+              <select
+                value={timeframeFilter}
+                onChange={(e) => setTimeframeFilter(e.target.value)}
+                style={{ width: '100%', background: 'transparent', color: '#FFF', border: 'none', fontSize: '0.72rem', outline: 'none', cursor: 'pointer', fontWeight: 800 }}
+              >
+                <option value="14D" style={{ background: '#0F172A' }}>🔥 2-Week Wire (14D)</option>
+                <option value="7D" style={{ background: '#0F172A' }}>⚡ Last 7 Days</option>
+                <option value="30D" style={{ background: '#0F172A' }}>📅 Last 30 Days</option>
+                <option value="90D" style={{ background: '#0F172A' }}>⚖️ Ongoing</option>
+                <option value="1Y" style={{ background: '#0F172A' }}>Last 12 Months</option>
+                <option value="ALL" style={{ background: '#0F172A' }}>🌐 All Dockets</option>
+              </select>
+            </div>
+
+          </div>
+        )}
+
+
+        {/* SECTION 3 (RIGHT): ACTIONS, SEARCH & CONTROLS UTILITIES */}
+        <div style={{
+          display: 'flex',
+          flexDirection: isControlsCollapsed ? 'row' : 'column',
+          alignItems: isControlsCollapsed ? 'center' : 'stretch',
+          justifyContent: 'space-between',
+          gap: '8px',
+          flex: isControlsCollapsed ? '1 1 100%' : '0 0 320px'
+        }}>
+          
+          {/* Search Bar (Matching 38px Height) */}
+          <div style={{ position: 'relative', flex: isControlsCollapsed ? '1 1 300px' : '1' }}>
+            <Search size={14} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-dim)' }} />
+            <input
+              type="text"
+              placeholder="Search company, ticker, cause..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              style={{
+                width: '100%',
+                height: '38px',
+                padding: '0 32px 0 34px',
+                borderRadius: '8px',
+                background: 'rgba(7, 10, 15, 0.75)',
+                border: searchQuery ? '1.5px solid #FF2A4B' : '1px solid var(--border-subtle)',
+                color: '#FFF',
+                fontSize: '0.78rem',
+                outline: 'none',
+                boxShadow: searchQuery ? '0 0 12px rgba(255, 42, 75, 0.3)' : 'none',
+                boxSizing: 'border-box'
+              }}
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', background: 'transparent', border: 'none', color: '#94A3B8', cursor: 'pointer', fontWeight: 900, fontSize: '0.78rem' }}
+              >
+                ✕
+              </button>
+            )}
           </div>
 
-          {/* Inline Live Search Bar & Controls Group */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', flex: '1 1 auto', justifyContent: 'flex-end' }}>
+          {/* Action Control Buttons (Layout Switcher & Controls Toggle) */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
             
-            {/* Live Search Input */}
-            <div style={{ position: 'relative', width: '280px', maxWidth: '100%' }}>
-              <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-dim)' }} />
-              <input
-                type="text"
-                placeholder="Search company, ticker, cause..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                style={{
-                  width: '100%',
-                  padding: '7px 30px 7px 32px',
-                  borderRadius: '8px',
-                  background: 'rgba(7, 10, 15, 0.75)',
-                  border: searchQuery ? '1.5px solid #FF2A4B' : '1px solid var(--border-subtle)',
-                  color: '#FFF',
-                  fontSize: '0.8rem',
-                  outline: 'none',
-                  boxShadow: searchQuery ? '0 0 10px rgba(255, 42, 75, 0.3)' : 'none'
-                }}
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'transparent', border: 'none', color: '#94A3B8', cursor: 'pointer', fontWeight: 800, fontSize: '0.75rem' }}
-                >
-                  ✕
-                </button>
-              )}
-            </div>
-
-            {/* Layout Mode Switcher */}
-            <div style={{ display: 'flex', alignItems: 'center', background: 'rgba(7, 10, 15, 0.8)', padding: '2px', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+            {/* View Switcher: 2-Row Dense vs Full Cards vs Grid */}
+            <div style={{ display: 'flex', alignItems: 'center', background: 'rgba(7, 10, 15, 0.8)', padding: '2px', height: '38px', borderRadius: '8px', border: '1px solid var(--border-subtle)', boxSizing: 'border-box' }}>
               <button
                 onClick={() => setLayoutMode('compact')}
                 style={{
+                  height: '100%',
                   background: layoutMode === 'compact' ? '#7C3AED' : 'transparent',
                   color: layoutMode === 'compact' ? '#FFF' : 'var(--text-muted)',
                   border: 'none',
-                  padding: '4px 10px',
+                  padding: '0 10px',
                   borderRadius: '6px',
-                  fontSize: '0.75rem',
-                  fontWeight: 800,
-                  cursor: 'pointer',
-                  transition: 'var(--transition-fast)'
+                  fontSize: '0.72rem',
+                  fontWeight: 900,
+                  cursor: 'pointer'
                 }}
-                title="Compact Row List View"
+                title="2-Row High-Density Ticker Rows"
               >
-                ☰ List
+                ⚡ 2-Row Dense
+              </button>
+              <button
+                onClick={() => setLayoutMode('full')}
+                style={{
+                  height: '100%',
+                  background: layoutMode === 'full' ? '#7C3AED' : 'transparent',
+                  color: layoutMode === 'full' ? '#FFF' : 'var(--text-muted)',
+                  border: 'none',
+                  padding: '0 10px',
+                  borderRadius: '6px',
+                  fontSize: '0.72rem',
+                  fontWeight: 900,
+                  cursor: 'pointer'
+                }}
+                title="Full Narrative Post-Mortem Cards"
+              >
+                📰 Full Cards
               </button>
               <button
                 onClick={() => setLayoutMode('grid')}
                 style={{
+                  height: '100%',
                   background: layoutMode === 'grid' ? '#7C3AED' : 'transparent',
                   color: layoutMode === 'grid' ? '#FFF' : 'var(--text-muted)',
                   border: 'none',
-                  padding: '4px 10px',
+                  padding: '0 10px',
                   borderRadius: '6px',
-                  fontSize: '0.75rem',
-                  fontWeight: 800,
-                  cursor: 'pointer',
-                  transition: 'var(--transition-fast)'
+                  fontSize: '0.72rem',
+                  fontWeight: 900,
+                  cursor: 'pointer'
                 }}
-                title="Large Grid Card View"
+                title="Large Multi-Column Grid Cards"
               >
                 🔳 Grid
               </button>
             </div>
 
-            {/* Prominent Create Custom Distress Alerts Button */}
+            {/* Create Custom Alerts */}
             <button
               onClick={() => {
                 if (onOpenProRadarPreferences) onOpenProRadarPreferences();
               }}
               style={{ 
+                flex: 1,
+                height: '38px',
                 background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)', 
                 color: '#FFF', 
                 border: 'none', 
-                padding: '6px 14px', 
+                padding: '0 10px', 
                 borderRadius: '8px', 
-                fontSize: '0.78rem', 
+                fontSize: '0.74rem', 
                 fontWeight: 900, 
                 cursor: 'pointer',
-                boxShadow: '0 0 16px rgba(245, 158, 11, 0.45)',
-                display: 'inline-flex',
+                boxShadow: '0 0 12px rgba(245, 158, 11, 0.4)',
+                display: 'flex',
                 alignItems: 'center',
-                gap: '6px',
-                whiteSpace: 'nowrap'
+                justifyContent: 'center',
+                gap: '4px',
+                whiteSpace: 'nowrap',
+                boxSizing: 'border-box'
               }}
-              title="Configure 24/7 SMS & Email Distress Alerts, Thresholds, Cities & States"
             >
-              🔔 Create Custom Alerts ↗
+              🔔 Alerts ↗
             </button>
 
-            {/* Dataset Standards Button */}
+            {/* Standards */}
             <button
               onClick={() => {
                 if (onOpenAdmissionCriteria) onOpenAdmissionCriteria();
               }}
-              style={{ background: 'rgba(16, 185, 129, 0.12)', color: '#10B981', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '5px 10px', borderRadius: '8px', fontSize: '0.72rem', fontWeight: 700, cursor: 'pointer' }}
-              title="View Official Dataset Admission Standards & $10M Threshold Audit Request"
+              style={{
+                height: '38px',
+                background: 'rgba(16, 185, 129, 0.12)',
+                color: '#10B981',
+                border: '1px solid rgba(16, 185, 129, 0.3)',
+                padding: '0 10px',
+                borderRadius: '8px',
+                fontSize: '0.72rem',
+                fontWeight: 800,
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                boxSizing: 'border-box'
+              }}
             >
               📜 Standards
             </button>
 
-
           </div>
-
-        </div>
-
-        {/* ROW 2: High-Density Filter Strip */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center', paddingTop: '10px', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
-          
-          {/* Industry Sector Filter */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: selectedSectorFilter !== 'ALL' ? 'rgba(59, 130, 246, 0.25)' : 'rgba(7, 10, 15, 0.6)', padding: '3px 8px', borderRadius: '6px', border: selectedSectorFilter !== 'ALL' ? '1.5px solid #3B82F6' : '1px solid var(--border-subtle)' }}>
-            <span style={{ fontSize: '0.72rem', color: selectedSectorFilter !== 'ALL' ? '#60A5FA' : 'var(--text-dim)', fontWeight: 800 }}>Sector:</span>
-            <select
-              value={selectedSectorFilter}
-              onChange={(e) => setSelectedSectorFilter(e.target.value)}
-              style={{ background: 'transparent', color: '#FFF', border: 'none', fontSize: '0.75rem', outline: 'none', cursor: 'pointer', fontWeight: 800 }}
-            >
-              <option value="ALL" style={{ background: '#0F172A' }}>🌐 All Sectors</option>
-              <option value="aviation" style={{ background: '#0F172A' }}>✈️ Aviation & Aerospace</option>
-              <option value="automotive" style={{ background: '#0F172A' }}>🚗 Automotive & EV</option>
-              <option value="cre" style={{ background: '#0F172A' }}>🏢 Commercial Real Estate</option>
-              <option value="legacy-retail" style={{ background: '#0F172A' }}>🛍️ Legacy Retail</option>
-              <option value="regional-banking" style={{ background: '#0F172A' }}>🏦 Regional Banking</option>
-              <option value="casual-dining" style={{ background: '#0F172A' }}>🍔 Casual Dining</option>
-              <option value="linear-media" style={{ background: '#0F172A' }}>📺 Linear Media</option>
-              <option value="legacy-tech" style={{ background: '#0F172A' }}>💻 Legacy Tech</option>
-              <option value="energy" style={{ background: '#0F172A' }}>⚡ Energy & Cleantech</option>
-              <option value="crypto-protocols" style={{ background: '#0F172A' }}>🪙 Crypto & Web3</option>
-              <option value="healthcare" style={{ background: '#0F172A' }}>🏥 Healthcare & Hospitals</option>
-              <option value="logistics" style={{ background: '#0F172A' }}>🚛 Supply Chain & Logistics</option>
-              <option value="fintech" style={{ background: '#0F172A' }}>💳 Fintech & Subprime Credit</option>
-              <option value="biotech" style={{ background: '#0F172A' }}>🧬 Biotech & Synthetic Bio</option>
-              <option value="telecom" style={{ background: '#0F172A' }}>📡 Telecom & Fiber</option>
-            </select>
-          </div>
-
-          {/* Status Filter */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: statusFilter !== 'ALL' ? 'rgba(124, 58, 237, 0.25)' : 'rgba(7, 10, 15, 0.6)', padding: '3px 8px', borderRadius: '6px', border: statusFilter !== 'ALL' ? '1.5px solid #7C3AED' : '1px solid var(--border-subtle)' }}>
-            <span style={{ fontSize: '0.72rem', color: statusFilter !== 'ALL' ? '#C084FC' : 'var(--text-dim)', fontWeight: 800 }}>Status:</span>
-            <select
-              value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-              style={{ background: 'transparent', color: '#FFF', border: 'none', fontSize: '0.75rem', outline: 'none', cursor: 'pointer', fontWeight: 700 }}
-            >
-              <option value="ALL" style={{ background: '#0F172A' }}>🌐 All Statuses & Stages</option>
-              <option value="favorites" style={{ background: '#0F172A' }}>⭐ Show Favorites / Bookmarks</option>
-              <option value="pre-judicial" style={{ background: '#0F172A' }}>🟨 Pre-Judicial Early Warning (WARN / Downgrades)</option>
-              <option value="chapter-11" style={{ background: '#0F172A' }}>🟥 Active Chapter 11 Court Docket</option>
-              <option value="auction-363" style={{ background: '#0F172A' }}>🟩 Section 363 Liquidation Auction</option>
-              <option value="discharged" style={{ background: '#0F172A' }}>⬛ Case Discharged / Final Decree</option>
-            </select>
-
-          </div>
-
-          {/* Cause Filter */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: causeFilter !== 'ALL' ? 'rgba(245, 158, 11, 0.2)' : 'rgba(7, 10, 15, 0.6)', padding: '3px 8px', borderRadius: '6px', border: causeFilter !== 'ALL' ? '1.5px solid #F59E0B' : '1px solid var(--border-subtle)' }}>
-            <span style={{ fontSize: '0.72rem', color: causeFilter !== 'ALL' ? '#FCD34D' : 'var(--text-dim)', fontWeight: 800 }}>Cause:</span>
-            <select
-              value={causeFilter}
-              onChange={(e) => setCauseFilter(e.target.value)}
-              style={{ background: 'transparent', color: '#FFF', border: 'none', fontSize: '0.75rem', outline: 'none', cursor: 'pointer', fontWeight: 600 }}
-            >
-              <option value="ALL" style={{ background: '#0F172A' }}>All Causes</option>
-              <option value="debt" style={{ background: '#0F172A' }}>Debt Overload</option>
-              <option value="disruption" style={{ background: '#0F172A' }}>Tech Disruption</option>
-              <option value="mismanagement" style={{ background: '#0F172A' }}>Mismanagement</option>
-              <option value="mismatch" style={{ background: '#0F172A' }}>Duration Mismatch</option>
-              <option value="lease" style={{ background: '#0F172A' }}>Sale-Leaseback / Rent</option>
-            </select>
-          </div>
-
-          {/* Timeframe Filter */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: timeframeFilter !== 'ALL' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(7, 10, 15, 0.6)', padding: '3px 8px', borderRadius: '6px', border: timeframeFilter !== 'ALL' ? '1.5px solid #10B981' : '1px solid var(--border-subtle)' }}>
-            <span style={{ fontSize: '0.72rem', color: timeframeFilter !== 'ALL' ? '#34D399' : 'var(--text-dim)', fontWeight: 800 }}>Timeframe:</span>
-            <select
-              value={timeframeFilter}
-              onChange={(e) => setTimeframeFilter(e.target.value)}
-              style={{ background: 'transparent', color: '#FFF', border: 'none', fontSize: '0.75rem', outline: 'none', cursor: 'pointer', fontWeight: 600 }}
-            >
-              <option value="14D" style={{ background: '#0F172A' }}>⚡ Last 14 Days (Live Feed Default)</option>
-              <option value="7D" style={{ background: '#0F172A' }}>⏱️ Last 7 Days</option>
-              <option value="30D" style={{ background: '#0F172A' }}>Last 30 Days</option>
-              <option value="90D" style={{ background: '#0F172A' }}>⚖️ Ongoing Cases (&gt; 3 Months)</option>
-              <option value="1Y" style={{ background: '#0F172A' }}>Last 12 Months</option>
-              <option value="ALL" style={{ background: '#0F172A' }}>🌐 All Active Dockets</option>
-              <option value="2024_2026" style={{ background: '#0F172A' }}>2024 - 2026</option>
-              <option value="CUSTOM" style={{ background: '#0F172A' }}>📅 Custom Date Range...</option>
-            </select>
-          </div>
-
-          {/* Custom Date Range Inputs */}
-          {timeframeFilter === 'CUSTOM' && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(7, 10, 15, 0.8)', padding: '3px 8px', borderRadius: '6px', border: '1px solid #7C3AED' }}>
-              <input
-                type="date"
-                value={customStartDate}
-                onChange={(e) => setCustomStartDate(e.target.value)}
-                style={{ background: 'transparent', color: '#FFF', border: 'none', fontSize: '0.72rem', outline: 'none' }}
-                title="Start Date"
-              />
-              <span style={{ color: 'var(--text-dim)', fontSize: '0.72rem' }}>to</span>
-              <input
-                type="date"
-                value={customEndDate}
-                onChange={(e) => setCustomEndDate(e.target.value)}
-                style={{ background: 'transparent', color: '#FFF', border: 'none', fontSize: '0.72rem', outline: 'none' }}
-                title="End Date"
-              />
-            </div>
-          )}
-
-          {/* Reset Filters Button */}
-          {(statusFilter !== 'ALL' || causeFilter !== 'ALL' || timeframeFilter !== 'ALL' || selectedSectorFilter !== 'ALL' || searchQuery) && (
-            <button
-              onClick={() => { setStatusFilter('ALL'); setCauseFilter('ALL'); setTimeframeFilter('ALL'); setSelectedSectorFilter('ALL'); setSearchQuery(''); }}
-              style={{ background: 'rgba(255, 42, 75, 0.18)', color: '#FF3B5C', border: '1px solid rgba(255, 42, 75, 0.4)', padding: '3px 10px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 800, cursor: 'pointer', marginLeft: 'auto' }}
-            >
-              ✕ Reset Filters
-            </button>
-          )}
-
         </div>
       </div>
 
@@ -642,208 +1070,211 @@ export default function CompanyGraveyard({
                   ? 'linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(15, 23, 42, 0.95) 100%)' 
                   : 'rgba(15, 23, 42, 0.85)';
 
+                const matTime = company.lastMaterialChangeDate || company.dateTimestamp;
+                const hoursAgo = matTime ? Math.max(1, Math.round((new Date().getTime() - new Date(matTime).getTime()) / (1000 * 3600))) : 99;
+                const isFreshSurfaceAlert = hoursAgo <= 12;
+                const isBreakingSurface = hoursAgo <= 4;
+
                 return (
                   <div
                     key={company.id}
                     className="glass-panel glass-panel-interactive"
                     onClick={() => onSelectCompany(company)}
                     style={{
-                      padding: '14px 20px',
+                      padding: '12px 18px',
                       cursor: 'pointer',
                       display: 'flex',
-                      alignItems: 'flex-start',
-                      justifyContent: 'space-between',
-                      gap: '16px',
+                      flexDirection: 'column',
+                      gap: '8px',
                       background: stageBg,
-                      borderLeft: `5px solid ${stageColor}`,
-                      border: `1px solid ${stageColor}40`,
-                      borderRadius: '10px',
-                      flexWrap: 'wrap'
+                      borderLeft: isFreshSurfaceAlert ? (isBreakingSurface ? '5px solid #EF4444' : '5px solid #F59E0B') : `5px solid ${stageColor}`,
+                      border: isFreshSurfaceAlert ? (isBreakingSurface ? '1.5px solid rgba(239, 68, 68, 0.6)' : '1.5px solid rgba(245, 158, 11, 0.5)') : `1px solid ${stageColor}40`,
+                      borderRadius: '10px'
                     }}
                   >
-                    {/* Left: Star + Name + Ticker + Location + Start/Closed Date Range */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: '280px', flex: '1 1 280px' }}>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          if (toggleWatchlist) toggleWatchlist(company.id);
-                        }}
-                        style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px' }}
-                        title={watchlist && watchlist.includes(company.id) ? 'Remove from Watchlist' : 'Add to Watchlist'}
-                      >
-                        <Star
-                          size={16}
-                          color={watchlist && watchlist.includes(company.id) ? '#F59E0B' : 'var(--text-dim)'}
-                          fill={watchlist && watchlist.includes(company.id) ? '#F59E0B' : 'transparent'}
-                        />
-                      </button>
+                    {/* ROW 1: STAR + NAME + TICKER + INLINE BREAKING BADGE + STATUS + VALUATION DROP + ACTIONS */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (toggleWatchlist) toggleWatchlist(company.id);
+                          }}
+                          style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '0', display: 'flex', alignItems: 'center' }}
+                          title={watchlist && watchlist.includes(company.id) ? 'Remove from Watchlist' : 'Add to Watchlist'}
+                        >
+                          <Star
+                            size={15}
+                            color={watchlist && watchlist.includes(company.id) ? '#F59E0B' : 'var(--text-dim)'}
+                            fill={watchlist && watchlist.includes(company.id) ? '#F59E0B' : 'transparent'}
+                          />
+                        </button>
 
-                      <div>
-                        {/* UPPER-LEFT CORNER SINGLE TIME ALERT BADGE (ABOVE COMPANY NAME) */}
-                        {(() => {
-                          const matT = company.lastMaterialChangeDate || company.dateTimestamp;
-                          const hAgo = matT ? Math.max(1, Math.round((new Date().getTime() - new Date(matT).getTime()) / (1000 * 3600))) : 99;
-                          if (hAgo <= 4) {
-                            return (
-                              <div style={{ marginBottom: '4px' }}>
-                                <span style={{ background: 'rgba(239, 68, 68, 0.25)', color: '#FCA5A5', border: '1px solid #EF4444', padding: '2px 8px', borderRadius: '4px', fontSize: '0.68rem', fontWeight: 900, fontFamily: 'var(--font-mono)', display: 'inline-flex', alignItems: 'center', gap: '4px', boxShadow: '0 0 10px rgba(239, 68, 68, 0.35)' }}>
-                                  🔥 BREAKING ({hAgo}h ago)
-                                </span>
-                              </div>
-                            );
-                          } else if (hAgo <= 12) {
-                            return (
-                              <div style={{ marginBottom: '4px' }}>
-                                <span style={{ background: 'rgba(245, 158, 11, 0.25)', color: '#FCD34D', border: '1px solid #F59E0B', padding: '2px 8px', borderRadius: '4px', fontSize: '0.68rem', fontWeight: 900, fontFamily: 'var(--font-mono)', display: 'inline-flex', alignItems: 'center', gap: '4px', boxShadow: '0 0 10px rgba(245, 158, 11, 0.3)' }}>
-                                  ⚡ NEW ({hAgo}h ago)
-                                </span>
-                              </div>
-                            );
-                          }
-                          return null;
-                        })()}
+                        <h4 style={{ fontSize: '0.98rem', fontWeight: 900, color: '#FFF', margin: 0 }}>{company.name}</h4>
+                        <span style={{ fontSize: '0.68rem', color: 'var(--text-dim)', background: 'rgba(255, 255, 255, 0.06)', padding: '1px 6px', borderRadius: '4px', fontFamily: 'var(--font-mono)' }}>
+                          {company.ticker}
+                        </span>
 
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                          <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#FFF' }}>{company.name}</h4>
-                          <span style={{ fontSize: '0.7rem', color: 'var(--text-dim)', background: 'rgba(255, 255, 255, 0.06)', padding: '2px 6px', borderRadius: '4px', fontFamily: 'var(--font-mono)' }}>
-                            {company.ticker}
-                          </span>
-
-                          {/* DYNAMIC STAGE BADGE ALIGNED WITH 4-TIER COLOR TAXONOMY */}
-                          {isPreJudicial && (
-                            <span style={{ fontSize: '0.68rem', fontWeight: 900, color: '#0F172A', background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)', padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                              🟨 PRE-JUDICIAL WARN NOTICE
-                            </span>
-                          )}
-
-                          {isAuction && !isPreJudicial && (
-                            <span style={{ fontSize: '0.68rem', fontWeight: 900, color: '#0F172A', background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)', padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                              🟩 SECTION 363 AUCTION
-                            </span>
-                          )}
-
-                          {isActiveDocket && !isAuction && (
-                            <span style={{ fontSize: '0.68rem', fontWeight: 900, color: '#FFF', background: 'linear-gradient(135deg, #EF4444 0%, #B91C1C 100%)', padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                              🟥 ACTIVE CHAPTER 11 DOCKET
-                            </span>
-                          )}
-
-                        {/* FAVORITED Badge */}
-                        {watchlist && watchlist.includes(company.id) && (
-                          <span style={{ fontSize: '0.65rem', fontWeight: 900, color: '#000', background: '#F59E0B', padding: '1px 6px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                            ⭐ FAVORITED
+                        {isFreshSurfaceAlert && (
+                          <span style={{ fontSize: '0.65rem', fontWeight: 900, color: '#FFF', background: isBreakingSurface ? 'linear-gradient(135deg, #EF4444 0%, #B91C1C 100%)' : 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)', padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '0.04em', display: 'inline-flex', alignItems: 'center', gap: '4px', boxShadow: isBreakingSurface ? '0 0 12px rgba(239, 68, 68, 0.6)' : '0 0 10px rgba(245, 158, 11, 0.5)' }}>
+                            <span className="pulse-dot critical"></span> {isBreakingSurface ? `🔥 BREAKING (${hoursAgo}h ago)` : `⚡ RECENT (${hoursAgo}h ago)`}
                           </span>
                         )}
 
-                        {/* CUSTOM TRACKED Badge */}
-                        {company.isCustomTracked && (
-                          <span style={{ fontSize: '0.65rem', fontWeight: 900, color: '#FFF', background: 'linear-gradient(135deg, #7C3AED 0%, #4C1D95 100%)', padding: '1px 6px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '0.04em', border: '1px solid rgba(192, 132, 252, 0.4)' }}>
-                            🔒 CUSTOM TRACKED (PRO)
+                        {isPreJudicial && (
+                          <span style={{ fontSize: '0.65rem', fontWeight: 900, color: '#0F172A', background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)', padding: '1px 6px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                            🟨 PRE-JUDICIAL WARN
+                          </span>
+                        )}
+
+                        {isAuction && !isPreJudicial && (
+                          <span style={{ fontSize: '0.65rem', fontWeight: 900, color: '#0F172A', background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)', padding: '1px 6px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                            🟩 363 AUCTION
+                          </span>
+                        )}
+
+                        {isActiveDocket && !isAuction && (
+                          <span style={{ fontSize: '0.65rem', fontWeight: 900, color: '#FFF', background: 'linear-gradient(135deg, #EF4444 0%, #B91C1C 100%)', padding: '1px 6px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                            🟥 CHAPTER 11
+                          </span>
+                        )}
+
+                        {watchlist && watchlist.includes(company.id) && (
+                          <span style={{ fontSize: '0.62rem', fontWeight: 900, color: '#000', background: '#F59E0B', padding: '1px 5px', borderRadius: '4px' }}>
+                            ⭐ WATCHLIST
                           </span>
                         )}
                       </div>
 
-                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px', display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+                      {/* Right Side Row 1: Valuation Drop & Action Buttons */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <span style={{ fontSize: '0.74rem', fontWeight: 800, color: '#FF2A4B', fontFamily: 'var(--font-mono)' }}>
+                          📉 {company.peakValuation ? company.peakValuation.split(' ')[0] : 'N/A'} ➔ {company.collapseValuation ? company.collapseValuation.split(' ')[0] : '$0'}
+                        </span>
+
+                        {onOpenNewsroomStudio && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (onOpenNewsroomStudio) onOpenNewsroomStudio(company);
+                              setActiveTab('newsroom');
+                            }}
+                            style={{
+                              background: 'rgba(245, 158, 11, 0.2)',
+                              color: '#FCD34D',
+                              border: '1px solid #F59E0B',
+                              padding: '3px 8px',
+                              borderRadius: '6px',
+                              fontSize: '0.68rem',
+                              fontWeight: 900,
+                              cursor: 'pointer'
+                            }}
+                            title="Open AI Newsroom Studio"
+                          >
+                            📰 Newsroom
+                          </button>
+                        )}
+
+                        {onOpenShare && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onOpenShare(company);
+                            }}
+                            style={{
+                              background: 'rgba(56, 189, 248, 0.15)',
+                              color: '#38BDF8',
+                              border: '1px solid rgba(56, 189, 248, 0.4)',
+                              padding: '3px 8px',
+                              borderRadius: '6px',
+                              fontSize: '0.68rem',
+                              fontWeight: 800,
+                              cursor: 'pointer'
+                            }}
+                            title="Share asset dossier"
+                          >
+                            🔗 Share
+                          </button>
+                        )}
+
+                        {toggleDismissCompany && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleDismissCompany(company.id);
+                            }}
+                            style={{
+                              background: 'rgba(239, 68, 68, 0.12)',
+                              color: '#FCA5A5',
+                              border: '1px solid rgba(239, 68, 68, 0.35)',
+                              padding: '3px 8px',
+                              borderRadius: '6px',
+                              fontSize: '0.68rem',
+                              fontWeight: 800,
+                              cursor: 'pointer'
+                            }}
+                            title="Dismiss asset from feed"
+                          >
+                            🙈 Mute
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* ROW 2: LOCATION • SECTOR • DIP CHIP • CAUSE SUMMARY • TIMESTAMP */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', fontSize: '0.73rem', color: '#94A3B8' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                         <span>📍 {company.locationJurisdiction || 'United States'}</span>
                         <span>•</span>
                         <span style={{ color: '#C084FC', fontWeight: 800 }}>{company.sectorName || 'Corporate Distress'}</span>
+                        <span>•</span>
+                        <span>💥 <strong style={{ color: '#E2E8F0' }}>Cause:</strong> {company.primaryCause}</span>
 
-                        {/* Exterior DIP Loan & Cash Burn Runway Chip */}
                         {company.dipFinancing && (
-                          <span style={{ background: 'rgba(139, 92, 246, 0.2)', color: '#C4B5FD', border: '1px solid rgba(139, 92, 246, 0.45)', padding: '2px 8px', borderRadius: '4px', fontSize: '0.72rem', fontWeight: 800, fontFamily: 'var(--font-mono)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                            💳 DIP: {company.dipFinancing.facilitySize} ({company.dipFinancing.lender.split(' ')[0]}) • 🔥 {company.dipFinancing.cashRunwayDays}d Runway
+                          <span style={{ background: 'rgba(139, 92, 246, 0.2)', color: '#C4B5FD', border: '1px solid rgba(139, 92, 246, 0.45)', padding: '1px 6px', borderRadius: '4px', fontSize: '0.68rem', fontWeight: 800, fontFamily: 'var(--font-mono)' }}>
+                            💳 DIP: {company.dipFinancing.facilitySize}
                           </span>
                         )}
                       </div>
 
-                      {/* Timestamps Justified to Left Side */}
-                      <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap', marginTop: '6px' }}>
-                        <span style={{ background: 'rgba(239, 68, 68, 0.18)', color: '#FCA5A5', border: '1px solid rgba(239, 68, 68, 0.4)', padding: '2px 8px', borderRadius: '4px', fontSize: '0.68rem', fontWeight: 800, fontFamily: 'var(--font-mono)' }}>
-                          ⚡ Material Change: {company.formattedMaterialChange || (new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' • ' + new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) + ' EST')}
-                        </span>
-                        <span style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8', border: '1px solid rgba(56, 189, 248, 0.35)', padding: '2px 8px', borderRadius: '4px', fontSize: '0.68rem', fontWeight: 800, fontFamily: 'var(--font-mono)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                          <Clock size={10} /> Sweep: {company.formattedLastSweep || `${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} • ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })} EST`}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-
-                  {/* Middle: Primary Cause (Broad Strokes) */}
-                  <div style={{ flex: '2 1 220px', fontSize: '0.8rem', color: 'var(--text-main)', lineHeight: 1.4, minWidth: '200px' }}>
-                    <span style={{ color: '#FF3B5C', fontWeight: 700 }}>Cause: </span>
-                    {company.primaryCause}
-                  </div>
-
-                  {/* Right: Peak vs Collapse Valuation & Sleek Action Buttons */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: '1 1 260px', minWidth: '220px', justifyContent: 'flex-end' }}>
-                    <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>Valuation Drop</div>
-                      <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#FF2A4B', fontFamily: 'var(--font-mono)' }}>
-                        {company.peakValuation ? company.peakValuation.split(' ')[0] : 'N/A'} ➔ {company.collapseValuation ? company.collapseValuation.split(' ')[0] : '$0'}
+                      <div style={{ fontSize: '0.68rem', color: '#64748B', fontFamily: 'var(--font-mono)', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        {(() => {
+                          const matT = company.lastMaterialChangeDate || company.dateTimestamp;
+                          const mD = matT ? new Date(matT) : null;
+                          const formattedStr = (mD && !isNaN(mD.getTime()))
+                            ? `${mD.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} • ${mD.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })} EST`
+                            : (company.formattedMaterialChange || 'Updated Recently');
+                          return (
+                            <>
+                              <Clock size={10} /> {formattedStr}
+                            </>
+                          );
+                        })()}
                       </div>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                      {onOpenShare && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            onOpenShare(company);
-                          }}
-                          style={{
-                            background: 'rgba(56, 189, 248, 0.15)',
-                            color: '#38BDF8',
-                            border: '1px solid rgba(56, 189, 248, 0.4)',
-                            padding: '4px 10px',
-                            borderRadius: '6px',
-                            fontSize: '0.7rem',
-                            fontWeight: 800,
-                            cursor: 'pointer',
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '4px'
-                          }}
-                          title="Share asset dossier across social platforms or copy direct link"
-                        >
-                          <Share2 size={12} /> 🔗 Share
-                        </button>
-                      )}
-
-                      {toggleDismissCompany && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            toggleDismissCompany(company.id);
-                          }}
-                          style={{
-                            background: 'rgba(239, 68, 68, 0.12)',
-                            color: '#FCA5A5',
-                            border: '1px solid rgba(239, 68, 68, 0.35)',
-                            padding: '4px 10px',
-                            borderRadius: '6px',
-                            fontSize: '0.7rem',
-                            fontWeight: 800,
-                            cursor: 'pointer',
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '4px'
-                          }}
-                          title="Dismiss asset from active main feed (Mute stream)"
-                        >
-                          <EyeOff size={12} /> 🙈 Dismiss
-                        </button>
-                      )}
-                    </div>
+                    {/* ROW 3 (When in Full Mode): EXECUTIVE POST-MORTEM STORY NARRATIVE */}
+                    {layoutMode === 'full' && company.executiveSummary && (
+                      <div style={{
+                        fontSize: '0.78rem',
+                        color: '#94A3B8',
+                        marginTop: '4px',
+                        paddingTop: '6px',
+                        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                        lineHeight: 1.5
+                      }}>
+                        <strong style={{ color: '#FCD34D' }}>📖 Post-Mortem Breakdown: </strong>
+                        {company.executiveSummary}
+                      </div>
+                    )}
                   </div>
-                </div>
-              );
+                );
             })}
             </div>
 
           ) : (
-            /* Large Grid Cards View */
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '20px' }}>
+            /* Large Grid Cards View / Full Cards View */
+            <div style={{ display: 'grid', gridTemplateColumns: layoutMode === 'full' ? '1fr' : 'repeat(auto-fill, minmax(360px, 1fr))', gap: '20px' }}>
               {sortedCompanies.map((company) => {
                 const isPreJudicial = company.isPreJudicial || company.courtCaseStatus === 'PRE_PETITION_WARN_SIGNAL';
                 const isAuction = !isPreJudicial && Boolean((company.auctionTitle && company.auctionTitle.trim() !== '') || (company.auctionPortalUrl && company.auctionPortalUrl.trim() !== '') || (company.status && (company.status.toUpperCase().includes('AUCTION') || company.status.includes('363'))));
@@ -1048,6 +1479,7 @@ export default function CompanyGraveyard({
                       onClick={(e) => {
                         e.stopPropagation();
                         if (onOpenNewsroomStudio) onOpenNewsroomStudio(company);
+                        setActiveTab('newsroom');
                       }}
                       style={{
                         background: 'rgba(245, 158, 11, 0.2)',

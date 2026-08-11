@@ -39,47 +39,75 @@ export default function DipFinancingMonitor({ companies = [], watchlist = [], to
   return (
     <div style={{ marginTop: '24px' }}>
       
-      {/* Universal Back Button */}
-      {onGoBack && (
-        <button
-          onClick={onGoBack}
-          style={{
-            background: 'rgba(30, 41, 59, 0.8)',
-            color: '#F8FAFC',
-            border: '1px solid var(--border-subtle)',
-            padding: '8px 18px',
-            borderRadius: '8px',
-            fontSize: '0.82rem',
-            fontWeight: 800,
-            cursor: 'pointer',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            marginBottom: '16px',
-            transition: 'all 0.2s ease'
-          }}
-          className="glass-panel-interactive"
-        >
-          <ArrowLeft size={16} color="#EF4444" /> ← Back to Main Distress Wire
-        </button>
-      )}
+
 
       {/* DIP Overview Command Header */}
-      <div className="glass-panel" style={{ padding: '24px', marginBottom: '24px', borderLeft: '4px solid #C084FC', background: 'linear-gradient(135deg, rgba(20, 15, 30, 0.95) 0%, rgba(35, 20, 45, 0.85) 100%)' }}>
+      <div className="glass-panel" style={{ padding: '24px', marginBottom: '24px', borderLeft: '5px solid #6366F1', background: 'linear-gradient(135deg, rgba(20, 15, 40, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '20px' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-              <CreditCard size={20} color="#C084FC" />
-              <span style={{ fontSize: '0.8rem', fontWeight: 900, color: '#C084FC', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                BusinessCollapse PRO • DEBTOR-IN-POSSESSION (DIP) LOAN TERMINAL
-              </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'linear-gradient(135deg, #6366F1 0%, #3730A3 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(99, 102, 241, 0.65)', border: '1.5px solid rgba(255, 255, 255, 0.25)', flexShrink: 0 }}>
+              <CreditCard size={22} color="#FFF" style={{ filter: 'drop-shadow(0 0 6px rgba(255,255,255,0.8))' }} />
             </div>
-            <h2 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '6px', color: '#FFF' }}>
-              DIP Super-Priority Credit Facilities & Cash Burn Radar
-            </h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', maxWidth: '780px' }}>
-              Institutional tracking of Debtor-in-Possession (DIP) emergency financing, lender syndicates (Apollo, Ares, Fortress, SoftBank), roll-up interest rates, and 30-vs-90 day operating cash depletion countdowns.
-            </p>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                {onGoBack && (
+                  <button
+                    onClick={onGoBack}
+                    style={{
+                      background: 'rgba(255, 42, 75, 0.2)',
+                      color: '#FF3B5C',
+                      border: '1.5px solid rgba(255, 42, 75, 0.5)',
+                      padding: '5px 12px',
+                      borderRadius: '8px',
+                      fontSize: '0.78rem',
+                      fontWeight: 900,
+                      cursor: 'pointer',
+                      marginRight: '6px',
+                      boxShadow: '0 0 12px rgba(255, 42, 75, 0.3)'
+                    }}
+                  >
+                    ← Back to Core Feed
+                  </button>
+                )}
+                <h2 style={{
+                  fontSize: '1.65rem',
+                  fontWeight: 950,
+                  letterSpacing: '0.04em',
+                  wordSpacing: '0.18em',
+                  margin: 0,
+                  background: 'linear-gradient(135deg, #FFFFFF 0%, #818CF8 50%, #6366F1 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  filter: 'drop-shadow(0 1px 1px rgba(0, 0, 0, 0.85))',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}>
+                  💳 DEBTOR-IN-POSSESSION (DIP) LOAN TERMINAL
+                </h2>
+                <span style={{
+                  background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(55, 48, 163, 0.3) 100%)',
+                  color: '#818CF8',
+                  border: '1px solid rgba(99, 102, 241, 0.55)',
+                  padding: '4px 12px',
+                  borderRadius: '20px',
+                  fontSize: '0.68rem',
+                  fontWeight: 900,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  boxShadow: '0 0 14px rgba(99, 102, 241, 0.35)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#818CF8', boxShadow: '0 0 8px #818CF8' }} />
+                  CREDIT & REORGANIZATION SUITE
+                </span>
+              </div>
+              <p style={{ color: '#94A3B8', fontSize: '0.82rem', margin: '4px 0 0 0', lineHeight: 1.5, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                ⚡ SUPER-PRIORITY CREDIT FACILITIES • LENDER SYNDICATES (APOLLO, ARES, FORTRESS) & CASH BURN RADAR
+              </p>
+            </div>
           </div>
 
           {/* KPI Stats Box */}

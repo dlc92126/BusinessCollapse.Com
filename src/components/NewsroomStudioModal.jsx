@@ -182,20 +182,47 @@ Read full court docket filings and diligence briefs at BusinessCollapse.Com.`;
           background: 'rgba(15, 23, 42, 0.95)'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 15px rgba(245, 158, 11, 0.4)' }}>
-              <Sparkles size={22} color="#000" />
+            <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(245, 158, 11, 0.65)', border: '1.5px solid rgba(255, 255, 255, 0.25)', flexShrink: 0 }}>
+              <Sparkles size={22} color="#FFF" style={{ filter: 'drop-shadow(0 0 6px rgba(255,255,255,0.8))' }} />
             </div>
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <h2 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#FFF', margin: 0 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                <h2 style={{
+                  fontSize: '1.45rem',
+                  fontWeight: 950,
+                  letterSpacing: '-0.03em',
+                  margin: 0,
+                  background: 'linear-gradient(135deg, #FFFFFF 0%, #FCD34D 50%, #F59E0B 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.95))',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}>
                   📰 INSTANT AI NEWSROOM & STORY STUDIO
                 </h2>
-                <span style={{ background: 'rgba(245, 158, 11, 0.2)', color: '#FCD34D', border: '1px solid #F59E0B', padding: '2px 8px', borderRadius: '4px', fontSize: '0.68rem', fontWeight: 900 }}>
-                  JOURNALIST DESK
+                <span style={{
+                  background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(217, 119, 6, 0.3) 100%)',
+                  color: '#FCD34D',
+                  border: '1px solid rgba(245, 158, 11, 0.55)',
+                  padding: '4px 12px',
+                  borderRadius: '20px',
+                  fontSize: '0.68rem',
+                  fontWeight: 900,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  boxShadow: '0 0 14px rgba(245, 158, 11, 0.35)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#FCD34D', boxShadow: '0 0 8px #FCD34D' }} />
+                  MEDIA WIRE SUITE ($149/MO)
                 </span>
               </div>
-              <div style={{ fontSize: '0.78rem', color: '#94A3B8', marginTop: '2px' }}>
-                Instant multi-format article & social thread generator for {entityName} ({ticker})
+              <div style={{ fontSize: '0.8rem', color: '#94A3B8', marginTop: '4px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                ⚡ AP PRESS WIRE • FINTWIT 10-TWEET THREADS • LINKEDIN ARTICLE & SUBSTACK ESSAYS FOR {entityName} ({ticker})
               </div>
             </div>
           </div>

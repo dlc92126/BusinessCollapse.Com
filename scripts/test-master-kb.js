@@ -1,0 +1,62 @@
+// Terminal test script for Master Site Knowledge Base Gemini Hydration
+import fs from 'fs';
+import path from 'path';
+
+async function testMasterKB() {
+  let apiKey = process.env.GEMINI_API_KEY;
+
+  if (!apiKey) {
+    const envPath = path.join(process.cwd(), '.env');
+    if (fs.existsSync(envPath)) {
+      const envContent = fs.readFileSync(envPath, 'utf8');
+      const match = envContent.match(/GEMINI_API_KEY=([^\r\n]+)/);
+      if (match && match[1]) {
+        apiKey = match[1].trim();
+      }
+    }
+  }
+
+  const kbPath = path.join(process.cwd(), 'src', 'data', 'master_site_knowledge.json');
+  let masterContext = '';
+  if (fs.existsSync(kbPath)) {
+    const kb = JSON.parse(fs.readFileSync(kbPath, 'utf8'));
+    masterContext = `\nBUSINESSCOLLAPSE.COM MASTER PLATFORM KNOWLEDGE BASE:\n` +
+      `Tagline: ${kb.tagline}\n` +
+      `MEMBERSHIP PRICING TIERS:\n` + kb.membershipTiers.map(t => `• ${t.name} (${t.price}): ${t.features}`).join('\n') +
+      `\nSITE TOOLS & MODULES:\n` + kb.siteModulesAndFeatures.map(m => `• ${m.module}: ${m.description}`).join('\n');
+  }
+
+  console.log('📡 Testing VERITAS AI with Master Site Knowledge Base...\n');
+
+  const testPrompts = [
+    "What membership tiers do you guys offer and how much do they cost?",
+    "Tell me how the Section 363 Auction Directory and Diligence Brief work.",
+    "I have an idea for a new feature.",
+    "Can you give me a ticket number for my support request?"
+  ];
+
+  for (const promptText of testPrompts) {
+    console.log(`\n💬 User Prompt: "${promptText}"`);
+    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`;
+    const resp = await fetch(geminiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        systemInstruction: {
+          parts: [{ text: `You are Veritas AI, subscriber concierge for BusinessCollapse.com.${masterContext}\nSpeak naturally in 1-3 conversational sentences.` }]
+        },
+        contents: [{ role: 'user', parts: [{ text: promptText }] }]
+      })
+    });
+
+    const data = await resp.json();
+    if (resp.ok) {
+      console.log(`🤖 VERITAS AI (Live Gemini Output):`);
+      console.log(`"${data.candidates?.[0]?.content?.parts?.[0]?.text}"`);
+    } else {
+      console.error('❌ Error:', JSON.stringify(data, null, 2));
+    }
+  }
+}
+
+testMasterKB();

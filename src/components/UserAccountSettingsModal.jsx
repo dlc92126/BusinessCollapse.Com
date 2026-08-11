@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   X, User, Key, Bell, BookOpen, MessageSquare, Shield, Check, Copy, 
-  ExternalLink, Smartphone, Mail, Building, Save, Send, Sparkles, AlertCircle, Trash2, Gavel, Zap
+  ExternalLink, Smartphone, Mail, Building, Save, Send, Sparkles, AlertCircle, Trash2, Gavel, Zap, CreditCard, Download
 } from 'lucide-react';
 
 
@@ -25,7 +25,7 @@ export default function UserAccountSettingsModal({
   companies = []
 }) {
 
-  const [activeTab, setActiveTab] = useState('profile'); // 'profile' | 'credentials' | 'alerts' | 'manual' | 'feedback'
+  const [activeTab, setActiveTab] = useState('concierge'); // 'concierge' | 'profile' | 'credentials' | 'alerts' | 'manual' | 'feedback'
 
 
   // Editable Profile Form State
@@ -43,6 +43,252 @@ export default function UserAccountSettingsModal({
 
   // Copy State
   const [copiedId, setCopiedId] = useState(null);
+
+  // Live Gemini API Key Landing State
+  const [geminiApiKeyInput, setGeminiApiKeyInput] = useState(() => localStorage.getItem('bcc_gemini_api_key') || '');
+  const [isAiKeyPanelOpen, setIsAiKeyPanelOpen] = useState(false);
+  const [aiKeySaveMsg, setAiKeySaveMsg] = useState('');
+
+  const handleSaveGeminiKey = (e) => {
+    e.preventDefault();
+    const cleanKey = geminiApiKeyInput.trim();
+    if (cleanKey) {
+      localStorage.setItem('bcc_gemini_api_key', cleanKey);
+      setAiKeySaveMsg('✅ Live Gemini API Key Saved & Activated!');
+    } else {
+      localStorage.removeItem('bcc_gemini_api_key');
+      setAiKeySaveMsg('ℹ️ Cleared API Key. Reverted to Local Seeded Engine.');
+    }
+    setTimeout(() => setAiKeySaveMsg(''), 4000);
+  };
+
+  // Payment Options State
+  const [paymentMethods, setPaymentMethods] = useState([
+    {
+      id: 'card-1',
+      brand: 'Visa',
+      last4: '9914',
+      expMonth: '11',
+      expYear: '2029',
+      isDefault: true,
+      cardholder: userProfile?.name || 'Alexander Vance'
+    },
+    {
+      id: 'card-2',
+      brand: 'Mastercard',
+      last4: '4402',
+      expMonth: '08',
+      expYear: '2028',
+      isDefault: false,
+      cardholder: userProfile?.name || 'Alexander Vance'
+    }
+  ]);
+  const [isAddCardOpen, setIsAddCardOpen] = useState(false);
+  const [newCardNumber, setNewCardNumber] = useState('');
+  const [newCardExp, setNewCardExp] = useState('');
+  const [newCardCvc, setNewCardCvc] = useState('');
+  const [newCardName, setNewCardName] = useState('');
+  const [cardSuccessMsg, setCardSuccessMsg] = useState('');
+
+  // AI Concierge & Support Tickets State
+  const [conciergeInput, setConciergeInput] = useState('');
+  const [conciergeFilter, setConciergeFilter] = useState('all');
+  const [selectedConciergeTicketId, setSelectedConciergeTicketId] = useState('t-101');
+  const [isConciergeThinking, setIsConciergeThinking] = useState(false);
+
+  const [conciergeTickets, setConciergeTickets] = useState([
+    {
+      id: 't-101',
+      ticketNumber: 'BC-8921',
+      title: 'Upgrade Account to $499 Sales Conquest Pass',
+      category: 'Billing & Tiers',
+      status: 'open',
+      priority: 'HIGH',
+      createdAt: '10:15 AM Today',
+      updatedAt: '10:30 AM Today',
+      messages: [
+        {
+          id: 'cm1',
+          sender: 'user',
+          senderName: userProfile?.name || 'Alexander Vance',
+          text: 'Hi, I need to upgrade our account to the $499 Sales Conquest Pass so our sales team can access automated WARN notice CRM exports.',
+          timestamp: '10:15 AM'
+        },
+        {
+          id: 'cm2',
+          sender: 'ai',
+          senderName: 'VERITAS AI',
+          text: 'I have logged your upgrade request under Ticket #BC-8921 and auto-routed an escalation dispatch to support@businesscollapse.com. A billing coordinator will confirm your upgraded API access key shortly.',
+          timestamp: '10:16 AM'
+        }
+      ]
+    },
+    {
+      id: 't-102',
+      ticketNumber: 'BC-8810',
+      title: 'PACER Docket Downloader 4-Digit PIN Verification',
+      category: 'Technical Support',
+      status: 'closed',
+      priority: 'MEDIUM',
+      createdAt: 'Yesterday 02:45 PM',
+      updatedAt: 'Yesterday 03:10 PM',
+      messages: [
+        {
+          id: 'cm3',
+          sender: 'user',
+          senderName: userProfile?.name || 'Alexander Vance',
+          text: 'Requesting PIN verification for downloading Delaware Chapter 11 PACER dockets.',
+          timestamp: '02:45 PM'
+        },
+        {
+          id: 'cm4',
+          sender: 'ai',
+          senderName: 'VERITAS AI',
+          text: 'Your security PIN (8849) has been verified. You can now download PDFs directly from the court docket viewer.',
+          timestamp: '02:46 PM'
+        }
+      ]
+    }
+  ]);
+
+  const handleSendConciergeMessage = async (textToSend) => {
+    const query = textToSend || conciergeInput;
+    if (!query || !query.trim()) return;
+
+    const userMsg = {
+      id: 'user-' + Date.now(),
+      sender: 'user',
+      senderName: name || 'VIP Subscriber',
+      text: query,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    };
+
+    if (selectedConciergeTicketId) {
+      setConciergeTickets(prev => prev.map(t => {
+        if (t.id === selectedConciergeTicketId) {
+          return {
+            ...t,
+            updatedAt: 'Just now',
+            messages: [...t.messages, userMsg]
+          };
+        }
+        return t;
+      }));
+      setConciergeInput('');
+    }
+
+    const newTicketId = selectedConciergeTicketId || ('t-' + Date.now());
+    const newTicketNum = 'BC-' + Math.floor(8000 + Math.random() * 1900);
+    const needsEscalation = query.toLowerCase().includes('human') || 
+                            query.toLowerCase().includes('upgrade') || 
+                            query.toLowerCase().includes('pin') || 
+                            query.toLowerCase().includes('billing') ||
+                            query.toLowerCase().includes('api');
+
+    if (!selectedConciergeTicketId) {
+      const initialTicket = {
+        id: newTicketId,
+        ticketNumber: newTicketNum,
+        title: query.length > 50 ? query.slice(0, 50) + '...' : query,
+        category: needsEscalation ? 'Executive Support' : 'General Support',
+        status: 'open',
+        priority: needsEscalation ? 'HIGH' : 'MEDIUM',
+        createdAt: 'Just now',
+        updatedAt: 'Just now',
+        messages: [userMsg]
+      };
+      setConciergeTickets(prev => [initialTicket, ...prev]);
+      setSelectedConciergeTicketId(newTicketId);
+      setConciergeInput('');
+    }
+
+    setIsConciergeThinking(true);
+
+    // Extract active thread message history for multi-turn AI context
+    const currentTicket = conciergeTickets.find(t => t.id === newTicketId);
+    const historyPayload = (currentTicket?.messages || []).map(m => ({
+      role: m.sender === 'user' ? 'user' : 'model',
+      text: m.text
+    }));
+
+    // Call Seeded / Live AI Serverless Concierge API Endpoint
+    try {
+      const storedKey = geminiApiKeyInput || localStorage.getItem('bcc_gemini_api_key');
+      const response = await fetch('/.netlify/functions/ai-concierge', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt: query,
+          history: historyPayload,
+          apiKey: storedKey ? storedKey.trim() : undefined,
+          userProfile: { name, email, tier: userProfile?.tier || 'BETA FOUNDER PASS' }
+        })
+      });
+
+      const resData = await response.json();
+      setIsConciergeThinking(false);
+
+      const aiReplyText = resData.reply || `I have logged your request under Ticket #${newTicketNum} and auto-routed an escalation dispatch to support@businesscollapse.com.`;
+
+      const aiMsg = {
+        id: 'ai-' + Date.now(),
+        sender: 'ai',
+        senderName: 'VERITAS AI',
+        text: aiReplyText,
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+
+      setConciergeTickets(prev => prev.map(t => {
+        if (t.id === newTicketId) {
+          return {
+            ...t,
+            updatedAt: 'Just now',
+            messages: [...t.messages, aiMsg]
+          };
+        }
+        return t;
+      }));
+
+    } catch (err) {
+      console.log('AI Concierge fallback:', err);
+      setIsConciergeThinking(false);
+
+      const fallbackText = `That's a fantastic feature idea! I've logged your request under Ticket #${newTicketNum} and auto-routed an engineering note to support@businesscollapse.com. 🚀`;
+
+      const fallbackAiMsg = {
+        id: 'ai-' + Date.now(),
+        sender: 'ai',
+        senderName: 'VERITAS AI',
+        text: fallbackText,
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+
+      setConciergeTickets(prev => prev.map(t => {
+        if (t.id === newTicketId) {
+          return {
+            ...t,
+            updatedAt: 'Just now',
+            messages: [...t.messages, fallbackAiMsg]
+          };
+        }
+        return t;
+      }));
+    }
+
+    // Auto-dispatch background internal email to support@businesscollapse.com for escalation
+    try {
+      fetch('/.netlify/functions/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          from: email || 'subscriber@businesscollapse.com',
+          to: 'support@businesscollapse.com',
+          subject: `[TICKET #${newTicketNum}] ${query.slice(0, 50)}`,
+          text: `NEW CONCIERGE TICKET #${newTicketNum}\nSubscriber: ${name} (${email})\nQuery: ${query}`
+        })
+      }).catch(() => {});
+    } catch (e) {}
+  };
 
   if (!isOpen) return null;
 
@@ -208,6 +454,8 @@ STALKER-HORSE FLOOR: ${cred.stalkerHorseBid || '$15,000,000'}
           overflowX: 'auto'
         }}>
           {[
+            { id: 'concierge', label: '💬 AI Concierge & Support Tickets', icon: Sparkles },
+            { id: 'billing', label: '💳 Billing & Subscriptions', icon: CreditCard },
             { id: 'profile', label: '👤 Profile & SMS', icon: User },
             { id: 'briefs', label: '📄 Saved Briefs Vault', icon: Gavel },
             { id: 'credentials', label: `🔑 Saved PINs (${(savedCredentials || []).length})`, icon: Key },
@@ -249,7 +497,585 @@ STALKER-HORSE FLOOR: ${cred.stalkerHorseBid || '$15,000,000'}
         </div>
 
         {/* Modal Body Container */}
-        <div style={{ padding: '24px', overflowY: 'auto', flex: 1 }}>
+        <div style={{ padding: activeTab === 'concierge' ? '16px' : '24px', overflowY: activeTab === 'concierge' ? 'hidden' : 'auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
+
+          {/* TAB 0: AI CONCIERGE & MINI-CRM SUPPORT TICKETS */}
+          {activeTab === 'concierge' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', flex: 1, minHeight: '520px', maxHeight: 'calc(80vh - 120px)' }}>
+              
+              {/* LIVE GEMINI API KEY LANDING PANEL */}
+              <div style={{ background: '#090D16', border: '1px solid rgba(192, 132, 252, 0.3)', borderRadius: '12px', padding: '10px 14px', flexShrink: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ fontSize: '0.78rem', fontWeight: 900, color: '#C084FC', letterSpacing: '0.05em' }}>
+                      🔑 LIVE GEMINI AI ENGINE CONFIGURATION
+                    </span>
+                    {localStorage.getItem('bcc_gemini_api_key') ? (
+                      <span style={{ background: 'rgba(34, 197, 94, 0.2)', border: '1px solid #22C55E', color: '#4ADE80', padding: '2px 8px', borderRadius: '12px', fontSize: '0.68rem', fontWeight: 900 }}>
+                        🟢 LIVE GEMINI 1.5 FLASH ACTIVE
+                      </span>
+                    ) : (
+                      <span style={{ background: 'rgba(234, 179, 8, 0.15)', border: '1px solid #EAB308', color: '#FDE047', padding: '2px 8px', borderRadius: '12px', fontSize: '0.68rem', fontWeight: 900 }}>
+                        ⚡ LOCAL SEEDED ENGINE (ZERO KEY NEEDED)
+                      </span>
+                    )}
+                  </div>
+
+                  <button
+                    onClick={() => setIsAiKeyPanelOpen(!isAiKeyPanelOpen)}
+                    style={{
+                      background: 'rgba(192, 132, 252, 0.15)',
+                      border: '1px solid rgba(192, 132, 252, 0.4)',
+                      color: '#E9D5FF',
+                      padding: '3px 10px',
+                      borderRadius: '6px',
+                      fontSize: '0.72rem',
+                      fontWeight: 800,
+                      cursor: 'pointer'
+                    }}
+                  >
+                    {isAiKeyPanelOpen ? '▲ Hide API Key Landing' : '▼ Add / Edit Gemini API Key'}
+                  </button>
+                </div>
+
+                {/* Collapsible Key Landing Form */}
+                {isAiKeyPanelOpen && (
+                  <form onSubmit={handleSaveGeminiKey} style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px', background: 'rgba(15, 23, 42, 0.8)', padding: '12px', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+                    <div style={{ fontSize: '0.72rem', color: '#94A3B8', lineHeight: 1.4 }}>
+                      Paste your Google Gemini API key below to unlock 100% dynamic, multi-turn AI reasoning powered by Google Gemini 1.5 Flash. Get a free key at <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noreferrer" style={{ color: '#38BDF8', fontWeight: 700 }}>aistudio.google.com</a>.
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                      <input
+                        type="password"
+                        placeholder="AIzaSy..."
+                        value={geminiApiKeyInput}
+                        onChange={(e) => setGeminiApiKeyInput(e.target.value)}
+                        style={{
+                          flex: 1,
+                          background: '#0B0F19',
+                          border: '1px solid rgba(192, 132, 252, 0.3)',
+                          borderRadius: '6px',
+                          color: '#F8FAFC',
+                          padding: '6px 12px',
+                          fontSize: '0.8rem',
+                          outline: 'none'
+                        }}
+                      />
+                      <button
+                        type="submit"
+                        style={{
+                          background: 'linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%)',
+                          color: '#FFF',
+                          border: 'none',
+                          padding: '6px 16px',
+                          borderRadius: '6px',
+                          fontSize: '0.78rem',
+                          fontWeight: 800,
+                          cursor: 'pointer'
+                        }}
+                      >
+                        💾 Save Key
+                      </button>
+                    </div>
+
+                    {aiKeySaveMsg && (
+                      <div style={{ fontSize: '0.75rem', fontWeight: 800, color: aiKeySaveMsg.includes('✅') ? '#4ADE80' : '#FDE047', marginTop: '4px' }}>
+                        {aiKeySaveMsg}
+                      </div>
+                    )}
+                  </form>
+                )}
+              </div>
+
+              {/* FREQUENT TOPICS QUICK CHIPS */}
+              <div style={{ background: '#090D16', border: '1px solid var(--border-subtle)', borderRadius: '12px', padding: '10px 14px', flexShrink: 0 }}>
+                <div style={{ fontSize: '0.68rem', fontWeight: 900, color: '#64748B', letterSpacing: '0.05em', marginBottom: '6px' }}>
+                  FREQUENT TOPICS
+                </div>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  {[
+                    { id: 'c1', label: '🎟️ Upgrade Subscription Tier ($299 -> $499)' },
+                    { id: 'c2', label: '🔑 Reset PACER Docket 4-Digit Security PIN' },
+                    { id: 'c3', label: '📡 Request Custom API Webhook Integration' },
+                    { id: 'c4', label: '📞 Escalate Ticket to Human Restructuring Desk' }
+                  ].map(chip => (
+                    <button
+                      key={chip.id}
+                      onClick={() => handleSendConciergeMessage(chip.label)}
+                      style={{
+                        background: 'rgba(56, 189, 248, 0.1)',
+                        border: '1px solid rgba(56, 189, 248, 0.3)',
+                        color: '#38BDF8',
+                        padding: '4px 10px',
+                        borderRadius: '16px',
+                        fontSize: '0.75rem',
+                        fontWeight: 800,
+                        cursor: 'pointer',
+                        whiteSpace: 'nowrap'
+                      }}
+                    >
+                      {chip.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* 2-COLUMN WORKSTATION BODY: LEFT TICKETS DRAWER, RIGHT CHAT */}
+              <div style={{ flex: 1, display: 'flex', gap: '14px', overflow: 'hidden', minHeight: 0 }}>
+                
+                {/* LEFT TICKET DRAWER */}
+                <div style={{ width: '270px', background: '#090D16', border: '1px solid var(--border-subtle)', borderRadius: '12px', padding: '12px', display: 'flex', flexDirection: 'column', flexShrink: 0 }}>
+                  <button
+                    onClick={() => setSelectedConciergeTicketId(null)}
+                    className="btn-primary"
+                    style={{ padding: '8px 12px', fontSize: '0.8rem', fontWeight: 900, width: '100%', marginBottom: '10px' }}
+                  >
+                    + New Inquiry
+                  </button>
+
+                  <div style={{ fontSize: '0.68rem', fontWeight: 900, color: '#64748B', marginBottom: '8px' }}>
+                    MY SUPPORT TICKETS & CHATS
+                  </div>
+
+                  <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    {conciergeTickets.map(t => (
+                      <div
+                        key={t.id}
+                        onClick={() => setSelectedConciergeTicketId(t.id)}
+                        style={{
+                          padding: '8px 10px',
+                          borderRadius: '8px',
+                          background: selectedConciergeTicketId === t.id ? 'rgba(56, 189, 248, 0.15)' : 'rgba(255,255,255,0.02)',
+                          border: selectedConciergeTicketId === t.id ? '1px solid #38BDF8' : '1px solid transparent',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', fontWeight: 900, color: '#38BDF8' }}>
+                          <span>#{t.ticketNumber}</span>
+                          <span style={{ color: t.status === 'open' ? '#10B981' : '#64748B' }}>{t.status === 'open' ? '🟢 OPEN' : '⚪ CLOSED'}</span>
+                        </div>
+                        <div style={{ fontSize: '0.76rem', fontWeight: 700, color: '#F8FAFC', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', marginTop: '2px' }}>
+                          {t.title}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* RIGHT CHAT THREAD (FIXED INPUT AT BOTTOM) */}
+                <div style={{ flex: 1, background: '#090D16', border: '1px solid var(--border-subtle)', borderRadius: '12px', padding: '14px', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                  
+                  {/* MESSAGES AREA */}
+                  <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '10px', paddingRight: '4px', marginBottom: '10px' }}>
+                    {(() => {
+                      const activeT = selectedConciergeTicketId 
+                        ? conciergeTickets.find(t => t.id === selectedConciergeTicketId) 
+                        : null;
+
+                      if (!activeT) {
+                        return (
+                          <div style={{ textAlign: 'center', padding: '40px 20px', color: '#94A3B8', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+                            <div style={{ background: 'rgba(56, 189, 248, 0.1)', padding: '12px', borderRadius: '50%', border: '1px solid rgba(56, 189, 248, 0.3)', marginBottom: '12px' }}>
+                              <Sparkles size={26} color="#38BDF8" />
+                            </div>
+                            <h4 style={{ color: '#F8FAFC', margin: '0 0 6px 0', fontSize: '1rem', fontWeight: 800 }}>
+                              New AI Concierge Inquiry
+                            </h4>
+                            <p style={{ fontSize: '0.8rem', color: '#64748B', maxWidth: '380px', margin: 0, lineHeight: 1.5 }}>
+                              Type your inquiry below or select a Frequent Topic above. Our AI Concierge will assist you instantly and log an escalation ticket if human support is required.
+                            </p>
+                          </div>
+                        );
+                      }
+
+                      return activeT.messages.map(m => (
+                        <div key={m.id} style={{ alignSelf: m.sender === 'user' ? 'flex-end' : 'flex-start', maxWidth: '82%' }}>
+                          <div style={{ fontSize: '0.66rem', color: '#64748B', marginBottom: '2px' }}>{m.senderName} • {m.timestamp}</div>
+                          <div style={{
+                            padding: '10px 14px',
+                            borderRadius: '10px',
+                            background: m.sender === 'user' ? 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)' : 'rgba(15, 23, 42, 0.95)',
+                            border: m.sender === 'user' ? 'none' : '1px solid var(--border-subtle)',
+                            color: '#FFF',
+                            fontSize: '0.82rem',
+                            lineHeight: 1.5
+                          }}>
+                            {m.text}
+                          </div>
+                        </div>
+                      ));
+                    })()}
+                  </div>
+
+                  {/* INPUT FORM ALWAYS FIXED & READILY VISIBLE AT BOTTOM */}
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      handleSendConciergeMessage();
+                    }}
+                    style={{ display: 'flex', gap: '10px', flexShrink: 0, background: 'rgba(15, 23, 42, 0.8)', padding: '8px', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}
+                  >
+                    <input
+                      type="text"
+                      placeholder="Type your inquiry or question..."
+                      value={conciergeInput}
+                      onChange={(e) => setConciergeInput(e.target.value)}
+                      style={{
+                        flex: 1,
+                        background: 'transparent',
+                        border: 'none',
+                        color: '#FFF',
+                        padding: '6px 10px',
+                        fontSize: '0.85rem',
+                        outline: 'none'
+                      }}
+                    />
+                    <button type="submit" className="btn-primary" style={{ padding: '8px 16px', fontSize: '0.82rem', gap: '6px' }}>
+                      <Send size={14} /> Send
+                    </button>
+                  </form>
+                </div>
+
+              </div>
+
+            </div>
+          )}
+
+          {/* TAB 0.5: BILLING & SUBSCRIPTION MATRIX */}
+          {activeTab === 'billing' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              
+              {/* CURRENT ACTIVE SUBSCRIPTION CARD */}
+              <div style={{ background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(9, 13, 22, 0.98) 100%)', border: '1px solid var(--border-subtle)', borderRadius: '12px', padding: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px', boxShadow: '0 8px 24px rgba(0,0,0,0.4)' }}>
+                <div>
+                  <span style={{ fontSize: '0.72rem', fontWeight: 900, color: '#38BDF8', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                    ACTIVE MEMBERSHIP PLAN
+                  </span>
+                  <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#F8FAFC', marginTop: '2px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    {userProfile?.tier || 'BETA FOUNDER PASS ($0 VIP ACCESS)'}
+                    <span style={{ background: 'rgba(16, 185, 129, 0.2)', border: '1px solid #10B981', color: '#10B981', fontSize: '0.72rem', padding: '2px 8px', borderRadius: '6px', fontWeight: 900 }}>
+                      🟢 ACTIVE & VERIFIED
+                    </span>
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: '#94A3B8', marginTop: '6px', display: 'flex', gap: '16px' }}>
+                    <span>Next Renewal: <strong style={{ color: '#F8FAFC' }}>Sept 10, 2026</strong></span>
+                    <span>Payment Method: <strong style={{ color: '#F8FAFC' }}>Visa ending in 9914</strong></span>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', gap: '10px' }}>
+                  {onOpenOnboarding && (
+                    <button
+                      onClick={() => { onClose(); onOpenOnboarding(); }}
+                      className="btn-primary"
+                      style={{ padding: '10px 18px', fontSize: '0.84rem', fontWeight: 900, gap: '6px' }}
+                    >
+                      ⚡ Upgrade Tier & Checkout ↗
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* MY PAYMENT OPTIONS SECTION */}
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                  <div style={{ fontSize: '0.75rem', fontWeight: 900, color: '#64748B', letterSpacing: '0.05em' }}>
+                    MY PAYMENT OPTIONS & SAVED CARDS
+                  </div>
+
+                  <button
+                    onClick={() => setIsAddCardOpen(!isAddCardOpen)}
+                    style={{
+                      background: 'rgba(56, 189, 248, 0.15)',
+                      border: '1px solid #38BDF8',
+                      color: '#38BDF8',
+                      padding: '4px 12px',
+                      borderRadius: '6px',
+                      fontSize: '0.76rem',
+                      fontWeight: 800,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '4px'
+                    }}
+                  >
+                    <CreditCard size={14} /> + Add Payment Method
+                  </button>
+                </div>
+
+                {cardSuccessMsg && (
+                  <div style={{ padding: '8px 12px', background: 'rgba(16, 185, 129, 0.2)', border: '1px solid #10B981', color: '#A7F3D0', borderRadius: '6px', fontSize: '0.8rem', fontWeight: 800, marginBottom: '10px' }}>
+                    {cardSuccessMsg}
+                  </div>
+                )}
+
+                {/* ADD NEW CARD FORM MODAL / COLLAPSIBLE */}
+                {isAddCardOpen && (
+                  <div style={{ background: '#090D16', border: '1px solid var(--border-subtle)', borderRadius: '12px', padding: '16px', marginBottom: '14px' }}>
+                    <h4 style={{ color: '#F8FAFC', margin: '0 0 12px 0', fontSize: '0.9rem', fontWeight: 900, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <CreditCard size={16} color="#38BDF8" /> Add New Payment Card
+                    </h4>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '12px' }}>
+                      <div>
+                        <label style={{ fontSize: '0.7rem', color: '#94A3B8', fontWeight: 800, display: 'block', marginBottom: '4px' }}>CARDHOLDER NAME</label>
+                        <input
+                          type="text"
+                          placeholder="Name on card"
+                          value={newCardName}
+                          onChange={(e) => setNewCardName(e.target.value)}
+                          style={{ width: '100%', background: 'rgba(15, 23, 42, 0.9)', border: '1px solid var(--border-subtle)', color: '#FFF', padding: '8px 10px', borderRadius: '6px', fontSize: '0.82rem', outline: 'none' }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ fontSize: '0.7rem', color: '#94A3B8', fontWeight: 800, display: 'block', marginBottom: '4px' }}>CARD NUMBER</label>
+                        <input
+                          type="text"
+                          placeholder="•••• •••• •••• 4402"
+                          value={newCardNumber}
+                          onChange={(e) => setNewCardNumber(e.target.value)}
+                          style={{ width: '100%', background: 'rgba(15, 23, 42, 0.9)', border: '1px solid var(--border-subtle)', color: '#FFF', padding: '8px 10px', borderRadius: '6px', fontSize: '0.82rem', fontFamily: 'monospace', outline: 'none' }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ fontSize: '0.7rem', color: '#94A3B8', fontWeight: 800, display: 'block', marginBottom: '4px' }}>EXPIRATION (MM/YY)</label>
+                        <input
+                          type="text"
+                          placeholder="12/28"
+                          value={newCardExp}
+                          onChange={(e) => setNewCardExp(e.target.value)}
+                          style={{ width: '100%', background: 'rgba(15, 23, 42, 0.9)', border: '1px solid var(--border-subtle)', color: '#FFF', padding: '8px 10px', borderRadius: '6px', fontSize: '0.82rem', fontFamily: 'monospace', outline: 'none' }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ fontSize: '0.7rem', color: '#94A3B8', fontWeight: 800, display: 'block', marginBottom: '4px' }}>CVC CODE</label>
+                        <input
+                          type="password"
+                          placeholder="•••"
+                          value={newCardCvc}
+                          onChange={(e) => setNewCardCvc(e.target.value)}
+                          style={{ width: '100%', background: 'rgba(15, 23, 42, 0.9)', border: '1px solid var(--border-subtle)', color: '#FFF', padding: '8px 10px', borderRadius: '6px', fontSize: '0.82rem', fontFamily: 'monospace', outline: 'none' }}
+                        />
+                      </div>
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '10px' }}>
+                      <button
+                        onClick={() => {
+                          if (!newCardNumber.trim()) return;
+                          const last4 = newCardNumber.trim().slice(-4) || '8810';
+                          const newCardObj = {
+                            id: 'card-' + Date.now(),
+                            brand: 'Visa / Card',
+                            last4: last4,
+                            expMonth: newCardExp.split('/')[0] || '12',
+                            expYear: '20' + (newCardExp.split('/')[1] || '28'),
+                            isDefault: false,
+                            cardholder: newCardName || 'Alexander Vance'
+                          };
+                          setPaymentMethods(prev => [...prev, newCardObj]);
+                          setCardSuccessMsg(`✓ Saved new payment card ending in •••• ${last4}!`);
+                          setIsAddCardOpen(false);
+                          setNewCardNumber('');
+                          setNewCardName('');
+                          setNewCardExp('');
+                          setNewCardCvc('');
+                          setTimeout(() => setCardSuccessMsg(''), 3500);
+                        }}
+                        className="btn-primary"
+                        style={{ padding: '6px 14px', fontSize: '0.8rem' }}
+                      >
+                        💾 Save Card Method
+                      </button>
+
+                      <button
+                        onClick={() => setIsAddCardOpen(false)}
+                        style={{ background: 'transparent', border: '1px solid var(--border-subtle)', color: '#94A3B8', padding: '6px 12px', borderRadius: '6px', fontSize: '0.8rem', cursor: 'pointer' }}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* SAVED CARDS GRID */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
+                  {paymentMethods.map(card => (
+                    <div
+                      key={card.id}
+                      style={{
+                        background: '#090D16',
+                        border: card.isDefault ? '1.5px solid #10B981' : '1px solid var(--border-subtle)',
+                        borderRadius: '12px',
+                        padding: '14px 16px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justify: 'space-between'
+                      }}
+                    >
+                      <div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                          <span style={{ fontSize: '0.82rem', fontWeight: 900, color: '#F8FAFC', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <CreditCard size={16} color={card.isDefault ? '#10B981' : '#38BDF8'} /> {card.brand} •••• {card.last4}
+                          </span>
+                          {card.isDefault ? (
+                            <span style={{ fontSize: '0.64rem', fontWeight: 900, color: '#10B981', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid #10B981', padding: '2px 6px', borderRadius: '4px' }}>
+                              DEFAULT
+                            </span>
+                          ) : (
+                            <button
+                              onClick={() => {
+                                setPaymentMethods(prev => prev.map(c => ({ ...c, isDefault: c.id === card.id })));
+                                setCardSuccessMsg(`✓ Set ${card.brand} •••• ${card.last4} as primary default payment method!`);
+                                setTimeout(() => setCardSuccessMsg(''), 3500);
+                              }}
+                              style={{ background: 'transparent', border: '1px solid var(--border-subtle)', color: '#94A3B8', padding: '2px 6px', borderRadius: '4px', fontSize: '0.64rem', cursor: 'pointer' }}
+                            >
+                              Set Default
+                            </button>
+                          )}
+                        </div>
+
+                        <div style={{ fontSize: '0.74rem', color: '#94A3B8' }}>
+                          Cardholder: <strong style={{ color: '#E2E8F0' }}>{card.cardholder}</strong>
+                        </div>
+                        <div style={{ fontSize: '0.74rem', color: '#94A3B8', marginTop: '2px' }}>
+                          Expires: <strong style={{ color: '#E2E8F0' }}>{card.expMonth}/{card.expYear}</strong>
+                        </div>
+                      </div>
+
+                      <div style={{ marginTop: '12px', display: 'flex', justifyContent: 'flex-end' }}>
+                        {!card.isDefault && (
+                          <button
+                            onClick={() => {
+                              setPaymentMethods(prev => prev.filter(c => c.id !== card.id));
+                            }}
+                            style={{ background: 'transparent', border: 'none', color: '#EF4444', fontSize: '0.72rem', cursor: 'pointer', fontWeight: 700 }}
+                          >
+                            Remove Card
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* 5-TIER SUBSCRIPTION MATRIX */}
+              <div>
+                <div style={{ fontSize: '0.75rem', fontWeight: 900, color: '#64748B', letterSpacing: '0.05em', marginBottom: '10px' }}>
+                  BUSINESSCOLLAPSE 5-TIER PRICING MATRIX
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px' }}>
+                  {[
+                    { title: '$0 Beta Founder Pass', price: '$0 / Lifetime', desc: '100-Member VIP Founder Access, Daily Briefings & Wire Feed', badge: 'ACTIVE', isCurrent: true, color: '#38BDF8' },
+                    { title: '$299 Media Wire Pass', price: '$299 / Mo', desc: 'Real-time Press Release Distribution & Wire Integration', badge: 'AVAILABLE', color: '#C084FC' },
+                    { title: '$299 Headhunter Pass', price: '$299 / Mo', desc: 'Executive Layoff Alerts, Restructuring Contacts & WARN Data', badge: 'POPULAR', color: '#F59E0B' },
+                    { title: '$499 Sales Conquest Pass', price: '$499 / Mo', desc: 'Automated Layoff CRM Exports & Direct Outreach Suite', badge: 'RECOMMENDED', color: '#10B981' },
+                    { title: '$999 Institutional Terminal', price: '$999 / Mo', desc: 'Raw API Streams, Unlimited PACER Ingestion & Custom Webhooks', badge: 'ENTERPRISE', color: '#EF4444' }
+                  ].map((p, idx) => (
+                    <div
+                      key={idx}
+                      style={{
+                        background: p.isCurrent ? 'rgba(56, 189, 248, 0.08)' : '#090D16',
+                        border: p.isCurrent ? `1.5px solid ${p.color}` : '1px solid var(--border-subtle)',
+                        borderRadius: '12px',
+                        padding: '16px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justify: 'space-between',
+                        position: 'relative'
+                      }}
+                    >
+                      <div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                          <span style={{ fontSize: '0.66rem', fontWeight: 900, color: p.color, background: `${p.color}22`, border: `1px solid ${p.color}55`, padding: '2px 6px', borderRadius: '4px' }}>
+                            {p.badge}
+                          </span>
+                        </div>
+                        <h4 style={{ color: '#F8FAFC', margin: '0 0 4px 0', fontSize: '0.92rem', fontWeight: 900 }}>{p.title}</h4>
+                        <div style={{ fontSize: '1.1rem', fontWeight: 900, color: p.color, marginBottom: '8px' }}>{p.price}</div>
+                        <p style={{ fontSize: '0.74rem', color: '#94A3B8', lineHeight: 1.4, margin: 0 }}>{p.desc}</p>
+                      </div>
+
+                      <button
+                        onClick={() => {
+                          if (setUserProfile) {
+                            setUserProfile({ ...userProfile, tier: p.title.toUpperCase() });
+                          }
+                          if (onOpenOnboarding) {
+                            onClose();
+                            onOpenOnboarding();
+                          }
+                        }}
+                        style={{
+                          marginTop: '14px',
+                          width: '100%',
+                          padding: '6px 10px',
+                          borderRadius: '6px',
+                          fontSize: '0.76rem',
+                          fontWeight: 800,
+                          border: p.isCurrent ? '1px solid #10B981' : `1px solid ${p.color}`,
+                          background: p.isCurrent ? 'rgba(16, 185, 129, 0.15)' : `${p.color}15`,
+                          color: p.isCurrent ? '#10B981' : p.color,
+                          cursor: 'pointer'
+                        }}
+                      >
+                        {p.isCurrent ? '✓ Current Plan' : 'Select Plan'}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* INVOICES & BILLING HISTORY TABLE */}
+              <div>
+                <div style={{ fontSize: '0.75rem', fontWeight: 900, color: '#64748B', letterSpacing: '0.05em', marginBottom: '10px' }}>
+                  INVOICE & PAYMENT RECEIPTS HISTORY
+                </div>
+
+                <div style={{ background: '#090D16', border: '1px solid var(--border-subtle)', borderRadius: '12px', overflow: 'hidden' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.8rem' }}>
+                    <thead>
+                      <tr style={{ background: 'rgba(15, 23, 42, 0.9)', borderBottom: '1px solid var(--border-subtle)', color: '#64748B', fontSize: '0.7rem', textTransform: 'uppercase' }}>
+                        <th style={{ padding: '10px 14px' }}>Invoice ID</th>
+                        <th style={{ padding: '10px 14px' }}>Date</th>
+                        <th style={{ padding: '10px 14px' }}>Description</th>
+                        <th style={{ padding: '10px 14px' }}>Amount</th>
+                        <th style={{ padding: '10px 14px' }}>Status</th>
+                        <th style={{ padding: '10px 14px', textAlign: 'right' }}>Receipt</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        { id: 'INV-2026-0801', date: 'Aug 01, 2026', desc: 'Beta Founder Pass ($0 VIP Access)', amount: '$0.00', status: '🟢 PAID' },
+                        { id: 'INV-2026-0701', date: 'Jul 01, 2026', desc: 'VIP Account Setup & PACER Key Allocation', amount: '$0.00', status: '🟢 PAID' }
+                      ].map((inv, i) => (
+                        <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)', color: '#F8FAFC' }}>
+                          <td style={{ padding: '10px 14px', fontFamily: 'monospace', fontWeight: 700, color: '#38BDF8' }}>{inv.id}</td>
+                          <td style={{ padding: '10px 14px', color: '#94A3B8' }}>{inv.date}</td>
+                          <td style={{ padding: '10px 14px' }}>{inv.desc}</td>
+                          <td style={{ padding: '10px 14px', fontWeight: 800 }}>{inv.amount}</td>
+                          <td style={{ padding: '10px 14px', fontWeight: 800, color: '#10B981' }}>{inv.status}</td>
+                          <td style={{ padding: '10px 14px', textAlign: 'right' }}>
+                            <button
+                              onClick={() => alert(`Downloading Invoice Receipt ${inv.id}...`)}
+                              style={{ background: 'transparent', border: 'none', color: '#38BDF8', cursor: 'pointer', fontSize: '0.78rem', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                            >
+                              <Download size={13} /> PDF
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+          )}
 
           {/* TAB 1: PROFILE & SMS */}
           {activeTab === 'profile' && (

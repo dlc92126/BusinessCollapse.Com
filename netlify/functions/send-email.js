@@ -1,7 +1,14 @@
-// Netlify Serverless Function for Institutional Email Confirmation Dispatch via Resend API
+// Netlify Serverless Function for Email Dispatch via Resend API
+
+const cleanEmailAddress = (raw) => {
+  if (!raw) return '';
+  if (Array.isArray(raw)) return raw.map(cleanEmailAddress).filter(Boolean);
+  const str = String(raw).trim();
+  const match = str.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+  return match ? match[0] : str;
+};
 
 exports.handler = async (event, context) => {
-  // Only allow POST requests
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -10,50 +17,42 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const { to, subject, html, text, name, apiKey } = JSON.parse(event.body || '{}');
+    const { from, to, subject, html, text, name, apiKey } = JSON.parse(event.body || '{}');
 
-    const recipientEmail = to || 'subscriber@citadelcap.com';
-    const emailSubject = subject || '[ACTION REQUIRED] Confirm Email to Activate Your BusinessCollapse PRO Founder Pass';
-    const resendApiKey = process.env.RESEND_API_KEY;
+    const resendApiKey = process.env.RESEND_API_KEY || apiKey;
 
     if (!resendApiKey) {
-      console.warn('RESEND_API_KEY environment variable is not configured on Netlify.');
+      console.warn('RESEND_API_KEY environment variable is not configured.');
       return {
         statusCode: 200,
         body: JSON.stringify({
           success: true,
           simulated: true,
-          message: 'Simulation Mode: RESEND_API_KEY environment variable not set on Netlify. Email dispatch logged.'
+          message: 'Simulation Mode: RESEND_API_KEY is not set. Email dispatch logged.'
         })
       };
     }
 
-    const emailBodyHtml = html || `
-      <div style="font-family: Arial, sans-serif; background-color: #0F172A; color: #F8FAFC; padding: 32px; border-radius: 12px;">
-        <h2 style="color: #10B981; margin-top: 0;">BusinessCollapse PRO VIP Founder Confirmation</h2>
-        <p>Hello <strong>${name || 'VIP Founder'}</strong>,</p>
-        <p>Welcome to BusinessCollapse Intelligence. Your VIP Founder API key is: <strong style="color: #FCD34D;">${apiKey || 'BCC-FOUNDER-8849-9910'}</strong></p>
-        <p>Please confirm your email address to unlock full PACER court dockets and DIP cash burn metrics.</p>
-        <div style="margin: 24px 0;">
-          <a href="https://businesscollapse.com/?verified=true" style="background-color: #10B981; color: #FFFFFF; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">Confirm Email & Activate Founder Pass →</a>
-        </div>
-        <p style="color: #64748B; font-size: 12px; margin-bottom: 0;">Sent by BusinessCollapse Intelligence • SEC & PACER Verified Distress Desk</p>
-      </div>
-    `;
+    const sanitizedTo = Array.isArray(to) 
+      ? to.map(cleanEmailAddress).filter(Boolean)
+      : [cleanEmailAddress(to)];
+
+    const sanitizedFrom = cleanEmailAddress(from) || 'onboarding@resend.dev';
+    const emailSubject = subject || '[BUSINESSCOLLAPSE INTELLIGENCE] Executive Briefing';
 
     // Dispatch email via Resend API
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${resendApiKey}`,
+        'Authorization': `Bearer ${resendApiKey.trim()}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'Alexander Vance <vance@businesscollapse.com>',
-        to: [recipientEmail],
+        from: sanitizedFrom.includes('resend.dev') ? sanitizedFrom : `BusinessCollapse Intelligence <${sanitizedFrom}>`,
+        to: sanitizedTo,
         subject: emailSubject,
-        html: emailBodyHtml,
-        text: text || `Welcome to BusinessCollapse PRO. Your VIP Founder Key is ${apiKey || 'BCC-FOUNDER-8849-9910'}.`
+        html: html || `<p>${text || 'Message content'}</p>`,
+        text: text || 'Message content'
       })
     });
 
@@ -63,7 +62,11 @@ exports.handler = async (event, context) => {
       console.error('Resend API Error:', data);
       return {
         statusCode: response.status,
-        body: JSON.stringify({ success: false, error: data })
+        body: JSON.stringify({ 
+          success: false, 
+          error: data.message || data.name || 'Resend API Error',
+          resendData: data
+        })
       };
     }
 
@@ -72,7 +75,8 @@ exports.handler = async (event, context) => {
       body: JSON.stringify({
         success: true,
         messageId: data.id,
-        recipient: recipientEmail
+        recipient: sanitizedTo,
+        resendData: data
       })
     };
 

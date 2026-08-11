@@ -52,6 +52,18 @@ export default function AIVoiceAgentModal({ isOpen, onClose, onOpenWatchlist, on
       answer: "If a company is not yet in our master database, click the Custom Request button in the top navigation bar. Enter the company name, ticker, and state jurisdiction. Our AI agent crawlers will deploy within 15 minutes to index court filings and debt records.",
       shortcutText: "Request Custom Tracker",
       shortcutAction: "custom_request"
+    },
+    tier_upgrades: {
+      question: "How do tier level upgrades, passes, and BYO API Keys work?",
+      answer: "BusinessCollapse.Com offers specialized Passes: Media Wire Pass ($149/mo), Headhunter Pass ($299/mo), Sales Conquest ($499/mo), and Institutional ($999/mo). All paid tiers unlock 100% UNLIMITED Bring Your Own AI (BYOAI) Key access for OpenAI, Claude, and Gemini.",
+      shortcutText: "Upgrade Tier Pass",
+      shortcutAction: "onboarding"
+    },
+    billing_support: {
+      question: "How do I change my billing email, invoice receipts, or API keys?",
+      answer: "You can update your billing subscription, download past invoice receipts, or configure your local BYO API Keys anytime by opening User Account Settings or the AI Newsroom BYO Key settings drawer.",
+      shortcutText: "Open Account Settings",
+      shortcutAction: "settings"
     }
   };
 

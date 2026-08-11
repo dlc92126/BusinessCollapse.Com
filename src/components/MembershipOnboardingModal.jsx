@@ -215,12 +215,14 @@ export default function MembershipOnboardingModal({ isOpen, onClose, onCompleteO
                 $0.00 <span style={{ fontSize: '0.85rem', color: '#A7F3D0', fontWeight: 600 }}>/ Free Duration of Beta</span>
               </div>
 
-              <p style={{ fontSize: '0.85rem', color: '#CBD5E1', lineHeight: 1.5, margin: 0 }}>
-                Exclusive invitation for our first 100 early adopters. Get instant 100% free access to live PACER court dockets, Section 363 auctions, and 24/7 SMS alerts during Beta. When Beta ends, unlock an <strong>exclusive 50% OFF your 1st-Year Annual Pass</strong> (if paid annually in advance).
-              </p>
+              <div style={{ marginTop: '12px', background: 'rgba(239, 68, 68, 0.12)', border: '1px solid rgba(239, 68, 68, 0.35)', padding: '10px 14px', borderRadius: '8px', fontSize: '0.74rem', color: '#FCA5A5', lineHeight: 1.4 }}>
+                <strong style={{ color: '#FF3B5C', textTransform: 'uppercase', letterSpacing: '0.04em' }}>⚡ INACTIVITY RECALIBRATION POLICY: </strong>
+                Founder Passes require at least 1 active terminal session every 7 days. Seats idle for 7+ consecutive days are automatically recycled back to the VIP Waitlist to ensure 100% active seat utilization.
+              </div>
 
               <div style={{ marginTop: '14px', display: 'flex', gap: '16px', fontSize: '0.78rem', color: '#10B981', fontWeight: 800, flexWrap: 'wrap' }}>
-                <span>✓ Zero Payment / No Credit Card</span>
+                <span>✓ VIP Invitation Only</span>
+                <span>✓ 7-Day Inactivity Seat Protection</span>
                 <span>✓ Unlocks 50% OFF 1st Year Annual Pass</span>
                 <span>✓ Direct Product Desk Access</span>
               </div>
@@ -397,7 +399,7 @@ export default function MembershipOnboardingModal({ isOpen, onClose, onCompleteO
                 </div>
                 <div style={{ fontSize: '0.72rem', color: '#94A3B8', marginBottom: '10px' }}>Instant AI Newsroom Studio</div>
                 <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#FFF', marginBottom: '10px' }}>
-                  $149 <span style={{ fontSize: '0.75rem', color: '#94A3B8', fontWeight: 500 }}>/ mo</span>
+                  $299 <span style={{ fontSize: '0.75rem', color: '#94A3B8', fontWeight: 500 }}>/ mo</span>
                 </div>
                 <ul style={{ padding: 0, margin: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.75rem', color: '#CBD5E1' }}>
                   <li style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Check size={12} color="#F59E0B" /> AP Wire & X Thread Generator</li>
@@ -517,6 +519,20 @@ export default function MembershipOnboardingModal({ isOpen, onClose, onCompleteO
                     onChange={(e) => setOrganization(e.target.value)}
                     style={{ width: '100%', background: 'rgba(15,23,42,0.9)', border: '1px solid var(--border-subtle)', borderRadius: '8px', padding: '10px 14px', color: '#F8FAFC', fontSize: '0.88rem', outline: 'none' }}
                   />
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#38BDF8', marginBottom: '6px' }}>VIP INVITATION PASSCODE (OPTIONAL)</label>
+                  <input 
+                    type="text" 
+                    placeholder="e.g. HEADHUNT2026, MEDIAWIRE, VIP2026"
+                    value={organization ? (organization.includes('VIP') ? organization : '') : ''}
+                    onChange={(e) => setOrganization(e.target.value)}
+                    style={{ width: '100%', background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56, 189, 248, 0.4)', borderRadius: '8px', padding: '10px 14px', color: '#F8FAFC', fontSize: '0.88rem', outline: 'none' }}
+                  />
+                  <div style={{ fontSize: '0.68rem', color: '#94A3B8', marginTop: '4px' }}>
+                    * Email campaign code bypasses waitlist & reserves your 7-day Founder Pass immediately.
+                  </div>
                 </div>
 
                 <div>

@@ -5,48 +5,77 @@ export default function AuctionDirectory({ auctions, onSelectAuction, onOpenPubl
   return (
     <div style={{ marginTop: '24px' }}>
       
-      {/* Universal Back Button */}
-      {onGoBack && (
-        <button
-          onClick={onGoBack}
-          style={{
-            background: 'rgba(30, 41, 59, 0.8)',
-            color: '#F8FAFC',
-            border: '1px solid var(--border-subtle)',
-            padding: '8px 18px',
-            borderRadius: '8px',
-            fontSize: '0.82rem',
-            fontWeight: 800,
-            cursor: 'pointer',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            marginBottom: '16px',
-            transition: 'all 0.2s ease'
-          }}
-          className="glass-panel-interactive"
-        >
-          <ArrowLeft size={16} color="#EF4444" /> ← Back to Main Distress Wire
-        </button>
-      )}
+
 
       {/* Banner */}
 
-      <div className="glass-panel" style={{ padding: '24px', marginBottom: '28px', borderLeft: '4px solid #10B981', background: 'linear-gradient(135deg, rgba(16, 23, 36, 0.95) 0%, rgba(10, 30, 20, 0.8) 100%)' }}>
+      {/* Banner */}
+      <div className="glass-panel" style={{ padding: '24px', marginBottom: '28px', borderLeft: '5px solid #F59E0B', background: 'linear-gradient(135deg, rgba(30, 20, 10, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '20px' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-              <Gavel size={20} color="#10B981" />
-              <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#10B981', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                Court-Ordered Asset Auctions & Liquidation Directory
-              </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(245, 158, 11, 0.65)', border: '1.5px solid rgba(255, 255, 255, 0.25)', flexShrink: 0 }}>
+              <Gavel size={22} color="#FFF" style={{ filter: 'drop-shadow(0 0 6px rgba(255,255,255,0.8))' }} />
             </div>
-            <h2 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '6px' }}>
-              Bankruptcy Auctions & Log-In Particulars
-            </h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', maxWidth: '780px' }}>
-              Official docket reference listing for upcoming physical and digital court auctions. Includes direct bidder registration portals, log-in credentials, escrow requirements, and stalker-horse floor bids.
-            </p>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                {onGoBack && (
+                  <button
+                    onClick={onGoBack}
+                    style={{
+                      background: 'rgba(255, 42, 75, 0.2)',
+                      color: '#FF3B5C',
+                      border: '1.5px solid rgba(255, 42, 75, 0.5)',
+                      padding: '5px 12px',
+                      borderRadius: '8px',
+                      fontSize: '0.78rem',
+                      fontWeight: 900,
+                      cursor: 'pointer',
+                      marginRight: '6px',
+                      boxShadow: '0 0 12px rgba(255, 42, 75, 0.3)'
+                    }}
+                  >
+                    ← Back to Core Feed
+                  </button>
+                )}
+                <h2 style={{
+                  fontSize: '1.65rem',
+                  fontWeight: 950,
+                  letterSpacing: '0.04em',
+                  wordSpacing: '0.18em',
+                  margin: 0,
+                  background: 'linear-gradient(135deg, #FFFFFF 0%, #FCD34D 50%, #F59E0B 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  filter: 'drop-shadow(0 1px 1px rgba(0, 0, 0, 0.85))',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}>
+                  🏛️ COURT-ORDERED AUCTIONS TERMINAL
+                </h2>
+                <span style={{
+                  background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(217, 119, 6, 0.3) 100%)',
+                  color: '#FCD34D',
+                  border: '1px solid rgba(245, 158, 11, 0.55)',
+                  padding: '4px 12px',
+                  borderRadius: '20px',
+                  fontSize: '0.68rem',
+                  fontWeight: 900,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  boxShadow: '0 0 14px rgba(245, 158, 11, 0.35)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#FCD34D', boxShadow: '0 0 8px #FCD34D' }} />
+                  SECTION 363 BIDDING PORTAL
+                </span>
+              </div>
+              <p style={{ color: '#94A3B8', fontSize: '0.82rem', margin: '4px 0 0 0', lineHeight: 1.5, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                ⚡ OFFICIAL COURT DOCKET LIQUIDATIONS • BIDDER REGISTRATION PORTALS, ESCROW REQUIREMENTS & STALKER-HORSE BIDS
+              </p>
+            </div>
           </div>
 
           <div style={{ background: 'rgba(7, 10, 15, 0.7)', padding: '12px 18px', borderRadius: '10px', border: '1px solid var(--border-subtle)', textAlign: 'center' }}>

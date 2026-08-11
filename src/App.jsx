@@ -38,8 +38,11 @@ import Sub10mRadar from './components/Sub10mRadar';
 import TalentRaidRadar from './components/TalentRaidRadar';
 import SalesConquestRadar from './components/SalesConquestRadar';
 import NewsroomStudioModal from './components/NewsroomStudioModal';
+import AINewsroomStudio from './components/AINewsroomStudio';
 import sub10mCatalog from './data/sub10m_companies.json';
 import UniversalShareModal from './components/UniversalShareModal';
+import EmailClientModal from './components/EmailClientModal';
+import SubscriberBackOfficeModal from './components/SubscriberBackOfficeModal';
 
 
 
@@ -128,6 +131,8 @@ export default function App() {
   const [isMasterAiPromptOpen, setIsMasterAiPromptOpen] = useState(false);
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [shareModalData, setShareModalData] = useState(null);
+  const [isEmailClientOpen, setIsEmailClientOpen] = useState(false);
+  const [isSubscriberBackOfficeOpen, setIsSubscriberBackOfficeOpen] = useState(false);
 
   const [isWaterfallOpen, setIsWaterfallOpen] = useState(false);
   const [waterfallCompany, setWaterfallCompany] = useState(null);
@@ -137,6 +142,7 @@ export default function App() {
 
   const handleOpenNewsroomStudio = (targetCompany) => {
     setNewsroomStudioCompany(targetCompany || selectedCompany);
+    setActiveTab('newsroom');
   };
 
   const handleOpenWaterfall = (targetCompany) => {
@@ -280,6 +286,11 @@ export default function App() {
     const formattedNow = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' • ' + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) + ' EST';
     const nowIso = now.toISOString();
 
+    const rEventDate = r.hoursAgo 
+      ? new Date(Date.now() - r.hoursAgo * 3600 * 1000) 
+      : (r.lastMaterialChangeDate ? new Date(r.lastMaterialChangeDate) : now);
+    const rFormattedMaterialStr = `${rEventDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} • ${rEventDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })} EST`;
+
     return {
       ...r,
       id: r.id,
@@ -320,12 +331,12 @@ export default function App() {
       courtCaseStatus: 'PRE_JUDICIAL_LEAK',
       docketStatusBadge: r.signalType,
       courtLegalNotice: `NOTICE: Pre-judicial warning leak monitored by AI ingestion engine. ${r.daysBeforeFiling}.`,
-      officialFilingDate: nowIso.slice(0, 10),
+      officialFilingDate: rEventDate.toISOString().slice(0, 10),
       firstDistressSignalDate: 'Aug 2026',
-      formattedTimestamp: formattedNow,
+      formattedTimestamp: rFormattedMaterialStr,
       lastRefreshedAt: formattedNow,
-      lastMaterialChangeDate: r.lastMaterialChangeDate || nowIso,
-      formattedMaterialChange: r.formattedMaterialChange || 'Aug 9, 2026 • 09:30 AM EST',
+      lastMaterialChangeDate: rEventDate.toISOString(),
+      formattedMaterialChange: rFormattedMaterialStr,
       lastSweepDate: nowIso,
       formattedLastSweep: formattedNow
     };
@@ -662,6 +673,8 @@ export default function App() {
         onOpenVoiceAgent={() => setIsVoiceAgentOpen(true)}
         onOpenIngestionScheduler={() => setIsIngestionSchedulerOpen(true)}
         lastIngestionTime={lastIngestionTime}
+        onOpenEmailClient={() => setIsEmailClientOpen(true)}
+        onOpenSubscriberBackOffice={() => setIsSubscriberBackOfficeOpen(true)}
       />
 
       {/* 75-Member Sandbox Impersonation Console Bar (Only in Manager Back-Office Mode) */}
@@ -709,6 +722,7 @@ export default function App() {
               setSearchQuery(ticker);
               setActiveTab('graveyard');
             }}
+            onGoBack={() => setActiveTab('graveyard')}
           />
         )}
 
@@ -719,6 +733,15 @@ export default function App() {
               setSearchQuery(ticker);
               setActiveTab('graveyard');
             }}
+            onGoBack={() => setActiveTab('graveyard')}
+          />
+        )}
+
+        {activeTab === 'newsroom' && (
+          <AINewsroomStudio
+            companies={companies}
+            initialCompany={newsroomStudioCompany}
+            onGoBack={() => setActiveTab('graveyard')}
           />
         )}
 
@@ -728,6 +751,8 @@ export default function App() {
             onSelectCompany={(company) => setSelectedCompany(company)}
             selectedSectorFilter={selectedSectorFilter}
             setSelectedSectorFilter={setSelectedSectorFilter}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
             breakingNews={breakingNews}
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
@@ -739,12 +764,14 @@ export default function App() {
             onOpenBulletinModal={(bulletin) => setSelectedBulletin(bulletin)}
             lastIngestionTime={lastIngestionTime}
             onOpenShare={handleOpenShare}
+            onOpenNewsroomStudio={(comp) => {
+              setNewsroomStudioCompany(comp || (filteredCompanies && filteredCompanies[0]) || (companies && companies[0]));
+              setActiveTab('newsroom');
+            }}
             dismissedCompanyIds={dismissedCompanyIds}
             toggleDismissCompany={toggleDismissCompany}
-            activeTab={activeTab}
             onOpenWaterfall={handleOpenWaterfall}
             onOpenDiligenceBrief={handleOpenDiligenceBrief}
-            onOpenNewsroomStudio={handleOpenNewsroomStudio}
 
 
 
@@ -842,6 +869,23 @@ export default function App() {
             onSelectCompany={(company) => setSelectedCompany(company)}
             watchlist={activeWatchlist}
             toggleWatchlist={toggleWatchlist}
+            onGoBack={() => setActiveTab('graveyard')}
+          />
+        )}
+
+        {activeTab === 'talent_radar' && (
+          <TalentRaidRadar
+            companies={allCombinedCompanies}
+            onSelectCompany={(company) => setSelectedCompany(company)}
+            onGoBack={() => setActiveTab('graveyard')}
+          />
+        )}
+
+        {activeTab === 'sales_conquest' && (
+          <SalesConquestRadar
+            companies={allCombinedCompanies}
+            onSelectCompany={(company) => setSelectedCompany(company)}
+            onGoBack={() => setActiveTab('graveyard')}
           />
         )}
 
@@ -884,6 +928,7 @@ export default function App() {
         onOpenWaterfall={handleOpenWaterfall}
         onOpenDiligenceBrief={handleOpenDiligenceBrief}
         onOpenNewsroomStudio={handleOpenNewsroomStudio}
+        onOpenTalentRadar={() => setActiveTab('talent_radar')}
       />
 
       {/* Creditor Recovery Waterfall Simulator Modal */}
@@ -1007,12 +1052,6 @@ export default function App() {
       />
 
       {/* System Refresh Scheduler & Status Control Modal */}
-      {/* Instant AI Newsroom & Story Studio Modal */}
-      <NewsroomStudioModal
-        isOpen={Boolean(newsroomStudioCompany)}
-        onClose={() => setNewsroomStudioCompany(null)}
-        company={newsroomStudioCompany}
-      />
 
       <IngestionSchedulerModal
         isOpen={isIngestionSchedulerOpen}
@@ -1159,6 +1198,27 @@ export default function App() {
         </div>
       </footer>
 
+
+      {/* Back Office Executive Email Client Workstation Modal */}
+      <EmailClientModal
+        isOpen={isEmailClientOpen}
+        onClose={() => setIsEmailClientOpen(false)}
+        companies={allCombinedCompanies}
+        onReturnToBackOffice={() => {
+          setIsEmailClientOpen(false);
+          setViewMode('manager');
+          setActiveTab('admin');
+        }}
+      />
+
+      {/* Subscriber Back Office & AI Concierge Mini-CRM Modal */}
+      <SubscriberBackOfficeModal
+        isOpen={isSubscriberBackOfficeOpen}
+        onClose={() => setIsSubscriberBackOfficeOpen(false)}
+        userProfile={userProfile}
+        setUserProfile={setUserProfile}
+        onOpenFounders={() => setIsFoundersOpen(true)}
+      />
 
     </div>
   );

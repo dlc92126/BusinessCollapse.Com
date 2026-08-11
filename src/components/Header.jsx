@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Activity, Search, Shield, X, BellRing, Sparkles, UserCheck, Clock, Settings, Lock, HelpCircle, Zap, LogIn } from 'lucide-react';
+import { Activity, Search, Shield, X, BellRing, Sparkles, UserCheck, Clock, Settings, Lock, HelpCircle, Zap, LogIn, Skull, Mail } from 'lucide-react';
 import TopTickerMarquee from './TopTickerMarquee';
 
 export default function Header({
@@ -23,7 +23,10 @@ export default function Header({
   onOpenAccountSettings,
   onOpenSignIn,
   breakingNews = [],
-  onOpenNewsroomStudio
+  onOpenNewsroomStudio,
+  onOpenEmailClient,
+  onOpenSubscriberBackOffice,
+  dismissedCompanyIds = []
 }) {
 
 
@@ -31,6 +34,7 @@ export default function Header({
   const [isConsoleOpen, setIsConsoleOpen] = useState(false);
   const [isSectorDropdownOpen, setIsSectorDropdownOpen] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [isHeaderCollapsed, setIsHeaderCollapsed] = useState(false);
 
   const searchRef = useRef(null);
   const consoleRef = useRef(null);
@@ -63,7 +67,7 @@ export default function Header({
   });
 
   const allTabs = [
-    { id: 'graveyard', label: '🔥 LIVE DISTRESS WIRE' },
+    { id: 'graveyard', label: '🔥 CORE FEED' },
     { id: 'talent_radar', label: '📡 TALENT RAID RADAR' },
     { id: 'sales_conquest', label: '⚡ SALES CONQUEST RADAR' },
     { id: 'sub10m', label: '📡 SUB-$10M RADAR' },
@@ -79,537 +83,440 @@ export default function Header({
   }
 
   return (
-    <header style={{ position: 'sticky', top: 0, zIndex: 50, background: 'var(--bg-header)', backdropFilter: 'blur(16px)', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '16px' }}>
+    <header style={{ position: 'sticky', top: 0, zIndex: 50, background: 'var(--bg-header)', backdropFilter: 'blur(16px)', borderBottom: '1px solid var(--border-subtle)', paddingBottom: isHeaderCollapsed ? '4px' : '16px' }}>
       
-      {/* MODULAR DUAL-BOX HEADER LAYOUT */}
-      <div style={{
-        width: '100%',
-        margin: '0 auto',
-        padding: '0 16px',
-        display: 'flex',
-        alignItems: 'stretch',
-        gap: '16px',
-        flexWrap: 'wrap'
-      }}>
-        
-        {/* LEFT DEDICATED COMMAND BOX: BRAND HERO MODULE */}
-
-        <div 
-          onClick={() => setActiveTab('graveyard')}
-          style={{
-            background: '#090D16',
-            border: '2px solid #EF4444',
-            borderRadius: '12px',
-            padding: '0',
-            overflow: 'hidden',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.7), 0 0 24px rgba(239, 68, 68, 0.25)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            flexShrink: 0,
-            transition: 'var(--transition-normal)'
-          }}
-          className="glass-panel-interactive"
-          title="BusinessCollapse.com — Public Terminal Home"
-        >
-          <img 
-            src="/logo_wide_official.png" 
-            alt="BusinessCollapse.com Official Logo" 
-            style={{ 
-              height: '135px', 
-              width: '360px', 
-              objectFit: 'cover',
-              display: 'block'
-            }} 
-          />
-        </div>
-
-
-        {/* RIGHT DISCONNECTED COMMAND BOX: UTILITIES & WORKSPACE MODULE */}
-        <div style={{ 
-          flex: 1, 
-          minWidth: '500px',
-          background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(11, 15, 23, 0.95) 100%)',
-          border: '1px solid var(--border-subtle)',
-          borderRadius: '12px',
-          padding: '14px 20px',
+      {/* 1-ROW ULTRA-COMPACT COLLAPSED TOP HEADER BAR WITH DIFFUSE METALLIC MOTIF */}
+      {isHeaderCollapsed ? (
+        <div style={{
+          width: '100%',
+          padding: '6px 16px',
           display: 'flex',
-          flexDirection: 'column',
-          justify: 'space-between',
+          alignItems: 'center',
+          justifyContent: 'space-between',
           gap: '12px',
-          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.4)'
+          background: 'linear-gradient(135deg, rgba(9, 13, 22, 0.98) 0%, rgba(15, 23, 42, 0.95) 100%)',
+          borderBottom: '1px solid rgba(239, 68, 68, 0.4)',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.6)',
+          flexWrap: 'wrap'
         }}>
-          
-          {/* Top Utilities Row: Search, Centered Welcome Brief, Membership Onboarding, Account */}
-          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px' }}>
+          {/* LEFT: Diffuse Metallic Motif Brand Logo */}
+          <div 
+            onClick={() => setActiveTab('graveyard')}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              cursor: 'pointer',
+              padding: '4px 12px',
+              background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.95) 100%)',
+              border: '1px solid rgba(239, 68, 68, 0.4)',
+              borderRadius: '8px',
+              boxShadow: '0 0 12px rgba(239, 68, 68, 0.2)'
+            }}
+            className="glass-panel-interactive"
+            title="BusinessCollapse.com — Public Terminal Home"
+          >
+            <div style={{
+              width: '26px',
+              height: '26px',
+              borderRadius: '6px',
+              background: 'linear-gradient(135deg, #EF4444 0%, #B91C1C 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 0 7.5px rgba(239, 68, 68, 0.45)'
+            }}>
+              <Skull size={15} color="#FFF" />
+            </div>
+            <span style={{
+              fontSize: '1.08rem',
+              fontWeight: 950,
+              fontFamily: 'var(--font-mono)',
+              letterSpacing: '0.08em',
+              color: '#F8FAFC'
+            }}>
+              BUSINESS<span style={{ color: '#EF4444', textShadow: '0 0 8px rgba(239, 68, 68, 0.5)' }}>COLLAPSE.COM</span>
+            </span>
+          </div>
 
-            
-            {/* Global Search Input */}
-            <div ref={searchRef} style={{ position: 'relative', flex: '0 1 320px' }}>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                background: 'rgba(9, 13, 22, 0.9)',
-                border: isSearchFocused ? '1.5px solid #EF4444' : '1px solid var(--border-subtle)',
-                borderRadius: '8px',
-                padding: '8px 12px',
-                gap: '8px',
-                boxShadow: isSearchFocused ? '0 0 16px rgba(239, 68, 68, 0.3)' : 'none',
-                transition: 'var(--transition-fast)'
-              }}>
-                <Search size={16} color={isSearchFocused ? '#EF4444' : '#64748B'} />
+          {/* MIDDLE: Global Compact Search & Welcome Brief */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flex: '0 1 420px' }}>
+            <div ref={searchRef} style={{ position: 'relative', flex: 1 }}>
+              <div style={{ display: 'flex', alignItems: 'center', background: 'rgba(9, 13, 22, 0.9)', border: isSearchFocused ? '1.5px solid #EF4444' : '1px solid var(--border-subtle)', borderRadius: '6px', padding: '4px 10px', gap: '6px' }}>
+                <Search size={14} color={isSearchFocused ? '#EF4444' : '#64748B'} />
                 <input
                   type="text"
                   placeholder="Search ticker, court docket, or entity..."
                   value={searchQuery}
-                  onChange={(e) => {
-                    setSearchQuery(e.target.value);
-                    setIsSearchFocused(true);
-                  }}
+                  onChange={(e) => { setSearchQuery(e.target.value); setIsSearchFocused(true); }}
                   onFocus={() => setIsSearchFocused(true)}
-                  style={{
-                    background: 'transparent',
-                    border: 'none',
-                    color: '#F8FAFC',
-                    fontSize: '0.85rem',
-                    outline: 'none',
-                    width: '100%'
-                  }}
+                  style={{ background: 'transparent', border: 'none', color: '#F8FAFC', fontSize: '0.78rem', outline: 'none', width: '100%' }}
                 />
-                {searchQuery && (
-                  <X size={14} color="#64748B" style={{ cursor: 'pointer' }} onClick={() => setSearchQuery('')} />
-                )}
+                {searchQuery && <X size={12} color="#64748B" style={{ cursor: 'pointer' }} onClick={() => setSearchQuery('')} />}
               </div>
 
-              {/* Instant Search Results Dropdown */}
               {isSearchFocused && searchResults.length > 0 && (
-                <div style={{
-                  position: 'absolute',
-                  top: 'calc(100% + 8px)',
-                  left: 0,
-                  right: 0,
-                  background: '#0F172A',
-                  border: '1px solid var(--border-subtle)',
-                  borderRadius: '8px',
-                  boxShadow: '0 12px 36px rgba(0,0,0,0.8)',
-                  maxHeight: '280px',
-                  overflowY: 'auto',
-                  zIndex: 100
-                }}>
+                <div style={{ position: 'absolute', top: 'calc(100% + 4px)', left: 0, right: 0, background: '#0F172A', border: '1px solid var(--border-subtle)', borderRadius: '8px', boxShadow: '0 12px 36px rgba(0,0,0,0.8)', maxHeight: '240px', overflowY: 'auto', zIndex: 100 }}>
                   {searchResults.map((c) => (
-                    <div
-                      key={c.id}
-                      onClick={() => {
-                        if (onSelectCompany) onSelectCompany(c);
-                        setIsSearchFocused(false);
-                      }}
-                      style={{
-                        padding: '10px 14px',
-                        borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justify: 'space-between',
-                        transition: 'var(--transition-fast)'
-                      }}
-                      className="glass-panel-interactive"
-                    >
+                    <div key={c.id} onClick={() => { if (onSelectCompany) onSelectCompany(c); setIsSearchFocused(false); }} style={{ padding: '8px 12px', borderBottom: '1px solid rgba(255, 255, 255, 0.05)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                       <div>
-                        <div style={{ fontWeight: 800, fontSize: '0.85rem', color: '#F8FAFC' }}>{c.name}</div>
-                        <div style={{ fontSize: '0.7rem', color: '#64748B' }}>{c.primaryCause}</div>
+                        <div style={{ fontWeight: 800, fontSize: '0.82rem', color: '#F8FAFC' }}>{c.name}</div>
+                        <div style={{ fontSize: '0.68rem', color: '#64748B' }}>{c.primaryCause}</div>
                       </div>
-                      <span style={{ fontSize: '0.7rem', fontWeight: 900, color: '#EF4444', background: 'rgba(239,68,68,0.1)', padding: '2px 6px', borderRadius: '4px' }}>
-                        {c.ticker}
-                      </span>
+                      <span style={{ fontSize: '0.68rem', fontWeight: 900, color: '#EF4444', background: 'rgba(239,68,68,0.1)', padding: '2px 6px', borderRadius: '4px' }}>{c.ticker}</span>
                     </div>
                   ))}
                 </div>
               )}
             </div>
 
+            <button onClick={onOpenWelcome} style={{ background: 'rgba(6, 182, 212, 0.2)', color: '#38BDF8', border: '1px solid #38BDF8', padding: '4px 10px', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap' }}>
+              <Zap size={13} color="#38BDF8" /> Welcome Brief
+            </button>
+          </div>
 
-            {/* LIVE SYSTEM REFRESH TIMESTAMP BADGE — RESTRICTED TO MANAGER BACK OFFICE */}
-            {viewMode === 'manager' && (
+          {/* RIGHT: VIP Membership + Account + Log In + Expand Button */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <button onClick={onOpenOnboarding} className="btn-primary" style={{ height: '32px', fontSize: '0.76rem', padding: '0 12px', gap: '4px', whiteSpace: 'nowrap' }}>
+              <Shield size={13} /> VIP Membership
+            </button>
+
+            <button onClick={onOpenAccountSettings} style={{ height: '32px', background: 'rgba(124, 58, 237, 0.3)', color: '#FFF', border: '1px solid #C084FC', padding: '0 10px', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap' }}>
+              <Settings size={13} /> Account
+            </button>
+
+            <button onClick={onOpenSignIn} style={{ height: '32px', background: 'rgba(2, 132, 199, 0.2)', color: '#38BDF8', border: '1px solid #38BDF8', padding: '0 10px', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap' }}>
+              <LogIn size={12} color="#38BDF8" /> Log In
+            </button>
+
+            <button
+              onClick={() => setIsHeaderCollapsed(false)}
+              style={{ height: '32px', background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)', color: '#000', border: 'none', padding: '0 10px', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '4px', boxShadow: '0 0 10px rgba(16, 185, 129, 0.4)', whiteSpace: 'nowrap' }}
+              title="Expand Full Dual-Box Branding & Utility Console"
+            >
+              🔽 Expand Header
+            </button>
+          </div>
+        </div>
+      ) : (
+        /* EXPANDED FULL DUAL-BOX HEADER LAYOUT WITH COLLAPSE TOGGLE BUTTON */
+        <div style={{
+          width: '100%',
+          margin: '0 auto',
+          padding: '0 16px',
+          display: 'flex',
+          alignItems: 'stretch',
+          gap: '16px',
+          flexWrap: 'wrap'
+        }}>
+          {/* LEFT DEDICATED COMMAND BOX: BRAND HERO MODULE */}
+          <div 
+            onClick={() => setActiveTab('graveyard')}
+            style={{
+              background: '#090D16',
+              border: '2px solid #EF4444',
+              borderRadius: '12px',
+              padding: '0',
+              overflow: 'hidden',
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.7), 0 0 24px rgba(239, 68, 68, 0.25)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              flexShrink: 0,
+              transition: 'var(--transition-normal)'
+            }}
+            className="glass-panel-interactive"
+            title="BusinessCollapse.com — Public Terminal Home"
+          >
+            <img 
+              src="/logo_wide_official.png" 
+              alt="BusinessCollapse.com Official Logo" 
+              style={{ 
+                height: '135px', 
+                width: '360px', 
+                objectFit: 'cover',
+                display: 'block'
+              }} 
+            />
+          </div>
+
+          {/* RIGHT DISCONNECTED COMMAND BOX: UTILITIES & WORKSPACE MODULE */}
+          <div style={{ 
+            flex: 1, 
+            minWidth: '500px',
+            background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(11, 15, 23, 0.95) 100%)',
+            border: '1px solid var(--border-subtle)',
+            borderRadius: '12px',
+            padding: '14px 20px',
+            display: 'flex',
+            flexDirection: 'column',
+            justify: 'space-between',
+            gap: '12px',
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.4)',
+            position: 'relative'
+          }}>
+            
+            {/* Top Utilities Row: Search, Centered Welcome Brief, Membership Onboarding, Account, Collapse Button */}
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px' }}>
+
+              {/* Global Search Input */}
+              <div ref={searchRef} style={{ position: 'relative', flex: '0 1 320px' }}>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  background: 'rgba(9, 13, 22, 0.9)',
+                  border: isSearchFocused ? '1.5px solid #EF4444' : '1px solid var(--border-subtle)',
+                  borderRadius: '8px',
+                  padding: '8px 12px',
+                  gap: '8px',
+                  boxShadow: isSearchFocused ? '0 0 16px rgba(239, 68, 68, 0.3)' : 'none',
+                  transition: 'var(--transition-fast)'
+                }}>
+                  <Search size={16} color={isSearchFocused ? '#EF4444' : '#64748B'} />
+                  <input
+                    type="text"
+                    placeholder="Search ticker, court docket, or entity..."
+                    value={searchQuery}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value);
+                      setIsSearchFocused(true);
+                    }}
+                    onFocus={() => setIsSearchFocused(true)}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      color: '#F8FAFC',
+                      fontSize: '0.85rem',
+                      outline: 'none',
+                      width: '100%'
+                    }}
+                  />
+                  {searchQuery && (
+                    <X size={14} color="#64748B" style={{ cursor: 'pointer' }} onClick={() => setSearchQuery('')} />
+                  )}
+                </div>
+
+                {isSearchFocused && searchResults.length > 0 && (
+                  <div style={{
+                    position: 'absolute',
+                    top: 'calc(100% + 8px)',
+                    left: 0,
+                    right: 0,
+                    background: '#0F172A',
+                    border: '1px solid var(--border-subtle)',
+                    borderRadius: '8px',
+                    boxShadow: '0 12px 36px rgba(0,0,0,0.8)',
+                    maxHeight: '280px',
+                    overflowY: 'auto',
+                    zIndex: 100
+                  }}>
+                    {searchResults.map((c) => (
+                      <div
+                        key={c.id}
+                        onClick={() => {
+                          if (onSelectCompany) onSelectCompany(c);
+                          setIsSearchFocused(false);
+                        }}
+                        style={{
+                          padding: '10px 14px',
+                          borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justify: 'space-between',
+                          transition: 'var(--transition-fast)'
+                        }}
+                        className="glass-panel-interactive"
+                      >
+                        <div>
+                          <div style={{ fontWeight: 800, fontSize: '0.85rem', color: '#F8FAFC' }}>{c.name}</div>
+                          <div style={{ fontSize: '0.7rem', color: '#64748B' }}>{c.primaryCause}</div>
+                        </div>
+                        <span style={{ fontSize: '0.7rem', fontWeight: 900, color: '#EF4444', background: 'rgba(239,68,68,0.1)', padding: '2px 6px', borderRadius: '4px' }}>
+                          {c.ticker}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* LIVE SYSTEM REFRESH TIMESTAMP BADGE — RESTRICTED TO MANAGER BACK OFFICE */}
+              {viewMode === 'manager' && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <button
+                    onClick={onOpenIngestionScheduler}
+                    style={{
+                      height: '38px',
+                      boxSizing: 'border-box',
+                      fontSize: '0.78rem',
+                      padding: '0 12px',
+                      gap: '6px',
+                      background: 'rgba(16, 185, 129, 0.15)',
+                      color: '#A7F3D0',
+                      border: '1px solid #10B981',
+                      borderRadius: '8px',
+                      fontWeight: 900,
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      whiteSpace: 'nowrap',
+                      boxShadow: '0 0 14px rgba(16, 185, 129, 0.25)'
+                    }}
+                    title="System Refresh Scheduler & Status Control — Back Office Management Function"
+                  >
+                    <Clock size={14} color="#10B981" /> ⚡ SYSTEM REFRESH: {lastIngestionTime ? new Date(lastIngestionTime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) + ' EST' : 'SYNCED'}
+                  </button>
+
+                  <button
+                    onClick={onOpenEmailClient}
+                    style={{
+                      height: '38px',
+                      boxSizing: 'border-box',
+                      fontSize: '0.78rem',
+                      padding: '0 12px',
+                      gap: '6px',
+                      background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(185, 28, 28, 0.3) 100%)',
+                      color: '#FCA5A5',
+                      border: '1.5px solid #EF4444',
+                      borderRadius: '8px',
+                      fontWeight: 900,
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      whiteSpace: 'nowrap',
+                      boxShadow: '0 0 14px rgba(239, 68, 68, 0.3)'
+                    }}
+                    className="glass-panel-interactive"
+                    title="Back Office Executive Email Client Workstation"
+                  >
+                    <Mail size={14} color="#EF4444" /> 📧 MAIL CLIENT
+                  </button>
+                </div>
+              )}
+
+              {/* CENTERED PROMINENT WELCOME BRIEF BUTTON */}
               <button
-                onClick={onOpenIngestionScheduler}
+                onClick={onOpenWelcome}
                 style={{
                   height: '38px',
                   boxSizing: 'border-box',
-                  fontSize: '0.78rem',
-                  padding: '0 12px',
-                  gap: '6px',
-                  background: 'rgba(16, 185, 129, 0.15)',
-                  color: '#A7F3D0',
-                  border: '1px solid #10B981',
+                  fontSize: '0.82rem',
+                  padding: '0 16px',
+                  gap: '8px',
+                  background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.25) 0%, rgba(59, 130, 246, 0.25) 100%)',
+                  color: '#38BDF8',
+                  border: '1.5px solid #38BDF8',
                   borderRadius: '8px',
                   fontWeight: 900,
                   cursor: 'pointer',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  whiteSpace: 'nowrap',
-                  boxShadow: '0 0 14px rgba(16, 185, 129, 0.25)'
+                  boxShadow: '0 0 16px rgba(56, 189, 248, 0.35)',
+                  transition: 'var(--transition-fast)',
+                  letterSpacing: '0.02em',
+                  whiteSpace: 'nowrap'
                 }}
-                title="System Refresh Scheduler & Status Control — Back Office Management Function"
+                className="glass-panel-interactive"
+                title="60-Second Executive Welcome Brief & Platform Guide"
               >
-                <Clock size={14} color="#10B981" /> ⚡ SYSTEM REFRESH: {lastIngestionTime ? new Date(lastIngestionTime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) + ' EST' : 'SYNCED'}
+                <Zap size={15} color="#38BDF8" /> ⚡ Welcome Brief
               </button>
-            )}
 
-            {/* CENTERED PROMINENT WELCOME BRIEF BUTTON (Electric Cyan Glow) */}
-            <button
-              onClick={onOpenWelcome}
-              style={{
-                height: '38px',
-                boxSizing: 'border-box',
-                fontSize: '0.82rem',
-                padding: '0 16px',
-                gap: '8px',
-                background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.25) 0%, rgba(59, 130, 246, 0.25) 100%)',
-                color: '#38BDF8',
-                border: '1.5px solid #38BDF8',
-                borderRadius: '8px',
-                fontWeight: 900,
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                boxShadow: '0 0 16px rgba(56, 189, 248, 0.35)',
-                transition: 'var(--transition-fast)',
-                letterSpacing: '0.02em',
-                whiteSpace: 'nowrap'
-              }}
-              className="glass-panel-interactive"
-              title="60-Second Executive Welcome Brief & Platform Guide"
-            >
-              <Zap size={15} color="#38BDF8" /> ⚡ Welcome Brief
-            </button>
+              {/* VIP Access / Onboarding & Account Utility Buttons + Collapse Toggle Button */}
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', height: '38px' }} title="Claim 1 of 100 Free Beta Founder Pass Spots">
+                  <button
+                    onClick={onOpenOnboarding}
+                    className="btn-primary"
+                    style={{ height: '38px', boxSizing: 'border-box', fontSize: '0.82rem', padding: '0 16px', gap: '6px', whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center' }}
+                  >
+                    <Shield size={14} /> VIP Membership
+                  </button>
+                </div>
 
-            {/* Instant AI Newsroom Studio Button */}
-            <button
-              onClick={() => {
-                if (onOpenNewsroomStudio) {
-                  const targetCompany = companies && companies.length > 0 ? companies[0] : null;
-                  onOpenNewsroomStudio(targetCompany);
-                }
-              }}
-              style={{
-                height: '38px',
-                boxSizing: 'border-box',
-                fontSize: '0.82rem',
-                padding: '0 16px',
-                gap: '6px',
-                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.35) 0%, rgba(217, 119, 6, 0.5) 100%)',
-                color: '#FFF',
-                border: '1.5px solid #F59E0B',
-                borderRadius: '8px',
-                fontWeight: 900,
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                boxShadow: '0 0 16px rgba(245, 158, 11, 0.4)',
-                transition: 'var(--transition-fast)',
-                letterSpacing: '0.02em',
-                whiteSpace: 'nowrap'
-              }}
-              className="glass-panel-interactive"
-              title="Open Instant AI Newsroom Studio (AP Press Wire, X Threads, Substack & Infographics)"
-            >
-              <Sparkles size={15} color="#FCD34D" /> 📰 AI Newsroom Studio
-            </button>
-
-            {/* VIP Access / Onboarding & Account Utility Buttons */}
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-              
-              <div 
-                style={{ display: 'flex', alignItems: 'center', gap: '6px', height: '38px' }}
-                title="Claim 1 of 100 Free Beta Founder Pass Spots"
-              >
-                <button
-                  onClick={onOpenOnboarding}
-                  className="btn-primary"
-                  style={{ height: '38px', boxSizing: 'border-box', fontSize: '0.82rem', padding: '0 16px', gap: '6px', whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center' }}
-                >
-                  <Shield size={14} /> VIP Membership
-                </button>
-              </div>
-
-              {/* FAR-RIGHT STACKED COLUMN (Account & FAQ on top, Log In directly underneath, right-justified) */}
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px' }}>
-                <button
-                  onClick={onOpenAccountSettings}
-                  style={{
-                    height: '38px',
-                    boxSizing: 'border-box',
-                    fontSize: '0.82rem',
-                    padding: '0 16px',
-                    gap: '6px',
-                    background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.4) 0%, rgba(79, 70, 229, 0.5) 100%)',
-                    color: '#FFF',
-                    border: '1.5px solid #C084FC',
-                    borderRadius: '8px',
-                    fontWeight: 900,
-                    cursor: 'pointer',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    boxShadow: '0 4px 14px rgba(124, 58, 237, 0.35)',
-                    transition: 'var(--transition-fast)',
-                    whiteSpace: 'nowrap'
-                  }}
-                  className="glass-panel-interactive"
-                  title="My Account Vault, FAQ, Saved PINs, Alerts & Manual"
-                >
-                  <Settings size={15} color="#FFF" /> ⚙️ Account & FAQ
-                </button>
-
-
-                <button
-                  onClick={onOpenSignIn}
-                  style={{
-                    fontSize: '0.72rem',
-                    padding: '3px 10px',
-                    gap: '4px',
-                    background: 'rgba(2, 132, 199, 0.2)',
-                    color: '#38BDF8',
-                    border: '1px solid #38BDF8',
-                    borderRadius: '6px',
-                    fontWeight: 800,
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    boxShadow: '0 0 10px rgba(56, 189, 248, 0.25)',
-                    transition: 'var(--transition-fast)',
-                    whiteSpace: 'nowrap'
-                  }}
-                  className="glass-panel-interactive"
-                  title="Subscriber & Founder Log-In Portal"
-                >
-                  <LogIn size={12} color="#38BDF8" /> 🔑 Log In
-                </button>
-              </div>
-
-            </div>
-
-
-
-          </div>
-
-
-          {/* Bottom Workspace Navigation Tabs Bar */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            {allTabs.map((tab) => {
-              const isActive = activeTab === tab.id;
-
-              if (tab.id === 'sectors') {
-                return (
-                  <div key={tab.id} style={{ position: 'relative' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <button
-                      onClick={() => {
-                        setActiveTab('sectors');
-                        setIsSectorDropdownOpen(!isSectorDropdownOpen);
-                      }}
+                      onClick={onOpenAccountSettings}
                       style={{
-                        background: isActive ? 'linear-gradient(135deg, #EF4444 0%, #991B1B 100%)' : 'rgba(30, 41, 59, 0.6)',
-                        color: isActive ? '#FFFFFF' : '#94A3B8',
-                        border: isActive ? '1px solid #EF4444' : '1px solid var(--border-subtle)',
-                        padding: '8px 16px',
-                        borderRadius: '6px',
-                        fontSize: '0.78rem',
-                        fontWeight: isActive ? 900 : 600,
-                        letterSpacing: '0.04em',
+                        height: '38px',
+                        boxSizing: 'border-box',
+                        fontSize: '0.82rem',
+                        padding: '0 16px',
+                        gap: '6px',
+                        background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.4) 0%, rgba(79, 70, 229, 0.5) 100%)',
+                        color: '#FFF',
+                        border: '1.5px solid #C084FC',
+                        borderRadius: '8px',
+                        fontWeight: 900,
                         cursor: 'pointer',
-                        transition: 'var(--transition-fast)',
-                        boxShadow: isActive ? '0 4px 14px rgba(239, 68, 68, 0.3)' : 'none',
-                        display: 'flex',
+                        display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '6px'
+                        boxShadow: '0 4px 14px rgba(124, 58, 237, 0.35)',
+                        transition: 'var(--transition-fast)',
+                        whiteSpace: 'nowrap'
                       }}
+                      className="glass-panel-interactive"
+                      title="Settings & Account: AI Concierge, Support Tickets, PIN Vault & Manual"
                     >
-                      {tab.label} <span style={{ fontSize: '0.65rem', opacity: 0.8 }}>▼</span>
+                      <Settings size={15} color="#FFF" /> ⚙️ Settings & Account
                     </button>
 
-                    {isSectorDropdownOpen && (
-                      <div style={{
-                        position: 'absolute',
-                        top: 'calc(100% + 6px)',
-                        left: 0,
-                        width: '280px',
-                        background: '#0F172A',
-                        border: '1.5px solid rgba(239, 68, 68, 0.45)',
-                        borderRadius: '10px',
-                        boxShadow: '0 16px 40px rgba(0,0,0,0.95), 0 0 20px rgba(239, 68, 68, 0.2)',
-                        padding: '8px 0',
-                        zIndex: 300,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '2px'
-                      }}>
-                        <div style={{ padding: '6px 14px', fontSize: '0.68rem', fontWeight: 900, color: '#EF4444', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-                          ⚡ SELECT SECTOR DISTRESS WIRE
-                        </div>
-                        
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('ALL'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 700 }}
-                          className="glass-panel-interactive"
-                        >
-                          🌐 All Sectors (Full Registry)
-                        </div>
-
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('aviation'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#60A5FA', cursor: 'pointer', fontWeight: 900, background: 'rgba(59, 130, 246, 0.15)', borderLeft: '3px solid #3B82F6' }}
-                          className="glass-panel-interactive"
-                        >
-                          ✈️ Aviation & Aerospace (SAVE, VORBQ)
-                        </div>
-
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('automotive'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#FB7185', cursor: 'pointer', fontWeight: 900, background: 'rgba(225, 29, 72, 0.15)', borderLeft: '3px solid #E11D48' }}
-                          className="glass-panel-interactive"
-                        >
-                          🚗 Automotive & EV (Fisker, Lordstown)
-                        </div>
-
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('cre'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 600 }}
-                          className="glass-panel-interactive"
-                        >
-                          🏢 Commercial Real Estate (WeWork)
-                        </div>
-
-
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('legacy-retail'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 600 }}
-                          className="glass-panel-interactive"
-                        >
-                          🛍️ Legacy Retail (Tupperware, BBBYQ)
-                        </div>
-
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('regional-banking'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 600 }}
-                          className="glass-panel-interactive"
-                        >
-                          🏦 Regional Banking (SVB, FRCB)
-                        </div>
-
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('casual-dining'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 600 }}
-                          className="glass-panel-interactive"
-                        >
-                          🍔 Casual Dining (Red Lobster, TGI Fridays)
-                        </div>
-
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('linear-media'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 600 }}
-                          className="glass-panel-interactive"
-                        >
-                          📺 Linear Media (Bally Sports, Vice)
-                        </div>
-
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('legacy-tech'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 600 }}
-                          className="glass-panel-interactive"
-                        >
-                          💻 Legacy Tech (Fisker, Avaya)
-                        </div>
-
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('energy'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 600 }}
-                          className="glass-panel-interactive"
-                        >
-                          ⚡ Energy & Cleantech (SunPower, Proterra)
-                        </div>
-
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('crypto-protocols'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 600 }}
-                          className="glass-panel-interactive"
-                        >
-                          🪙 Crypto & Web3 (FTX, Celsius)
-                        </div>
-
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('healthcare'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#34D399', cursor: 'pointer', fontWeight: 800, background: 'rgba(16,185,129,0.12)', borderLeft: '3px solid #10B981' }}
-                          className="glass-panel-interactive"
-                        >
-                          🏥 Healthcare & Hospitals (Steward, Mallinckrodt)
-                        </div>
-
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('logistics'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#FBBF24', cursor: 'pointer', fontWeight: 800, background: 'rgba(245,158,11,0.12)', borderLeft: '3px solid #F59E0B' }}
-                          className="glass-panel-interactive"
-                        >
-                          🚛 Supply Chain & Logistics (Yellow Corp, Convoy)
-                        </div>
-
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('fintech'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#A78BFA', cursor: 'pointer', fontWeight: 800 }}
-                          className="glass-panel-interactive"
-                        >
-                          💳 Fintech & Subprime Credit (Synapse)
-                        </div>
-
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('biotech'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F472B6', cursor: 'pointer', fontWeight: 800 }}
-                          className="glass-panel-interactive"
-                        >
-                          🧬 Biotech & Synthetic Bio (Amyris)
-                        </div>
-
-                        <div 
-                          onClick={() => { if (onSelectSector) onSelectSector('telecom'); setIsSectorDropdownOpen(false); }}
-                          style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#22D3EE', cursor: 'pointer', fontWeight: 800 }}
-                          className="glass-panel-interactive"
-                        >
-                          📡 Telecom & Fiber (Intelsat)
-                        </div>
-
-
-                      </div>
-                    )}
+                    <button
+                      onClick={() => setIsHeaderCollapsed(true)}
+                      style={{
+                        height: '38px',
+                        boxSizing: 'border-box',
+                        fontSize: '0.74rem',
+                        padding: '0 10px',
+                        gap: '4px',
+                        background: 'rgba(30, 41, 59, 0.85)',
+                        color: '#F8FAFC',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        borderRadius: '8px',
+                        fontWeight: 900,
+                        cursor: 'pointer',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        whiteSpace: 'nowrap'
+                      }}
+                      title="Collapse Top Header into Single Elegant Row"
+                    >
+                      ▲ Collapse Bar
+                    </button>
                   </div>
-                );
-              }
 
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  style={{
-                    background: isActive ? 'linear-gradient(135deg, #EF4444 0%, #991B1B 100%)' : 'rgba(30, 41, 59, 0.6)',
-                    color: isActive ? '#FFFFFF' : '#94A3B8',
-                    border: isActive ? '1px solid #EF4444' : '1px solid var(--border-subtle)',
-                    padding: '8px 16px',
-                    borderRadius: '6px',
-                    fontSize: '0.78rem',
-                    fontWeight: isActive ? 900 : 600,
-                    letterSpacing: '0.04em',
-                    cursor: 'pointer',
-                    transition: 'var(--transition-fast)',
-                    boxShadow: isActive ? '0 4px 14px rgba(239, 68, 68, 0.3)' : 'none'
-                  }}
-                >
-                  {tab.label}
-                </button>
-              );
-            })}
+                  <button
+                    onClick={onOpenSignIn}
+                    style={{
+                      fontSize: '0.72rem',
+                      padding: '3px 10px',
+                      gap: '4px',
+                      background: 'rgba(2, 132, 199, 0.2)',
+                      color: '#38BDF8',
+                      border: '1px solid #38BDF8',
+                      borderRadius: '6px',
+                      fontWeight: 800,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      boxShadow: '0 0 10px rgba(56, 189, 248, 0.25)',
+                      transition: 'var(--transition-fast)',
+                      whiteSpace: 'nowrap'
+                    }}
+                    className="glass-panel-interactive"
+                    title="Subscriber & Founder Log-In Portal"
+                  >
+                    <LogIn size={12} color="#38BDF8" /> 🔑 Log In
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-
         </div>
-
-      </div>
+      )}
 
       {/* Live 12-Hour Marquee Ticker (Auto-collapses to 0px if 0 alerts < 12h old) */}
       <TopTickerMarquee

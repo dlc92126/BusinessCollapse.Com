@@ -6,7 +6,7 @@ import {
   Briefcase, Download, Filter, RefreshCw
 } from 'lucide-react';
 
-export default function TalentRaidRadar({ companies = [], onSelectCompany }) {
+export default function TalentRaidRadar({ companies = [], onSelectCompany, onGoBack }) {
   const [selectedSector, setSelectedSector] = useState('ALL');
   const [minFlightRisk, setMinFlightRisk] = useState(70);
   const [searchTerm, setSearchTerm] = useState('');
@@ -227,19 +227,66 @@ Senior Managing Director | Executive Search Practice
         gap: '20px'
       }}>
         <div style={{ flex: '1 1 500px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-            <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'linear-gradient(135deg, #EF4444 0%, #B91C1C 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 15px rgba(239, 68, 68, 0.5)' }}>
-              <Users size={22} color="#FFF" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px', flexWrap: 'wrap' }}>
+            {onGoBack && (
+              <button
+                onClick={onGoBack}
+                style={{
+                  background: 'rgba(255, 42, 75, 0.2)',
+                  color: '#FF3B5C',
+                  border: '1.5px solid rgba(255, 42, 75, 0.5)',
+                  padding: '6px 14px',
+                  borderRadius: '8px',
+                  fontSize: '0.78rem',
+                  fontWeight: 900,
+                  cursor: 'pointer',
+                  marginRight: '8px',
+                  boxShadow: '0 0 12px rgba(255, 42, 75, 0.3)'
+                }}
+              >
+                ← Back to Core Feed
+              </button>
+            )}
+            <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'linear-gradient(135deg, #0EA5E9 0%, #0369A1 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(14, 165, 233, 0.65)', border: '1.5px solid rgba(255, 255, 255, 0.25)', flexShrink: 0 }}>
+              <Users size={22} color="#FFF" style={{ filter: 'drop-shadow(0 0 6px rgba(255,255,255,0.8))' }} />
             </div>
-            <h1 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#FFF', letterSpacing: '-0.02em', margin: 0 }}>
-              📡 EXECUTIVE TALENT RAID RADAR
+            <h1 style={{
+              fontSize: '1.65rem',
+              fontWeight: 950,
+              letterSpacing: '0.04em',
+              wordSpacing: '0.18em',
+              margin: 0,
+              background: 'linear-gradient(135deg, #FFFFFF 0%, #38BDF8 50%, #3B82F6 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              filter: 'drop-shadow(0 1px 1px rgba(0, 0, 0, 0.85))',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}>
+              📡 CORPORATE HEADHUNT SUITE & TALENT RAID RADAR
             </h1>
-            <span style={{ background: 'rgba(239, 68, 68, 0.2)', color: '#FCA5A5', border: '1px solid rgba(239, 68, 68, 0.4)', padding: '3px 10px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 900 }}>
+            <span style={{
+              background: 'linear-gradient(135deg, rgba(14, 165, 233, 0.25) 0%, rgba(3, 105, 161, 0.3) 100%)',
+              color: '#38BDF8',
+              border: '1px solid rgba(56, 189, 248, 0.55)',
+              padding: '4px 12px',
+              borderRadius: '20px',
+              fontSize: '0.68rem',
+              fontWeight: 900,
+              textTransform: 'uppercase',
+              letterSpacing: '0.08em',
+              boxShadow: '0 0 14px rgba(56, 189, 248, 0.35)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px'
+            }}>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#38BDF8', boxShadow: '0 0 8px #38BDF8' }} />
               HEADHUNTER TERMINAL
             </span>
           </div>
-          <p style={{ color: '#94A3B8', fontSize: '0.88rem', margin: 0, lineHeight: 1.5 }}>
-            Real-time executive flight-risk tracking, PACER KERP/KEIP retention docket disclosures, and 1-click zero-cost LinkedIn boolean search deep-links for corporate recruiters.
+          <p style={{ color: '#94A3B8', fontSize: '0.82rem', margin: '4px 0 0 0', lineHeight: 1.5, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+            ⚡ EXECUTIVE FLIGHT-RISK TRACKING • PACER KERP/KEIP RETENTION DISCLOSURES & 1-CLICK LINKEDIN RECRUITER SEARCH
           </p>
         </div>
 
@@ -279,6 +326,30 @@ Senior Managing Director | Executive Search Practice
           >
             + Add Credits
           </button>
+        </div>
+      </div>
+
+      {/* NOVEL C-SUITE & WARN EXODUS HIGHLIGHT BAR */}
+      <div style={{
+        background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(245, 158, 11, 0.15) 100%)',
+        border: '1.5px solid #EF4444',
+        borderRadius: '12px',
+        padding: '12px 20px',
+        marginBottom: '20px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: '12px'
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <span className="pulse-dot critical"></span>
+          <span style={{ fontSize: '0.8rem', fontWeight: 900, color: '#FCA5A5', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+            🔥 FRESH C-SUITE EXODUS & WARN LAYOFF LEAKS (HOT &lt; 24H)
+          </span>
+        </div>
+        <div style={{ fontSize: '0.78rem', color: '#FCD34D', fontWeight: 800 }}>
+          ⚡ 14 Executive Resignations & KERP Retention Docket Orders Surface in Latest System Sweep
         </div>
       </div>
 

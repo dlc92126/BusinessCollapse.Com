@@ -8,7 +8,7 @@ import courtDocketsData from '../data/court_dockets.json';
 
 
 
-export default function CompanyDetailModal({ company, onClose, onOpenPdf, viewMode, onOpenShare, onOpenWaterfall, onOpenDiligenceBrief, onOpenNewsroomStudio }) {
+export default function CompanyDetailModal({ company, onClose, onOpenPdf, viewMode, onOpenShare, onOpenWaterfall, onOpenDiligenceBrief, onOpenNewsroomStudio, onOpenTalentRadar }) {
 
   const [copiedNotebook, setCopiedNotebook] = useState(false);
   const [copiedCitation, setCopiedCitation] = useState(false);
@@ -147,38 +147,158 @@ Follow this structure:
         {/* Modal Body Scroll Container */}
         <div style={{ padding: '28px', overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column', gap: '28px' }}>
           
-          {/* PROMINENT NEWLY INGESTED DOCKET UPDATE HIGHLIGHT BANNER (12-HOUR HOT EXpiration RULE) */}
-          {(company.isEmergent || company.isIngested || company.statusBadge?.includes('AI AGENT') || company.updateFrequency?.includes('AI Agent') || (company.id && company.id.includes('-178'))) && (
-            <div style={{
-              background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.25) 0%, rgba(4, 120, 87, 0.4) 100%)',
-              border: '2px solid #10B981',
-              borderRadius: '12px',
-              padding: '16px 20px',
-              boxShadow: '0 0 24px rgba(16, 185, 129, 0.35)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap',
-              gap: '12px'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <div style={{ background: '#10B981', color: '#000', borderRadius: '50%', padding: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Sparkles size={20} />
+          {/* PROMINENT RECENT BREAKING NEWS & SWEEP EVENT BANNER (12-HOUR EXPIRATION & LIVE COUNTDOWN RULE) */}
+          {(() => {
+            const matT = company.lastMaterialChangeDate || company.dateTimestamp;
+            const exactHoursAgo = matT ? Math.max(0, (new Date().getTime() - new Date(matT).getTime()) / (1000 * 3600)) : 99;
+            const breakingHeadline = company.headline || (company.earlyWarningSignals && company.earlyWarningSignals[0]) || (company.keyUpdates && company.keyUpdates[0]) || company.primaryCause;
+
+            // 12-HOUR EXPIRATION RULE: Fresh Meat Banner ONLY surfaces for events <= 12 hours old!
+            // When > 12h, banner folds away cleanly into the timeline.
+            if (exactHoursAgo > 12) return null;
+
+            const ageDisplay = exactHoursAgo < 1 
+              ? `${Math.max(1, Math.round(exactHoursAgo * 60))}m ago` 
+              : `${Math.round(exactHoursAgo)}h ago`;
+
+            return (
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.22) 0%, rgba(245, 158, 11, 0.2) 50%, rgba(15, 23, 42, 0.95) 100%)',
+                border: '2px solid #EF4444',
+                borderRadius: '14px',
+                padding: '18px 24px',
+                boxShadow: '0 0 32px rgba(239, 68, 68, 0.35)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '16px'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flex: '1 1 500px' }}>
+                  <div style={{ background: 'linear-gradient(135deg, #EF4444 0%, #F59E0B 100%)', color: '#FFF', borderRadius: '12px', padding: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 16px rgba(239, 68, 68, 0.5)', flexShrink: 0 }}>
+                    <Sparkles size={24} color="#FFF" />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '0.76rem', fontWeight: 900, color: '#FCA5A5', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                      <span style={{ background: '#EF4444', color: '#FFF', padding: '2px 8px', borderRadius: '4px', fontSize: '0.68rem', fontWeight: 900, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                        <span className="pulse-dot critical"></span> 🔥 FRESH MEAT FOR THE BARBIE ({ageDisplay})
+                      </span>
+                      <span>📡 EXACT BREAKING EVENT FROM RECENT SWEEP</span>
+                    </div>
+                    <div style={{ fontSize: '1.1rem', fontWeight: 900, color: '#FFF', marginTop: '4px', lineHeight: 1.4 }}>
+                      "{breakingHeadline}"
+                    </div>
+
+                    {/* STRUCTURED 4-GRID 5-W DATELINE BREAKDOWN (WHAT, WHEN, WHY, WHERE) */}
+                    <div style={{
+                      marginTop: '12px',
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                      gap: '10px',
+                      background: 'rgba(7, 10, 15, 0.65)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      borderRadius: '10px',
+                      padding: '12px 14px'
+                    }}>
+                      <div>
+                        <div style={{ fontSize: '0.65rem', color: '#38BDF8', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em' }}>📍 WHERE (DATELINE & JURISDICTION)</div>
+                        <div style={{ fontSize: '0.78rem', color: '#FFF', fontWeight: 800, marginTop: '2px' }}>{company.locationJurisdiction || 'Wilmington, DE (U.S. Court Jurisdiction)'}</div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '0.65rem', color: '#FCD34D', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em' }}>📅 WHEN (EVENT & SWEEP TIMESTAMP)</div>
+                        <div style={{ fontSize: '0.78rem', color: '#FFF', fontWeight: 800, marginTop: '2px' }}>{company.formattedMaterialChange || 'Aug 10, 2026 • Verified Ingestion'}</div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '0.65rem', color: '#FCA5A5', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em' }}>💥 WHY (PRIMARY INSOLVENCY CATALYST)</div>
+                        <div style={{ fontSize: '0.78rem', color: '#FFF', fontWeight: 800, marginTop: '2px' }}>{company.primaryCause || 'Liquidity Depletion & Lease Default'}</div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '0.65rem', color: '#A7F3D0', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em' }}>⚡ WHAT (NOVEL DISCLOSURE)</div>
+                        <div style={{ fontSize: '0.78rem', color: '#FFF', fontWeight: 800, marginTop: '2px' }}>{company.status || 'Pre-Petition Restructuring Signal'}</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: 900, color: '#A7F3D0', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <span style={{ background: '#10B981', color: '#000', padding: '1px 6px', borderRadius: '4px', fontSize: '0.65rem' }}>HOT &lt; 12H</span> ⚡ RECENT SYSTEM REFRESH DOCKET UPDATE DETECTED
-                  </div>
-                  <div style={{ fontSize: '1rem', fontWeight: 900, color: '#FFF', marginTop: '2px' }}>
-                    {company.headline || (company.keyUpdates && company.keyUpdates[0]) || company.summary || 'SEC EDGAR 8-K Disclosure & PACER Court Docket Parsed'}
-                  </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                  <button
+                    onClick={() => {
+                      onClose();
+                      if (onOpenNewsroomStudio) onOpenNewsroomStudio(company);
+                    }}
+                    style={{
+                      background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+                      color: '#000',
+                      border: 'none',
+                      padding: '8px 14px',
+                      borderRadius: '8px',
+                      fontSize: '0.76rem',
+                      fontWeight: 900,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                      boxShadow: '0 0 14px rgba(245, 158, 11, 0.4)',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.03em'
+                    }}
+                    title="Generate AP Press Wire & Viral X Thread from this novel event"
+                  >
+                    📰 Press Wire Story
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      onClose();
+                      if (onOpenTalentRadar) onOpenTalentRadar(company);
+                    }}
+                    style={{
+                      background: 'linear-gradient(135deg, #38BDF8 0%, #0284C7 100%)',
+                      color: '#000',
+                      border: 'none',
+                      padding: '8px 14px',
+                      borderRadius: '8px',
+                      fontSize: '0.76rem',
+                      fontWeight: 900,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                      boxShadow: '0 0 14px rgba(56, 189, 248, 0.4)',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.03em'
+                    }}
+                    title="Launch Corporate Headhunt Suite & KERP Flight-Risk Radar"
+                  >
+                    🎯 Headhunt Briefing
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      onClose();
+                      if (onOpenDiligenceBrief) onOpenDiligenceBrief(company);
+                    }}
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.1)',
+                      color: '#F8FAFC',
+                      border: '1px solid rgba(255, 255, 255, 0.25)',
+                      padding: '8px 14px',
+                      borderRadius: '8px',
+                      fontSize: '0.76rem',
+                      fontWeight: 800,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '5px'
+                    }}
+                    title="Generate 1-Page Executive Special Situations Memo"
+                  >
+                    🏛️ Executive Memo
+                  </button>
                 </div>
               </div>
-              <div style={{ background: 'rgba(0, 0, 0, 0.5)', padding: '6px 14px', borderRadius: '8px', border: '1px solid rgba(16, 185, 129, 0.5)', fontSize: '0.78rem', color: '#A7F3D0', fontWeight: 800, fontFamily: 'var(--font-mono)' }}>
-                ⚡ Ingested: {company.formattedLastSweep || company.lastRefreshedAt || 'Aug 9, 2026 • Local Time'}
-              </div>
-            </div>
-          )}
+            );
+          })()}
 
           {/* THE NEWS CYCLE MACHINE: CITATION & VIRAL SHARING BAR */}
           <div className="glass-panel" style={{ padding: '16px 20px', background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(15, 23, 42, 0.9) 100%)', border: '1px solid rgba(56, 189, 248, 0.4)', borderRadius: '12px' }}>
@@ -216,7 +336,10 @@ Follow this structure:
 
                 {onOpenNewsroomStudio && (
                   <button
-                    onClick={() => onOpenNewsroomStudio(company)}
+                    onClick={() => {
+                      if (onClose) onClose();
+                      if (onOpenNewsroomStudio) onOpenNewsroomStudio(company);
+                    }}
                     style={{
                       background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.3) 0%, rgba(217, 119, 6, 0.5) 100%)',
                       color: '#FFF',
@@ -234,6 +357,32 @@ Follow this structure:
                     title="Open Instant AI Newsroom Studio (AP Press Wire, X Threads, Substack & Infographics)"
                   >
                     📰 Launch AI Newsroom Studio
+                  </button>
+                )}
+
+                {onOpenTalentRadar && (
+                  <button
+                    onClick={() => {
+                      if (onClose) onClose();
+                      if (onOpenTalentRadar) onOpenTalentRadar(company);
+                    }}
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(14, 165, 233, 0.3) 0%, rgba(3, 105, 161, 0.5) 100%)',
+                      color: '#FFF',
+                      border: '1px solid #38BDF8',
+                      padding: '6px 14px',
+                      borderRadius: '6px',
+                      fontSize: '0.75rem',
+                      fontWeight: 900,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      boxShadow: '0 0 15px rgba(56, 189, 248, 0.4)'
+                    }}
+                    title="Open Corporate Headhunt & Talent Poaching Suite"
+                  >
+                    🎯 Headhunt Talent Suite
                   </button>
                 )}
 
