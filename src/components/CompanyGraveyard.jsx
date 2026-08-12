@@ -217,7 +217,51 @@ export default function CompanyGraveyard({
     // Dismissed / Muted Entity Check
     if (dismissedCompanyIds && dismissedCompanyIds.includes(c.id)) return false;
 
-    if (selectedSectorFilter !== 'ALL' && c.sectorId !== selectedSectorFilter) return false;
+    // Sector Filter Matching Helper
+    const matchesSectorFilter = (c, filter) => {
+      if (!filter || filter === 'ALL') return true;
+      if (!c) return false;
+
+      const targetSector = filter.toLowerCase();
+
+      // Direct ID match
+      if (c.sectorId && c.sectorId.toLowerCase() === targetSector) return true;
+
+      // Flexible keyword mapping across sectorName, sector, industry, primaryCause, name, and summary
+      const companySectorStr = [
+        c.sectorId,
+        c.sectorName,
+        c.sector,
+        c.industry,
+        c.category,
+        c.name,
+        c.primaryCause,
+        c.summary
+      ].filter(Boolean).join(' ').toLowerCase();
+
+      const sectorKeywords = {
+        'aviation': ['aviation', 'airline', 'airways', 'flight', 'spirit airlines', 'boeing', 'aerospace', 'carrier'],
+        'automotive': ['automotive', 'auto', 'car', 'ev', 'vehicle', 'electric vehicle', 'ford', 'fisker', 'lordstown', 'dealer'],
+        'cre': ['cre', 'real estate', 'workspace', 'office', 'wework', 'property', 'lease', 'commercial real estate', 'reit', 'landlord'],
+        'legacy-retail': ['retail', 'store', 'consumer goods', 'tupperware', 'big lots', 'bed bath', 'express', 'jcpenney', 'macy', 'e-commerce', 'shopping'],
+        'regional-banking': ['bank', 'banking', 'silicon valley', 'signature', 'first republic', 'financial', 'lender', 'credit', 'deposit'],
+        'casual-dining': ['dining', 'restaurant', 'food', 'red lobster', 'burger', 'pizza', 'bistro', 'cafe', 'eatery', 'hospitality'],
+        'linear-media': ['media', 'press', 'broadcasting', 'television', 'radio', 'entertainment', 'paramount', 'news', 'cable', 'publishing'],
+        'legacy-tech': ['tech', 'technology', 'software', 'cloud', 'saas', 'hardware', 'semiconductor', 'ai', 'digital'],
+        'energy': ['energy', 'oil', 'gas', 'solar', 'renewable', 'utility', 'power', 'clean energy', 'petroleum'],
+        'crypto-protocols': ['crypto', 'bitcoin', 'blockchain', 'ftx', 'celsius', 'voyager', 'binance', 'coin', 'token'],
+        'healthcare': ['healthcare', 'pharma', 'medical', 'hospital', 'biotech', 'health', 'care', 'clinic', 'pharmaceutical'],
+        'logistics': ['logistics', 'shipping', 'freight', 'trucking', 'delivery', 'supply chain', 'yellow', 'transport', 'cargo'],
+        'fintech': ['fintech', 'pay', 'payment', 'neo', 'wallet', 'lending', 'neobank'],
+        'biotech': ['biotech', 'bio', 'pharma', 'gene', 'therapeutic', 'therapeutics'],
+        'telecom': ['telecom', 'mobile', '5g', 'cellular', 'broadband', 'network', 'telecommunications']
+      };
+
+      const keywords = sectorKeywords[targetSector] || [targetSector];
+      return keywords.some(kw => companySectorStr.includes(kw));
+    };
+
+    if (!matchesSectorFilter(c, selectedSectorFilter)) return false;
 
     // Graveyard Archive Mode: Show completed cases, discharged dockets, historical post-mortems, and liquidated corporate autopsies
     if (activeTab === 'graveyard_archive' && statusFilter === 'ALL') {
