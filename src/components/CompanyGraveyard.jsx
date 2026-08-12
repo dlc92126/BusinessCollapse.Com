@@ -341,7 +341,7 @@ export default function CompanyGraveyard({
         const isDis = c.courtCaseStatus === 'FINAL_DECREE_ISSUED' || c.statusBadge === 'discharge';
 
         if (statusFilter === 'pre-judicial' && !isPre) return false;
-        if (statusFilter === 'auction-363' && !isAuc) return false;
+        if (statusFilter === 'auction-363' && (isPre || !isAuc)) return false;
         if (statusFilter === 'chapter-11' && !isChap) return false;
         if (statusFilter === 'discharged' && !isDis) return false;
       }
@@ -1067,7 +1067,7 @@ export default function CompanyGraveyard({
 
               {sortedCompanies.map((company) => {
                 const isPreJudicial = company.isPreJudicial || company.courtCaseStatus === 'PRE_PETITION_WARN_SIGNAL';
-                const isAuction = !isPreJudicial && Boolean(
+                const isAuction = statusFilter === 'auction-363' ? true : (!isPreJudicial && Boolean(
                   (company.auctionTitle && company.auctionTitle.trim() !== '') ||
                   (company.auctionPortalUrl && company.auctionPortalUrl.trim() !== '') ||
                   (company.assetLiquidationType && company.assetLiquidationType.trim() !== '') ||
@@ -1078,7 +1078,7 @@ export default function CompanyGraveyard({
                   (company.status && (company.status.toLowerCase().includes('auction') || company.status.includes('363'))) ||
                   (company.headline && company.headline.toLowerCase().includes('auction')) ||
                   (company.primaryCause && company.primaryCause.toLowerCase().includes('auction'))
-                );
+                ));
                 const isActiveDocket = company.courtCaseStatus !== 'FINAL_DECREE_ISSUED' && !isPreJudicial && !isAuction;
 
 
@@ -1383,7 +1383,7 @@ export default function CompanyGraveyard({
             <div style={{ display: 'grid', gridTemplateColumns: layoutMode === 'full' ? '1fr' : 'repeat(auto-fill, minmax(360px, 1fr))', gap: '20px' }}>
               {sortedCompanies.map((company) => {
                 const isPreJudicial = company.isPreJudicial || company.courtCaseStatus === 'PRE_PETITION_WARN_SIGNAL';
-                const isAuction = !isPreJudicial && Boolean(
+                const isAuction = statusFilter === 'auction-363' ? true : (!isPreJudicial && Boolean(
                   (company.auctionTitle && company.auctionTitle.trim() !== '') ||
                   (company.auctionPortalUrl && company.auctionPortalUrl.trim() !== '') ||
                   (company.assetLiquidationType && company.assetLiquidationType.trim() !== '') ||
@@ -1394,7 +1394,7 @@ export default function CompanyGraveyard({
                   (company.status && (company.status.toLowerCase().includes('auction') || company.status.includes('363'))) ||
                   (company.headline && company.headline.toLowerCase().includes('auction')) ||
                   (company.primaryCause && company.primaryCause.toLowerCase().includes('auction'))
-                );
+                ));
                 const isActiveDocket = company.courtCaseStatus !== 'FINAL_DECREE_ISSUED' && !isPreJudicial && !isAuction;
 
 
