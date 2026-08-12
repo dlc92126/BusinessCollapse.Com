@@ -549,11 +549,14 @@ export default function Header({
             { id: 'investor', label: '📈 INVESTOR TERMINAL', color: '#10B981', desc: 'Distress Heatmap, DIP Loans & Waterfall' },
             { id: 'marketplace', label: '🔨 363 MARKETPLACE', color: '#EC4899', desc: '363 Auction Directory & Diligence Vault' },
             { id: 'creditor', label: '🛡️ CREDITOR ACTION', color: '#8B5CF6', desc: 'Form 410 Claim Wizard & Bar Dates' },
+            { id: 'sub10m', label: '🏬 SUB-$10M RADAR', color: '#A855F7', desc: 'Sub-$10M Subchapter V Regional Distress Radar' },
             { id: 'headhunter', label: '👔 EXECUTIVE TALENT', color: '#F59E0B', desc: 'Talent Raid Radar & WARN Feed' },
             { id: 'media', label: '📰 MEDIA & PRESS', color: '#38BDF8', desc: 'AI Newsroom, AP Wires & Editorial Suite' },
             { id: 'graveyard_archive', label: '🪦 GRAVEYARD ARCHIVE', color: '#64748B', desc: 'Post-Mortem Discharged Insolvencies & Final Decrees' }
           ].map(ws => {
-            const isActive = activeWorkspace === ws.id || (ws.id === 'graveyard_archive' && activeTab === 'graveyard_archive');
+            const isActive = activeWorkspace === ws.id || 
+                             (ws.id === 'graveyard_archive' && activeTab === 'graveyard_archive') ||
+                             (ws.id === 'sub10m' && activeTab === 'sub10m');
             return (
               <button
                 key={ws.id}
@@ -561,6 +564,9 @@ export default function Header({
                   if (ws.id === 'graveyard_archive') {
                     setActiveWorkspace('all');
                     if (setActiveTab) setActiveTab('graveyard_archive');
+                  } else if (ws.id === 'sub10m') {
+                    setActiveWorkspace('all');
+                    if (setActiveTab) setActiveTab('sub10m');
                   } else {
                     setActiveWorkspace(ws.id);
                     if (ws.id === 'all' && setActiveTab) setActiveTab('graveyard');
