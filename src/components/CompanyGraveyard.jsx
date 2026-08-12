@@ -217,17 +217,32 @@ export default function CompanyGraveyard({
     // Dismissed / Muted Entity Check
     if (dismissedCompanyIds && dismissedCompanyIds.includes(c.id)) return false;
 
-    // Sector Filter Matching Helper
+    // Robust Date Timestamp Parser for Date Range Filtering
+    const getCompanyMaterialTime = (c) => {
+      if (!c) return new Date('2024-01-01').getTime();
+      const candidate = c.lastMaterialChangeDate || c.lastUpdated || c.dateTimestamp || c.officialFilingDate || c.lastSweepDate;
+      if (candidate) {
+        const parsed = new Date(candidate).getTime();
+        if (!isNaN(parsed) && parsed > 0) return parsed;
+      }
+      if (c.yearCollapsed) {
+        const yearParsed = new Date(`${c.yearCollapsed}-06-01`).getTime();
+        if (!isNaN(yearParsed)) return yearParsed;
+      }
+      return new Date('2024-01-01').getTime();
+    };
+
+    // Strict Multi-Field Sector Filter Matching Helper
     const matchesSectorFilter = (c, filter) => {
       if (!filter || filter === 'ALL') return true;
       if (!c) return false;
 
       const targetSector = filter.toLowerCase();
 
-      // Direct ID match
+      // Direct ID match takes top priority
       if (c.sectorId && c.sectorId.toLowerCase() === targetSector) return true;
 
-      // Flexible keyword mapping across sectorName, sector, industry, primaryCause, name, and summary
+      // Construct normalized text string for searching
       const companySectorStr = [
         c.sectorId,
         c.sectorName,
@@ -235,30 +250,33 @@ export default function CompanyGraveyard({
         c.industry,
         c.category,
         c.name,
-        c.primaryCause,
-        c.summary
+        c.primaryCause
       ].filter(Boolean).join(' ').toLowerCase();
 
       const sectorKeywords = {
-        'aviation': ['aviation', 'airline', 'airways', 'flight', 'spirit airlines', 'boeing', 'aerospace', 'carrier'],
-        'automotive': ['automotive', 'auto', 'car', 'ev', 'vehicle', 'electric vehicle', 'ford', 'fisker', 'lordstown', 'dealer'],
+        'aviation': ['aviation', 'airline', 'airways', 'flight', 'spirit airlines', 'boeing', 'aerospace'],
+        'automotive': ['automotive', 'automobile', 'car manufacturer', 'electric vehicle', 'ford', 'fisker', 'lordstown', 'auto dealer'],
         'cre': ['cre', 'real estate', 'workspace', 'office', 'wework', 'property', 'lease', 'commercial real estate', 'reit', 'landlord'],
-        'legacy-retail': ['retail', 'store', 'consumer goods', 'tupperware', 'big lots', 'bed bath', 'express', 'jcpenney', 'macy', 'e-commerce', 'shopping'],
-        'regional-banking': ['bank', 'banking', 'silicon valley', 'signature', 'first republic', 'financial', 'lender', 'credit', 'deposit'],
-        'casual-dining': ['dining', 'restaurant', 'food', 'red lobster', 'burger', 'pizza', 'bistro', 'cafe', 'eatery', 'hospitality'],
-        'linear-media': ['media', 'press', 'broadcasting', 'television', 'radio', 'entertainment', 'paramount', 'news', 'cable', 'publishing'],
-        'legacy-tech': ['tech', 'technology', 'software', 'cloud', 'saas', 'hardware', 'semiconductor', 'ai', 'digital'],
-        'energy': ['energy', 'oil', 'gas', 'solar', 'renewable', 'utility', 'power', 'clean energy', 'petroleum'],
-        'crypto-protocols': ['crypto', 'bitcoin', 'blockchain', 'ftx', 'celsius', 'voyager', 'binance', 'coin', 'token'],
-        'healthcare': ['healthcare', 'pharma', 'medical', 'hospital', 'biotech', 'health', 'care', 'clinic', 'pharmaceutical'],
-        'logistics': ['logistics', 'shipping', 'freight', 'trucking', 'delivery', 'supply chain', 'yellow', 'transport', 'cargo'],
-        'fintech': ['fintech', 'pay', 'payment', 'neo', 'wallet', 'lending', 'neobank'],
-        'biotech': ['biotech', 'bio', 'pharma', 'gene', 'therapeutic', 'therapeutics'],
-        'telecom': ['telecom', 'mobile', '5g', 'cellular', 'broadband', 'network', 'telecommunications']
+        'legacy-retail': ['retail', 'store', 'consumer goods', 'tupperware', 'big lots', 'bed bath', 'express', 'jcpenney', 'macy', 'shopping'],
+        'regional-banking': ['bank', 'banking', 'silicon valley bank', 'signature bank', 'first republic', 'financial institution', 'deposit'],
+        'casual-dining': ['dining', 'restaurant', 'food service', 'red lobster', 'burger', 'pizza', 'bistro', 'cafe', 'eatery', 'hospitality'],
+        'linear-media': ['media', 'press', 'broadcasting', 'television', 'radio', 'entertainment', 'paramount', 'news', 'cable'],
+        'legacy-tech': ['technology', 'software', 'cloud', 'saas', 'hardware', 'semiconductor'],
+        'energy': ['energy', 'oil & gas', 'solar', 'renewable', 'utility', 'power plant', 'petroleum'],
+        'crypto-protocols': ['crypto', 'bitcoin', 'blockchain', 'ftx', 'celsius', 'voyager', 'binance'],
+        'healthcare': ['healthcare', 'health care', 'pharma', 'medical', 'hospital', 'clinical', 'pharmaceutical'],
+        'logistics': ['logistics', 'shipping', 'freight', 'trucking', 'delivery', 'supply chain', 'yellow freight', 'cargo'],
+        'fintech': ['fintech', 'payments', 'neobank', 'digital wallet', 'lending platform'],
+        'biotech': ['biotech', 'biotechnology', 'therapeutics', 'gene therapy', 'biopharma'],
+        'telecom': ['telecom', 'telecommunications', 'mobile network', '5g', 'cellular', 'broadband']
       };
 
       const keywords = sectorKeywords[targetSector] || [targetSector];
-      return keywords.some(kw => companySectorStr.includes(kw));
+      return keywords.some(kw => {
+        // Whole-word regex match to prevent substring false positives (e.g. "care" matching "hospitality")
+        const regex = new RegExp(`\\b${kw}\\b`, 'i');
+        return regex.test(companySectorStr);
+      });
     };
 
     if (!matchesSectorFilter(c, selectedSectorFilter)) return false;
@@ -300,24 +318,14 @@ export default function CompanyGraveyard({
       }
     }
 
-
-
-
     if (causeFilter !== 'ALL') {
       const causeText = c.primaryCause ? c.primaryCause.toLowerCase() : '';
       if (!causeText.includes(causeFilter.toLowerCase())) return false;
     }
 
-    // Helper for exact latest material event timestamp
-    const getCompanyMaterialTime = (c) => {
-      if (!c) return 0;
-      const t = c.lastMaterialChangeDate || c.lastUpdated || c.dateTimestamp || c.officialFilingDate || c.lastSweepDate;
-      return t ? new Date(t).getTime() : 0;
-    };
-
-    // Timeframe & Custom Date Range Filter
+    // Timeframe & Custom Date Range Filter (100% Reliable Parsing)
     if (timeframeFilter !== 'ALL') {
-      const itemTime = getCompanyMaterialTime(c) || new Date('2024-01-01').getTime();
+      const itemTime = getCompanyMaterialTime(c);
 
       if (timeframeFilter === 'CUSTOM') {
         if (customStartDate && itemTime < new Date(customStartDate).getTime()) return false;
