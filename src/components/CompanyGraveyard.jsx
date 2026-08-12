@@ -32,6 +32,7 @@ export default function CompanyGraveyard({
 
   const [statusFilter, setStatusFilter] = useState('ALL');
   const [causeFilter, setCauseFilter] = useState('ALL');
+  const [valuationThresholdFilter, setValuationThresholdFilter] = useState('BOTH'); // 'BOTH' | 'INSTITUTIONAL_10M' | 'SUB_10M'
   const [timeframeFilter, setTimeframeFilter] = useState('14D'); // '14D' (2-Week Active Wire) | 'ALL' | '7D' | '30D' | '90D' | '1Y' | '2024_2026' | 'CUSTOM'
   const [customStartDate, setCustomStartDate] = useState('');
   const [customEndDate, setCustomEndDate] = useState('');
@@ -323,6 +324,25 @@ export default function CompanyGraveyard({
       if (!causeText.includes(causeFilter.toLowerCase())) return false;
     }
 
+    // Valuation Threshold Filter (+10M Institutional vs -10M Subchapter V Regional vs Both)
+    if (valuationThresholdFilter !== 'BOTH') {
+      const isSub10mItem = Boolean(
+        (c.statusBadge && (c.statusBadge.toUpperCase().includes('SUBCHAPTER') || c.statusBadge.includes('-$10M') || c.statusBadge.includes('RECEIVERSHIP'))) ||
+        c.status === 'SUBCHAPTER_V' ||
+        c.debtRangeCategory ||
+        (c.sourceType && c.sourceType.includes('SUBCHAPTER')) ||
+        (c.id && (c.id.startsWith('sub10m') || c.id.startsWith('classen') || c.id.startsWith('pacer-subv') || c.id.startsWith('lone-star') || c.id.startsWith('golden-state') || c.id.startsWith('midwest-cnc') || c.id.startsWith('peach-tree') || c.id.startsWith('crestline'))) ||
+        (c.peakValuation && (
+          c.peakValuation.includes('K') || 
+          c.peakValuation.includes('Sub') ||
+          (c.peakValuation.includes('M') && parseFloat(c.peakValuation.replace(/[^0-9.]/g, '')) < 10)
+        ))
+      );
+
+      if (valuationThresholdFilter === 'INSTITUTIONAL_10M' && isSub10mItem) return false;
+      if (valuationThresholdFilter === 'SUB_10M' && !isSub10mItem) return false;
+    }
+
     // Timeframe & Custom Date Range Filter (100% Reliable Parsing)
     if (timeframeFilter !== 'ALL') {
       const itemTime = getCompanyMaterialTime(c);
@@ -589,12 +609,83 @@ export default function CompanyGraveyard({
           boxShadow: '0 6px 24px rgba(0,0,0,0.5)',
           display: 'flex',
           alignItems: 'center',
-          justify: 'space-between',
+          justifyContent: 'space-between',
           flexWrap: 'wrap',
           gap: '12px',
           transition: 'all 0.3s ease'
         }}
       >
+        {/* SECTION 1: HEROIC FULL-HEIGHT NEON GLASSMORPHIC ASSET SWITCHER (EQUAL HEIGHT TO THE 2 FILTER ROWS AT 84px) */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'stretch',
+          height: '84px',
+          background: 'linear-gradient(135deg, rgba(7, 10, 15, 0.98) 0%, rgba(15, 23, 42, 0.95) 100%)',
+          padding: '6px',
+          borderRadius: '14px',
+          border: '2px solid rgba(255, 42, 75, 0.55)',
+          boxShadow: '0 0 28px rgba(255, 42, 75, 0.35), inset 0 0 18px rgba(0, 0, 0, 0.9)',
+          gap: '8px',
+          flexShrink: 0,
+          boxSizing: 'border-box'
+        }}>
+          {[
+            { id: 'INSTITUTIONAL_10M', label: '🏦 INSTITUTIONAL', sub: '+$10M ENTERPRISE', color: '#EF4444', desc: 'Enterprise Chapter 11 mega-cases ($10M+ peak debt/valuation)' },
+            { id: 'SUB_10M', label: '🏬 REGIONAL', sub: '-$10M SUBCHAPTER V', color: '#A855F7', desc: 'Subchapter V small business reorganizations & regional liquidations ($2M-$10M)' },
+            { id: 'BOTH', label: '⚡ ALL ASSETS', sub: 'UNIFIED FIREHOSE', color: '#F59E0B', desc: 'Unified view of all institutional $10M+ and sub-$10M regional insolvencies' }
+          ].map(tab => {
+            const isActive = valuationThresholdFilter === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setValuationThresholdFilter(tab.id)}
+                style={{
+                  height: '100%',
+                  padding: '0 20px',
+                  borderRadius: '10px',
+                  cursor: 'pointer',
+                  border: isActive ? `2px solid ${tab.color}` : '1.5px solid rgba(255, 255, 255, 0.08)',
+                  background: isActive 
+                    ? `linear-gradient(135deg, ${tab.color}55 0%, ${tab.color}20 100%)` 
+                    : 'rgba(15, 23, 42, 0.45)',
+                  color: isActive ? '#FFFFFF' : '#CBD5E1',
+                  boxShadow: isActive 
+                    ? `0 0 22px ${tab.color}80, inset 0 0 14px ${tab.color}35` 
+                    : 'none',
+                  transition: 'all 0.18s ease',
+                  whiteSpace: 'nowrap',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '4px',
+                  boxSizing: 'border-box'
+                }}
+                title={tab.desc}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: tab.color, boxShadow: isActive ? `0 0 12px ${tab.color}` : 'none' }} />
+                  <span style={{ fontSize: '0.98rem', fontWeight: 950, letterSpacing: '0.04em', textShadow: isActive ? '0 1px 4px rgba(0,0,0,0.95)' : 'none' }}>
+                    {tab.label}
+                  </span>
+                </div>
+                <span style={{
+                  fontSize: '0.70rem',
+                  fontWeight: 900,
+                  fontFamily: 'monospace',
+                  letterSpacing: '0.06em',
+                  padding: '1px 8px',
+                  borderRadius: '4px',
+                  background: isActive ? `${tab.color}40` : 'rgba(255, 255, 255, 0.06)',
+                  color: isActive ? '#FFFFFF' : tab.color,
+                  border: `1px solid ${tab.color}50`
+                }}>
+                  {tab.sub}
+                </span>
+              </button>
+            );
+          })}
+        </div>
 
         {/* SECTION 2 (MIDDLE): 2x2 COMPACT FILTER CONSOLE */}
         {!isControlsCollapsed && (
@@ -1007,6 +1098,64 @@ export default function CompanyGraveyard({
                           {company.ticker}
                         </span>
 
+                        {/* Elegant Visual Regime Cue Badge */}
+                        {(() => {
+                          const isSub10mRegime = Boolean(
+                            (company.statusBadge && (company.statusBadge.toUpperCase().includes('SUBCHAPTER') || company.statusBadge.includes('-$10M') || company.statusBadge.includes('RECEIVERSHIP'))) ||
+                            company.status === 'SUBCHAPTER_V' ||
+                            company.debtRangeCategory ||
+                            (company.sourceType && company.sourceType.includes('SUBCHAPTER')) ||
+                            (company.id && (company.id.startsWith('sub10m') || company.id.startsWith('classen') || company.id.startsWith('pacer-subv') || company.id.startsWith('lone-star') || company.id.startsWith('golden-state') || company.id.startsWith('midwest-cnc') || company.id.startsWith('peach-tree') || company.id.startsWith('crestline'))) ||
+                            (company.peakValuation && (
+                              company.peakValuation.includes('K') || 
+                              company.peakValuation.includes('Sub') ||
+                              (company.peakValuation.includes('M') && parseFloat(company.peakValuation.replace(/[^0-9.]/g, '')) < 10)
+                            ))
+                          );
+
+                          if (isSub10mRegime) {
+                            return (
+                              <span style={{
+                                background: 'rgba(168, 85, 247, 0.15)',
+                                color: '#C084FC',
+                                border: '1px solid rgba(168, 85, 247, 0.4)',
+                                padding: '2px 7px',
+                                borderRadius: '4px',
+                                fontSize: '0.66rem',
+                                fontWeight: 900,
+                                fontFamily: 'monospace',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '4px',
+                                letterSpacing: '0.03em'
+                              }}>
+                                <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#C084FC', boxShadow: '0 0 6px #C084FC' }} />
+                                REGIONAL -$10M
+                              </span>
+                            );
+                          } else {
+                            return (
+                              <span style={{
+                                background: 'rgba(239, 68, 68, 0.15)',
+                                color: '#F87171',
+                                border: '1px solid rgba(239, 68, 68, 0.4)',
+                                padding: '2px 7px',
+                                borderRadius: '4px',
+                                fontSize: '0.66rem',
+                                fontWeight: 900,
+                                fontFamily: 'monospace',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '4px',
+                                letterSpacing: '0.03em'
+                              }}>
+                                <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#EF4444', boxShadow: '0 0 6px #EF4444' }} />
+                                INSTITUTIONAL +$10M
+                              </span>
+                            );
+                          }
+                        })()}
+
                         {isFreshSurfaceAlert && (
                           <span style={{ fontSize: '0.65rem', fontWeight: 900, color: '#FFF', background: isBreakingSurface ? 'linear-gradient(135deg, #EF4444 0%, #B91C1C 100%)' : 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)', padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '0.04em', display: 'inline-flex', alignItems: 'center', gap: '4px', boxShadow: isBreakingSurface ? '0 0 12px rgba(239, 68, 68, 0.6)' : '0 0 10px rgba(245, 158, 11, 0.5)' }}>
                             <span className="pulse-dot critical"></span> {isBreakingSurface ? `🔥 BREAKING (${hoursAgo}h ago)` : `⚡ RECENT (${hoursAgo}h ago)`}
@@ -1312,12 +1461,24 @@ export default function CompanyGraveyard({
                       </span>
                     </div>
 
-                    <span style={{ background: 'rgba(239, 68, 68, 0.18)', color: '#FCA5A5', border: '1px solid rgba(239, 68, 68, 0.4)', padding: '2px 8px', borderRadius: '4px', fontSize: '0.68rem', fontWeight: 800, fontFamily: 'var(--font-mono)' }}>
-                      ⚡ Material Change: {company.formattedMaterialChange || (new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' • ' + new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) + ' EST')}
-                    </span>
-                    <span style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8', border: '1px solid rgba(56, 189, 248, 0.35)', padding: '2px 8px', borderRadius: '4px', fontSize: '0.68rem', fontWeight: 800, fontFamily: 'var(--font-mono)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                      <Clock size={10} /> System Refresh Verified: {company.formattedLastSweep || `${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} • ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })} EST`}
-                    </span>
+                    {(() => {
+                      const matT = company.lastMaterialChangeDate || company.dateTimestamp || company.officialFilingDate;
+                      const mD = matT ? new Date(matT) : null;
+                      const liveFormattedStr = (mD && !isNaN(mD.getTime()))
+                        ? `${mD.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} • ${mD.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })} EST`
+                        : `${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} • ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })} EST`;
+
+                      return (
+                        <>
+                          <span style={{ background: 'rgba(239, 68, 68, 0.18)', color: '#FCA5A5', border: '1px solid rgba(239, 68, 68, 0.4)', padding: '2px 8px', borderRadius: '4px', fontSize: '0.68rem', fontWeight: 800, fontFamily: 'var(--font-mono)' }}>
+                            ⚡ Material Change: {liveFormattedStr}
+                          </span>
+                          <span style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8', border: '1px solid rgba(56, 189, 248, 0.35)', padding: '2px 8px', borderRadius: '4px', fontSize: '0.68rem', fontWeight: 800, fontFamily: 'var(--font-mono)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                            <Clock size={10} /> System Refresh Verified: {liveFormattedStr}
+                          </span>
+                        </>
+                      );
+                    })()}
                   </div>
                 </div>
 

@@ -514,97 +514,7 @@ export default function Header({
         </div>
       )}
 
-      {/* 8-ITEM SINGLE-ROW FIERCE INSTITUTIONAL TERMINAL BAR */}
-      <div style={{
-        width: '100%',
-        background: 'linear-gradient(135deg, rgba(9, 13, 22, 0.99) 0%, rgba(15, 23, 42, 0.98) 100%)',
-        borderTop: '1.5px solid rgba(255, 42, 75, 0.4)',
-        borderBottom: '1.5px solid rgba(255, 42, 75, 0.4)',
-        padding: '6px 14px',
-        display: 'flex',
-        alignItems: 'center',
-        justify: 'center',
-        marginTop: '6px',
-        boxShadow: '0 4px 20px rgba(0,0,0,0.8)',
-        position: 'relative',
-        overflowX: 'auto'
-      }}>
-        {/* Decoupled Left-Justified Title */}
-        <div style={{ position: 'absolute', left: '16px', display: 'flex', alignItems: 'center', gap: '5px', whiteSpace: 'nowrap', flexShrink: 0 }}>
-          <span style={{
-            fontSize: '0.66rem',
-            fontWeight: 950,
-            letterSpacing: '0.06em',
-            color: '#F8FAFC',
-            textTransform: 'uppercase'
-          }}>
-            ⚡ WORKSTATIONS:
-          </span>
-        </div>
-
-        {/* Centered Workstation Buttons */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', flexWrap: 'nowrap', flexShrink: 0, marginLeft: '120px' }}>
-          {[
-            { id: 'all', label: '🔥 LIVE DISTRESS WIRE', color: '#EF4444', desc: 'Active Restructuring & Chapter 11 Feed (Liveyard)' },
-            { id: 'investor', label: '📈 INVESTOR TERMINAL', color: '#10B981', desc: 'Distress Heatmap, DIP Loans & Waterfall' },
-            { id: 'marketplace', label: '🔨 363 MARKETPLACE', color: '#EC4899', desc: '363 Auction Directory & Diligence Vault' },
-            { id: 'creditor', label: '🛡️ CREDITOR ACTION', color: '#8B5CF6', desc: 'Form 410 Claim Wizard & Bar Dates' },
-            { id: 'sub10m', label: '🏬 SUB-$10M RADAR', color: '#A855F7', desc: 'Sub-$10M Subchapter V Regional Distress Radar' },
-            { id: 'headhunter', label: '👔 EXECUTIVE TALENT', color: '#F59E0B', desc: 'Talent Raid Radar & WARN Feed' },
-            { id: 'media', label: '📰 MEDIA & PRESS', color: '#38BDF8', desc: 'AI Newsroom, AP Wires & Editorial Suite' },
-            { id: 'graveyard_archive', label: '🪦 GRAVEYARD ARCHIVE', color: '#64748B', desc: 'Post-Mortem Discharged Insolvencies & Final Decrees' }
-          ].map(ws => {
-            const isActive = activeWorkspace === ws.id || 
-                             (ws.id === 'graveyard_archive' && activeTab === 'graveyard_archive') ||
-                             (ws.id === 'sub10m' && activeTab === 'sub10m');
-            return (
-              <button
-                key={ws.id}
-                onClick={() => {
-                  if (ws.id === 'graveyard_archive') {
-                    setActiveWorkspace('all');
-                    if (setActiveTab) setActiveTab('graveyard_archive');
-                  } else if (ws.id === 'sub10m') {
-                    setActiveWorkspace('all');
-                    if (setActiveTab) setActiveTab('sub10m');
-                  } else {
-                    setActiveWorkspace(ws.id);
-                    if (ws.id === 'all' && setActiveTab) setActiveTab('graveyard');
-                  }
-                }}
-                style={{
-                  padding: '5px 8px',
-                  borderRadius: '6px',
-                  fontSize: '0.66rem',
-                  fontWeight: 950,
-                  cursor: 'pointer',
-                  border: isActive ? `1.5px solid ${ws.color}` : `1px solid ${ws.color}75`,
-                  background: isActive 
-                    ? `linear-gradient(135deg, ${ws.color}45 0%, ${ws.color}20 100%)` 
-                    : `linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.85) 100%)`,
-                  color: '#FFFFFF',
-                  textShadow: '0 1px 3px rgba(0,0,0,0.9)',
-                  boxShadow: isActive 
-                    ? `0 0 16px ${ws.color}65, inset 0 0 10px ${ws.color}25` 
-                    : `0 0 8px ${ws.color}25`,
-                  transition: 'all 0.15s ease',
-                  whiteSpace: 'nowrap',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  letterSpacing: '0.02em'
-                }}
-                title={ws.desc}
-              >
-                <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: ws.color, boxShadow: `0 0 6px ${ws.color}` }} />
-                {ws.label}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Live 12-Hour Marquee Ticker (Auto-collapses to 0px if 0 alerts < 12h old) */}
+      {/* Live 12-Hour Marquee Ticker Feed */}
       <TopTickerMarquee
         breakingNews={breakingNews}
         companies={companies}
@@ -613,6 +523,80 @@ export default function Header({
           if (setActiveTab) setActiveTab('graveyard');
         }}
       />
+
+      {/* HEROIC WORKSTATIONS BAR — DIRECTLY UNDER TICKER FEED, UNCOUPLED, CENTERED & 30% LARGER */}
+      <div style={{
+        width: '100%',
+        background: 'linear-gradient(135deg, rgba(7, 10, 15, 0.99) 0%, rgba(15, 23, 42, 0.98) 100%)',
+        borderTop: '2px solid rgba(255, 42, 75, 0.45)',
+        borderBottom: '2px solid rgba(255, 42, 75, 0.45)',
+        padding: '8px 16px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '10px',
+        flexWrap: 'wrap',
+        marginTop: '2px',
+        boxShadow: '0 6px 24px rgba(0, 0, 0, 0.85)'
+      }}>
+        {[
+          { id: 'all', label: '🔥 LIVE DISTRESS WIRE', color: '#EF4444', desc: 'Active Restructuring & Chapter 11 Feed (Liveyard)' },
+          { id: 'investor', label: '📈 INVESTOR TERMINAL', color: '#10B981', desc: 'Distress Heatmap, DIP Loans & Waterfall' },
+          { id: 'marketplace', label: '🔨 363 MARKETPLACE', color: '#EC4899', desc: '363 Auction Directory & Diligence Vault' },
+          { id: 'creditor', label: '🛡️ CREDITOR ACTION', color: '#8B5CF6', desc: 'Form 410 Claim Wizard & Bar Dates' },
+          { id: 'sub10m', label: '🏬 SUB-$10M RADAR', color: '#A855F7', desc: 'Sub-$10M Subchapter V Regional Distress Radar' },
+          { id: 'headhunter', label: '👔 EXECUTIVE TALENT', color: '#F59E0B', desc: 'Talent Raid Radar & WARN Feed' },
+          { id: 'media', label: '📰 MEDIA & PRESS', color: '#38BDF8', desc: 'AI Newsroom, AP Wires & Editorial Suite' },
+          { id: 'graveyard_archive', label: '🪦 GRAVEYARD ARCHIVE', color: '#64748B', desc: 'Post-Mortem Discharged Insolvencies & Final Decrees' }
+        ].map(ws => {
+          const isActive = activeWorkspace === ws.id || 
+                           (ws.id === 'graveyard_archive' && activeTab === 'graveyard_archive') ||
+                           (ws.id === 'sub10m' && activeTab === 'sub10m');
+          return (
+            <button
+              key={ws.id}
+              onClick={() => {
+                if (ws.id === 'graveyard_archive') {
+                  setActiveWorkspace('all');
+                  if (setActiveTab) setActiveTab('graveyard_archive');
+                } else if (ws.id === 'sub10m') {
+                  setActiveWorkspace('all');
+                  if (setActiveTab) setActiveTab('sub10m');
+                } else {
+                  setActiveWorkspace(ws.id);
+                  if (ws.id === 'all' && setActiveTab) setActiveTab('graveyard');
+                }
+              }}
+              style={{
+                padding: '8px 14px',
+                borderRadius: '8px',
+                fontSize: '0.84rem',
+                fontWeight: 950,
+                cursor: 'pointer',
+                letterSpacing: '0.03em',
+                border: isActive ? `2px solid ${ws.color}` : `1.5px solid ${ws.color}65`,
+                background: isActive 
+                  ? `linear-gradient(135deg, ${ws.color}50 0%, ${ws.color}20 100%)` 
+                  : `linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.85) 100%)`,
+                color: '#FFFFFF',
+                textShadow: '0 1px 3px rgba(0,0,0,0.95)',
+                boxShadow: isActive 
+                  ? `0 0 20px ${ws.color}75, inset 0 0 10px ${ws.color}30` 
+                  : `0 0 10px ${ws.color}25`,
+                transition: 'all 0.18s ease',
+                whiteSpace: 'nowrap',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '7px'
+              }}
+              title={ws.desc}
+            >
+              <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: ws.color, boxShadow: `0 0 10px ${ws.color}` }} />
+              {ws.label}
+            </button>
+          );
+        })}
+      </div>
     </header>
   );
 }

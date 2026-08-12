@@ -7,10 +7,24 @@ import sub10mCatalog from '../data/sub10m_companies.json';
 import FullScreenAIEditorModal from './FullScreenAIEditorModal';
 import BCCCitationWrapperModal from './BCCCitationWrapperModal';
 import ExecutiveYouTubeShareModal from './ExecutiveYouTubeShareModal';
+import { syncPacerSubchapterVFeed, PACER_RSS_DISTRICTS } from '../utils/pacerRssPipeline';
 
 export default function Sub10mRadar({ watchlist = [], toggleWatchlist, onSelectCompany, onGoBack, onOpenShare }) {
+  // Option B PACER RSS Sync State
+  const [isPacerSyncing, setIsPacerSyncing] = useState(false);
+  const [pacerSyncStatus, setPacerSyncStatus] = useState('🟢 PACER RSS ACTIVE • 7 DISTRICTS LIVE ($0.00)');
+
+  // Reactive Catalog State initialized from sub10mCatalog + LocalStorage Hydration
+  const [catalogList, setCatalogList] = useState(() => {
+    try {
+      const saved = localStorage.getItem('bc_sub10m_catalog');
+      if (saved) return JSON.parse(saved);
+    } catch (e) {}
+    return sub10mCatalog;
+  });
+
   // Target Selected Company State
-  const [selectedTargetCompany, setSelectedTargetCompany] = useState(sub10mCatalog[0] || {
+  const [selectedTargetCompany, setSelectedTargetCompany] = useState(catalogList[0] || sub10mCatalog[0] || {
     id: 'sub10m-001',
     name: 'Redline Cargo Express LLC',
     ticker: 'SUB10M',
@@ -21,6 +35,34 @@ export default function Sub10mRadar({ watchlist = [], toggleWatchlist, onSelectC
     summary: 'Texas regional logistics carrier filed Subchapter V small business reorganization following fuel price hikes and lost broker contracts.',
     statusBadge: 'SUBCHAPTER_V'
   });
+
+  const handleTriggerPacerSync = async () => {
+    setIsPacerSyncing(true);
+    setPacerSyncStatus('⚡ SYNCING & HYDRATING PACER RSS ENDPOINTS...');
+    const res = await syncPacerSubchapterVFeed();
+
+    if (res && res.items && res.items.length > 0) {
+      // Hydrate new items into state & deduplicate
+      const uniqueMap = new Map();
+      [...res.items, ...catalogList].forEach(item => uniqueMap.set(item.id, item));
+      const hydratedList = Array.from(uniqueMap.values());
+      setCatalogList(hydratedList);
+      try {
+        localStorage.setItem('bc_sub10m_catalog', JSON.stringify(hydratedList));
+      } catch (e) {}
+      
+      // Auto-select latest hydrated item
+      if (res.items[0]) {
+        setSelectedTargetCompany(res.items[0]);
+      }
+    }
+
+    setIsPacerSyncing(false);
+    setPacerSyncStatus(`🟢 HYDRATION COMPLETE (${res.districtCount} DISTRICTS • ${res.ingestedCount} DOSSIERS LIVE)`);
+    setTimeout(() => {
+      setPacerSyncStatus('🟢 PACER RSS ACTIVE • 7 DISTRICTS LIVE ($0.00)');
+    }, 4000);
+  };
 
   const [selectedDebtFilter, setSelectedDebtFilter] = useState('ALL');
   const [selectedRegionFilter, setSelectedRegionFilter] = useState('ALL');
@@ -37,11 +79,11 @@ export default function Sub10mRadar({ watchlist = [], toggleWatchlist, onSelectC
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
   // Compute KPI Summary Stats
-  const totalFilings = sub10mCatalog.length;
-  const subchapterVCount = sub10mCatalog.filter(c => c.status === 'SUBCHAPTER_V').length;
+  const totalFilings = catalogList.length;
+  const subchapterVCount = catalogList.filter(c => c.status === 'SUBCHAPTER_V').length;
 
   // Filter Logic
-  const filteredList = sub10mCatalog.filter(c => {
+  const filteredList = catalogList.filter(c => {
     if (selectedDebtFilter !== 'ALL' && c.debtRangeCategory !== selectedDebtFilter) return false;
     if (selectedRegionFilter !== 'ALL' && c.regionalZone !== selectedRegionFilter) return false;
     if (selectedAssetFilter !== 'ALL' && c.assetLiquidationType !== selectedAssetFilter) return false;
@@ -152,6 +194,43 @@ export default function Sub10mRadar({ watchlist = [], toggleWatchlist, onSelectC
 
         {/* Action Buttons Bar */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          
+          {/* Option B Status Badge */}
+          <div style={{
+            background: 'rgba(16, 185, 129, 0.15)',
+            color: '#34D399',
+            border: '1px solid rgba(16, 185, 129, 0.4)',
+            padding: '6px 12px',
+            borderRadius: '6px',
+            fontSize: '0.72rem',
+            fontWeight: 900,
+            fontFamily: 'monospace'
+          }}>
+            {pacerSyncStatus}
+          </div>
+
+          {/* Sync PACER RSS Option B Button */}
+          <button
+            onClick={handleTriggerPacerSync}
+            disabled={isPacerSyncing}
+            style={{
+              background: 'rgba(56, 189, 248, 0.2)',
+              color: '#38BDF8',
+              border: '1px solid #38BDF8',
+              padding: '7px 14px',
+              borderRadius: '8px',
+              fontSize: '0.78rem',
+              fontWeight: 900,
+              cursor: isPacerSyncing ? 'not-allowed' : 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px'
+            }}
+          >
+            <RefreshCw size={13} className={isPacerSyncing ? 'spin' : ''} />
+            <span>{isPacerSyncing ? 'Syncing PACER...' : 'Sync PACER RSS ($0.00)'}</span>
+          </button>
+
           <button
             onClick={handleExportCSV}
             style={{
@@ -217,7 +296,7 @@ export default function Sub10mRadar({ watchlist = [], toggleWatchlist, onSelectC
               🎯 Target Sub-$10M Entity Selector
             </label>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {sub10mCatalog.slice(0, 5).map(c => (
+              {catalogList.slice(0, 8).map(c => (
                 <button
                   key={c.id}
                   onClick={() => {
@@ -265,6 +344,38 @@ export default function Sub10mRadar({ watchlist = [], toggleWatchlist, onSelectC
               </select>
             </div>
 
+            {/* U.S. State & Territory Filter */}
+            <div>
+              <span style={{ fontSize: '0.68rem', color: '#94A3B8', display: 'block', marginBottom: '4px' }}>U.S. State / Territory:</span>
+              <select
+                value={selectedRegionFilter}
+                onChange={(e) => setSelectedRegionFilter(e.target.value)}
+                style={{ width: '100%', background: '#0F172A', color: '#FFF', border: '1px solid rgba(255,255,255,0.15)', padding: '6px 8px', borderRadius: '6px', fontSize: '0.75rem' }}
+              >
+                <option value="ALL">📍 All 50 States & U.S. Territories</option>
+                <optgroup label="🇺🇸 U.S. Federal Territories & Commonwealths">
+                  <option value="PUERTO_RICO">🇵🇷 Puerto Rico (D.P.R.)</option>
+                  <option value="US_VIRGIN_ISLANDS">🇻🇮 U.S. Virgin Islands (D.V.I.)</option>
+                  <option value="GUAM">🇬🇺 Guam (D. Guam)</option>
+                  <option value="NORTHERN_MARIANA">🇲🇵 Northern Mariana Islands (D.N.M.I.)</option>
+                </optgroup>
+                <optgroup label="🇺🇸 All 50 U.S. Judicial States">
+                  <option value="TEXAS">🤠 Texas (S.D. / W.D. / N.D. Tex)</option>
+                  <option value="OKLAHOMA">🌪️ Oklahoma (W.D. / N.D. Okla)</option>
+                  <option value="FLORIDA">🌴 Florida (M.D. / S.D. Fla)</option>
+                  <option value="CALIFORNIA">☀️ California (C.D. / N.D. Cal)</option>
+                  <option value="NEW_YORK">🗽 New York (S.D. / E.D. N.Y.)</option>
+                  <option value="MIDWEST">🏭 Illinois & Midwest (N.D. Ill.)</option>
+                  <option value="DELAWARE">🏢 Delaware (D. Del.)</option>
+                  <option value="GEORGIA">🍑 Georgia (N.D. Ga.)</option>
+                  <option value="NORTH_CAROLINA">🌲 North Carolina (E.D. N.C.)</option>
+                  <option value="OHIO">🌰 Ohio (N.D. Ohio)</option>
+                  <option value="PENNSYLVANIA">🔔 Pennsylvania (E.D. Pa.)</option>
+                  <option value="WASHINGTON">🌲 Washington (W.D. Wash.)</option>
+                </optgroup>
+              </select>
+            </div>
+
             {/* Asset Type Filter */}
             <div>
               <span style={{ fontSize: '0.68rem', color: '#94A3B8', display: 'block', marginBottom: '4px' }}>Asset Type:</span>
@@ -277,6 +388,7 @@ export default function Sub10mRadar({ watchlist = [], toggleWatchlist, onSelectC
                 <option value="FLEET_TRUCKS">🚚 Trucking & Commercial Fleets</option>
                 <option value="KITCHEN_EQUIPMENT">🍳 Restaurant Kitchen Gear</option>
                 <option value="RETAIL_LEASES">🏬 Strip Mall Retail Leases</option>
+                <option value="HEAVY_MACHINERY">⚙️ Heavy CNC Machinery</option>
               </select>
             </div>
           </div>
