@@ -514,27 +514,27 @@ export default function Header({
         </div>
       )}
 
-      {/* 7-ITEM SINGLE-ROW FIERCE INSTITUTIONAL TERMINAL BAR */}
+      {/* 8-ITEM SINGLE-ROW FIERCE INSTITUTIONAL TERMINAL BAR */}
       <div style={{
         width: '100%',
         background: 'linear-gradient(135deg, rgba(9, 13, 22, 0.99) 0%, rgba(15, 23, 42, 0.98) 100%)',
         borderTop: '1.5px solid rgba(255, 42, 75, 0.4)',
         borderBottom: '1.5px solid rgba(255, 42, 75, 0.4)',
-        padding: '8px 20px',
+        padding: '6px 14px',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+        justify: 'center',
         marginTop: '6px',
         boxShadow: '0 4px 20px rgba(0,0,0,0.8)',
         position: 'relative',
         overflowX: 'auto'
       }}>
         {/* Decoupled Left-Justified Title */}
-        <div style={{ position: 'absolute', left: '20px', display: 'flex', alignItems: 'center', gap: '5px', whiteSpace: 'nowrap', flexShrink: 0 }}>
+        <div style={{ position: 'absolute', left: '16px', display: 'flex', alignItems: 'center', gap: '5px', whiteSpace: 'nowrap', flexShrink: 0 }}>
           <span style={{
-            fontSize: '0.7rem',
+            fontSize: '0.66rem',
             fontWeight: 950,
-            letterSpacing: '0.08em',
+            letterSpacing: '0.06em',
             color: '#F8FAFC',
             textTransform: 'uppercase'
           }}>
@@ -543,7 +543,7 @@ export default function Header({
         </div>
 
         {/* Centered Workstation Buttons */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', flexWrap: 'nowrap', flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', flexWrap: 'nowrap', flexShrink: 0, marginLeft: '120px' }}>
           {[
             { id: 'all', label: '🔥 LIVE DISTRESS WIRE', color: '#EF4444', desc: 'Active Restructuring & Chapter 11 Feed (Liveyard)' },
             { id: 'investor', label: '📈 INVESTOR TERMINAL', color: '#10B981', desc: 'Distress Heatmap, DIP Loans & Waterfall' },
@@ -573,9 +573,9 @@ export default function Header({
                   }
                 }}
                 style={{
-                  padding: '6px 10px',
+                  padding: '5px 8px',
                   borderRadius: '6px',
-                  fontSize: '0.68rem',
+                  fontSize: '0.66rem',
                   fontWeight: 950,
                   cursor: 'pointer',
                   border: isActive ? `1.5px solid ${ws.color}` : `1px solid ${ws.color}75`,
@@ -591,7 +591,7 @@ export default function Header({
                   whiteSpace: 'nowrap',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '5px',
+                  gap: '4px',
                   letterSpacing: '0.02em'
                 }}
                 title={ws.desc}
