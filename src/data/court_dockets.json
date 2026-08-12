@@ -1,8 +1,89 @@
 [
   {
+    "companyId": "steward-health-care",
+    "companyName": "Steward Health Care System LLC",
+    "caseNumber": "Case No. 24-90395",
+    "courtName": "U.S. Bankruptcy Court for the Southern District of Texas (S.D. Tex.)",
+    "judge": "Hon. Christopher Lopez",
+    "filings": [
+      {
+        "docketNo": "Docket #001",
+        "date": "2024-05-06",
+        "title": "Voluntary Petition for Chapter 11 Relief & Emergency Declaration of CEO Dr. Ralph de la Torre",
+        "category": "Initial Petition",
+        "summary": "Steward Health Care System LLC files Chapter 11 petition in Houston with $9B in liabilities. Details Medical Properties Trust sale-leaseback rent default.",
+        "pages": 184,
+        "fileSize": "12.4 MB"
+      },
+      {
+        "docketNo": "Docket #024",
+        "date": "2024-05-08",
+        "title": "Emergency Motion for Interim Approval of $225M Super-Priority DIP Financing Facility",
+        "category": "DIP Financing",
+        "summary": "Debtors move for emergency order authorizing $225M in Debtor-in-Possession financing to maintain patient care and hospital payroll across 31 facilities.",
+        "pages": 88,
+        "fileSize": "4.9 MB"
+      },
+      {
+        "docketNo": "Docket #180",
+        "date": "2024-06-15",
+        "title": "Order Approving Section 363 Hospital Auction Bidding Procedures & Sale Notices",
+        "category": "Asset Sale",
+        "summary": "Court approves bidding procedures and stalking-horse auction terms for the sale of 6 Massachusetts hospitals and Stewardship Health physician network.",
+        "pages": 72,
+        "fileSize": "3.5 MB"
+      },
+      {
+        "docketNo": "Docket #890",
+        "date": "2024-08-16",
+        "title": "Order Authorizing Sale of Mass. Hospital Assets Free & Clear of Liens",
+        "category": "Sale Order",
+        "summary": "Judge Lopez confirms sale of Saint Anne's Hospital and Good Samaritan Medical Center to Lifespan for $175M.",
+        "pages": 96,
+        "fileSize": "5.1 MB"
+      }
+    ]
+  },
+  {
+    "companyId": "big-lots",
+    "companyName": "Big Lots Inc.",
+    "caseNumber": "Case No. 24-11967",
+    "courtName": "U.S. Bankruptcy Court for the District of Delaware (D. Del.)",
+    "judge": "Hon. J. Kate Stickles",
+    "filings": [
+      {
+        "docketNo": "Docket #001",
+        "date": "2024-09-09",
+        "title": "Voluntary Petition for Chapter 11 Relief & Stalking-Horse Purchase Agreement with Nexus Capital",
+        "category": "Initial Petition",
+        "summary": "Big Lots Inc files Chapter 11 in Delaware with $3.1B in total debt and designates Nexus Capital Management as Stalking-Horse Bidder.",
+        "pages": 156,
+        "fileSize": "9.2 MB"
+      },
+      {
+        "docketNo": "Docket #045",
+        "date": "2024-09-12",
+        "title": "Emergency Omnibus Motion to Reject 350 Unexpired Commercial Retail Leases",
+        "category": "Lease Rejection",
+        "summary": "Debtors request immediate order rejecting 350 store leases to eliminate $18M in monthly cash burn.",
+        "pages": 110,
+        "fileSize": "6.1 MB"
+      },
+      {
+        "docketNo": "Docket #410",
+        "date": "2024-11-12",
+        "title": "Order Authorizing Section 363 Sale of Assets to Nexus Capital Management",
+        "category": "Sale Order",
+        "summary": "Court approves final order transferring retail store operations and inventory to Nexus Capital.",
+        "pages": 84,
+        "fileSize": "4.3 MB"
+      }
+    ]
+  },
+  {
     "companyId": "spirit-airlines",
     "companyName": "Spirit Airlines (Spirit Aviation Holdings)",
-    "caseNumber": "Case No. 24-11988 / 25-11897",
+    "caseNumber": "Case No. 24-11988",
     "courtName": "U.S. Bankruptcy Court for the Southern District of New York (S.D.N.Y.)",
     "judge": "Hon. Sean H. Lane",
     "filings": [
@@ -11,7 +92,7 @@
         "date": "2024-11-18",
         "title": "Voluntary Petition for Chapter 11 Relief & Declaration of CFO Scott Haralson",
         "category": "Initial Petition",
-        "summary": "Spirit Airlines files initial Chapter 11 petition in SDNY Court with $3.3B total debt. Includes Declaration of CFO Scott Haralson detailing Pratt & Whitney engine recalls and JetBlue merger block.",
+        "summary": "Spirit Airlines files Chapter 11 petition in SDNY with $3.3B debt. Details Pratt & Whitney engine recalls and JetBlue merger block.",
         "pages": 142,
         "fileSize": "8.4 MB"
       },
@@ -20,62 +101,116 @@
         "date": "2024-11-19",
         "title": "Emergency Motion for Interim Approval of $350M DIP Financing Facility",
         "category": "DIP Financing",
-        "summary": "Debtors request court authorization to access $350M in Senior Secured Superpriority Debtor-in-Possession financing provided by bondholder ad hoc group.",
+        "summary": "Debtors request authorization for $350M Senior Secured Superpriority DIP financing from bondholders.",
         "pages": 68,
         "fileSize": "3.8 MB"
-      },
-      {
-        "docketNo": "Docket #088",
-        "date": "2024-12-15",
-        "title": "Order Authorizing Continuation of Customer Loyalty Program & Credit Card Facilities",
-        "category": "First-Day Order",
-        "summary": "Court grants final order permitting Spirit to honor Free Spirit loyalty points, frequent flyer perks, and credit card processor agreements.",
-        "pages": 24,
-        "fileSize": "1.2 MB"
-      },
-      {
-        "docketNo": "Docket #240",
-        "date": "2025-01-14",
-        "title": "Order Approving Joint Chapter 11 Plan Disclosure Statement & Voting Procedures",
-        "category": "Disclosure Statement",
-        "summary": "Judge Lane approves adequacy of Disclosure Statement outlining equitization of $795M senior notes and unsecured creditor recovery projections.",
-        "pages": 210,
-        "fileSize": "12.1 MB"
-      },
-      {
-        "docketNo": "Docket #780",
-        "date": "2026-01-28",
-        "title": "Order Approving Section 363 Auction Procedures for Free Spirit Loyalty Brand IP",
-        "category": "Asset Sale",
-        "summary": "Court establishes bidding rules and Stalker-Horse credit bid procedures for the auction of Spirit's digital loyalty program assets and trademarks.",
-        "pages": 52,
-        "fileSize": "2.9 MB"
       },
       {
         "docketNo": "Docket #1398",
         "date": "2026-04-12",
         "title": "Emergency Omnibus Motion to Reject 28 Unexpired Airbus A320neo Leases",
         "category": "Lease Rejection",
-        "summary": "Debtors move to reject 28 Airbus jet leases to curb $14.2M monthly cash burn following severe fuel-price escalation.",
+        "summary": "Debtors move to reject 28 Airbus jet leases to curb $14.2M monthly cash burn.",
         "pages": 44,
         "fileSize": "2.1 MB"
+      }
+    ]
+  },
+  {
+    "companyId": "red-lobster",
+    "companyName": "Red Lobster Management LLC",
+    "caseNumber": "Case No. 24-02358",
+    "courtName": "U.S. Bankruptcy Court for the Middle District of Florida (M.D. Fla.)",
+    "judge": "Hon. Grace E. Robson",
+    "filings": [
+      {
+        "docketNo": "Docket #001",
+        "date": "2024-05-19",
+        "title": "Voluntary Petition for Chapter 11 Relief & Declaration of CEO Jonathan Tibus",
+        "category": "Initial Petition",
+        "summary": "Red Lobster Management LLC files Chapter 11 in Orlando with $1.2B debt following $11M Endless Shrimp promotion loss.",
+        "pages": 128,
+        "fileSize": "7.8 MB"
       },
       {
-        "docketNo": "Docket #1420",
-        "date": "2026-05-02",
-        "title": "Order Authorizing Orderly Wind-Down of Flight Operations & Liquidation of Aircraft Assets",
-        "category": "Wind-Down Order",
-        "summary": "Court approves cessation of all commercial flight operations as Spirit shifts from reorganization to orderly court-supervised asset liquidation.",
-        "pages": 86,
-        "fileSize": "4.6 MB"
+        "docketNo": "Docket #085",
+        "date": "2024-06-06",
+        "title": "Order Approving Equipment Auctions for 50 Closed Restaurant Locations",
+        "category": "Asset Sale",
+        "summary": "Court authorizes TAGeX Brands to conduct online auctions for commercial kitchen equipment.",
+        "pages": 48,
+        "fileSize": "2.6 MB"
+      },
+      {
+        "docketNo": "Docket #512",
+        "date": "2024-09-05",
+        "title": "Order Confirming Chapter 11 Plan & Sale to Fortress Investment Syndicate",
+        "category": "Plan Confirmation",
+        "summary": "Judge Robson confirms reorganization plan transferring ownership to RL Investor Holdings.",
+        "pages": 112,
+        "fileSize": "6.4 MB"
+      }
+    ]
+  },
+  {
+    "companyId": "fisker-inc",
+    "companyName": "Fisker Inc.",
+    "caseNumber": "Case No. 24-11390",
+    "courtName": "U.S. Bankruptcy Court for the District of Delaware (D. Del.)",
+    "judge": "Hon. Thomas M. Horan",
+    "filings": [
+      {
+        "docketNo": "Docket #001",
+        "date": "2024-06-17",
+        "title": "Voluntary Petition for Chapter 11 Relief & Declaration of Chief Restructuring Officer John DiDonato",
+        "category": "Initial Petition",
+        "summary": "Fisker Inc files Chapter 11 in Delaware with $1.3B debt after OEM talks with Nissan terminate.",
+        "pages": 164,
+        "fileSize": "10.1 MB"
+      },
+      {
+        "docketNo": "Docket #120",
+        "date": "2024-07-10",
+        "title": "Order Authorizing Fleet Sale of 3,230 Ocean EVs to American Lease for $46.2M",
+        "category": "Fleet Liquidation",
+        "summary": "Court approves emergency sale of 3,230 EV fleet vehicles to NYC rideshare operator American Lease.",
+        "pages": 62,
+        "fileSize": "3.9 MB"
+      }
+    ]
+  },
+  {
+    "companyId": "tupperware-brands",
+    "companyName": "Tupperware Brands Corporation",
+    "caseNumber": "Case No. 24-12156",
+    "courtName": "U.S. Bankruptcy Court for the District of Delaware (D. Del.)",
+    "judge": "Hon. Brendan L. Shannon",
+    "filings": [
+      {
+        "docketNo": "Docket #001",
+        "date": "2024-09-17",
+        "title": "Voluntary Petition for Chapter 11 Relief & Declaration of CEO Laurie Ann Goldman",
+        "category": "Initial Petition",
+        "summary": "Tupperware Brands Corp files Chapter 11 in Delaware with $812M debt after 78 years of direct-sales operations.",
+        "pages": 136,
+        "fileSize": "8.1 MB"
+      },
+      {
+        "docketNo": "Docket #180",
+        "date": "2024-10-22",
+        "title": "Order Approving IP Asset Sale & Credit Bid to Lender Syndicate",
+        "category": "Asset Sale",
+        "summary": "Court confirms sale of Tupperware brand IP and international operations to lender ad hoc group for $23.5M cash + $63M credit bid.",
+        "pages": 78,
+        "fileSize": "4.2 MB"
       }
     ]
   },
   {
     "companyId": "wework",
     "companyName": "WeWork Inc.",
-    "caseNumber": "Case No. 23-19865-JKS",
-    "courtName": "U.S. Bankruptcy Court for the District of New Jersey",
+    "caseNumber": "Case No. 23-19865",
+    "courtName": "U.S. Bankruptcy Court for the District of New Jersey (D.N.J.)",
     "judge": "Hon. John K. Sherwood",
     "filings": [
       {
@@ -83,7 +218,7 @@
         "date": "2023-11-06",
         "title": "Voluntary Petition for Chapter 11 Relief & Declaration of CEO David Tolley",
         "category": "Initial Petition",
-        "summary": "WeWork files for Chapter 11 bankruptcy in New Jersey with $18.6B lease liabilities. Declaration of CEO David Tolley outlines master lease restructuring strategy.",
+        "summary": "WeWork files for Chapter 11 in New Jersey with $18.6B lease liabilities.",
         "pages": 188,
         "fileSize": "11.2 MB"
       },
@@ -92,126 +227,36 @@
         "date": "2023-11-08",
         "title": "Emergency Motion to Reject 67 Commercial Master Office Space Leases",
         "category": "Lease Rejection",
-        "summary": "Debtors request immediate court order to reject non-viable master location leases in NYC, San Francisco, London, and Tokyo to halt $40M/mo burn.",
+        "summary": "Debtors request immediate order to reject non-viable master location leases in NYC and San Francisco.",
         "pages": 94,
         "fileSize": "5.1 MB"
-      },
-      {
-        "docketNo": "Docket #412",
-        "date": "2024-01-15",
-        "title": "Order Approving Key Employee Retention Plan (KERP) & Lease Restructuring Framework",
-        "category": "Governance",
-        "summary": "Court approves KERP compensation targets for restructuring specialists negotiating rent reductions across 400 global office hubs.",
-        "pages": 38,
-        "fileSize": "1.9 MB"
-      },
-      {
-        "docketNo": "Docket #1842",
-        "date": "2024-05-30",
-        "title": "Order Confirming Third Amended Chapter 11 Plan of Reorganization",
-        "category": "Plan Confirmation",
-        "summary": "Judge Sherwood confirms WeWork's reorganization plan, eliminating $4B in debt and handing 90%+ equity control to SoftBank and Cupicus.",
-        "pages": 310,
-        "fileSize": "16.8 MB"
-      },
-      {
-        "docketNo": "Docket #19865",
-        "date": "2026-08-05",
-        "title": "Final Order Authorizing Lease Rejection Claim Distributions & Closing Chapter 11 Estate",
-        "category": "Estate Distribution",
-        "summary": "Court approves final distribution of $42.5M cure claim pool to commercial real estate landlords and formally closes the Chapter 11 case.",
-        "pages": 62,
-        "fileSize": "3.4 MB"
       }
     ]
   },
   {
-    "companyId": "tupperware-brands",
-    "companyName": "Tupperware Brands Corporation",
-    "caseNumber": "Case No. 24-12156-BLS",
-    "courtName": "U.S. Bankruptcy Court for the District of Delaware",
-    "judge": "Hon. Brendan Linehan Shannon",
+    "companyId": "classen-luxury-apartments",
+    "companyName": "Classen Luxury Apartments (YSA Investments / Vesta Realty)",
+    "caseNumber": "Case No. 26-10482",
+    "courtName": "U.S. Bankruptcy Court for the Western District of Oklahoma (W.D. Okla.)",
+    "judge": "Hon. Thomas M. Weaver / Receiver David Rhodes",
     "filings": [
       {
         "docketNo": "Docket #001",
-        "date": "2024-09-17",
-        "title": "Voluntary Chapter 11 Petition & Declaration of CEO Laurie Ann Goldman",
+        "date": "2026-08-12",
+        "title": "Voluntary Petition for Chapter 11 Relief & Receiver Report of David Rhodes",
         "category": "Initial Petition",
-        "summary": "Tupperware Brands files Chapter 11 petition in Delaware with $812M in liabilities. Details decline of direct sales MLM distribution model.",
-        "pages": 126,
-        "fileSize": "7.8 MB"
-      },
-      {
-        "docketNo": "Docket #024",
-        "date": "2024-09-19",
-        "title": "Interim Order Authorizing Cash Collateral Use & Continuation of Centralized Banking",
-        "category": "First-Day Order",
-        "summary": "Court authorizes interim use of lender cash collateral to maintain global manufacturing plant operations and payroll.",
-        "pages": 46,
-        "fileSize": "2.3 MB"
-      },
-      {
-        "docketNo": "Docket #310",
-        "date": "2024-12-04",
-        "title": "Order Approving Stalker-Horse Asset Purchase Agreement & Section 363 Bidding Rules",
-        "category": "Asset Sale",
-        "summary": "Judge Shannon approves $45M credit bid floor submitted by senior secured lender group for Tupperware's IP and molding equipment.",
-        "pages": 78,
-        "fileSize": "4.2 MB"
-      },
-      {
-        "docketNo": "Docket #9942",
-        "date": "2026-08-05",
-        "title": "Notice of Successful Bidder & Confirmation of Section 363 Machinery Sale",
-        "category": "Section 363 Sale",
-        "summary": "Trustee confirms final webcast asset auction results for global plastics molding machinery and IP trademarks.",
-        "pages": 34,
-        "fileSize": "1.8 MB"
-      }
-    ]
-  },
-  {
-    "companyId": "bed-bath-beyond",
-    "companyName": "Bed Bath & Beyond Inc.",
-    "caseNumber": "Case No. 23-13359-VFP",
-    "courtName": "U.S. Bankruptcy Court for the District of New Jersey",
-    "judge": "Hon. Vincent F. Papalia",
-    "filings": [
-      {
-        "docketNo": "Docket #001",
-        "date": "2023-04-23",
-        "title": "Voluntary Chapter 11 Petition & Declaration of Chief Restructuring Officer Holly Etlin",
-        "category": "Initial Petition",
-        "summary": "Bed Bath & Beyond files Chapter 11 in New Jersey listing $5.2B in debt. Declaration details failed private-label pivot and inventory liquidation timeline.",
-        "pages": 164,
-        "fileSize": "9.6 MB"
+        "summary": "Oklahoma City 21-story luxury tower enters Chapter 11 & court receivership following $1.7M elevator failure.",
+        "pages": 92,
+        "fileSize": "5.4 MB"
       },
       {
         "docketNo": "Docket #018",
-        "date": "2023-04-24",
-        "title": "Order Authorizing Store Closing Sales at 360 Bed Bath & 120 buybuy BABY Locations",
-        "category": "Store Liquidation",
-        "summary": "Court permits Hilco and Gordon Brothers to commence store closing liquidation sales across all nationwide superstore locations.",
-        "pages": 58,
-        "fileSize": "3.1 MB"
-      },
-      {
-        "docketNo": "Docket #712",
-        "date": "2023-06-22",
-        "title": "Order Approving Sale of Bed Bath & Beyond IP & Digital Assets to Overstock.com ($21.5M)",
-        "category": "IP Sale",
-        "summary": "Judge Papalia approves Section 363 sale of brand name, domain names, and customer data to Overstock.com.",
+        "date": "2026-08-12",
+        "title": "Emergency Motion for Interim Escrow Financing for Elevator Restoration",
+        "category": "DIP Financing",
+        "summary": "Receiver David Rhodes requests court order for $1.2M emergency escrow funding for high-rise elevator replacement.",
         "pages": 42,
-        "fileSize": "2.1 MB"
-      },
-      {
-        "docketNo": "Docket #1420",
-        "date": "2023-09-29",
-        "title": "Order Confirming Second Amended Chapter 11 Plan of Liquidation",
-        "category": "Plan Confirmation",
-        "summary": "Court confirms liquidation plan transferring remaining lease claims and residual assets to 2023 BBB Liquidating Trust.",
-        "pages": 195,
-        "fileSize": "10.4 MB"
+        "fileSize": "2.8 MB"
       }
     ]
   }

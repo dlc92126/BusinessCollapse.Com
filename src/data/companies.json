@@ -1,346 +1,429 @@
 [
   {
-    "id": "classen-luxury-apartments",
-    "name": "Classen Luxury Apartments (YSA Investments / Vesta Realty)",
-    "ticker": "CRE-OKC",
-    "sectorId": "cre",
-    "sectorName": "Commercial Real Estate",
+    "id": "steward-health-care",
+    "name": "Steward Health Care System LLC",
+    "ticker": "STEWARD-HC",
+    "sectorId": "healthcare",
+    "sectorName": "Healthcare & Hospitals",
     "status": "Chapter 11",
     "statusBadge": "chapter-11",
-    "distressScore": 96,
-    "peakValuation": "$9.8M",
-    "collapseValuation": "$6.2M",
-    "debtAtCollapse": "$8.5M",
-    "yearFounded": 2012,
-    "yearCollapsed": 2026,
-    "dateTimestamp": "2026-08-12T08:00:00Z",
-    "officialFilingDate": "August 12, 2026",
-    "locationJurisdiction": "Oklahoma City, OK (W.D. Okla. Court / Court Receiver David Rhodes)",
-    "ceoAtFailure": "Mark Kulik (Vesta Realty) / YSA Investments",
-    "primaryCause": "Elevator System Collapse ($1.7M) & Ownership Dispute (Vesta vs YSA)",
-    "sourceType": "LOCAL_NEWS_PACER_RECEIVERSHIP",
-    "sourceName": "Oklahoma City Local News & W.D. Okla. Bankruptcy Court Receiver",
-    "summary": "Oklahoma City luxury high-rise property entered Chapter 11 bankruptcy and court receivership under David Rhodes following severe elevator failure ($1.7M replacement cost), mold/water leaks, and ongoing legal battle between Vesta Realty and YSA Investments.",
+    "distressScore": 98,
+    "peakValuation": "$9.00B",
+    "collapseValuation": "$450.0M",
+    "debtAtCollapse": "$9.00B",
+    "yearFounded": 2010,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-05-06T04:00:00Z",
+    "officialFilingDate": "May 6, 2024",
+    "locationJurisdiction": "Houston, TX (U.S. Bankruptcy Court S.D. Tex. Judge Christopher Lopez)",
+    "ceoAtFailure": "Dr. Ralph de la Torre",
+    "primaryCause": "Private Equity Sale-Leaseback Rent Overload & Unpaid Vendor Claims ($900M MPW Rent Liability)",
+    "sourceType": "SEC & PACER Filing",
+    "sourceName": "U.S. Bankruptcy Court S.D. Tex. Petition #24-90395",
+    "summary": "Largest physician-owned hospital network in the U.S. filed Chapter 11 with $9B in liabilities after Medical Properties Trust (MPT) sale-leaseback transactions created unsustainable rent burdens across 31 hospitals in 8 states.",
     "earlyWarningSignals": [
-      "2026-06-15: Court appointed receiver David Rhodes took control from manager Vesta Realty.",
-      "2026-05-10: Failed $1.7M replacement project for all four high-rise elevator banks.",
-      "2026-04-18: Legal dispute between manager Vesta Realty (CEO Mark Kulik) and owner YSA Investments."
+      "2024-01-08: Medical Properties Trust disclosed $50M in unpaid rent from Steward.",
+      "2024-02-15: Massachusetts Governor issues warning over impending hospital closures.",
+      "2024-03-26: Vendor lawsuits mount over unpaid medical supplies and surgical equipment."
     ],
     "anatomyBreakdown": {
-      "debtOverload": 40,
-      "mismanagement": 35,
+      "debtOverload": 45,
+      "mismanagement": 30,
       "marketShift": 15,
       "fraudScandal": 10
     },
     "timeline": [
-      "August 12, 2026 @ 08:00 EST: Chapter 11 Filing & Receivership Update — Tenants report unaddressed elevator failures.",
-      "June 15, 2026 @ 10:00 EST: Court Receiver Appointed — David Rhodes takes control of property from Vesta Realty.",
-      "May 02, 2026 @ 14:30 EST: Ownership Dispute — Litigation intensifies between Vesta Realty (CEO Mark Kulik) and YSA Investments."
+      "May 06, 2024 @ 04:00 EST: Chapter 11 Petition Filed in Houston, TX with $9B in total debt.",
+      "June 03, 2024 @ 10:00 EST: Emergency Motion for $225M DIP Financing provided by MPT.",
+      "August 16, 2024 @ 14:00 EST: Section 363 Hospital Auction for 6 Massachusetts facilities approved."
+    ]
+  },
+  {
+    "id": "big-lots",
+    "name": "Big Lots Inc.",
+    "ticker": "BIGQ",
+    "sectorId": "legacy-retail",
+    "sectorName": "Legacy Retail & Discount Stores",
+    "status": "Chapter 11",
+    "statusBadge": "chapter-11",
+    "distressScore": 97,
+    "peakValuation": "$3.10B",
+    "collapseValuation": "$72.0M",
+    "debtAtCollapse": "$3.10B",
+    "yearFounded": 1967,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-09-09T06:00:00Z",
+    "officialFilingDate": "September 9, 2024",
+    "locationJurisdiction": "Wilmington, DE (U.S. Bankruptcy Court D. Del. Judge J. Kate Stickles)",
+    "ceoAtFailure": "Bruce Thorn",
+    "primaryCause": "Inflation Squeeze on Discount Shoppers, High Furniture Inventory & Store Rent Liabilities",
+    "sourceType": "SEC EDGAR Form 8-K",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Petition #24-11967",
+    "summary": "Discount retail giant with 1,300 stores filed Chapter 11 in Delaware to reject 350+ commercial leases and execute a Section 363 sale to stalking-horse bidder Nexus Capital Management.",
+    "earlyWarningSignals": [
+      "2024-06-06: Q1 net loss of $205M and going-concern warning disclosed.",
+      "2024-08-02: Credit facility amended to restrict liquidity drawdowns.",
+      "2024-08-28: Store closure notices served on 300 locations nationwide."
+    ],
+    "anatomyBreakdown": {
+      "debtOverload": 40,
+      "mismanagement": 25,
+      "marketShift": 30,
+      "fraudScandal": 5
+    },
+    "timeline": [
+      "September 09, 2024 @ 06:00 EST: Chapter 11 Petition Filed in Delaware with Nexus Capital as Stalking Horse.",
+      "October 04, 2024 @ 11:00 EST: Court Approves 350 Retail Lease Rejections.",
+      "November 12, 2024 @ 15:00 EST: Final Order Approving Sale of Retail Operations to Nexus Capital."
+    ]
+  },
+  {
+    "id": "spirit-airlines",
+    "name": "Spirit Airlines (Spirit Aviation Holdings)",
+    "ticker": "SAVEQ",
+    "sectorId": "aviation",
+    "sectorName": "Aviation & Airlines",
+    "status": "Chapter 11",
+    "statusBadge": "chapter-11",
+    "distressScore": 95,
+    "peakValuation": "$3.30B",
+    "collapseValuation": "$180.0M",
+    "debtAtCollapse": "$3.30B",
+    "yearFounded": 1983,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-11-18T05:00:00Z",
+    "officialFilingDate": "November 18, 2024",
+    "locationJurisdiction": "New York, NY (U.S. Bankruptcy Court S.D.N.Y. Judge Sean H. Lane)",
+    "ceoAtFailure": "Ted Christie",
+    "primaryCause": "Blocked JetBlue Merger ($3.8B), Pratt & Whitney Engine Recalls & $1.1B Bond Maturity Wall",
+    "sourceType": "SEC & PACER Filing",
+    "sourceName": "U.S. Bankruptcy Court S.D.N.Y. Case #24-11988",
+    "summary": "Pioneer ultra-low-cost carrier filed prearranged Chapter 11 to equitize $795M in senior notes and restructure aircraft fleet after federal court blocked its $3.8B acquisition by JetBlue.",
+    "earlyWarningSignals": [
+      "2024-01-16: Federal judge blocks JetBlue $3.8B acquisition on antitrust grounds.",
+      "2024-03-04: JetBlue terminates merger agreement; Spirit owes $69M breakup fee.",
+      "2024-10-18: Spirit negotiates debt extension with bondholders as maturity wall looms."
+    ],
+    "anatomyBreakdown": {
+      "debtOverload": 50,
+      "mismanagement": 20,
+      "marketShift": 25,
+      "fraudScandal": 5
+    },
+    "timeline": [
+      "November 18, 2024 @ 05:00 EST: Chapter 11 Filing in SDNY with $350M DIP financing package.",
+      "January 14, 2025 @ 10:00 EST: Court Approves Plan Disclosure Statement.",
+      "April 12, 2026 @ 14:00 EST: Motion to Reject 28 Airbus A320neo Leases Approved."
+    ]
+  },
+  {
+    "id": "red-lobster",
+    "name": "Red Lobster Management LLC",
+    "ticker": "RL-REST",
+    "sectorId": "casual-dining",
+    "sectorName": "Casual Dining & Hospitality",
+    "status": "Chapter 11",
+    "statusBadge": "chapter-11",
+    "distressScore": 96,
+    "peakValuation": "$2.10B",
+    "collapseValuation": "$375.0M",
+    "debtAtCollapse": "$1.20B",
+    "yearFounded": 1968,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-05-19T22:00:00Z",
+    "officialFilingDate": "May 19, 2024",
+    "locationJurisdiction": "Orlando, FL (U.S. Bankruptcy Court M.D. Fla. Judge Grace E. Robson)",
+    "ceoAtFailure": "Jonathan Tibus",
+    "primaryCause": "Unproductive $20 Endless Shrimp Promotion ($11M Loss), Overpriced Real Estate Leases & Thai Union Mismanagement",
+    "sourceType": "PACER Official Filing",
+    "sourceName": "U.S. Bankruptcy Court M.D. Fla. Petition #24-02358",
+    "summary": "Iconic 570-restaurant seafood chain filed Chapter 11 in Orlando to reject 100+ unviable retail leases, auction kitchen equipment, and transfer ownership to lender syndicate Fortress Investment Group.",
+    "earlyWarningSignals": [
+      "2023-11-15: Thai Union reports $11M operating loss driven by $20 Ultimate Endless Shrimp.",
+      "2024-01-16: Thai Union announces complete exit and write-down of Red Lobster investment.",
+      "2024-05-13: Sudden closure of 93 restaurant locations overnight."
+    ],
+    "anatomyBreakdown": {
+      "debtOverload": 35,
+      "mismanagement": 45,
+      "marketShift": 15,
+      "fraudScandal": 5
+    },
+    "timeline": [
+      "May 19, 2024 @ 22:00 EST: Chapter 11 Petition Filed in Orlando, FL.",
+      "June 06, 2024 @ 10:00 EST: TAGeX Brands Auctions Equipment of 50 Closed Restaurants.",
+      "September 05, 2024 @ 14:00 EST: Judge Approves Reorganization Plan & Transfer to RL Investor Holdings (Fortress)."
+    ]
+  },
+  {
+    "id": "fisker-inc",
+    "name": "Fisker Inc.",
+    "ticker": "FSRNQ",
+    "sectorId": "automotive",
+    "sectorName": "Automotive & Electric Vehicles",
+    "status": "Chapter 11",
+    "statusBadge": "chapter-11",
+    "distressScore": 99,
+    "peakValuation": "$4.10B",
+    "collapseValuation": "$14.0M",
+    "debtAtCollapse": "$1.30B",
+    "yearFounded": 2016,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-06-17T23:30:00Z",
+    "officialFilingDate": "June 17, 2024",
+    "locationJurisdiction": "Wilmington, DE (U.S. Bankruptcy Court D. Del. Judge Thomas M. Horan)",
+    "ceoAtFailure": "Henrik Fisker",
+    "primaryCause": "Severe EV Quality Defects, Ocean SUV Software Failure, Failed OEM Rescue Talks & Accounting Chaos",
+    "sourceType": "SEC EDGAR Form 8-K",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Petition #24-11390",
+    "summary": "EV startup backed by Henrik Fisker filed Chapter 11 after negotiations with Nissan broke down, leaving 4,300 unsold Ocean SUVs to be liquidated to American Lease for $46M.",
+    "earlyWarningSignals": [
+      "2024-02-29: Going-concern warning and 15% workforce reduction announced.",
+      "2024-03-25: Talks with major automaker (Nissan) terminate without deal.",
+      "2024-03-27: NYSE delists Fisker stock after price collapses below $0.10."
+    ],
+    "anatomyBreakdown": {
+      "debtOverload": 30,
+      "mismanagement": 40,
+      "marketShift": 25,
+      "fraudScandal": 5
+    },
+    "timeline": [
+      "June 17, 2024 @ 23:30 EST: Chapter 11 Filing in Delaware with $1.3B total debt.",
+      "July 10, 2024 @ 10:00 EST: Agreement to sell 3,230 Ocean EV fleet to American Lease for $46.2M.",
+      "October 16, 2024 @ 15:00 EST: Chapter 11 Liquidation Plan Confirmed."
+    ]
+  },
+  {
+    "id": "tupperware-brands",
+    "name": "Tupperware Brands Corporation",
+    "ticker": "TUPQ",
+    "sectorId": "legacy-retail",
+    "sectorName": "Consumer Goods & Legacy Retail",
+    "status": "Chapter 11",
+    "statusBadge": "chapter-11",
+    "distressScore": 94,
+    "peakValuation": "$2.60B",
+    "collapseValuation": "$23.5M",
+    "debtAtCollapse": "$812.0M",
+    "yearFounded": 1946,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-09-17T21:00:00Z",
+    "officialFilingDate": "September 17, 2024",
+    "locationJurisdiction": "Wilmington, DE (U.S. Bankruptcy Court D. Del. Judge Brendan L. Shannon)",
+    "ceoAtFailure": "Laurie Ann Goldman",
+    "primaryCause": "78-Year-Old Direct-Sales Model Collapse, E-Commerce Failure & $812M Unsecured Debt",
+    "sourceType": "SEC EDGAR Form 8-K",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Petition #24-12156",
+    "summary": "Iconic food container pioneer filed Chapter 11 after failing to modernize its direct-sales independent rep model, transferring IP assets to lender ad hoc group for $23.5M cash plus $63M credit bid.",
+    "earlyWarningSignals": [
+      "2023-04-07: Tupperware issues going-concern warning; stock plummets 50%.",
+      "2023-08-03: Restructures debt with lenders to gain operating runway.",
+      "2024-06-11: Closes sole U.S. manufacturing plant in Hemingway, SC."
+    ],
+    "anatomyBreakdown": {
+      "debtOverload": 35,
+      "mismanagement": 35,
+      "marketShift": 30,
+      "fraudScandal": 0
+    },
+    "timeline": [
+      "September 17, 2024 @ 21:00 EST: Chapter 11 Filing in Delaware.",
+      "October 22, 2024 @ 11:00 EST: Court Approves Asset Sale to Lender Syndicate.",
+      "November 15, 2024 @ 14:00 EST: Brand Operations Transition to Private NewCo."
+    ]
+  },
+  {
+    "id": "conns-home-plus",
+    "name": "Conn's HomePlus (Conn's Inc. / W.S. Badcock)",
+    "ticker": "CONN",
+    "sectorId": "legacy-retail",
+    "sectorName": "Home Appliance & Furniture Retail",
+    "status": "Chapter 11",
+    "statusBadge": "chapter-11",
+    "distressScore": 96,
+    "peakValuation": "$1.80B",
+    "collapseValuation": "$18.0M",
+    "debtAtCollapse": "$1.80B",
+    "yearFounded": 1890,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-07-23T04:00:00Z",
+    "officialFilingDate": "July 23, 2024",
+    "locationJurisdiction": "Houston, TX (U.S. Bankruptcy Court S.D. Tex. Judge Christopher Lopez)",
+    "ceoAtFailure": "Norman L. Miller",
+    "primaryCause": "Subprime Customer Credit Default Spikes & Failed W.S. Badcock Merger",
+    "sourceType": "SEC EDGAR Form 8-K",
+    "sourceName": "U.S. Bankruptcy Court S.D. Tex. Petition #24-90400",
+    "summary": "134-year-old appliance and electronics retailer filed Chapter 11 to liquidate all 550 Conn's & W.S. Badcock stores after subprime consumer loan defaults eroded cash flow.",
+    "earlyWarningSignals": [
+      "2023-12-18: Merges with W.S. Badcock in all-stock transaction.",
+      "2024-05-30: Q1 report reveals severe credit segment losses.",
+      "2024-07-02: Delisting warning issued by NASDAQ."
+    ],
+    "anatomyBreakdown": {
+      "debtOverload": 45,
+      "mismanagement": 30,
+      "marketShift": 20,
+      "fraudScandal": 5
+    },
+    "timeline": [
+      "July 23, 2024 @ 04:00 EST: Chapter 11 Filing in Houston, TX.",
+      "August 01, 2024 @ 10:00 EST: Going-Out-Of-Business Liquidation Sales Begin across 550 stores.",
+      "October 08, 2024 @ 14:00 EST: Liquidation Plan Confirmed."
+    ]
+  },
+  {
+    "id": "ll-flooring",
+    "name": "LL Flooring Holdings Inc. (Lumber Liquidators)",
+    "ticker": "LLFLQ",
+    "sectorId": "legacy-retail",
+    "sectorName": "Home Improvement & Building Materials",
+    "status": "Chapter 11",
+    "statusBadge": "chapter-11",
+    "distressScore": 95,
+    "peakValuation": "$3.20B",
+    "collapseValuation": "$40.0M",
+    "debtAtCollapse": "$400.0M",
+    "yearFounded": 1994,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-08-11T20:00:00Z",
+    "officialFilingDate": "August 11, 2024",
+    "locationJurisdiction": "Wilmington, DE (U.S. Bankruptcy Court D. Del. Judge Christopher S. Sontchi)",
+    "ceoAtFailure": "Charles E. Tyson",
+    "primaryCause": "Housing Market Slowdown, High Import Tariffs & Legacy Laminate Scandal Fallout",
+    "sourceType": "SEC EDGAR Form 8-K",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Petition #24-11680",
+    "summary": "Hardwood flooring chain filed Chapter 11 to initiate 200 store closures and execute a Section 363 sale of remaining 219 stores to founder Tom Sullivan's FNS Opportunities for $40M.",
+    "earlyWarningSignals": [
+      "2024-05-08: Discloses ongoing discussions with lenders over covenant waivers.",
+      "2024-07-02: Receives acquisition proposal from Cabinets To Go founder Tom Sullivan.",
+      "2024-08-01: Warns of potential Chapter 11 filing if financing is not secured."
+    ],
+    "anatomyBreakdown": {
+      "debtOverload": 30,
+      "mismanagement": 25,
+      "marketShift": 40,
+      "fraudScandal": 5
+    },
+    "timeline": [
+      "August 11, 2024 @ 20:00 EST: Chapter 11 Petition Filed in Delaware.",
+      "September 06, 2024 @ 11:00 EST: Sale Approved to Founder Tom Sullivan (FNS Opportunities).",
+      "October 15, 2024 @ 14:00 EST: Reorganization Plan Executed."
+    ]
+  },
+  {
+    "id": "joann-stores",
+    "name": "Joann Inc. (Jo-Ann Fabrics)",
+    "ticker": "JOANQ",
+    "sectorId": "legacy-retail",
+    "sectorName": "Craft & Fabrics Retail",
+    "status": "Chapter 11",
+    "statusBadge": "chapter-11",
+    "distressScore": 92,
+    "peakValuation": "$1.20B",
+    "collapseValuation": "$142.0M",
+    "debtAtCollapse": "$1.06B",
+    "yearFounded": 1943,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-03-18T04:00:00Z",
+    "officialFilingDate": "March 18, 2024",
+    "locationJurisdiction": "Wilmington, DE (U.S. Bankruptcy Court D. Del. Judge Craig T. Goldblatt)",
+    "ceoAtFailure": "Chris DiTullio (Interim)",
+    "primaryCause": "Post-Pandemic Craft Demand Slump, High Freight Shipping Costs & $1.06B Debt Stack",
+    "sourceType": "SEC EDGAR Form 8-K",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Petition #24-10418",
+    "summary": "80-year-old fabric and craft retailer executed a prepackaged Chapter 11 to cut $505M in debt, exiting bankruptcy in just 36 days as a private entity owned by lenders.",
+    "earlyWarningSignals": [
+      "2023-12-04: Q3 sales decline 4.1%; cost-cutting initiative launched.",
+      "2024-01-26: Pre-bankruptcy restructuring negotiations begin with lenders.",
+      "2024-03-15: Finalizes prepackaged RSA agreement."
+    ],
+    "anatomyBreakdown": {
+      "debtOverload": 40,
+      "mismanagement": 20,
+      "marketShift": 40,
+      "fraudScandal": 0
+    },
+    "timeline": [
+      "March 18, 2024 @ 04:00 EST: Prepackaged Chapter 11 Filed in Delaware.",
+      "April 25, 2024 @ 10:00 EST: Plan Confirmed; Exits Bankruptcy in 36 Days as Private Co."
+    ]
+  },
+  {
+    "id": "rue21",
+    "name": "rue21 Inc.",
+    "ticker": "RUE21-PRIVATE",
+    "sectorId": "legacy-retail",
+    "sectorName": "Apparel & Fast Fashion",
+    "status": "Chapter 11",
+    "statusBadge": "chapter-11",
+    "distressScore": 98,
+    "peakValuation": "$1.10B",
+    "collapseValuation": "$12.0M",
+    "debtAtCollapse": "$500.0M",
+    "yearFounded": 1976,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-05-02T16:00:00Z",
+    "officialFilingDate": "May 2, 2024",
+    "locationJurisdiction": "Wilmington, DE (U.S. Bankruptcy Court D. Del. Judge J. Kate Stickles)",
+    "ceoAtFailure": "Michele Pascoe",
+    "primaryCause": "3rd Bankruptcy Filing, E-Commerce Competition (Shein/Temu) & Mall Foot Traffic Collapse",
+    "sourceType": "PACER Official Filing",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Petition #24-10940",
+    "summary": "Teen apparel retailer filed Chapter 11 for the 3rd time to shut down all 540 stores and auction its IP assets for $12.5M to Yucaipa Companies.",
+    "earlyWarningSignals": [
+      "2024-02-15: Attempted sale process failed to yield viable buyers.",
+      "2024-04-10: Vendor credit holds enforced by major apparel suppliers."
+    ],
+    "anatomyBreakdown": {
+      "debtOverload": 35,
+      "mismanagement": 30,
+      "marketShift": 35,
+      "fraudScandal": 0
+    },
+    "timeline": [
+      "May 02, 2024 @ 16:00 EST: 3rd Chapter 11 Filing in Delaware.",
+      "May 15, 2024 @ 10:00 EST: Going-Out-Of-Business Sales Begin nationwide.",
+      "July 11, 2024 @ 14:00 EST: IP Asset Sale Approved."
     ]
   },
   {
     "id": "wework",
     "name": "WeWork Inc.",
-    "ticker": "WE",
+    "ticker": "WEWORKQ",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
     "status": "Chapter 11",
     "statusBadge": "chapter-11",
     "distressScore": 96,
-    "peakValuation": "$47.0B",
+    "peakValuation": "$47.00B",
     "collapseValuation": "$45.0M",
-    "debtAtCollapse": "$18.6B",
+    "debtAtCollapse": "$18.60B",
     "yearFounded": 2010,
     "yearCollapsed": 2023,
     "dateTimestamp": "2023-11-06T23:14:00Z",
-    "locationJurisdiction": "New York, NY (U.S. Bankruptcy Court D.N.J.)",
-    "ceoAtFailure": "Sandeep Mathrani / David Tolley",
-    "primaryCause": "Debt Overload & Over-Leasing",
-    "sourceType": "SEC Official Filing",
-    "sourceName": "SEC EDGAR Form 8-K & Bankruptcy Petition #23-19865",
-    "summary": "Flexible workspace provider that accumulated massive long-term lease liabilities backed by short-term member revenues, leading to unsustainable cash burn and governance collapse.",
+    "officialFilingDate": "November 6, 2023",
+    "locationJurisdiction": "Newark, NJ (U.S. Bankruptcy Court D.N.J. Judge John K. Sherwood)",
+    "ceoAtFailure": "David Tolley",
+    "primaryCause": "Debt Overload, Over-Leasing & Unprofitable Long-Term Master Leases",
+    "sourceType": "SEC EDGAR Form 8-K",
+    "sourceName": "U.S. Bankruptcy Court D.N.J. Case #23-19865",
+    "summary": "Flexible workspace provider filed Chapter 11 with $18.6B in liabilities, cancelling $12B in future rent obligations across 160+ master commercial real estate lease rejections.",
     "earlyWarningSignals": [
-      "2023-08-08: Issued SEC 'Substantial Doubt' going concern warning.",
-      "2023-05-18: Sudden resignation of CEO Sandeep Mathrani.",
-      "2023-03-17: Restructuring agreement with SoftBank to swap $1.5B debt for equity."
+      "2023-08-08: Discloses substantial doubt about ability to continue as a going concern.",
+      "2023-10-02: Withholds $95M interest payment on senior notes to preserve cash.",
+      "2023-10-31: Negotiates 7-day forbearance agreement with noteholders."
     ],
     "anatomyBreakdown": {
-      "debtOverload": 45,
+      "debtOverload": 50,
       "mismanagement": 30,
-      "macroShift": 15,
-      "techDisruption": 10
+      "marketShift": 15,
+      "fraudScandal": 5
     },
     "timeline": [
-      {
-        "date": "2019-01-08T12:00:00Z",
-        "title": "Peak $47B Valuation",
-        "description": "SoftBank Vision Fund leads funding round, valuing flexible workspace startup at $47 Billion.",
-        "type": "warning"
-      },
-      {
-        "date": "2019-08-14T09:00:00Z",
-        "title": "Infamous S-1 Filing Exposed",
-        "description": "Public S-1 document reveals massive operating losses ($1.6B loss on $1.8B revenue) and founder conflict-of-interest transactions.",
-        "type": "distress"
-      },
-      {
-        "date": "2023-11-06T23:14:00Z",
-        "title": "Chapter 11 Bankruptcy Filing",
-        "description": "WeWork files for Chapter 11 protection in New Jersey, seeking to reject over 60 expensive commercial leases.",
-        "type": "chapter-11"
-      }
-    ],
-    "keyTakeaways": [
-      "Asset-liability duration mismatch: 15-year lease obligations vs 1-month member subscriptions.",
-      "Charismatic founder worship overriding basic unit economics oversight.",
-      "Aggressive growth metrics prioritized over cash flow profitability."
-    ]
-  },
-  {
-    "id": "bed-bath-beyond",
-    "name": "Bed Bath & Beyond",
-    "ticker": "BBBY",
-    "sectorId": "legacy-retail",
-    "status": "Liquidation",
-    "statusBadge": "liquidation",
-    "distressScore": 99,
-    "peakValuation": "$17.2B",
-    "collapseValuation": "$0.0M",
-    "debtAtCollapse": "$5.2B",
-    "yearFounded": 1971,
-    "yearCollapsed": 2023,
-    "dateTimestamp": "2023-04-23T08:30:00Z",
-    "locationJurisdiction": "Union, NJ (U.S. Bankruptcy Court D.N.J.)",
-    "ceoAtFailure": "Sue Gove",
-    "primaryCause": "E-Commerce Disruption & Private Label Blunder",
-    "sourceType": "SEC Official Filing",
-    "sourceName": "SEC EDGAR Form 8-K & Wall Street Journal",
-    "summary": "Iconic home goods superstore ruined by a failed private-label inventory pivot, delayed e-commerce adoption, and reckless share buybacks that drained liquidity.",
-    "earlyWarningSignals": [
-      "2023-01-26: JPMorgan issues default notice on $550M revolving credit line.",
-      "2022-08-31: Announced closure of 150 store locations and 20% workforce layoff.",
-      "2022-06-29: CEO Mark Tritton ousted after same-store sales plunge 27%."
-    ],
-    "anatomyBreakdown": {
-      "mismanagement": 40,
-      "techDisruption": 35,
-      "debtOverload": 20,
-      "macroShift": 5
-    },
-    "timeline": [
-      {
-        "date": "2015-01-15T10:00:00Z",
-        "title": "Peak Revenue & Share Buybacks",
-        "description": "Bed Bath & Beyond executes over $11 Billion in stock buybacks instead of investing in digital supply chains.",
-        "type": "warning"
-      },
-      {
-        "date": "2023-04-23T08:30:00Z",
-        "title": "Chapter 11 & Store Liquidation Sales",
-        "description": "Company files Chapter 11 and announces closure of all 360 flagship stores.",
-        "type": "liquidation"
-      }
-    ],
-    "keyTakeaways": [
-      "Share buybacks drained cash reserves that were desperately needed for digital supply chain modernization.",
-      "Abrupt private label substitution shattered decades of consumer trust.",
-      "Coupon-driven store model failed to convert to modern digital loyalty programs."
-    ]
-  },
-  {
-    "id": "svb",
-    "name": "Silicon Valley Bank (SVB)",
-    "ticker": "SIVB",
-    "sectorId": "regional-banking",
-    "status": "Liquidation",
-    "statusBadge": "liquidation",
-    "distressScore": 100,
-    "peakValuation": "$44.0B",
-    "collapseValuation": "$0.0M",
-    "debtAtCollapse": "$211.0B",
-    "yearFounded": 1983,
-    "yearCollapsed": 2023,
-    "dateTimestamp": "2023-03-10T11:45:00Z",
-    "locationJurisdiction": "Santa Clara, CA (FDIC Receivership)",
-    "ceoAtFailure": "Greg Becker",
-    "primaryCause": "Duration Mismatch & Bank Run",
-    "sourceType": "Federal Court Docket",
-    "sourceName": "FDIC Receivership Order & Federal Reserve Review",
-    "summary": "16th largest US bank collapsed in 48 hours after surging interest rates crushed the value of its long-duration treasury bond portfolio, triggering a venture-led social media bank run.",
-    "earlyWarningSignals": [
-      "2023-03-08: Announced $1.8B realized loss on sale of $21B bond portfolio.",
-      "2022-04-29: Chief Risk Officer Laura Izurieta departed; position left vacant for 8 months.",
-      "2022-12-31: Unrealized losses on hold-to-maturity securities exceeded $15 Billion."
-    ],
-    "anatomyBreakdown": {
-      "mismanagement": 50,
-      "macroShift": 35,
-      "debtOverload": 10,
-      "techDisruption": 5
-    },
-    "timeline": [
-      {
-        "date": "2023-03-09T16:00:00Z",
-        "title": "$42B Single-Day Digital Bank Run",
-        "description": "Venture capitalists instruct portfolio founders to pull deposits; $42 Billion withdrawn in under 24 hours.",
-        "type": "distress"
-      },
-      {
-        "date": "2023-03-10T11:45:00Z",
-        "title": "FDIC Receivership & Shutdown",
-        "description": "California regulators close SVB and appoint FDIC receiver in 2nd largest US bank failure.",
-        "type": "liquidation"
-      }
-    ],
-    "keyTakeaways": [
-      "Concentration risk: 90%+ deposits uninsured and concentrated in tight-knit venture ecosystem.",
-      "Failure to hedge interest rate risk during rapid central bank tightening cycles.",
-      "Modern digital banking enabled unprecedented speed of deposit flight."
-    ]
-  },
-  {
-    "id": "spirit-airlines",
-    "name": "Spirit Airlines",
-    "ticker": "SAVE",
-    "sectorId": "casual-dining",
-    "sectorName": "Airlines & Consumer Travel",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
-    "distressScore": 97,
-    "peakValuation": "$4.6B",
-    "collapseValuation": "$85.0M",
-    "debtAtCollapse": "$3.3B",
-    "yearFounded": 1980,
-    "yearCollapsed": 2024,
-    "dateTimestamp": "2024-11-18T06:00:00Z",
-    "locationJurisdiction": "Miramar, FL (U.S. Bankruptcy Court D. Del.)",
-    "ceoAtFailure": "Ted Christie",
-    "primaryCause": "Blocked JetBlue Merger & Engine Recalls",
-    "sourceType": "SEC Official Filing",
-    "sourceName": "SEC EDGAR Form 8-K & Docket #142",
-    "summary": "Ultra-low-cost carrier overwhelmed by debt after a federal judge blocked its $3.8B sale to JetBlue, compounded by Pratt & Whitney engine recall groundings and surging labor costs.",
-    "earlyWarningSignals": [
-      "2024-08-15: Auditor warns of debt refinancing wall with $1.1B loyalty bonds due 2025.",
-      "2024-03-04: JetBlue merger officially terminated following DOJ antitrust ruling.",
-      "2023-09-20: Pratt & Whitney engine powder defect grounds 25+ Spirit aircraft."
-    ],
-    "anatomyBreakdown": {
-      "debtOverload": 45,
-      "macroShift": 30,
-      "mismanagement": 15,
-      "techDisruption": 10
-    },
-    "timeline": [
-      {
-        "date": "2024-01-16T14:30:00Z",
-        "title": "Federal Judge Blocks JetBlue Merger",
-        "description": "US District Court blocks merger on antitrust grounds, causing Spirit stock to collapse by 60%.",
-        "type": "distress"
-      },
-      {
-        "date": "2024-11-18T06:00:00Z",
-        "title": "Prearranged Chapter 11 Filing",
-        "description": "Spirit files Chapter 11 to equitize $795M in bond debt while securing $350M in DIP financing.",
-        "type": "chapter-11"
-      }
-    ],
-    "keyTakeaways": [
-      "Relying on regulatory approval for an exit strategy leaves high-leverage companies exposed.",
-      "Aircraft fleet groundings due to component defects severely restrict revenue generation."
-    ]
-  },
-  {
-    "id": "silicon-valley-bank",
-    "name": "Silicon Valley Bank (SVB Financial Group)",
-    "ticker": "SIVBQ",
-    "sectorId": "banking",
-    "sectorName": "Banking & Financial Services",
-    "status": "Chapter 11 / FDIC Receivership",
-    "statusBadge": "chapter-11",
-    "distressScore": 99,
-    "peakValuation": "$44.0B",
-    "collapseValuation": "$0.00 (FDIC Seizure)",
-    "debtAtCollapse": "$209.0B Assets Seized",
-    "yearFounded": 1983,
-    "yearCollapsed": 2023,
-    "dateTimestamp": "2023-03-10T16:30:00Z",
-    "locationJurisdiction": "Santa Clara, CA (U.S. Bankruptcy Court S.D.N.Y.)",
-    "ceoAtFailure": "Greg Becker",
-    "primaryCause": "Unhedged Interest Rate Risk & Tech Venture Deposit Run",
-    "sourceType": "FDIC & Bankruptcy Court Filing",
-    "sourceName": "FDIC Press Release & Chapter 11 Docket #23-10367",
-    "summary": "Premier venture capital lender failed in 48 hours after a $42B bank run triggered by unhedged long-duration Treasury bond losses as Fed interest rates rose.",
-    "earlyWarningSignals": [
-      "2023-03-08: SVB announces $1.8B loss on bond portfolio sale and attempts emergency $2.25B stock sale.",
-      "2023-03-09: Founders Fund and top VCs advise portfolio startups to withdraw cash immediately.",
-      "2023-01-19: Chief Risk Officer position left vacant for 8 consecutive months in 2022."
-    ],
-    "anatomyBreakdown": {
-      "mismatch": 50,
-      "macroShift": 30,
-      "mismanagement": 20
-    },
-    "timeline": [
-      {
-        "date": "2023-03-08T20:00:00Z",
-        "title": "$1.8B Bond Loss & Capital Raise",
-        "description": "SVB announces $1.8B net loss after selling $21B securities portfolio to meet withdrawals.",
-        "type": "distress"
-      },
-      {
-        "date": "2023-03-10T16:30:00Z",
-        "title": "FDIC Seizure & Receivership",
-        "description": "California regulators close SVB and place bank under FDIC receivership after $42B run.",
-        "type": "liquidation"
-      }
-    ],
-    "keyTakeaways": [
-      "Unhedged long-duration fixed-income portfolios create fatal asset-liability mismatches when rates rise.",
-      "Concentrated venture capital deposit bases can trigger digital bank runs in under 24 hours."
-    ]
-  },
-  {
-    "id": "bed-bath-beyond",
-    "name": "Bed Bath & Beyond Inc.",
-    "ticker": "BBBYQ",
-    "sectorId": "consumer",
-    "sectorName": "Consumer & Retail Goods",
-    "status": "Chapter 11 Liquidation",
-    "statusBadge": "liquidation",
-    "distressScore": 98,
-    "peakValuation": "$17.4B",
-    "collapseValuation": "$0.00 (Store Closing Sale)",
-    "debtAtCollapse": "$5.2B Liabilities",
-    "yearFounded": 1971,
-    "yearCollapsed": 2023,
-    "dateTimestamp": "2023-04-23T11:00:00Z",
-    "locationJurisdiction": "Union, NJ (U.S. Bankruptcy Court D.N.J.)",
-    "ceoAtFailure": "Sue Gove",
-    "primaryCause": "Failed Private Label Strategy & Supplier Credit Cutoffs",
-    "sourceType": "SEC Official Filing",
-    "sourceName": "SEC EDGAR Form 8-K & Bankruptcy Petition #23-13359",
-    "summary": "Iconic home goods retailer went bankrupt following a disastrous pivot to private label inventory, loss of national brand suppliers, and massive store closures.",
-    "earlyWarningSignals": [
-      "2023-01-05: SEC Form 8-K disclosure warning of bankruptcy filing due to credit line defaults.",
-      "2022-08-31: Announcement of 150 store closures and laying off 20% of corporate staff.",
-      "2022-06-29: Ouster of CEO Mark Tritton following 25% revenue decline."
-    ],
-    "anatomyBreakdown": {
-      "mismanagement": 40,
-      "debtOverload": 35,
-      "techDisruption": 25
-    },
-    "timeline": [
-      {
-        "date": "2023-04-23T11:00:00Z",
-        "title": "Chapter 11 Bankruptcy Filing",
-        "description": "Bed Bath & Beyond files Chapter 11 in New Jersey to begin winding down 360 stores.",
-        "type": "chapter-11"
-      }
-    ],
-    "keyTakeaways": [
-      "Replacing trusted national brand inventory with unknown private label brands destroys customer loyalty.",
-      "Suppliers cutting off trade credit lines accelerates inventory depletion."
+      "November 06, 2023 @ 23:14 EST: Chapter 11 Filing in New Jersey.",
+      "January 15, 2024 @ 10:00 EST: Rejects 67 Master Commercial Leases in NYC and SF.",
+      "May 30, 2024 @ 14:00 EST: Chapter 11 Plan Confirmed; Exits Bankruptcy Eliminating $4B Debt."
     ]
   },
   {
@@ -348,571 +431,155 @@
     "name": "Yellow Corporation (Yellow Freight)",
     "ticker": "YELLQ",
     "sectorId": "logistics",
-    "sectorName": "Industrial & Logistics",
-    "status": "Chapter 11 Asset Liquidation",
-    "statusBadge": "liquidation",
-    "distressScore": 97,
-    "peakValuation": "$2.2B",
-    "collapseValuation": "$0.00 (Fleet Auction)",
-    "debtAtCollapse": "$2.2B Debt ($700M Treasury Loan)",
-    "yearFounded": 1924,
-    "yearCollapsed": 2023,
-    "dateTimestamp": "2023-08-06T18:00:00Z",
-    "locationJurisdiction": "Nashville, TN (U.S. Bankruptcy Court D. Del.)",
-    "ceoAtFailure": "Darren Hawkins",
-    "primaryCause": "Debt Overload, Failed Acquisition Integration & Teamsters Labor Strike",
-    "sourceType": "SEC Official Filing",
-    "sourceName": "SEC EDGAR Form 8-K & Fleet Auction Docket #23-11069",
-    "summary": "100-year-old American trucking giant ceased operations and liquidated its 12,000 trucks and 300 shipping terminals following a debt crisis and union standoff.",
-    "earlyWarningSignals": [
-      "2023-07-30: Ceased operations and laid off 30,000 workers ahead of bankruptcy.",
-      "2023-06-27: Lawsuit filed against International Brotherhood of Teamsters alleging blocked restructuring.",
-      "2020-07-01: Secured controversial $700M U.S. Treasury national security loan."
-    ],
-    "anatomyBreakdown": {
-      "debtOverload": 50,
-      "mismanagement": 30,
-      "macroShift": 20
-    },
-    "timeline": [
-      {
-        "date": "2023-08-06T18:00:00Z",
-        "title": "Chapter 11 Fleet Liquidation",
-        "description": "Yellow files Chapter 11 seeking approval to auction 300 shipping terminals and 12,000 trucks.",
-        "type": "liquidation"
-      }
-    ],
-    "keyTakeaways": [
-      "Acquiring competitors without integrating IT systems creates redundant cost structures.",
-      "Unresolved labor disputes combined with debt walls lead to immediate operational shutdown."
-    ]
-  },
-  {
-    "id": "lehman-brothers",
-    "name": "Lehman Brothers Holdings Inc.",
-    "ticker": "LEHMQ",
-    "sectorId": "banking",
-    "sectorName": "Banking & Financial Services",
-    "status": "Chapter 11 Landmark",
-    "statusBadge": "liquidation",
-    "distressScore": 100,
-    "peakValuation": "$60.0B",
-    "collapseValuation": "$0.00",
-    "debtAtCollapse": "$639.0B Debt / $613B Assets",
-    "yearFounded": 1850,
-    "yearCollapsed": 2008,
-    "dateTimestamp": "2008-09-15T01:30:00Z",
-    "locationJurisdiction": "New York, NY (U.S. Bankruptcy Court S.D.N.Y.)",
-    "ceoAtFailure": "Dick Fuld",
-    "primaryCause": "Subprime Mortgage Exposure & Extreme Balance Sheet Leverage (31x)",
-    "sourceType": "Bankruptcy Court Filing",
-    "sourceName": "U.S. Bankruptcy Court S.D.N.Y. Docket #08-13555",
-    "summary": "Largest bankruptcy filing in U.S. history ($639B debt). 158-year-old investment bank collapsed from subprime mortgage debt leverage, triggering the 2008 Global Financial Crisis.",
-    "earlyWarningSignals": [
-      "2008-09-10: Pre-announces $3.9B Q3 loss and plan to sell majority stake in Neuberger Berman.",
-      "2008-06-09: Stock drops 11% after rival firms cut credit lines.",
-      "2007-08-01: Closes BNC Mortgage subprime lending unit."
-    ],
-    "anatomyBreakdown": {
-      "mismatch": 45,
-      "mismanagement": 35,
-      "debtOverload": 20
-    },
-    "timeline": [
-      {
-        "date": "2008-09-15T01:30:00Z",
-        "title": "Largest Bankruptcy in US History",
-        "description": "Lehman files Chapter 11 with $639B liabilities after Fed and Treasury decline bailout.",
-        "type": "chapter-11"
-      }
-    ],
-    "keyTakeaways": [
-      "31x leverage leaves zero buffer against asset impairment.",
-      "Commercial paper and repo market liquidity can evaporate overnight."
-    ]
-  },
-  {
-    "id": "enron-corporation",
-    "name": "Enron Corporation",
-    "ticker": "ENRNQ",
-    "sectorId": "energy",
-    "sectorName": "Energy & Commodities",
-    "status": "Chapter 11 Fraud Landmark",
-    "statusBadge": "liquidation",
-    "distressScore": 100,
-    "peakValuation": "$70.0B",
-    "collapseValuation": "$0.00",
-    "debtAtCollapse": "$31.2B Liabilities",
-    "yearFounded": 1985,
-    "yearCollapsed": 2001,
-    "dateTimestamp": "2001-12-02T10:00:00Z",
-    "locationJurisdiction": "Houston, TX (U.S. Bankruptcy Court S.D.N.Y.)",
-    "ceoAtFailure": "Kenneth Lay / Jeffrey Skilling",
-    "primaryCause": "Mark-to-Market Accounting Fraud & Off-Balance-Sheet SPEs",
-    "sourceType": "SEC Enforcement Action",
-    "sourceName": "SEC Enforcement File & Bankruptcy Docket #01-16034",
-    "summary": "America's 7th largest company collapsed after whistleblowers and regulators exposed off-balance-sheet Special Purpose Entities (SPEs) used to hide billions in losses.",
-    "earlyWarningSignals": [
-      "2001-10-16: Announces $618M Q3 loss and $1.2B equity reduction.",
-      "2001-08-14: CEO Jeffrey Skilling abruptly resigns citing personal reasons.",
-      "2001-03-05: Fortune magazine publishes 'Is Enron Overpriced?' by Bethany McLean."
-    ],
-    "anatomyBreakdown": {
-      "mismanagement": 60,
-      "debtOverload": 25,
-      "mismatch": 15
-    },
-    "timeline": [
-      {
-        "date": "2001-12-02T10:00:00Z",
-        "title": "Chapter 11 Bankruptcy Filing",
-        "description": "Enron files Chapter 11 after Dynegy merger agreement falls through.",
-        "type": "chapter-11"
-      }
-    ],
-    "keyTakeaways": [
-      "Off-balance-sheet entities used to hide debt inevitably trigger catastrophic restatements.",
-      "Mark-to-market accounting on unearned future revenues masks real cash flow insolvency."
-    ]
-  },
-  {
-    "id": "washington-mutual",
-    "name": "Washington Mutual (WaMu)",
-    "ticker": "WAMPQ",
-    "sectorId": "banking",
-    "sectorName": "Banking & Financial Services",
-    "status": "FDIC Receivership / Chapter 11 Landmark",
-    "statusBadge": "liquidation",
-    "distressScore": 100,
-    "peakValuation": "$43.0B",
-    "collapseValuation": "$0.00 (OTS / FDIC Seizure)",
-    "debtAtCollapse": "$307.0B Assets / $188B Deposits",
-    "yearFounded": 1889,
-    "yearCollapsed": 2008,
-    "dateTimestamp": "2008-09-25T20:00:00Z",
-    "locationJurisdiction": "Seattle, WA (U.S. Bankruptcy Court D. Del.)",
-    "ceoAtFailure": "Kerry Killinger / Alan Fishman",
-    "primaryCause": "Subprime Option-ARM Mortgage Default Run",
-    "sourceType": "FDIC & OTS Official Order",
-    "sourceName": "OTS Order #2008-36 & Chapter 11 Docket #08-12229",
-    "summary": "Largest bank failure in American history ($307B assets). WaMu seized by OTS/FDIC following a $16.7B deposit run triggered by catastrophic subprime Option-ARM mortgage portfolio defaults.",
-    "earlyWarningSignals": [
-      "2008-09-15: Credit rating agencies downgrade WaMu debt to junk status.",
-      "2008-09-08: Ouster of long-time CEO Kerry Killinger.",
-      "2008-04-08: TPG leads emergency $7.2B capital injection."
-    ],
-    "anatomyBreakdown": {
-      "debtOverload": 50,
-      "mismatch": 30,
-      "mismanagement": 20
-    },
-    "timeline": [
-      {
-        "date": "2008-09-25T20:00:00Z",
-        "title": "Largest Bank Seizure in US History",
-        "description": "Office of Thrift Supervision seizes WaMu and sells banking assets to JPMorgan Chase for $1.9B.",
-        "type": "liquidation"
-      }
-    ],
-    "keyTakeaways": [
-      "Aggressive subprime Option-ARM lending creates catastrophic credit losses when housing prices drop.",
-      "Retail deposit runs accelerate rapidly when debt rating agencies downgrade bank debt to junk."
-    ]
-  },
-  {
-    "id": "general-motors",
-    "name": "General Motors Corporation (Old GM)",
-    "ticker": "GMAC / MTLQQ",
-    "sectorId": "automotive",
-    "sectorName": "Automotive & Manufacturing",
-    "status": "Chapter 11 Auto Bailout Landmark",
+    "sectorName": "Freight, Logistics & Shipping",
+    "status": "Chapter 11",
     "statusBadge": "chapter-11",
     "distressScore": 99,
-    "peakValuation": "$61.0B",
-    "collapseValuation": "$0.00 (Government Restructuring)",
-    "debtAtCollapse": "$172.8B Liabilities / $82B Assets",
-    "yearFounded": 1908,
-    "yearCollapsed": 2009,
-    "dateTimestamp": "2009-06-01T08:00:00Z",
-    "locationJurisdiction": "Detroit, MI (U.S. Bankruptcy Court S.D.N.Y.)",
-    "ceoAtFailure": "Rick Wagoner / Fritz Henderson",
-    "primaryCause": "Legacy Pension Liabilities, SUV Sales Collapse & GFC Credit Freeze",
-    "sourceType": "U.S. Treasury & Court Docket",
-    "sourceName": "U.S. Treasury Auto Taskforce & Docket #09-50026",
-    "summary": "America's largest automaker filed for Chapter 11 in the 4th largest bankruptcy in U.S. history ($172B liabilities), resulting in a $50B U.S. Treasury bailout and 'New GM' restructuring.",
+    "peakValuation": "$4.40B",
+    "collapseValuation": "$1.90B Terminal Auction",
+    "debtAtCollapse": "$1.50B",
+    "yearFounded": 1924,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-08-06T12:00:00Z",
+    "officialFilingDate": "August 6, 2023",
+    "locationJurisdiction": "Wilmington, DE (U.S. Bankruptcy Court D. Del. Judge Craig T. Goldblatt)",
+    "ceoAtFailure": "Darren Hawkins",
+    "primaryCause": "Teamsters Strike Threat, Debt Overload ($700M Treasury Loan) & Customer Exodus",
+    "sourceType": "SEC EDGAR Form 8-K",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Case #23-11069",
+    "summary": "100-year-old freight giant filed Chapter 11 after ceasing operations, resulting in the largest truck terminal auction in U.S. history ($1.9B raised across 130 freight terminals).",
     "earlyWarningSignals": [
-      "2009-03-30: Obama Administration Auto Taskforce rejects GM restructuring plan.",
-      "2008-11-07: Warns cash reserves are insufficient to operate through 2009.",
-      "2005-03-16: S&P downgrades GM debt to junk status."
+      "2023-06-27: Sues International Brotherhood of Teamsters over operational changes.",
+      "2023-07-23: Teamsters issue strike notice; customers divert freight to XPO and Estes.",
+      "2023-07-30: Ceases all freight operations and lays off 30,000 workers."
     ],
     "anatomyBreakdown": {
-      "debtOverload": 45,
-      "macroShift": 35,
-      "mismanagement": 20
+      "debtOverload": 40,
+      "mismanagement": 25,
+      "marketShift": 20,
+      "fraudScandal": 15
     },
     "timeline": [
-      {
-        "date": "2009-06-01T08:00:00Z",
-        "title": "Government Supervised Chapter 11",
-        "description": "Old GM files Chapter 11 petition with $172B liabilities, receiving $30B additional Treasury DIP financing.",
-        "type": "chapter-11"
-      }
-    ],
-    "keyTakeaways": [
-      "Unfunded legacy healthcare and pension liabilities create crippling fixed-cost burdens during auto downturns.",
-      "Section 363 sale structures can isolate bad assets into legacy liquidation trusts while preserving viable core brands."
+      "August 06, 2023 @ 12:00 EST: Chapter 11 Filing in Delaware.",
+      "December 15, 2023 @ 10:00 EST: Court Approves $1.9B Sale of 130 Freight Terminals to XPO, Estes, and Saia.",
+      "March 20, 2024 @ 14:00 EST: Rolling Stock Rolling Auction Approves Sale of 12,000 Rigs."
     ]
   },
   {
-    "id": "bear-stearns",
-    "name": "Bear Stearns Companies Inc.",
-    "ticker": "BSC",
-    "sectorId": "banking",
-    "sectorName": "Banking & Financial Services",
-    "status": "Fed Emergency Rescue / Fire Sale",
-    "statusBadge": "distress",
-    "distressScore": 100,
-    "peakValuation": "$20.0B",
-    "collapseValuation": "$1.2B ($10/share Fire Sale)",
-    "debtAtCollapse": "$395.0B Assets / $18B Subprime Exposure",
-    "yearFounded": 1923,
-    "yearCollapsed": 2008,
-    "dateTimestamp": "2008-03-16T22:00:00Z",
-    "locationJurisdiction": "New York, NY (Federal Reserve Board Order)",
-    "ceoAtFailure": "James Cayne / Alan Schwartz",
-    "primaryCause": "High-Grade Subprime Hedge Fund Collapses & Overnight Repo Lockup",
-    "sourceType": "Federal Reserve Emergency Release",
-    "sourceName": "Fed Maiden Lane I Facility & JP Morgan Acquisition Agreement",
-    "summary": "Wall Street investment bank collapsed in 72 hours as counterparties refused repo financing following the collapse of its two subprime mortgage hedge funds.",
-    "earlyWarningSignals": [
-      "2008-03-13: Bear Stearns informs Fed its liquidity reserves are exhausted.",
-      "2007-07-17: Pledges $1.6B to bail out two internal subprime hedge funds before liquidating them.",
-      "2007-06-22: Merrill Lynch seizes $850M in Bear Stearns hedge fund collateral."
-    ],
-    "anatomyBreakdown": {
-      "mismatch": 50,
-      "debtOverload": 30,
-      "mismanagement": 20
-    },
-    "timeline": [
-      {
-        "date": "2008-03-16T22:00:00Z",
-        "title": "Fed Emergency Rescue & JPMorgan Sale",
-        "description": "JPMorgan Chase agrees to acquire Bear Stearns for $2/share (later raised to $10/share) backed by $29B Fed Maiden Lane guaranty.",
-        "type": "distress"
-      }
-    ],
-    "keyTakeaways": [
-      "Relying on short-term overnight repo markets to fund illiquid subprime assets exposes firms to instant insolvency.",
-      "Central bank emergency lending facilities (Maiden Lane) are used when counterparty systemic contagion threatens markets."
-    ]
-  },
-  {
-    "id": "cit-group",
-    "name": "CIT Group Inc.",
-    "ticker": "CIT",
-    "sectorId": "banking",
-    "sectorName": "Banking & Financial Services",
-    "status": "Chapter 11 Prepackaged Landmark",
+    "id": "bed-bath-beyond",
+    "name": "Bed Bath & Beyond Inc.",
+    "ticker": "BBBYQ",
+    "sectorId": "legacy-retail",
+    "sectorName": "Home Goods & Legacy Retail",
+    "status": "Chapter 11",
     "statusBadge": "chapter-11",
-    "distressScore": 96,
-    "peakValuation": "$13.5B",
-    "collapseValuation": "$0.00 (Prepackaged Plan)",
-    "debtAtCollapse": "$71.0B Liabilities / $64.9B Assets",
-    "yearFounded": 1908,
-    "yearCollapsed": 2009,
-    "dateTimestamp": "2009-11-01T21:00:00Z",
-    "locationJurisdiction": "New York, NY (U.S. Bankruptcy Court S.D.N.Y.)",
-    "ceoAtFailure": "Jeffrey Peek",
-    "primaryCause": "Commercial Paper Market Lockup & Subprime Student/Middle-Market Loan Losses",
-    "sourceType": "SEC Official Filing",
-    "sourceName": "SEC EDGAR Form 8-K & Bankruptcy Petition #09-16565",
-    "summary": "100-year-old middle-market commercial lender filed the 5th largest bankruptcy in U.S. history ($71B liabilities) after commercial paper markets froze during the 2008 financial crisis.",
-    "earlyWarningSignals": [
-      "2009-07-15: Rescue talks with U.S. Treasury fail after TARP funds exhausted.",
-      "2009-07-20: Bondholders provide $3B emergency credit line.",
-      "2008-12-31: Receives $2.33B in TARP preferred stock capital."
-    ],
-    "anatomyBreakdown": {
-      "mismatch": 45,
-      "debtOverload": 35,
-      "macroShift": 20
-    },
-    "timeline": [
-      {
-        "date": "2009-11-01T21:00:00Z",
-        "title": "Prepackaged Chapter 11 Filing",
-        "description": "CIT Group files prepackaged Chapter 11 reducing debt by $10.5B and eliminating TARP equity.",
-        "type": "chapter-11"
-      }
-    ],
-    "keyTakeaways": [
-      "Middle-market lenders dependent on wholesale short-term paper cannot survive credit market freezes.",
-      "Prepackaged Chapter 11 plans allow solvent operations to emerge swiftly with reduced debt."
-    ]
-  },
-  {
-    "id": "circuit-city",
-    "name": "Circuit City Stores, Inc.",
-    "ticker": "CCTYQ",
-    "sectorId": "consumer",
-    "sectorName": "Consumer & Retail Goods",
-    "status": "Chapter 11 Total Liquidation",
-    "statusBadge": "liquidation",
     "distressScore": 98,
-    "peakValuation": "$7.2B",
-    "collapseValuation": "$0.00 (Store Going-Out-Of-Business)",
-    "debtAtCollapse": "$3.4B Liabilities",
-    "yearFounded": 1949,
-    "yearCollapsed": 2008,
-    "dateTimestamp": "2008-11-10T10:00:00Z",
-    "locationJurisdiction": "Richmond, VA (U.S. Bankruptcy Court E.D. Va.)",
-    "ceoAtFailure": "Philip J. Schoonover / James A. Marcum",
-    "primaryCause": "Fired Experienced Store Staff, Best Buy Competition & Credit Line Cutoff",
-    "sourceType": "SEC Official Filing",
-    "sourceName": "SEC EDGAR Form 8-K & Liquidation Docket #08-35653",
-    "summary": "2nd largest US electronics retailer liquidated all 567 stores after firing 3,400 senior commissioned salespeople to cut costs, destroying customer service ahead of the 2008 holiday season.",
+    "peakValuation": "$17.20B",
+    "collapseValuation": "$21.5M IP Sale",
+    "debtAtCollapse": "$5.20B",
+    "yearFounded": 1971,
+    "yearCollapsed": 2023,
+    "dateTimestamp": "2023-04-23T04:00:00Z",
+    "officialFilingDate": "April 23, 2023",
+    "locationJurisdiction": "Newark, NJ (U.S. Bankruptcy Court D.N.J. Judge Vincent F. Papalia)",
+    "ceoAtFailure": "Sue Gove",
+    "primaryCause": "Private Label Merchandise Failure, Vendor Credit Squeeze & $5.2B Debt Load",
+    "sourceType": "SEC EDGAR Form 8-K",
+    "sourceName": "U.S. Bankruptcy Court D.N.J. Case #23-13359",
+    "summary": "Home goods icon filed Chapter 11 to liquidate 360 Bed Bath & Beyond and 120 buybuy BABY stores, selling brand IP rights to Overstock.com for $21.5M.",
     "earlyWarningSignals": [
-      "2007-03-28: Fired 3,400 highest-paid experienced sales associates to replace with lower-wage workers.",
-      "2008-11-03: Announces closure of 155 store locations and lay off of 17% of workforce.",
-      "2008-09-26: Trade credit insurers withdraw coverage for inventory shipments."
+      "2023-01-05: Discloses going-concern warning and default on credit facility.",
+      "2023-02-07: Structuring equity offering with Hudson Bay Capital.",
+      "2023-03-30: Fails to raise required equity capital; initiates final bankruptcy prep."
     ],
     "anatomyBreakdown": {
-      "mismanagement": 50,
-      "techDisruption": 30,
-      "debtOverload": 20
+      "debtOverload": 40,
+      "mismanagement": 35,
+      "marketShift": 25,
+      "fraudScandal": 0
     },
     "timeline": [
-      {
-        "date": "2008-11-10T10:00:00Z",
-        "title": "Chapter 11 Liquidation Filing",
-        "description": "Circuit City files Chapter 11 seeking buyer, converting to total store liquidation in Jan 2009.",
-        "type": "liquidation"
-      }
-    ],
-    "keyTakeaways": [
-      "Firing knowledgeable sales staff to cut short-term wages destroys retail brand equity and revenue.",
-      "Failing to adapt store formats against competitors like Best Buy and Amazon leads to rapid inventory obsolescence."
+      "April 23, 2023 @ 04:00 EST: Chapter 11 Filing in New Jersey.",
+      "June 27, 2023 @ 10:00 EST: Overstock.com Wins IP Auction for $21.5M.",
+      "September 29, 2023 @ 14:00 EST: Liquidation Plan Effective; Stock Cancelled."
     ]
   },
   {
-    "id": "hertz-global",
-    "name": "Hertz Global Holdings, Inc.",
-    "ticker": "HTZGQ",
-    "sectorId": "automotive",
-    "sectorName": "Automotive & Rental Fleet",
-    "status": "Chapter 11 COVID Landmark",
+    "id": "express-inc",
+    "name": "Express Inc.",
+    "ticker": "EXPRQ",
+    "sectorId": "legacy-retail",
+    "sectorName": "Mall Fashion Retailer",
+    "status": "Chapter 11",
     "statusBadge": "chapter-11",
-    "distressScore": 96,
-    "peakValuation": "$12.0B",
-    "collapseValuation": "$0.40 (Pre-Meme Rally)",
-    "debtAtCollapse": "$19.0B Liabilities / $14.4B Fleet Debt",
-    "yearFounded": 1918,
-    "yearCollapsed": 2020,
-    "dateTimestamp": "2020-05-22T23:00:00Z",
-    "locationJurisdiction": "Estero, FL (U.S. Bankruptcy Court D. Del.)",
-    "ceoAtFailure": "Kathryn Marinello / Paul Stone",
-    "primaryCause": "COVID Travel Shutdown & Asset-Backed Fleet Securitization Debt Wall",
-    "sourceType": "SEC Official Filing",
-    "sourceName": "SEC EDGAR Form 8-K & Bankruptcy Petition #20-11218",
-    "summary": "102-year-old car rental giant filed Chapter 11 after pandemic travel bans wiped out airport revenue, triggering defaults on its $14.4B fleet lease securitization debt.",
+    "distressScore": 94,
+    "peakValuation": "$2.40B",
+    "collapseValuation": "$44.0M",
+    "debtAtCollapse": "$1.20B",
+    "yearFounded": 1980,
+    "yearCollapsed": 2024,
+    "dateTimestamp": "2024-04-22T04:00:00Z",
+    "officialFilingDate": "April 22, 2024",
+    "locationJurisdiction": "Wilmington, DE (U.S. Bankruptcy Court D. Del. Judge Karen B. Owens)",
+    "ceoAtFailure": "Stewart Glendinning",
+    "primaryCause": "Mall Foot Traffic Migration, Casual Workwear Shift & $1.2B Lease Debt",
+    "sourceType": "SEC EDGAR Form 8-K",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Case #24-10801",
+    "summary": "Mall fashion retailer filed Chapter 11 to close 95 stores and sell operations to a consortium led by WHP Global, Simon Property Group, and Brookfield Properties for $44M.",
     "earlyWarningSignals": [
-      "2020-04-29: Hertz misses operating lease payments on asset-backed fleet vehicles.",
-      "2020-03-20: Layoff of 12,000 employees following 80% drop in airport rentals.",
-      "2020-05-18: CEO Kathryn Marinello resigns 4 days before bankruptcy filing."
+      "2023-11-28: Delisting notice received from NYSE.",
+      "2024-02-12: Hires M3 Advisory for out-of-court restructuring.",
+      "2024-04-15: Prepares emergency Chapter 11 filing after debt talks stall."
     ],
     "anatomyBreakdown": {
-      "macroShift": 50,
-      "debtOverload": 35,
-      "mismanagement": 15
+      "debtOverload": 40,
+      "mismanagement": 25,
+      "marketShift": 35,
+      "fraudScandal": 0
     },
     "timeline": [
-      {
-        "date": "2020-05-22T23:00:00Z",
-        "title": "Chapter 11 Bankruptcy Filing",
-        "description": "Hertz files Chapter 11 in Delaware with $19B debt, initiating fleet liquidation negotiations.",
-        "type": "chapter-11"
-      }
-    ],
-    "keyTakeaways": [
-      "Asset-backed vehicle securitization structures require continuous operating cash flow to avoid margin calls.",
-      "Extreme macroeconomic demand shocks like global travel shutdowns instantly collapse high-fixed-cost fleet operators."
+      "April 22, 2024 @ 04:00 EST: Chapter 11 Filing in Delaware.",
+      "June 14, 2024 @ 10:00 EST: Sale Approved to WHP Global & Mall Landlord Consortium.",
+      "July 25, 2024 @ 14:00 EST: Restructured Retail Chain Reopens as Private Enterprise."
     ]
   },
   {
     "id": "ftx-trading",
     "name": "FTX Trading Ltd. (Alameda Research)",
     "ticker": "FTXQ",
-    "sectorId": "crypto",
-    "sectorName": "Crypto & Web3 Protocols",
-    "status": "Chapter 11 Fraud & Asset Recovery",
-    "statusBadge": "liquidation",
-    "distressScore": 100,
-    "peakValuation": "$32.0B",
-    "collapseValuation": "$0.00 (Customer Deposit Hole)",
-    "debtAtCollapse": "$8.7B Customer Deposit Deficit",
+    "sectorId": "crypto-protocols",
+    "sectorName": "Crypto Exchange & Web3",
+    "status": "Chapter 11",
+    "statusBadge": "chapter-11",
+    "distressScore": 99,
+    "peakValuation": "$32.00B",
+    "collapseValuation": "$0.00",
+    "debtAtCollapse": "$11.00B",
     "yearFounded": 2019,
     "yearCollapsed": 2022,
     "dateTimestamp": "2022-11-11T14:00:00Z",
-    "locationJurisdiction": "Nassau, Bahamas (U.S. Bankruptcy Court D. Del.)",
+    "officialFilingDate": "November 11, 2022",
+    "locationJurisdiction": "Wilmington, DE (U.S. Bankruptcy Court D. Del. Judge John T. Dorsey)",
     "ceoAtFailure": "Sam Bankman-Fried / John J. Ray III",
-    "primaryCause": "Co-mingling Customer Funds, Alameda Leverage & Lack of Internal Controls",
-    "sourceType": "Bankruptcy Court Filing",
-    "sourceName": "U.S. Bankruptcy Court D. Del. Docket #22-11068",
-    "summary": "3rd largest global crypto exchange collapsed in 5 days after a $6B deposit run exposed an $8.7B hole caused by illegal transfer of customer funds to sister hedge fund Alameda Research.",
+    "primaryCause": "Massive Corporate Fraud, Customer Fund Co-Mingling with Alameda Research & Bank Run",
+    "sourceType": "SEC & CFTC Federal Action",
+    "sourceName": "U.S. Bankruptcy Court D. Del. Case #22-11068",
+    "summary": "Cryptocurrency exchange behemoth filed Chapter 11 after an $8B hole was exposed in customer accounts. New CEO John J. Ray III recovered $14B+ to pay creditors 100% plus interest.",
     "earlyWarningSignals": [
-      "2022-11-02: CoinDesk leaks Alameda Research balance sheet showing massive FTT token concentration.",
-      "2022-11-06: Binance CEO CZ announces liquidation of all remaining FTT holdings.",
-      "2022-11-08: FTX halts customer withdrawals as run exceeds $6B in 72 hours."
+      "2022-11-02: CoinDesk leaks Alameda Research balance sheet showing massive FTT holdings.",
+      "2022-11-06: Binance CEO CZ announces liquidation of $500M FTT token holdings.",
+      "2022-11-08: $6B in customer withdrawal requests trigger liquidity freeze."
     ],
     "anatomyBreakdown": {
-      "mismanagement": 65,
-      "debtOverload": 25,
-      "mismatch": 10
+      "debtOverload": 20,
+      "mismanagement": 20,
+      "marketShift": 10,
+      "fraudScandal": 50
     },
     "timeline": [
-      {
-        "date": "2022-11-11T14:00:00Z",
-        "title": "Chapter 11 Filing & SBF Resignation",
-        "description": "FTX, Alameda Research, and 130 affiliated entities file Chapter 11; restructuring expert John J. Ray III appointed CEO.",
-        "type": "liquidation"
-      }
-    ],
-    "keyTakeaways": [
-      "Co-mingling exchange customer deposits with proprietary trading funds is illegal and fatal.",
-      "Using illiquid exchange-issued tokens (FTT) as collateral for multibillion-dollar loans leads to immediate liquidation when prices drop."
-    ]
-  },
-  {
-    "id": "celsius-network",
-    "name": "Celsius Network LLC",
-    "ticker": "CELQ",
-    "sectorId": "crypto",
-    "sectorName": "Crypto & Web3 Protocols",
-    "status": "Chapter 11 Crypto Lender",
-    "statusBadge": "chapter-11",
-    "distressScore": 98,
-    "peakValuation": "$4.7B",
-    "collapseValuation": "$0.00",
-    "debtAtCollapse": "$5.5B Liabilities / $1.2B Deficit",
-    "yearFounded": 2017,
-    "yearCollapsed": 2022,
-    "dateTimestamp": "2022-07-13T22:00:00Z",
-    "locationJurisdiction": "Hoboken, NJ (U.S. Bankruptcy Court S.D.N.Y.)",
-    "ceoAtFailure": "Alex Mashinsky / Chris Ferraro",
-    "primaryCause": "High-Yield Staking Mismatch, Terra/Luna Exposure & Liquidity Run",
-    "sourceType": "Bankruptcy Court Filing",
-    "sourceName": "U.S. Bankruptcy Court S.D.N.Y. Docket #22-10964",
-    "summary": "Major crypto lending platform promising 18% APY froze all withdrawals following the $40B collapse of Terra/Luna and unhedged DeFi liquidation calls.",
-    "earlyWarningSignals": [
-      "2022-06-12: Pauses all customer withdrawals, swaps, and transfers citing 'extreme market conditions'.",
-      "2022-05-11: $500M+ lost in Terra (LUNA/UST) algorithmic stablecoin depeg.",
-      "2021-11-26: Celsius CFO arrested in Israel in connection with prior ICO fraud."
-    ],
-    "anatomyBreakdown": {
-      "mismatch": 45,
-      "mismanagement": 35,
-      "debtOverload": 20
-    },
-    "timeline": [
-      {
-        "date": "2022-07-13T22:00:00Z",
-        "title": "Chapter 11 Restructuring Filing",
-        "description": "Celsius Network files Chapter 11 in New York showing $1.2B balance sheet deficit.",
-        "type": "chapter-11"
-      }
-    ],
-    "keyTakeaways": [
-      "Promising 18% yields on liquid deposits requires taking extreme unhedged risk in illiquid DeFi protocols.",
-      "Terms of Service claiming ownership of deposited assets leave retail users as unsecured creditors in Chapter 11."
-    ]
-  },
-  {
-    "id": "first-republic-bank",
-    "name": "First Republic Bank",
-    "ticker": "FRCB",
-    "sectorId": "banking",
-    "sectorName": "Banking & Financial Services",
-    "status": "FDIC Seizure / Sale to JPMorgan",
-    "statusBadge": "liquidation",
-    "distressScore": 99,
-    "peakValuation": "$40.0B",
-    "collapseValuation": "$0.00 (FDIC Seizure)",
-    "debtAtCollapse": "$229.1B Assets / $100B Deposit Flight",
-    "yearFounded": 1985,
-    "yearCollapsed": 2023,
-    "dateTimestamp": "2023-05-01T04:00:00Z",
-    "locationJurisdiction": "San Francisco, CA (FDIC Receivership Order)",
-    "ceoAtFailure": "Michael J. Roffler",
-    "primaryCause": "Uninsured Wealthy Deposit Run & Low-Rate Jumbo Mortgage Impairment",
-    "sourceType": "FDIC Official Order",
-    "sourceName": "FDIC Press Release PR-34-2023 & JPMorgan Acquisition",
-    "summary": "2nd largest bank failure in U.S. history ($229B assets). Wealthy client bank suffered a $100B deposit run in Q1 2023 following SVB's collapse, leading to FDIC seizure and sale to JPMorgan Chase.",
-    "earlyWarningSignals": [
-      "2023-04-24: Q1 earnings report reveals $102B net deposit flight.",
-      "2023-03-16: 11 major U.S. banks deposit $30B emergency liquidity to stabilize First Republic.",
-      "2023-03-15: S&P and Fitch downgrade First Republic rating to junk."
-    ],
-    "anatomyBreakdown": {
-      "mismatch": 50,
-      "macroShift": 30,
-      "mismanagement": 20
-    },
-    "timeline": [
-      {
-        "date": "2023-05-01T04:00:00Z",
-        "title": "FDIC Seizure & JPMorgan Acquisition",
-        "description": "FDIC takes possession of First Republic and sells all deposits and $203B assets to JPMorgan Chase.",
-        "type": "liquidation"
-      }
-    ],
-    "keyTakeaways": [
-      "High concentration of uninsured deposits (>68%) creates extreme run vulnerability.",
-      "Long-term low-rate jumbo mortgages lose substantial market value when benchmark rates rise 500 bps."
-    ]
-  },
-  {
-    "id": "express-inc",
-    "name": "Express, Inc. (Bonobos)",
-    "ticker": "EXPRQ",
-    "sectorId": "consumer",
-    "sectorName": "Consumer & Retail Goods",
-    "status": "Chapter 11 Retail Restructuring",
-    "statusBadge": "chapter-11",
-    "distressScore": 95,
-    "peakValuation": "$2.4B",
-    "collapseValuation": "$0.02 (OTC Equity)",
-    "debtAtCollapse": "$1.2B Liabilities",
-    "yearFounded": 1980,
-    "yearCollapsed": 2024,
-    "dateTimestamp": "2024-04-22T06:00:00Z",
-    "locationJurisdiction": "Columbus, OH (U.S. Bankruptcy Court D. Del.)",
-    "ceoAtFailure": "Stewart Glendinning",
-    "primaryCause": "Mall Foot Traffic Decline, Debt Overhang & Failed E-Commerce Pivot",
-    "sourceType": "SEC Official Filing",
-    "sourceName": "SEC EDGAR Form 8-K & Bankruptcy Petition #24-10831",
-    "summary": "Popular mall apparel retailer Express filed Chapter 11 in April 2024 seeking court approval to close 100 stores and sell assets to a consortium led by WHP Global.",
-    "earlyWarningSignals": [
-      "2024-02-14: Delisted from the New York Stock Exchange due to low stock price.",
-      "2023-11-28: Express reports Q3 net loss of $36.8M and warns of liquidity constraints.",
-      "2023-04-13: Acquired menswear brand Bonobos from Walmart for $75M."
-    ],
-    "anatomyBreakdown": {
-      "techDisruption": 40,
-      "debtOverload": 35,
-      "mismanagement": 25
-    },
-    "timeline": [
-      {
-        "date": "2024-04-22T06:00:00Z",
-        "title": "Chapter 11 Bankruptcy Filing",
-        "description": "Express files Chapter 11 in Delaware with $1.2B debt, securing $49M DIP financing.",
-        "type": "chapter-11"
-      }
-    ],
-    "keyTakeaways": [
-      "Heavy reliance on traditional suburban shopping mall foot traffic creates persistent sales drag.",
-      "Digital DTC acquisitions cannot compensate for over-stored physical retail footprints."
+      "November 11, 2022 @ 14:00 EST: Chapter 11 Filing in Delaware; Sam Bankman-Fried resigns.",
+      "December 12, 2022 @ 18:00 EST: Sam Bankman-Fried arrested in the Bahamas.",
+      "October 07, 2024 @ 10:00 EST: Bankruptcy Court Approves $14.7B Reorganization Plan Paying 118% Recovery."
     ]
   }
 ]

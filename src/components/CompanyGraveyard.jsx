@@ -33,7 +33,7 @@ export default function CompanyGraveyard({
   const [statusFilter, setStatusFilter] = useState('ALL');
   const [causeFilter, setCauseFilter] = useState('ALL');
   const [valuationThresholdFilter, setValuationThresholdFilter] = useState('BOTH'); // 'BOTH' | 'INSTITUTIONAL_10M' | 'SUB_10M'
-  const [timeframeFilter, setTimeframeFilter] = useState('14D'); // '14D' (2-Week Active Wire) | 'ALL' | '7D' | '30D' | '90D' | '1Y' | '2024_2026' | 'CUSTOM'
+  const [timeframeFilter, setTimeframeFilter] = useState('ALL'); // Default to 'ALL' so zero bankruptcies are hidden by date filters
   const [customStartDate, setCustomStartDate] = useState('');
   const [customEndDate, setCustomEndDate] = useState('');
   const [layoutMode, setLayoutMode] = useState('compact'); // 'compact' (2-Row Dense) | 'full' (Rich Narrative) | 'grid'
