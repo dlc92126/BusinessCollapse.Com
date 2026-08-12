@@ -1,5 +1,44 @@
 [
   {
+    "id": "classen-luxury-apartments",
+    "name": "Classen Luxury Apartments (YSA Investments / Vesta Realty)",
+    "ticker": "CRE-OKC",
+    "sectorId": "cre",
+    "sectorName": "Commercial Real Estate",
+    "status": "Chapter 11",
+    "statusBadge": "chapter-11",
+    "distressScore": 96,
+    "peakValuation": "$9.8M",
+    "collapseValuation": "$6.2M",
+    "debtAtCollapse": "$8.5M",
+    "yearFounded": 2012,
+    "yearCollapsed": 2026,
+    "dateTimestamp": "2026-08-12T08:00:00Z",
+    "officialFilingDate": "August 12, 2026",
+    "locationJurisdiction": "Oklahoma City, OK (W.D. Okla. Court / Court Receiver David Rhodes)",
+    "ceoAtFailure": "Mark Kulik (Vesta Realty) / YSA Investments",
+    "primaryCause": "Elevator System Collapse ($1.7M) & Ownership Dispute (Vesta vs YSA)",
+    "sourceType": "LOCAL_NEWS_PACER_RECEIVERSHIP",
+    "sourceName": "Oklahoma City Local News & W.D. Okla. Bankruptcy Court Receiver",
+    "summary": "Oklahoma City luxury high-rise property entered Chapter 11 bankruptcy and court receivership under David Rhodes following severe elevator failure ($1.7M replacement cost), mold/water leaks, and ongoing legal battle between Vesta Realty and YSA Investments.",
+    "earlyWarningSignals": [
+      "2026-06-15: Court appointed receiver David Rhodes took control from manager Vesta Realty.",
+      "2026-05-10: Failed $1.7M replacement project for all four high-rise elevator banks.",
+      "2026-04-18: Legal dispute between manager Vesta Realty (CEO Mark Kulik) and owner YSA Investments."
+    ],
+    "anatomyBreakdown": {
+      "debtOverload": 40,
+      "mismanagement": 35,
+      "marketShift": 15,
+      "fraudScandal": 10
+    },
+    "timeline": [
+      "August 12, 2026 @ 08:00 EST: Chapter 11 Filing & Receivership Update — Tenants report unaddressed elevator failures.",
+      "June 15, 2026 @ 10:00 EST: Court Receiver Appointed — David Rhodes takes control of property from Vesta Realty.",
+      "May 02, 2026 @ 14:30 EST: Ownership Dispute — Litigation intensifies between Vesta Realty (CEO Mark Kulik) and YSA Investments."
+    ]
+  },
+  {
     "id": "wework",
     "name": "WeWork Inc.",
     "ticker": "WE",
