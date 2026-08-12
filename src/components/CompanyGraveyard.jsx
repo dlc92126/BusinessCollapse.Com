@@ -3,7 +3,19 @@ import { Filter, Calendar, DollarSign, ChevronRight, Skull, AlertCircle, Refresh
 import BreakingNewsHero from './BreakingNewsHero';
 import { extractStateCode } from '../utils/stateExtractor';
 
-
+export function checkIsAuction(item) {
+  if (!item) return false;
+  if (item.isPreJudicial || item.courtCaseStatus === 'PRE_PETITION_WARN_SIGNAL') return false;
+  return Boolean(
+    (item.auctionTitle && item.auctionTitle.trim() !== '') ||
+    (item.auctionPortalUrl && item.auctionPortalUrl.trim() !== '') ||
+    (item.assetLiquidationType && item.assetLiquidationType.trim() !== '') ||
+    (item.stalkerHorseBid && item.stalkerHorseBid.trim() !== '') ||
+    (item.auctioneer && item.auctioneer.trim() !== '') ||
+    (item.assetLiquidationBadge && item.assetLiquidationBadge.trim() !== '') ||
+    (item.statusBadge && item.statusBadge.toLowerCase().includes('363-auction'))
+  );
+}
 
 export default function CompanyGraveyard({
   companies,
@@ -311,20 +323,6 @@ export default function CompanyGraveyard({
       );
       if (!isArchived) return false;
     }
-
-    const checkIsAuction = (item) => {
-      if (!item) return false;
-      if (item.isPreJudicial || item.courtCaseStatus === 'PRE_PETITION_WARN_SIGNAL') return false;
-      return Boolean(
-        (item.auctionTitle && item.auctionTitle.trim() !== '') ||
-        (item.auctionPortalUrl && item.auctionPortalUrl.trim() !== '') ||
-        (item.assetLiquidationType && item.assetLiquidationType.trim() !== '') ||
-        (item.stalkerHorseBid && item.stalkerHorseBid.trim() !== '') ||
-        (item.auctioneer && item.auctioneer.trim() !== '') ||
-        (item.assetLiquidationBadge && item.assetLiquidationBadge.trim() !== '') ||
-        (item.statusBadge && item.statusBadge.toLowerCase().includes('363-auction'))
-      );
-    };
 
     // Status & Stage Taxonomy Matching
     if (statusFilter !== 'ALL') {
