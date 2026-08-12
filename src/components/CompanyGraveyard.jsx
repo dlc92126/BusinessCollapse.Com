@@ -137,10 +137,10 @@ export default function CompanyGraveyard({
       existing.status = item.badgeText || existing.status;
       existing.headline = item.headline || existing.headline;
 
-      // ALWAYS RESET MATERIAL CHANGE DATE & TIMESTAMP TO NOVEL EVENT TIMESTAMP
+      // IMMUTABLE EVENT TIMESTAMP RULE: Preserve original fixed event timestamp and prevent dynamic re-stamping
       const itemTime = new Date(eventIso).getTime();
-      const existingTime = existing.lastMaterialChangeDate ? new Date(existing.lastMaterialChangeDate).getTime() : (existing.dateTimestamp ? new Date(existing.dateTimestamp).getTime() : 0);
-      if (itemTime > existingTime || !existing.lastMaterialChangeDate) {
+      const existingTime = existing.lastMaterialChangeDate ? new Date(existing.lastMaterialChangeDate).getTime() : 0;
+      if (!existing.lastMaterialChangeDate || (item.lastUpdated && itemTime > existingTime)) {
         existing.lastMaterialChangeDate = eventIso;
         existing.dateTimestamp = eventIso;
         const freshDate = new Date(eventIso);
