@@ -128,7 +128,7 @@ export default function CompanyGraveyard({
 
     const eventIso = item.lastUpdated
       ? item.lastUpdated
-      : (item.hoursAgo ? new Date(Date.now() - item.hoursAgo * 3600 * 1000).toISOString() : new Date().toISOString());
+      : (typeof item.hoursAgo === 'number' ? new Date(Date.now() - item.hoursAgo * 3600 * 1000).toISOString() : new Date(Date.now() - 48 * 3600 * 1000).toISOString());
 
     if (existing) {
       // APPEND NEW WARN SIGNAL / DOCKET / AUCTION UPDATE to existing entity record
