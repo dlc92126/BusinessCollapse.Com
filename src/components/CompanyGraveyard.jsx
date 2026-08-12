@@ -322,10 +322,7 @@ export default function CompanyGraveyard({
         (item.stalkerHorseBid && item.stalkerHorseBid.trim() !== '') ||
         (item.auctioneer && item.auctioneer.trim() !== '') ||
         (item.assetLiquidationBadge && item.assetLiquidationBadge.trim() !== '') ||
-        (item.statusBadge && item.statusBadge.toLowerCase().includes('auction')) ||
-        (item.status && (item.status.toLowerCase().includes('auction') || item.status.includes('363'))) ||
-        (item.headline && item.headline.toLowerCase().includes('auction')) ||
-        (item.primaryCause && item.primaryCause.toLowerCase().includes('auction'))
+        (item.statusBadge && item.statusBadge.toLowerCase().includes('363-auction'))
       );
     };
 
@@ -1067,18 +1064,7 @@ export default function CompanyGraveyard({
 
               {sortedCompanies.map((company) => {
                 const isPreJudicial = company.isPreJudicial || company.courtCaseStatus === 'PRE_PETITION_WARN_SIGNAL';
-                const isAuction = statusFilter === 'auction-363' ? true : (!isPreJudicial && Boolean(
-                  (company.auctionTitle && company.auctionTitle.trim() !== '') ||
-                  (company.auctionPortalUrl && company.auctionPortalUrl.trim() !== '') ||
-                  (company.assetLiquidationType && company.assetLiquidationType.trim() !== '') ||
-                  (company.stalkerHorseBid && company.stalkerHorseBid.trim() !== '') ||
-                  (company.auctioneer && company.auctioneer.trim() !== '') ||
-                  (company.assetLiquidationBadge && company.assetLiquidationBadge.trim() !== '') ||
-                  (company.statusBadge && company.statusBadge.toLowerCase().includes('auction')) ||
-                  (company.status && (company.status.toLowerCase().includes('auction') || company.status.includes('363'))) ||
-                  (company.headline && company.headline.toLowerCase().includes('auction')) ||
-                  (company.primaryCause && company.primaryCause.toLowerCase().includes('auction'))
-                ));
+                const isAuction = !isPreJudicial && checkIsAuction(company);
                 const isActiveDocket = company.courtCaseStatus !== 'FINAL_DECREE_ISSUED' && !isPreJudicial && !isAuction;
 
 
@@ -1383,18 +1369,7 @@ export default function CompanyGraveyard({
             <div style={{ display: 'grid', gridTemplateColumns: layoutMode === 'full' ? '1fr' : 'repeat(auto-fill, minmax(360px, 1fr))', gap: '20px' }}>
               {sortedCompanies.map((company) => {
                 const isPreJudicial = company.isPreJudicial || company.courtCaseStatus === 'PRE_PETITION_WARN_SIGNAL';
-                const isAuction = statusFilter === 'auction-363' ? true : (!isPreJudicial && Boolean(
-                  (company.auctionTitle && company.auctionTitle.trim() !== '') ||
-                  (company.auctionPortalUrl && company.auctionPortalUrl.trim() !== '') ||
-                  (company.assetLiquidationType && company.assetLiquidationType.trim() !== '') ||
-                  (company.stalkerHorseBid && company.stalkerHorseBid.trim() !== '') ||
-                  (company.auctioneer && company.auctioneer.trim() !== '') ||
-                  (company.assetLiquidationBadge && company.assetLiquidationBadge.trim() !== '') ||
-                  (company.statusBadge && company.statusBadge.toLowerCase().includes('auction')) ||
-                  (company.status && (company.status.toLowerCase().includes('auction') || company.status.includes('363'))) ||
-                  (company.headline && company.headline.toLowerCase().includes('auction')) ||
-                  (company.primaryCause && company.primaryCause.toLowerCase().includes('auction'))
-                ));
+                const isAuction = !isPreJudicial && checkIsAuction(company);
                 const isActiveDocket = company.courtCaseStatus !== 'FINAL_DECREE_ISSUED' && !isPreJudicial && !isAuction;
 
 
