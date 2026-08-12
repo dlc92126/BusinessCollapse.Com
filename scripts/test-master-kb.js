@@ -22,16 +22,16 @@ async function testMasterKB() {
     const kb = JSON.parse(fs.readFileSync(kbPath, 'utf8'));
     masterContext = `\nBUSINESSCOLLAPSE.COM MASTER PLATFORM KNOWLEDGE BASE:\n` +
       `Tagline: ${kb.tagline}\n` +
-      `MEMBERSHIP PRICING TIERS:\n` + kb.membershipTiers.map(t => `• ${t.name} (${t.price}): ${t.features}`).join('\n') +
-      `\nSITE TOOLS & MODULES:\n` + kb.siteModulesAndFeatures.map(m => `• ${m.module}: ${m.description}`).join('\n');
+      (Array.isArray(kb.roleWorkspaces) ? `5 DEDICATED ROLE WORKSPACES:\n` + kb.roleWorkspaces.map(w => `• ${w.name} (${w.pricing}): Target: ${w.targetAudience} | Features: ${w.keyCapabilities}`).join('\n') + `\n` : '') +
+      `MEMBERSHIP PRICING TIERS:\n` + kb.membershipTiers.map(t => `• ${t.name} (${t.price}): ${t.features}`).join('\n');
   }
 
-  console.log('📡 Testing VERITAS AI with Master Site Knowledge Base...\n');
+  console.log('📡 Testing VERITAS AI with 5-Workspace Master Site Knowledge Base...\n');
 
   const testPrompts = [
-    "What membership tiers do you guys offer and how much do they cost?",
-    "Tell me how the Section 363 Auction Directory and Diligence Brief work.",
-    "I have an idea for a new feature.",
+    "What dedicated workspaces do you offer for journalists and headhunters?",
+    "Tell me about the Section 363 Asset Marketplace and Creditor Action Center.",
+    "What does the Investor Terminal cost and what features does it include?",
     "Can you give me a ticket number for my support request?"
   ];
 
@@ -43,7 +43,7 @@ async function testMasterKB() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         systemInstruction: {
-          parts: [{ text: `You are Veritas AI, subscriber concierge for BusinessCollapse.com.${masterContext}\nSpeak naturally in 1-3 conversational sentences.` }]
+          parts: [{ text: `You are Veritas AI, senior subscriber partner for BusinessCollapse.com.${masterContext}\nSpeak naturally in 1-3 conversational sentences.` }]
         },
         contents: [{ role: 'user', parts: [{ text: promptText }] }]
       })

@@ -43,12 +43,21 @@ import sub10mCatalog from './data/sub10m_companies.json';
 import UniversalShareModal from './components/UniversalShareModal';
 import EmailClientModal from './components/EmailClientModal';
 import SubscriberBackOfficeModal from './components/SubscriberBackOfficeModal';
+import BCCCitationWrapperModal from './components/BCCCitationWrapperModal';
 
 
 
 
 import UserAccountSettingsModal from './components/UserAccountSettingsModal';
 import SEOHead from './components/SEOHead';
+import WorkspaceCommandBar from './components/WorkspaceCommandBar';
+import Form410ClaimWizardModal from './components/Form410ClaimWizardModal';
+import MediaPressWorkstation from './components/MediaPressWorkstation';
+import HeadhunterTalentWorkstation from './components/HeadhunterTalentWorkstation';
+import InvestorLenderWorkstation from './components/InvestorLenderWorkstation';
+import Marketplace363Workstation from './components/Marketplace363Workstation';
+import CreditorActionWorkstation from './components/CreditorActionWorkstation';
+import ExecutiveYouTubeShareModal from './components/ExecutiveYouTubeShareModal';
 
 
 
@@ -64,6 +73,7 @@ import { getSavedIngestionState, executeIngestionCycle } from './utils/aiIngesti
 export default function App() {
   const [viewMode, setViewMode] = useState('public'); // 'public' | 'manager'
   const [activeTab, setActiveTab] = useState('graveyard');
+  const [activeWorkspace, setActiveWorkspace] = useState('all'); // 'all' | 'media' | 'headhunter' | 'investor' | 'marketplace' | 'creditor'
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCompany, setSelectedCompany] = useState(() => {
     try {
@@ -138,11 +148,13 @@ export default function App() {
   const [waterfallCompany, setWaterfallCompany] = useState(null);
 
   const [diligenceBriefEntity, setDiligenceBriefEntity] = useState(null);
+  const [isForm410WizardOpen, setIsForm410WizardOpen] = useState(false);
   const [newsroomStudioCompany, setNewsroomStudioCompany] = useState(null);
+  const [isNewsroomStudioModalOpen, setIsNewsroomStudioModalOpen] = useState(false);
 
   const handleOpenNewsroomStudio = (targetCompany) => {
     setNewsroomStudioCompany(targetCompany || selectedCompany);
-    setActiveTab('newsroom');
+    setIsNewsroomStudioModalOpen(true);
   };
 
   const handleOpenWaterfall = (targetCompany) => {
@@ -336,30 +348,52 @@ export default function App() {
       formattedTimestamp: rFormattedMaterialStr,
       lastRefreshedAt: formattedNow,
       lastMaterialChangeDate: rEventDate.toISOString(),
-      formattedMaterialChange: rFormattedMaterialStr,
       lastSweepDate: nowIso,
       formattedLastSweep: formattedNow
     };
   });
+  const [isAutoCitationOpen, setIsAutoCitationOpen] = useState(false);
 
   const allCombinedCompanies = [...companies, ...formattedRadarCompanies, ...(sub10mCatalog || [])];
 
-  // URL Deep-Link Router (e.g. ?company=spirit-airlines or ?tab=dip or ?docket=SAVE-1420)
+  // URL Deep-Link Router (e.g. ?company=tupq or ?citation=docket001 or /case/tupq)
   useEffect(() => {
     try {
       const params = new URLSearchParams(window.location.search);
-      const companyId = params.get('company') || params.get('docket');
+      const companyId = params.get('company') || params.get('docket') || params.get('citation') || params.get('case');
       const tabParam = params.get('tab');
+      const pathName = window.location.pathname.toLowerCase();
 
       if (tabParam) {
         setActiveTab(tabParam);
       }
 
-      if (companyId) {
-        const targetQ = companyId.toLowerCase();
+      // Check if URL has citation query parameter or /case/ or /citation/ in path
+      const hasCitationIntent = params.get('citation') || pathName.includes('/case/') || pathName.includes('/citation/');
+
+      let targetQ = companyId ? companyId.toLowerCase() : null;
+
+      // Extract ticker from URL path if present (e.g. /case/tupq)
+      if (!targetQ && (pathName.includes('/case/') || pathName.includes('/citation/'))) {
+        const pathSegments = pathName.split('/').filter(Boolean);
+        if (pathSegments.length >= 2) {
+          targetQ = pathSegments[1].toLowerCase();
+        }
+      }
+
+      if (targetQ) {
         const found = (allCombinedCompanies || []).find(c => c && (c.id === targetQ || (c.ticker && c.ticker.toLowerCase() === targetQ)));
         if (found) {
           setSelectedCompany(found);
+          if (hasCitationIntent) {
+            setIsAutoCitationOpen(true);
+          }
+        }
+      } else if (hasCitationIntent) {
+        // Fallback to first company (e.g. Tupperware $TUPQ) for citation wrapper
+        if (allCombinedCompanies.length > 0) {
+          setSelectedCompany(allCombinedCompanies[0]);
+          setIsAutoCitationOpen(true);
         }
       }
     } catch (e) {}
@@ -650,6 +684,21 @@ export default function App() {
       <Header
         activeTab={activeTab}
         setActiveTab={setActiveTab}
+        activeWorkspace={activeWorkspace}
+        setActiveWorkspace={(wsId) => {
+          setActiveWorkspace(wsId);
+          if (wsId === 'media') {
+            setIsNewsroomStudioOpen(true);
+          } else if (wsId === 'headhunter') {
+            setActiveTab('talent_radar');
+          } else if (wsId === 'investor') {
+            setActiveTab('dip');
+          } else if (wsId === 'marketplace') {
+            setActiveTab('auctions');
+          } else if (wsId === 'creditor') {
+            setActiveTab('graveyard');
+          }
+        }}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         companies={allCombinedCompanies}
@@ -675,6 +724,7 @@ export default function App() {
         lastIngestionTime={lastIngestionTime}
         onOpenEmailClient={() => setIsEmailClientOpen(true)}
         onOpenSubscriberBackOffice={() => setIsSubscriberBackOfficeOpen(true)}
+        onShareModal={(data) => { setShareModalData(data); setIsShareOpen(true); }}
       />
 
       {/* 75-Member Sandbox Impersonation Console Bar (Only in Manager Back-Office Mode) */}
@@ -693,6 +743,73 @@ export default function App() {
 
 
 
+
+      {/* FULL-SCREEN WORKSPACE OVERLAY */}
+      {activeWorkspace !== 'all' && (
+        <div style={{
+          position: 'fixed',
+          top: 0, left: 0, right: 0, bottom: 0,
+          background: '#040711',
+          zIndex: 900,
+          overflowY: 'auto',
+          display: 'flex',
+          flexDirection: 'column'
+        }}>
+          {/* Full-Screen Workspace Body */}
+          <div style={{ flex: 1, maxWidth: '1440px', width: '100%', margin: '0 auto' }}>
+            {activeWorkspace === 'media' && (
+              <MediaPressWorkstation
+                companies={allCombinedCompanies}
+                breakingNews={breakingNews}
+                onSelectCompany={(company) => setSelectedCompany(company)}
+                onOpenNewsroomStudio={handleOpenNewsroomStudio}
+                onOpenEmailClient={() => setIsEmailClientOpen(true)}
+                onGoBack={() => { setActiveWorkspace('all'); setActiveTab('graveyard'); }}
+              />
+            )}
+
+            {activeWorkspace === 'headhunter' && (
+              <HeadhunterTalentWorkstation
+                companies={allCombinedCompanies}
+                onOpenEmailClient={() => setIsEmailClientOpen(true)}
+                onGoBack={() => { setActiveWorkspace('all'); setActiveTab('graveyard'); }}
+              />
+            )}
+
+            {activeWorkspace === 'investor' && (
+              <InvestorLenderWorkstation
+                companies={allCombinedCompanies}
+                onSelectCompany={(company) => setSelectedCompany(company)}
+                onOpenWaterfall={(c) => {
+                  setWaterfallCompany(c);
+                  setIsWaterfallOpen(true);
+                }}
+                onGoBack={() => { setActiveWorkspace('all'); setActiveTab('graveyard'); }}
+              />
+            )}
+
+            {activeWorkspace === 'marketplace' && (
+              <Marketplace363Workstation
+                auctions={auctions}
+                companies={allCombinedCompanies}
+                onSelectAuction={(auc) => setSelectedAuction(auc)}
+                onOpenDiligenceBrief={(entity) => setDiligenceBriefEntity(entity)}
+                onGoBack={() => { setActiveWorkspace('all'); setActiveTab('graveyard'); }}
+              />
+            )}
+
+            {activeWorkspace === 'creditor' && (
+              <CreditorActionWorkstation
+                companies={allCombinedCompanies}
+                onOpenEmailClient={() => setIsEmailClientOpen(true)}
+                onOpenOnboarding={() => setIsOnboardingOpen(true)}
+                onOpenForm410Wizard={() => setIsForm410WizardOpen(true)}
+                onGoBack={() => { setActiveWorkspace('all'); setActiveTab('graveyard'); }}
+              />
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Main Content Area */}
       <main className="app-container" style={{ flex: 1 }}>
@@ -715,6 +832,16 @@ export default function App() {
 
         ) : (
           <>
+        {activeWorkspace === 'media' && (
+          <MediaPressWorkstation
+            companies={allCombinedCompanies}
+            breakingNews={breakingNews}
+            onSelectCompany={(company) => setSelectedCompany(company)}
+            onOpenNewsroomStudio={handleOpenNewsroomStudio}
+            onOpenEmailClient={() => setIsEmailClientOpen(true)}
+          />
+        )}
+
         {activeTab === 'talent_radar' && (
           <TalentRaidRadar
             companies={companies}
@@ -920,7 +1047,7 @@ export default function App() {
 
       {/* Slide-over Post-Mortem Detail Modal */}
       <CompanyDetailModal
-        company={selectedCompany}
+        company={isAutoCitationOpen ? null : selectedCompany}
         onClose={() => setSelectedCompany(null)}
         onOpenPdf={(doc) => setSelectedPdfDoc(doc)}
         viewMode={viewMode}
@@ -1220,6 +1347,93 @@ export default function App() {
         onOpenFounders={() => setIsFoundersOpen(true)}
       />
 
+      {/* Official Form 410 Proof of Claim Generator Wizard Modal */}
+      <Form410ClaimWizardModal
+        isOpen={isForm410WizardOpen}
+        onClose={() => setIsForm410WizardOpen(false)}
+        selectedCompany={selectedCompany}
+      />
+
+      {/* YouTube-Style Executive Share Modal */}
+      <ExecutiveYouTubeShareModal
+        isOpen={isShareOpen}
+        onClose={() => setIsShareOpen(false)}
+        entity={shareModalData || selectedCompany}
+      />
+
+      {/* Dedicated Full-Screen AI Newsroom Studio Overlay Stage */}
+      {isNewsroomStudioModalOpen && (
+        <div style={{
+          position: 'fixed',
+          top: 0, left: 0, right: 0, bottom: 0,
+          background: '#090D16',
+          zIndex: 1000,
+          overflowY: 'auto',
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '20px'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            background: 'rgba(15, 23, 42, 0.95)',
+            border: '1px solid #8B5CF6',
+            borderRadius: '12px',
+            padding: '14px 20px',
+            marginBottom: '20px',
+            boxShadow: '0 8px 32px rgba(139, 92, 246, 0.3)'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <span style={{ fontSize: '1.2rem', fontWeight: 950, color: '#FFF' }}>
+                BUSINESSCOLLAPSE.COM
+              </span>
+              <span style={{ fontSize: '0.75rem', fontWeight: 900, background: 'rgba(139, 92, 246, 0.2)', border: '1px solid #8B5CF6', color: '#C084FC', padding: '3px 10px', borderRadius: '6px' }}>
+                ⚡ FULL AI NEWSROOM & PRESS STUDIO
+              </span>
+            </div>
+            <button
+              onClick={() => setIsNewsroomStudioModalOpen(false)}
+              style={{
+                padding: '8px 16px',
+                background: 'rgba(239, 68, 68, 0.2)',
+                border: '1px solid #EF4444',
+                color: '#EF4444',
+                borderRadius: '6px',
+                fontSize: '0.82rem',
+                fontWeight: 900,
+                cursor: 'pointer'
+              }}
+            >
+              ✖ Exit Full Studio
+            </button>
+          </div>
+
+          <div style={{ flex: 1, maxWidth: '1440px', width: '100%', margin: '0 auto' }}>
+            <AINewsroomStudio
+              companies={allCombinedCompanies}
+              initialCompany={newsroomStudioCompany}
+              onGoBack={() => setIsNewsroomStudioModalOpen(false)}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Auto-Opening Genuine PACER Court Citation Vault Modal on Shared Deep Links */}
+      <BCCCitationWrapperModal
+        isOpen={isAutoCitationOpen}
+        onClose={() => setIsAutoCitationOpen(false)}
+        citation={{
+          title: "Official Chapter 11 Voluntary Petition (Docket #001)",
+          court: selectedCompany?.locationJurisdiction || "United States Bankruptcy Court for the District of Delaware",
+          caseName: selectedCompany?.name || "Tupperware Brands Corporation",
+          ticker: selectedCompany?.ticker || "TUPQ",
+          debt: selectedCompany?.debtAtCollapse || "$812 Million Total Liabilities",
+          date: "August 11, 2026",
+          checksum: "sha256-a8f4c991b72e004a89b1c",
+          judge: "Hon. John T. Dorsey"
+        }}
+      />
     </div>
   );
 }

@@ -3,71 +3,78 @@
   "tagline": "The Premier Intelligence Network for Distressed Debt, Chapter 11 Filings, 363 Auctions & Market Restructuring",
   "conciergePersona": {
     "name": "Veritas AI",
-    "role": "Subscriber Concierge, Site Onboarding Guide & VIP Support Partner",
-    "tone": "Warm, executive, authentic, Wall Street colleague over coffee, helpful, 1 to 3 short sentences per turn",
-    "behavior": "Answers questions dynamically on billing, site navigation, tools, memberships, trouble tickets, and feature requests. Asks authentic follow-up questions for feature ideas before closing out tickets."
+    "role": "Senior Subscriber Partner, Site Guide & VIP Support Partner",
+    "tone": "Warm, executive, authentic, Wall Street colleague over coffee, helpful",
+    "behavior": "Answers questions dynamically on the 5 dedicated role workspaces, billing, site navigation, tools, memberships, trouble tickets, and feature requests."
   },
+  "roleWorkspaces": [
+    {
+      "id": "media",
+      "name": "Media & Press Suite",
+      "pricing": "$299/mo (Media Wire Pass)",
+      "targetAudience": "Financial journalists, WSJ/Bloomberg reporters, Substack writers, PR agencies",
+      "keyCapabilities": "Instant AI Newsroom Studio, AP Press Wire generation, 1-click court PDF citation links, embeddable interactive debt graphics"
+    },
+    {
+      "id": "headhunter",
+      "name": "Headhunter & Executive Talent Suite",
+      "pricing": "$299/mo (Headhunter Pass) or $499/mo (Agency Tier)",
+      "targetAudience": "Executive search firms, HR partners, corporate headhunters, turnaround staffing",
+      "keyCapabilities": "Talent Raid Radar, 50-state WARN Act layoff notice tracking, executive contact scraping to CSV/Salesforce/HubSpot"
+    },
+    {
+      "id": "investor",
+      "name": "Investor & Lender Terminal",
+      "pricing": "$999/mo (Institutional Terminal)",
+      "targetAudience": "Distressed debt hedge funds, private credit lenders, workout groups, bondholders, claims traders",
+      "keyCapabilities": "Pre-filing borrower distress radar, Creditor Recovery Waterfall Simulator, DIP loan monitor, Rule 3001(e) claims trading desk"
+    },
+    {
+      "id": "marketplace",
+      "name": "Section 363 Asset & Liquidation Marketplace",
+      "pricing": "$499/mo (Sales Conquest Pass) or Included in $999/mo Terminal",
+      "targetAudience": "Corporate acquirers, 363 stalking horse bidders, liquidators, appraisers, real estate brokers",
+      "keyCapabilities": "363 Auction Directory, Diligence Vault (Bidding procedure orders, APA agreements, cure costs), verified provider directory"
+    },
+    {
+      "id": "creditor",
+      "name": "Creditor Action Center",
+      "pricing": "$0 (Free Basic Access) / $299/mo (Landlord Portfolio Tier)",
+      "targetAudience": "Trade creditors, suppliers, commercial landlords, Unsecured Creditors Committees (UCC)",
+      "keyCapabilities": "1-click Official Form 410 Proof of Claim PDF Wizard, bar date countdown alerts, lease assumption/rejection hub"
+    }
+  ],
   "membershipTiers": [
     {
       "name": "Beta Founder Pass",
       "price": "$0",
-      "features": "Full early founder access, PACER PIN vault, basic distress feeds, AI Concierge access"
+      "features": "Full early founder access, PACER PIN vault (8849), basic distress feeds, AI Concierge access"
     },
     {
       "name": "Media Wire Pass",
       "price": "$299/mo",
-      "features": "Real-time press wire alerts, Instant AI Newsroom Studio, AP Press Wire generation, automated breaking briefs"
+      "features": "Media & Press Suite, real-time press wire alerts, Instant AI Newsroom Studio, AP Press Wire generation"
     },
     {
       "name": "Headhunter Pass",
       "price": "$299/mo",
-      "features": "Talent Raid Radar, WARN Act layoff contact scraping, executive contact exports to CSV/CRM"
+      "features": "Headhunter Suite, Talent Raid Radar, WARN Act layoff tracking, executive contact exports to CSV/CRM"
     },
     {
       "name": "Sales Conquest Pass",
       "price": "$499/mo",
-      "features": "Competitor distress tracking, Salesforce/HubSpot direct lead sync, liquidation auction alerts"
+      "features": "Section 363 Asset Marketplace, competitor distress tracking, Salesforce/HubSpot direct lead sync, liquidation auction alerts"
     },
     {
       "name": "Institutional Terminal",
       "price": "$999/mo",
-      "features": "Full PACER PIN vault, 363 Auction Directory, Creditor Recovery Waterfall Simulator, Back Office Executive Email Client, 24/7 dedicated support"
+      "features": "Full Investor Terminal, PACER PIN vault, 363 Auction Directory, Creditor Recovery Waterfall Simulator, Back Office Executive Email Client, 24/7 dedicated support"
     }
   ],
   "supportWorkflows": {
     "troubleTickets": "Generate a unique ticket ID like Ticket #BC-8492, confirm logging, and explain that notes were dispatched to support@businesscollapse.com.",
     "featureRequests": "Show genuine enthusiasm, ask 1-2 clarifying questions about how the user sees the feature working, gather details, and confirm ticket creation under Ticket #BC-8492.",
-    "billingInquiries": "Explain tier benefits ($0 Beta Founder, $299 Media Wire, $299 Headhunter, $499 Sales Conquest, $999 Institutional Terminal) and guide users on upgrading via Settings & Account.",
+    "billingInquiries": "Explain tier pricing ($0 Beta Founder, $299 Media Wire, $299 Headhunter, $499 Sales Conquest, $999 Institutional Terminal) and guide users on upgrading via Settings & Account.",
     "pacerPinVault": "Default PIN is 8849. Vault is accessible in Settings & Account under PIN Security Vault."
-  },
-  "siteModulesAndFeatures": [
-    {
-      "module": "Chapter 11 Filings & Docket Feed",
-      "description": "Real-time Chapter 11 bankruptcy filings, court dockets, liabilities vs assets, and 1-click PACER PDF downloads."
-    },
-    {
-      "module": "Section 363 Liquidation Auctions",
-      "description": "363 asset sale directory, auction dates, stalking horse bid tracking, and Section 363 Diligence Brief PDF exporter."
-    },
-    {
-      "module": "WARN Act Layoff Tracker & Talent Raid Radar",
-      "description": "WARN Act layoff notifications, headcount impact, affected locations, and executive contact lead export."
-    },
-    {
-      "module": "Creditor Recovery Waterfall Simulator",
-      "description": "Interactive capital structure recovery calculator simulating payout distributions for Senior Secured, Unsecured, and Equity tranches."
-    },
-    {
-      "module": "Instant AI Newsroom Studio",
-      "description": "Automated press wire synthesis generating AP Press Wire releases, executive briefings, and breaking news alerts."
-    },
-    {
-      "module": "Back Office Executive Email Client",
-      "description": "Web email client integrated with Netlify and Resend API for dispatching press releases, memos, and VIP subscriber alerts."
-    },
-    {
-      "module": "CRM Exporter",
-      "description": "Direct lead export to CSV, JSON, Salesforce, and HubSpot."
-    }
-  ]
+  }
 }

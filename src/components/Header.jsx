@@ -5,6 +5,8 @@ import TopTickerMarquee from './TopTickerMarquee';
 export default function Header({
   activeTab,
   setActiveTab,
+  activeWorkspace = 'all',
+  setActiveWorkspace = () => {},
   searchQuery,
   setSearchQuery,
   companies = [],
@@ -67,13 +69,7 @@ export default function Header({
   });
 
   const allTabs = [
-    { id: 'graveyard', label: '🔥 CORE FEED' },
-    { id: 'talent_radar', label: '📡 TALENT RAID RADAR' },
-    { id: 'sales_conquest', label: '⚡ SALES CONQUEST RADAR' },
-    { id: 'sub10m', label: '📡 SUB-$10M RADAR' },
-    { id: 'heatmap', label: '📊 DISTRESS HEATMAP' },
-    { id: 'dip', label: '💳 DIP LOAN TERMINAL' },
-    { id: 'auctions', label: '🏛️ COURT AUCTIONS' },
+    { id: 'graveyard', label: '🔥 LIVE DISTRESS WIRE' },
     { id: 'graveyard_archive', label: '🪦 CORPORATE GRAVEYARD' }
   ];
 
@@ -517,6 +513,90 @@ export default function Header({
           </div>
         </div>
       )}
+
+      {/* 7-ITEM SINGLE-ROW FIERCE INSTITUTIONAL TERMINAL BAR */}
+      <div style={{
+        width: '100%',
+        background: 'linear-gradient(135deg, rgba(9, 13, 22, 0.99) 0%, rgba(15, 23, 42, 0.98) 100%)',
+        borderTop: '1.5px solid rgba(255, 42, 75, 0.4)',
+        borderBottom: '1.5px solid rgba(255, 42, 75, 0.4)',
+        padding: '8px 20px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: '6px',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.8)',
+        position: 'relative',
+        overflowX: 'auto'
+      }}>
+        {/* Decoupled Left-Justified Title */}
+        <div style={{ position: 'absolute', left: '20px', display: 'flex', alignItems: 'center', gap: '5px', whiteSpace: 'nowrap', flexShrink: 0 }}>
+          <span style={{
+            fontSize: '0.7rem',
+            fontWeight: 950,
+            letterSpacing: '0.08em',
+            color: '#F8FAFC',
+            textTransform: 'uppercase'
+          }}>
+            ⚡ WORKSTATIONS:
+          </span>
+        </div>
+
+        {/* Centered Workstation Buttons */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', flexWrap: 'nowrap', flexShrink: 0 }}>
+          {[
+            { id: 'all', label: '🔥 LIVE DISTRESS WIRE', color: '#EF4444', desc: 'Active Restructuring & Chapter 11 Feed (Liveyard)' },
+            { id: 'investor', label: '📈 INVESTOR TERMINAL', color: '#10B981', desc: 'Distress Heatmap, DIP Loans & Waterfall' },
+            { id: 'marketplace', label: '🔨 363 MARKETPLACE', color: '#EC4899', desc: '363 Auction Directory & Diligence Vault' },
+            { id: 'creditor', label: '🛡️ CREDITOR ACTION', color: '#8B5CF6', desc: 'Form 410 Claim Wizard & Bar Dates' },
+            { id: 'headhunter', label: '👔 EXECUTIVE TALENT', color: '#F59E0B', desc: 'Talent Raid Radar & WARN Feed' },
+            { id: 'media', label: '📰 MEDIA & PRESS', color: '#38BDF8', desc: 'AI Newsroom, AP Wires & Editorial Suite' },
+            { id: 'graveyard_archive', label: '🪦 GRAVEYARD ARCHIVE', color: '#64748B', desc: 'Post-Mortem Discharged Insolvencies & Final Decrees' }
+          ].map(ws => {
+            const isActive = activeWorkspace === ws.id || (ws.id === 'graveyard_archive' && activeTab === 'graveyard_archive');
+            return (
+              <button
+                key={ws.id}
+                onClick={() => {
+                  if (ws.id === 'graveyard_archive') {
+                    setActiveWorkspace('all');
+                    if (setActiveTab) setActiveTab('graveyard_archive');
+                  } else {
+                    setActiveWorkspace(ws.id);
+                    if (ws.id === 'all' && setActiveTab) setActiveTab('graveyard');
+                  }
+                }}
+                style={{
+                  padding: '6px 10px',
+                  borderRadius: '6px',
+                  fontSize: '0.68rem',
+                  fontWeight: 950,
+                  cursor: 'pointer',
+                  border: isActive ? `1.5px solid ${ws.color}` : `1px solid ${ws.color}75`,
+                  background: isActive 
+                    ? `linear-gradient(135deg, ${ws.color}45 0%, ${ws.color}20 100%)` 
+                    : `linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.85) 100%)`,
+                  color: '#FFFFFF',
+                  textShadow: '0 1px 3px rgba(0,0,0,0.9)',
+                  boxShadow: isActive 
+                    ? `0 0 16px ${ws.color}65, inset 0 0 10px ${ws.color}25` 
+                    : `0 0 8px ${ws.color}25`,
+                  transition: 'all 0.15s ease',
+                  whiteSpace: 'nowrap',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '5px',
+                  letterSpacing: '0.02em'
+                }}
+                title={ws.desc}
+              >
+                <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: ws.color, boxShadow: `0 0 6px ${ws.color}` }} />
+                {ws.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       {/* Live 12-Hour Marquee Ticker (Auto-collapses to 0px if 0 alerts < 12h old) */}
       <TopTickerMarquee

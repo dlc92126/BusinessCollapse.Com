@@ -19,8 +19,10 @@ function getMasterSiteKnowledge() {
       const kb = JSON.parse(fs.readFileSync(kbPath, 'utf8'));
       let text = `\nBUSINESSCOLLAPSE.COM MASTER PLATFORM KNOWLEDGE BASE:\n`;
       text += `Tagline: ${kb.tagline}\n`;
+      if (Array.isArray(kb.roleWorkspaces)) {
+        text += `\n5 DEDICATED ROLE WORKSPACES:\n` + kb.roleWorkspaces.map(w => `• ${w.name} (${w.pricing}): Target: ${w.targetAudience} | Features: ${w.keyCapabilities}`).join('\n') + `\n`;
+      }
       text += `\nMEMBERSHIP PRICING TIERS:\n` + kb.membershipTiers.map(t => `• ${t.name} (${t.price}): ${t.features}`).join('\n');
-      text += `\n\nSITE TOOLS & MODULES:\n` + kb.siteModulesAndFeatures.map(m => `• ${m.module}: ${m.description}`).join('\n');
       text += `\n\nSUPPORT & WORKFLOW GUIDELINES:\n`;
       text += `• Feature Requests: Be authentically interested, ask thoughtful clarifying questions, brainstorm together, and generate a reference ticket ID like Ticket #BC-8492 when appropriate.\n`;
       text += `• Trouble Tickets: Confirm ticket logging (Ticket #BC-8492) and state that notes were dispatched to support@businesscollapse.com.\n`;

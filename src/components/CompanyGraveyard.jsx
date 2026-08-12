@@ -450,15 +450,15 @@ export default function CompanyGraveyard({
                   letterSpacing: '0.04em',
                   wordSpacing: '0.18em',
                   margin: 0,
-                  background: 'linear-gradient(135deg, #FFFFFF 0%, #FF3B5C 50%, #F59E0B 100%)',
+                  background: 'linear-gradient(135deg, #FFFFFF 0%, #F59E0B 40%, #EF4444 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
-                  filter: 'drop-shadow(0 1px 1px rgba(0, 0, 0, 0.85))',
+                  filter: 'drop-shadow(0 2px 8px rgba(245, 158, 11, 0.4))',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px'
                 }}>
-                  {activeTab === 'graveyard_archive' ? '🪦 Corporate Graveyard & Post-Mortem Archive' : '🔥 CORE FEED'}
+                  {activeTab === 'graveyard_archive' ? '🪦 Corporate Graveyard & Post-Mortem Archive' : '🔥 LIVE DISTRESS WIRE'}
                 </h2>
 
                 <span style={{
@@ -525,184 +525,24 @@ export default function CompanyGraveyard({
         </div>
       )}
 
-      {/* UNIFIED CONTROL CONSOLE BOX */}
+      {/* UNIFIED CONTROL CONSOLE BOX: TIME & STAGE FILTERS */}
       <div 
         style={{ 
-          padding: isControlsCollapsed ? '8px 16px' : '16px 20px', 
+          padding: isControlsCollapsed ? '8px 16px' : '12px 18px', 
           marginBottom: '16px', 
-          background: 'linear-gradient(135deg, rgba(255, 42, 75, 0.18) 0%, rgba(183, 28, 28, 0.22) 40%, rgba(11, 17, 30, 0.95) 100%)',
+          background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(9, 13, 22, 0.98) 100%)',
           border: '1px solid rgba(255, 42, 75, 0.35)',
           borderLeft: '5px solid #FF2A4B',
           borderRadius: '12px',
-          boxShadow: '0 6px 24px rgba(255, 42, 75, 0.15)',
+          boxShadow: '0 6px 24px rgba(0,0,0,0.5)',
           display: 'flex',
           alignItems: 'center',
           justify: 'space-between',
           flexWrap: 'wrap',
-          gap: isControlsCollapsed ? '8px' : '16px',
+          gap: '12px',
           transition: 'all 0.3s ease'
         }}
       >
-        {/* SECTION 1 (LEFT): 2x2 CORE WORKSTATIONS GRID */}
-        {!isControlsCollapsed && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(180px, 1fr))', gap: '8px', flexShrink: 0 }}>
-          {/* Core Feed */}
-          <button
-            onClick={() => setActiveTab('graveyard')}
-            style={{
-              height: '38px',
-              width: '100%',
-              background: activeTab === 'graveyard' ? 'linear-gradient(135deg, #FF2A4B 0%, #B71C1C 100%)' : 'rgba(7, 10, 15, 0.75)',
-              color: activeTab === 'graveyard' ? '#FFFFFF' : '#94A3B8',
-              border: activeTab === 'graveyard' ? '1.5px solid #FF2A4B' : '1px solid var(--border-subtle)',
-              padding: '0 12px',
-              borderRadius: '8px',
-              fontSize: '0.74rem',
-              fontWeight: 900,
-              letterSpacing: '0.02em',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-              whiteSpace: 'nowrap',
-              boxShadow: activeTab === 'graveyard' ? '0 0 14px rgba(255, 42, 75, 0.4)' : 'none',
-              boxSizing: 'border-box'
-            }}
-          >
-            🔥 LIVE DISTRESS WIRE
-          </button>
-
-          {/* Distress Heatmap */}
-          <button
-            onClick={() => setActiveTab('heatmap')}
-            style={{
-              height: '38px',
-              width: '100%',
-              background: activeTab === 'heatmap' ? 'linear-gradient(135deg, #FF2A4B 0%, #B71C1C 100%)' : 'rgba(7, 10, 15, 0.75)',
-              color: activeTab === 'heatmap' ? '#FFFFFF' : '#94A3B8',
-              border: activeTab === 'heatmap' ? '1.5px solid #FF2A4B' : '1px solid var(--border-subtle)',
-              padding: '0 12px',
-              borderRadius: '8px',
-              fontSize: '0.74rem',
-              fontWeight: 900,
-              letterSpacing: '0.02em',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-              whiteSpace: 'nowrap',
-              boxShadow: activeTab === 'heatmap' ? '0 0 14px rgba(255, 42, 75, 0.4)' : 'none',
-              boxSizing: 'border-box'
-            }}
-          >
-            📊 DISTRESS HEATMAP
-          </button>
-
-          {/* Court Auctions */}
-          <button
-            onClick={() => setActiveTab('auctions')}
-            style={{
-              height: '38px',
-              width: '100%',
-              background: activeTab === 'auctions' ? 'linear-gradient(135deg, #FF2A4B 0%, #B71C1C 100%)' : 'rgba(7, 10, 15, 0.75)',
-              color: activeTab === 'auctions' ? '#FFFFFF' : '#94A3B8',
-              border: activeTab === 'auctions' ? '1.5px solid #FF2A4B' : '1px solid var(--border-subtle)',
-              padding: '0 12px',
-              borderRadius: '8px',
-              fontSize: '0.74rem',
-              fontWeight: 900,
-              letterSpacing: '0.02em',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-              whiteSpace: 'nowrap',
-              boxShadow: activeTab === 'auctions' ? '0 0 14px rgba(255, 42, 75, 0.4)' : 'none',
-              boxSizing: 'border-box'
-            }}
-          >
-            🏛️ COURT AUCTIONS
-          </button>
-
-          {/* More Workstations Dropdown */}
-          <div ref={workstationsRef} style={{ position: 'relative', width: '100%' }}>
-            <button
-              onClick={() => setIsMoreWorkstationsOpen(!isMoreWorkstationsOpen)}
-              style={{
-                height: '38px',
-                width: '100%',
-                background: ['talent_radar', 'sales_conquest', 'sub10m', 'dip', 'graveyard_archive', 'admin'].includes(activeTab)
-                  ? 'linear-gradient(135deg, #FF2A4B 0%, #B71C1C 100%)'
-                  : 'rgba(7, 10, 15, 0.85)',
-                color: '#FFF',
-                border: '1.5px solid rgba(255, 42, 75, 0.5)',
-                padding: '0 12px',
-                borderRadius: '8px',
-                fontSize: '0.74rem',
-                fontWeight: 900,
-                letterSpacing: '0.02em',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justify: 'center',
-                gap: '6px',
-                whiteSpace: 'nowrap',
-                boxSizing: 'border-box'
-              }}
-            >
-              📂 MORE WORKSTATIONS ▾
-            </button>
-
-            {isMoreWorkstationsOpen && (
-              <div style={{
-                position: 'absolute',
-                top: 'calc(100% + 6px)',
-                left: 0,
-                width: '300px',
-                background: '#0F172A',
-                border: '1.5px solid rgba(255, 42, 75, 0.45)',
-                borderRadius: '10px',
-                boxShadow: '0 16px 40px rgba(0,0,0,0.95)',
-                padding: '8px 0',
-                zIndex: 400,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '2px'
-              }}>
-                <div style={{ padding: '6px 14px', fontSize: '0.68rem', fontWeight: 900, color: '#FF2A4B', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-                  ⚡ SPECIALIZED TERMINALS
-                </div>
-                <div onClick={() => { setActiveTab('talent_radar'); setIsMoreWorkstationsOpen(false); }} style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 800, display: 'flex', justifyContent: 'space-between' }} className="glass-panel-interactive">
-                  <span>🎯 Corporate Headhunt Suite</span>
-                  <span style={{ fontSize: '0.62rem', background: '#38BDF8', color: '#000', padding: '1px 5px', borderRadius: '4px', fontWeight: 900 }}>$299/MO</span>
-                </div>
-                <div onClick={() => { setActiveTab('sales_conquest'); setIsMoreWorkstationsOpen(false); }} style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 800, display: 'flex', justifyContent: 'space-between' }} className="glass-panel-interactive">
-                  <span>⚡ Sales Conquest Radar</span>
-                  <span style={{ fontSize: '0.62rem', background: '#10B981', color: '#000', padding: '1px 5px', borderRadius: '4px', fontWeight: 900 }}>$499/MO</span>
-                </div>
-                <div onClick={() => { setActiveTab('newsroom'); setIsMoreWorkstationsOpen(false); }} style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 800, display: 'flex', justifyContent: 'space-between' }} className="glass-panel-interactive">
-                  <span>📰 AI Newsroom Studio</span>
-                  <span style={{ fontSize: '0.62rem', background: '#F59E0B', color: '#000', padding: '1px 5px', borderRadius: '4px', fontWeight: 900 }}>$299/MO</span>
-                </div>
-                <div onClick={() => { setActiveTab('sub10m'); setIsMoreWorkstationsOpen(false); }} style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 800, display: 'flex', justifyContent: 'space-between' }} className="glass-panel-interactive">
-                  <span>📡 Sub-$10M Radar</span>
-                  <span style={{ fontSize: '0.62rem', background: '#A855F7', color: '#FFF', padding: '1px 5px', borderRadius: '4px', fontWeight: 900 }}>$999/MO</span>
-                </div>
-                <div onClick={() => { setActiveTab('dip'); setIsMoreWorkstationsOpen(false); }} style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 800, display: 'flex', justifyContent: 'space-between' }} className="glass-panel-interactive">
-                  <span>💳 DIP Loan Terminal</span>
-                  <span style={{ fontSize: '0.62rem', background: '#6366F1', color: '#FFF', padding: '1px 5px', borderRadius: '4px', fontWeight: 900 }}>$999/MO</span>
-                </div>
-                <div onClick={() => { setActiveTab('graveyard_archive'); setIsMoreWorkstationsOpen(false); }} style={{ padding: '8px 14px', fontSize: '0.78rem', color: '#F8FAFC', cursor: 'pointer', fontWeight: 800 }} className="glass-panel-interactive">
-                  🪦 Graveyard Archive
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-        )}
 
         {/* SECTION 2 (MIDDLE): 2x2 COMPACT FILTER CONSOLE */}
         {!isControlsCollapsed && (

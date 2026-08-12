@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { 
   Sparkles, Search, Plus, Check, Trash2, Copy, Download, Share2, 
   Settings, Key, Zap, FileText, Twitter, Linkedin, BookOpen, 
-  Layers, ArrowLeft, RefreshCw, AlertCircle, CheckCircle2, ChevronRight, Sliders
+  Layers, ArrowLeft, RefreshCw, AlertCircle, CheckCircle2, ChevronRight, Sliders, Edit3
 } from 'lucide-react';
+import ExecutiveYouTubeShareModal from './ExecutiveYouTubeShareModal';
+import FullScreenAIEditorModal from './FullScreenAIEditorModal';
 
 export default function AINewsroomStudio({ companies = [], initialCompany = null, onGoBack }) {
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [isEditorModalOpen, setIsEditorModalOpen] = useState(false);
   // Search & Story Basket Queue State
   const [searchQuery, setSearchQuery] = useState('');
   const [taggedCompanies, setTaggedCompanies] = useState(
@@ -128,11 +132,55 @@ VERIFICATION CHECKSUM: SHA-256 Verified`;
     const datelineDateStr = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
     const datelineCity = primaryComp.locationJurisdiction ? primaryComp.locationJurisdiction.split(',')[0].toUpperCase() : 'WILMINGTON, DE';
 
-    return `AP PRESS WIRE | BREAKING FINANCIAL SWEEP DESK
-DATELINE: ${datelineCity} — ${datelineDateStr}
-NOVEL EVENT: ${freshHeadline.toUpperCase()}
+    if (selectedTone === 'wsj') {
+      return `THE WALL STREET JOURNAL INVESTIGATION | RESTRUCTURING ANALYSIS
+INSIDE THE DEBT COLLAPSE OF ${name.toUpperCase()} (${ticker})
 
-${datelineCity} — ${datelineDateStr} — ${name} (${ticker}) has triggered an urgent pre-petition distress alert parsed during today's system sweep on ${eventTimestampStr}:
+${datelineCity} — ${datelineDateStr} — Following months of mounting credit stress, ${name} has formally filed for Chapter 11 bankruptcy protection.
+
+THE CAPITAL OVERHANG & INSOLVENCY STORY:
+Once commanding a peak corporate valuation of ${peakVal}, ${name} faced a catastrophic valuation collapse to ${collapseVal} under the weight of ${debt} in total liabilities.
+
+According to Chapter 11 petition disclosures filed in ${court}, the company's downfall was triggered by: ${cause}.
+
+"The collapse underscores how rapidly rising interest rate regimes and maturing debt walls are crippling over-leveraged corporate balance sheets," said senior restructuring advisors familiar with the court dockets.
+
+WHAT EXECUTION STEPS COME NEXT:
+• Section 363 Asset Auction: Lenders are preparing a stalking horse credit bid.
+• Unsecured Creditors: General trade claims face significant impairment under priority rules.
+
+# # #
+DOCUMENT PROVENANCE: Official PACER Docket #001 & SEC EDGAR 8-K Disclosure`;
+    }
+
+    if (selectedTone === 'seeking_alpha') {
+      return `SEEKING ALPHA / INVESTOR RECOVERY THESIS
+CAPITAL STACK & RECOVERY WATERFALL ANALYSIS: ${name.toUpperCase()} (${ticker})
+
+RESTRUCTURING THESIS:
+${name} (${ticker}) has entered court-supervised restructuring with ${debt} in total obligations. Investors evaluating trade claims, DIP loans, or liquidation assets must analyze the following priority waterfall.
+
+KEY FINANCIAL METRICS:
+• Outstanding Debt Load: ${debt}
+• Valuation Collapse: ${peakVal} ➔ ${collapseVal}
+• Primary Insolvency Catalyst: ${cause}
+• Bankruptcy Jurisdiction: ${court}
+
+CREDITOR RECOVERY PROJECTIONS:
+1st Lien Secured Debt: 60% - 85% Recovery via Section 363 Stalking Horse Credit Bid.
+General Unsecured Claims (Trade Vendors): 5% - 15% Estimated Payout.
+Equity Holders (Common Stock): Expected 100% Wipeout.
+
+# # #
+DATA PROVENANCE: BusinessCollapse.com Restructuring Intelligence Engine`;
+    }
+
+    // Default Bloomberg Terminal Wire Style
+    return `BLOOMBERG TERMINAL WIRE | RESTRUCTURING DISPATCH
+DATELINE: ${datelineCity} — ${datelineDateStr}
+HEADER: ${freshHeadline.toUpperCase()}
+
+${datelineCity} — ${datelineDateStr} — ${name} (${ticker}) has triggered an urgent bankruptcy filing alert parsed during today's system sweep on ${eventTimestampStr}:
 
 "${freshEventDetail}"
 
@@ -146,92 +194,57 @@ KEY RECENT SWEEP DISCLOSURES (WHAT, WHEN, WHY, WHERE):
 • Court Jurisdiction: ${court}
 • Asset Disposition Strategy: Court-supervised Section 363 asset auction & lender credit bid qualification.
 
-"System refresh parsed official filings on ${eventTimestampStr} indicating immediate restructuring activity," stated court filings submitted earlier today.
-
 # # #
-MEDIA CONTACT & DOCKET SOURCE:
-BusinessCollapse.Com Real-Time PACER Terminal`;
+MEDIA CONTACT & DOCKET SOURCE: BusinessCollapse.Com Real-Time PACER Terminal`;
   };
 
   const generateFinTwitCopy = () => {
-    if (isMultiStory) {
-      return `1/8 🚨 MASSIVE DISTRESS WAVE (${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}): ${taggedCompanies.length} major companies just filed Chapter 11 with over $${totalLiabilities.toFixed(0)}M in debt.
-
-Entities entering bankruptcy:
-${taggedCompanies.map((c, i) => `${i + 1}. ${c.name} ($${c.ticker || 'PRIVATE'}) — ${c.debtAtCollapse || '$300M'} debt`).join('\n')}
-
-2/8 The primary driver? Surge in term loan interest rates + inability to refinance senior secured facilities.
-
-3/8 Trade creditors are getting hit hard. Section 363 auctions and DIP lender credit bids start next week.
-
-4/8 Follow @BusinessCollapse for live PACER docket alerts & auction floor bids.
-
-#Bankruptcy #Chapter11 #FinTwit #Distress`;
-    }
-
     const name = primaryComp.name || 'Company';
     const ticker = primaryComp.ticker || 'TICKER';
-    const debt = primaryComp.debtAtCollapse || '$1.2B';
-    const peakVal = primaryComp.peakValuation || '$2.5B';
-    const collapseVal = primaryComp.collapseValuation || '$12M';
+    const debt = primaryComp.debtAtCollapse || primaryComp.finalDebt || '$1.2B';
     const cause = primaryComp.primaryCause || 'Liquidity Depletion';
-    const eventTimeStr = primaryComp.formattedMaterialChange || `${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
 
-    return `1/10 🚨 BREAKING [${eventTimeStr}]: ${name} ($${ticker}) has triggered an urgent distress alert.
-
-Headline: ${primaryComp.headline || cause}
-
-Once valued at ${peakVal}, the company's valuation just collapsed to ${collapseVal}.
-
-2/10 Total liabilities stand at an eye-watering ${debt}.
-
-3/10 What killed ${name}?
-The main culprit: ${cause}.
-
-4/10 Equity holders are expected to be wiped out entirely under the absolute priority rule.
-
-5/10 Senior 1st lien lenders are organizing to submit a Stalking Horse credit bid for the core operating assets.
-
-6/10 Track full docket disclosures, WARN layoff notices, and Section 363 auctions on @BusinessCollapse.
-
-#Bankruptcy #FinTwit #Chapter11 #Distress`;
+    if (selectedTone === 'wsj') {
+      return `1/8 🚨 WSJ INVESTIGATION BREAK: Inside the Chapter 11 collapse of ${name} ($${ticker}).\n\nTotal Debt: ${debt}\nRoot Cause: ${cause}\n\n2/8 Disclosures reveal senior lenders holding 1st lien positions are forcing an immediate Section 363 asset auction.\n\n3/8 Full investigation & court docket breakdown on @BusinessCollapse.\n\n#Bankruptcy #WSJ #Distress`;
+    }
+    if (selectedTone === 'seeking_alpha') {
+      return `1/8 📊 RECOVERY THESIS ($${ticker}): ${name} files Chapter 11 with ${debt} in debt.\n\nPriority Waterfall:\n• 1st Lien DIP Lenders: 70-85% Recovery\n• Unsecured Trade Claims: 5-15% Payout\n• Equity Holders: 100% Wipeout\n\n2/8 Full recovery analysis on @BusinessCollapse.\n\n#DistressedDebt #Alpha #SeekingAlpha`;
+    }
+    if (selectedTone === 'fintwit') {
+      return `1/10 🚨 BREAKING: ${name} ($${ticker}) has triggered an urgent distress alert.\n\nTotal liabilities stand at ${debt}.\nCulprit: ${cause}.\nEquity holders expected 100% wipeout.\n\n#FinTwit #Bankruptcy #Chapter11`;
+    }
+    // Default Bloomberg
+    return `1/8 🚨 BLOOMBERG TERMINAL ALERT: ${name} ($${ticker}) Chapter 11 voluntary filing parsed.\n\n• Liabilities: ${debt}\n• Jurisdiction: ${primaryComp.locationJurisdiction || 'US Bankruptcy Court'}\n• Triggers: ${cause}\n\n#Bloomberg #Chapter11 #TerminalAlert`;
   };
 
   const generateLinkedInCopy = () => {
     const name = primaryComp.name || 'Corporate Entity';
     const ticker = primaryComp.ticker || 'TICKER';
-    const debt = primaryComp.debtAtCollapse || '$1.2 Billion';
+    const debt = primaryComp.debtAtCollapse || primaryComp.finalDebt || '$1.2 Billion';
+    const cause = primaryComp.primaryCause || 'Liquidity Failure';
 
-    return `💼 EXECUTIVE INSIGHTS: Lessons from the Chapter 11 Filing of ${name} (${ticker})
-
-The recent Chapter 11 filing of ${name} (${ticker}) under $${debt} of debt holds key strategic takeaways for corporate turnarounds and restructuring practitioners.
-
-3 Critical Takeaways:
-1. Refinancing Wall Vulnerability: Floating-rate debt structures became unmanageable as capital costs escalated.
-2. Section 365 Contract Rejections: Vendors and landlords must prepare for immediate lease rejections and SLA suspensions.
-3. Talent Retention (KERP/KEIP): High executive turnover during pre-petition distress accelerated operational decline.
-
-Read full case autopsies & Section 363 bidder portals on BusinessCollapse.Com.
-
-#Turnaround #Restructuring #Chapter11 #CorporateFinance #MAndA`;
+    if (selectedTone === 'wsj') {
+      return `💼 THE WALL STREET JOURNAL EXECUTIVE ANALYSIS: The Collapse of ${name} (${ticker})\n\nThe Chapter 11 filing of ${name} (${ticker}) under ${debt} of debt serves as a case study for corporate boards.\n\nKEY INSIGHTS:\n1. Refinancing Vulnerability: Over-leveraged balance sheets collapsed as credit tightened.\n2. Root Catalyst: ${cause}.\n3. Lender Takeover: 1st lien holders preparing Stalking Horse credit bids.\n\n#Turnaround #Restructuring #BoardroomStrategy #Chapter11`;
+    }
+    if (selectedTone === 'seeking_alpha') {
+      return `💼 SEEKING ALPHA CREDIT ANALYSIS: ${name} (${ticker}) Debt & Recovery Waterfall\n\nAnalyzing the ${debt} insolvency of ${name} (${ticker}) for credit investors and trade creditors.\n\n3 RECOVERY TAKEAWAYS:\n1. Senior 1st Lien Priority: Protected by super-priority liens.\n2. Unsecured Trade Vendor Impairment: High risk of sub-20% recovery.\n3. Section 363 Auction Alpha: Stalking horse bidding underway.\n\n#DistressedDebt #CreditInvesting #MAndA #Chapter11`;
+    }
+    return `💼 EXECUTIVE INSIGHTS (BLOOMBERG STYLE): Lessons from ${name} (${ticker})\n\nChapter 11 filing disclosure for ${name} under ${debt} of debt.\n\n3 Critical Takeaways:\n1. Refinancing Wall Vulnerability: Floating-rate debt structures became unmanageable.\n2. Section 365 Contract Rejections: Vendors & landlords face immediate lease rejections.\n3. Catalyst: ${cause}.\n\n#Restructuring #CorporateFinance #Chapter11`;
   };
 
   const generateSubstackCopy = () => {
     const name = primaryComp.name || 'Company';
-    return `THE AUTOPSY REPORT: Inside the Collapse of ${name}
+    const ticker = primaryComp.ticker || 'DEBT';
+    const debt = primaryComp.debtAtCollapse || primaryComp.finalDebt || '$1.2 Billion';
+    const cause = primaryComp.primaryCause || 'Debt Overhang';
 
-By Financial Distress Desk | BusinessCollapse.Com
-
-INTRODUCTION
-The filing of Chapter 11 by ${name} marks another milestone in the current corporate distress cycle. 
-
-WHY THE CAPITAL STRUCTURE COLLAPSED
-When interest rates surged, the cost of servicing unhedged credit facilities eroded operating margins. Combined with fixed overhead commitments, the company hit a liquidity wall it could not refinance.
-
-SECTION 363 AUCTION STRATEGY
-The Debtors are pursuing a Chapter 11 Section 363 asset sale. Secured lenders holding senior claims are expected to submit a Stalking Horse credit bid to acquire core assets.
-
-Read full court docket filings and diligence briefs at BusinessCollapse.Com.`;
+    if (selectedTone === 'wsj') {
+      return `✍️ THE DEBT POST-MORTEM (WSJ JOURNALISM STYLE)\nTITLE: Why ${name} (${ticker}) Couldn't Escape Its ${debt} Debt Wall\n\nBy Financial Distress Desk | BusinessCollapse.Com\n\nINTRODUCTION:\nThe filing of Chapter 11 by ${name} marks another milestone in the current corporate distress cycle. Under the weight of ${debt} in obligations, the company hit a wall triggered by ${cause}.\n\nWHAT HAPPENS NEXT:\nSenior lenders are preparing a Section 363 credit bid to acquire operating assets...`;
+    }
+    if (selectedTone === 'seeking_alpha') {
+      return `✍️ DISTRESSED DEBT SUBSTACK MEMO (SEEKING ALPHA ALPHA)\nTITLE: ${name} (${ticker}) Recovery Waterfall & 363 Auction Analysis\n\nBy Restructuring Alpha Desk | BusinessCollapse.Com\n\nANALYSIS:\n${name} has entered bankruptcy with ${debt} in total obligations. Here is the recovery breakdown for senior lenders vs general unsecured creditors...`;
+    }
+    return `✍️ BLOOMBERG TERMINAL SUBSTACK MEMO\nTITLE: Restructuring Brief: ${name} (${ticker}) Files Chapter 11\n\nBy Docket Sweep Desk | BusinessCollapse.Com\n\nSystem parsed official dockets indicating Chapter 11 filing for ${name} (${debt} debt, cause: ${cause})...`;
   };
 
   const getOutputText = () => {
@@ -686,6 +699,48 @@ Read full court docket filings and diligence briefs at BusinessCollapse.Com.`;
 
               <div style={{ display: 'flex', gap: '8px' }}>
                 <button
+                  onClick={() => setIsEditorModalOpen(true)}
+                  style={{
+                    background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+                    color: '#000',
+                    border: 'none',
+                    padding: '5px 14px',
+                    borderRadius: '6px',
+                    fontSize: '0.76rem',
+                    fontWeight: 950,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    boxShadow: '0 0 16px rgba(245, 158, 11, 0.4)'
+                  }}
+                >
+                  <Edit3 size={13} color="#000" />
+                  <span>Open Full-Screen Editor & Mobile Preview</span>
+                </button>
+
+                <button
+                  onClick={() => setIsShareModalOpen(true)}
+                  style={{
+                    background: 'linear-gradient(135deg, #38BDF8 0%, #0284C7 100%)',
+                    color: '#000',
+                    border: 'none',
+                    padding: '5px 14px',
+                    borderRadius: '6px',
+                    fontSize: '0.76rem',
+                    fontWeight: 950,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    boxShadow: '0 0 16px rgba(56, 189, 248, 0.4)'
+                  }}
+                >
+                  <Share2 size={13} color="#000" />
+                  <span>Share Story Wire</span>
+                </button>
+
+                <button
                   onClick={handleCopy}
                   style={{
                     background: copied ? 'rgba(16, 185, 129, 0.3)' : 'rgba(245, 158, 11, 0.2)',
@@ -880,6 +935,23 @@ Read full court docket filings and diligence briefs at BusinessCollapse.Com.`;
         </div>
       )}
 
+      {/* YouTube-Style Executive Share Modal */}
+      <ExecutiveYouTubeShareModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
+        entity={primaryComp}
+        customText={getOutputText()}
+      />
+
+      {/* Full-Screen AI Rich-Text Editor & Mobile Preview Stage */}
+      <FullScreenAIEditorModal
+        isOpen={isEditorModalOpen}
+        onClose={() => setIsEditorModalOpen(false)}
+        initialText={getOutputText()}
+        entity={primaryComp}
+        format={activeFormat}
+        tone={selectedTone}
+      />
     </div>
   );
 }

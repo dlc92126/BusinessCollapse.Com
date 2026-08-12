@@ -1,5 +1,12 @@
 [
   {
+    "hash": "c29cb79",
+    "subject": "feat(ai-concierge): hydrate live Gemini Pro/Flash engine, Master Site Knowledge Base & Netlify email functions",
+    "author": "David Church",
+    "relativeDate": "2 seconds ago",
+    "category": "⚡ Feature"
+  },
+  {
     "hash": "97e8cec",
     "subject": "v3.8 Milestone: Added Talent Raid Radar, Instant AI Newsroom Studio, Sales Conquest Terminal & Specialized Membership Passes",
     "author": "David Church",
