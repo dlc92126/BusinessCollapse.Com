@@ -18,7 +18,12 @@ export default function Sub10mRadar({ watchlist = [], toggleWatchlist, onSelectC
   const [catalogList, setCatalogList] = useState(() => {
     try {
       const saved = localStorage.getItem('bc_sub10m_catalog');
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        const uniqueMap = new Map();
+        [...sub10mCatalog, ...parsed].forEach(item => uniqueMap.set(item.id, item));
+        return Array.from(uniqueMap.values());
+      }
     } catch (e) {}
     return sub10mCatalog;
   });

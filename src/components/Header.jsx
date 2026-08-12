@@ -28,7 +28,9 @@ export default function Header({
   onOpenNewsroomStudio,
   onOpenEmailClient,
   onOpenSubscriberBackOffice,
-  dismissedCompanyIds = []
+  dismissedCompanyIds = [],
+  selectedStates = [],
+  setSelectedStates = () => {}
 }) {
 
 
@@ -518,9 +520,25 @@ export default function Header({
       <TopTickerMarquee
         breakingNews={breakingNews}
         companies={companies}
-        onSelectEntity={(ticker) => {
-          if (setSearchQuery) setSearchQuery(ticker);
-          if (setActiveTab) setActiveTab('graveyard');
+        selectedStates={selectedStates}
+        setSelectedStates={setSelectedStates}
+        onSelectEntity={(entity) => {
+          if (!entity) return;
+          const searchKey = (entity.ticker || entity.entityName || entity.name || entity || '').toString().toLowerCase();
+          const found = (companies || []).find(c =>
+            c && (
+              (c.id && c.id.toLowerCase() === searchKey) ||
+              (c.ticker && c.ticker.toLowerCase() === searchKey) ||
+              (c.name && c.name.toLowerCase().includes(searchKey))
+            )
+          );
+
+          if (found && onSelectCompany) {
+            onSelectCompany(found);
+          } else {
+            if (setSearchQuery) setSearchQuery(entity.ticker || entity.entityName || entity.name || entity);
+            if (setActiveTab) setActiveTab('graveyard');
+          }
         }}
       />
 

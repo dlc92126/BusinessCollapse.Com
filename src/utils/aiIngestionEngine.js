@@ -23,13 +23,28 @@ export function getSavedIngestionState() {
 
   try {
     const savedCompanies = localStorage.getItem(STORAGE_KEYS.COMPANIES);
-    if (savedCompanies) companies = JSON.parse(savedCompanies);
+    if (savedCompanies) {
+      const parsed = JSON.parse(savedCompanies);
+      const map = new Map();
+      [...(initialCompanies || []), ...parsed].forEach(item => map.set(item.id, item));
+      companies = Array.from(map.values());
+    }
 
     const savedNews = localStorage.getItem(STORAGE_KEYS.NEWS);
-    if (savedNews) news = JSON.parse(savedNews);
+    if (savedNews) {
+      const parsed = JSON.parse(savedNews);
+      const map = new Map();
+      [...(initialNews || []), ...parsed].forEach(item => map.set(item.id || item.headline, item));
+      news = Array.from(map.values());
+    }
 
     const savedAuctions = localStorage.getItem(STORAGE_KEYS.AUCTIONS);
-    if (savedAuctions) auctions = JSON.parse(savedAuctions);
+    if (savedAuctions) {
+      const parsed = JSON.parse(savedAuctions);
+      const map = new Map();
+      [...(initialAuctions || []), ...parsed].forEach(item => map.set(item.id, item));
+      auctions = Array.from(map.values());
+    }
 
     const savedTime = localStorage.getItem(STORAGE_KEYS.LAST_INGEST_TIME);
     if (savedTime) lastIngestionTime = savedTime;

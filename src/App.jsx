@@ -40,6 +40,7 @@ import SalesConquestRadar from './components/SalesConquestRadar';
 import NewsroomStudioModal from './components/NewsroomStudioModal';
 import AINewsroomStudio from './components/AINewsroomStudio';
 import sub10mCatalog from './data/sub10m_companies.json';
+import { extractStateCode } from './utils/stateExtractor';
 import UniversalShareModal from './components/UniversalShareModal';
 import EmailClientModal from './components/EmailClientModal';
 import SubscriberBackOfficeModal from './components/SubscriberBackOfficeModal';
@@ -212,6 +213,7 @@ export default function App() {
     selectedSectors: 'ALL'
   });
   const [selectedSectorFilter, setSelectedSectorFilter] = useState('ALL');
+  const [selectedStates, setSelectedStates] = useState([]); // Multi-state checkbox selection (e.g. ['TX', 'FL', 'CA'])
 
 
   // Dynamic CMS Managed Datasets with LocalStorage Rehydration
@@ -354,7 +356,20 @@ export default function App() {
   });
   const [isAutoCitationOpen, setIsAutoCitationOpen] = useState(false);
 
-  const allCombinedCompanies = [...companies, ...formattedRadarCompanies, ...(sub10mCatalog || [])];
+  const hydratedSub10mCatalog = (() => {
+    try {
+      const saved = typeof window !== 'undefined' ? localStorage.getItem('bc_sub10m_catalog') : null;
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        const map = new Map();
+        [...(sub10mCatalog || []), ...parsed].forEach(item => map.set(item.id, item));
+        return Array.from(map.values());
+      }
+    } catch (e) {}
+    return sub10mCatalog || [];
+  })();
+
+  const allCombinedCompanies = [...companies, ...formattedRadarCompanies, ...hydratedSub10mCatalog];
 
   // URL Deep-Link Router (e.g. ?company=tupq or ?citation=docket001 or /case/tupq)
   useEffect(() => {
@@ -402,6 +417,13 @@ export default function App() {
   // Global Deep Search filtering across all post-mortem fields
   const filteredCompanies = (allCombinedCompanies || []).filter((c) => {
     if (!c) return false;
+
+    // Multi-State Checkbox Filter (Applies to both Ticker and Main Feed)
+    if (selectedStates && selectedStates.length > 0 && !selectedStates.includes('ALL')) {
+      const compState = extractStateCode(c);
+      if (!compState || !selectedStates.includes(compState)) return false;
+    }
+
     if (!searchQuery || !searchQuery.trim()) return true;
     const q = searchQuery.toLowerCase();
 
@@ -702,6 +724,8 @@ export default function App() {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         companies={allCombinedCompanies}
+        selectedStates={selectedStates}
+        setSelectedStates={setSelectedStates}
         onSelectCompany={(company) => setSelectedCompany(company)}
         watchlist={activeWatchlist}
         toggleWatchlist={toggleWatchlist}
@@ -875,6 +899,7 @@ export default function App() {
         {(activeTab === 'graveyard' || activeTab === 'graveyard_archive') && (
           <CompanyGraveyard
             companies={filteredCompanies}
+            selectedStates={selectedStates}
             onSelectCompany={(company) => setSelectedCompany(company)}
             selectedSectorFilter={selectedSectorFilter}
             setSelectedSectorFilter={setSelectedSectorFilter}

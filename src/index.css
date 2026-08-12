@@ -310,3 +310,28 @@ h1, h2, h3, h4, h5, h6 {
   to { transform: rotate(360deg); }
 }
 
+/* ==========================================================================
+   SUPER ULTRAWIDE TRADING DESK OPTIMIZATION (Samsung G9 32:9 / 5120x1440)
+   ========================================================================== */
+@media (min-width: 2560px) {
+  .graveyard-grid, .workstation-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .modal-content-large {
+    max-width: 1800px !important;
+  }
+}
+
+@media (min-width: 3840px) {
+  .graveyard-grid, .workstation-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 24px !important;
+  }
+
+  .modal-content-large {
+    max-width: 2200px !important;
+  }
+}
+

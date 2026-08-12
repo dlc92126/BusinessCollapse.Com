@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Filter, Calendar, DollarSign, ChevronRight, Skull, AlertCircle, RefreshCw, AlertTriangle, Layers, Star, Search, Clock, Share2, EyeOff } from 'lucide-react';
 import BreakingNewsHero from './BreakingNewsHero';
+import { extractStateCode } from '../utils/stateExtractor';
 
 
 
@@ -27,7 +28,8 @@ export default function CompanyGraveyard({
   setActiveTab,
   onOpenWaterfall,
   onOpenDiligenceBrief,
-  onOpenNewsroomStudio
+  onOpenNewsroomStudio,
+  selectedStates = []
 }) {
 
   const [statusFilter, setStatusFilter] = useState('ALL');
@@ -203,6 +205,15 @@ export default function CompanyGraveyard({
   // 2. Filter fully aggregated companies array
   const filteredCompanies = allAggregatedCompanies.filter((c) => {
     if (!c) return false;
+
+    // STRICT MULTI-STATE CHECKBOX FILTER (0% LEAKAGE GUARANTEE)
+    if (selectedStates && selectedStates.length > 0 && !selectedStates.includes('ALL')) {
+      const validStates = selectedStates.filter(s => s !== 'NONE' && s !== 'ALL');
+      if (validStates.length > 0) {
+        const compState = extractStateCode(c);
+        if (!compState || !validStates.includes(compState)) return false;
+      }
+    }
 
     // Search Query Matching
     if (searchQuery && searchQuery.trim() !== '') {
