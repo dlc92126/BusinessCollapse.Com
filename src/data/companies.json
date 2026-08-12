@@ -6,7 +6,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 83,
     "peakValuation": "$19.2M",
     "collapseValuation": "$0.8M",
@@ -35,7 +35,13 @@
     "timeline": [
       "August 02, 2026: Voluntary Petition Filed in D. Alaska.",
       "August 02, 2026: Emergency Motion for $1.3M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #1 (Alaska) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0001",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0002",
@@ -196,7 +202,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 88,
     "peakValuation": "$40.2M",
     "collapseValuation": "$1.9M",
@@ -225,7 +231,13 @@
     "timeline": [
       "August 07, 2026: Voluntary Petition Filed in D. Conn..",
       "August 07, 2026: Emergency Motion for $3.1M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #6 (Connecticut) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0006",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0007",
@@ -386,7 +398,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 93,
     "peakValuation": "$61.2M",
     "collapseValuation": "$3.0M",
@@ -415,7 +427,13 @@
     "timeline": [
       "August 12, 2026: Voluntary Petition Filed in D. Idaho.",
       "August 12, 2026: Emergency Motion for $5.0M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #11 (Idaho) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0011",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0012",
@@ -576,7 +594,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 98,
     "peakValuation": "$82.2M",
     "collapseValuation": "$4.1M",
@@ -605,7 +623,13 @@
     "timeline": [
       "August 05, 2026: Voluntary Petition Filed in E.D. Ky. / W.D. Ky..",
       "August 05, 2026: Emergency Motion for $6.8M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #16 (Kentucky) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0016",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0017",
@@ -766,7 +790,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 86,
     "peakValuation": "$103.2M",
     "collapseValuation": "$5.2M",
@@ -795,7 +819,13 @@
     "timeline": [
       "August 10, 2026: Voluntary Petition Filed in E.D. Mich. / W.D. Mich..",
       "August 10, 2026: Emergency Motion for $8.7M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #21 (Michigan) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0021",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0022",
@@ -956,7 +986,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 91,
     "peakValuation": "$124.2M",
     "collapseValuation": "$6.3M",
@@ -985,7 +1015,13 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Neb..",
       "August 03, 2026: Emergency Motion for $10.5M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #26 (Nebraska) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0026",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0027",
@@ -1146,7 +1182,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 96,
     "peakValuation": "$145.2M",
     "collapseValuation": "$7.4M",
@@ -1175,7 +1211,13 @@
     "timeline": [
       "August 08, 2026: Voluntary Petition Filed in S.D.N.Y. / E.D.N.Y. / W.D.N.Y. / N.D.N.Y..",
       "August 08, 2026: Emergency Motion for $12.4M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #31 (New York) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0031",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0032",
@@ -1336,7 +1378,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 84,
     "peakValuation": "$166.2M",
     "collapseValuation": "$8.5M",
@@ -1365,7 +1407,13 @@
     "timeline": [
       "August 01, 2026: Voluntary Petition Filed in D. Ore..",
       "August 01, 2026: Emergency Motion for $14.2M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #36 (Oregon) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0036",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0037",
@@ -1526,7 +1574,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 89,
     "peakValuation": "$187.2M",
     "collapseValuation": "$9.6M",
@@ -1555,7 +1603,13 @@
     "timeline": [
       "August 06, 2026: Voluntary Petition Filed in M.D. Tenn. / W.D. Tenn. / E.D. Tenn..",
       "August 06, 2026: Emergency Motion for $16.1M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #41 (Tennessee) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0041",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0042",
@@ -1716,7 +1770,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 94,
     "peakValuation": "$208.2M",
     "collapseValuation": "$10.8M",
@@ -1745,7 +1799,13 @@
     "timeline": [
       "August 11, 2026: Voluntary Petition Filed in W.D. Wash. / E.D. Wash..",
       "August 11, 2026: Emergency Motion for $17.9M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #46 (Washington) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0046",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0047",
@@ -1906,7 +1966,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 82,
     "peakValuation": "$229.2M",
     "collapseValuation": "$11.9M",
@@ -1935,7 +1995,13 @@
     "timeline": [
       "August 04, 2026: Voluntary Petition Filed in D. Alaska.",
       "August 04, 2026: Emergency Motion for $19.8M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #51 (Alaska) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0051",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0052",
@@ -2096,7 +2162,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 87,
     "peakValuation": "$250.2M",
     "collapseValuation": "$13.0M",
@@ -2125,7 +2191,13 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D. Conn..",
       "August 09, 2026: Emergency Motion for $21.6M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #56 (Connecticut) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0056",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0057",
@@ -2286,7 +2358,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 92,
     "peakValuation": "$271.2M",
     "collapseValuation": "$14.1M",
@@ -2315,7 +2387,13 @@
     "timeline": [
       "August 02, 2026: Voluntary Petition Filed in D. Idaho.",
       "August 02, 2026: Emergency Motion for $23.5M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #61 (Idaho) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0061",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0062",
@@ -2476,7 +2554,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 97,
     "peakValuation": "$292.2M",
     "collapseValuation": "$15.2M",
@@ -2505,7 +2583,13 @@
     "timeline": [
       "August 07, 2026: Voluntary Petition Filed in E.D. Ky. / W.D. Ky..",
       "August 07, 2026: Emergency Motion for $25.3M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #66 (Kentucky) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0066",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0067",
@@ -2666,7 +2750,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 85,
     "peakValuation": "$313.2M",
     "collapseValuation": "$16.3M",
@@ -2695,7 +2779,13 @@
     "timeline": [
       "August 12, 2026: Voluntary Petition Filed in E.D. Mich. / W.D. Mich..",
       "August 12, 2026: Emergency Motion for $27.2M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #71 (Michigan) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0071",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0072",
@@ -2856,7 +2946,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 90,
     "peakValuation": "$334.2M",
     "collapseValuation": "$17.4M",
@@ -2885,7 +2975,13 @@
     "timeline": [
       "August 05, 2026: Voluntary Petition Filed in D. Neb..",
       "August 05, 2026: Emergency Motion for $29.0M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #76 (Nebraska) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0076",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0077",
@@ -3046,7 +3142,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 95,
     "peakValuation": "$355.2M",
     "collapseValuation": "$18.5M",
@@ -3075,7 +3171,13 @@
     "timeline": [
       "August 10, 2026: Voluntary Petition Filed in S.D.N.Y. / E.D.N.Y. / W.D.N.Y. / N.D.N.Y..",
       "August 10, 2026: Emergency Motion for $30.9M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #81 (New York) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0081",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0082",
@@ -3236,7 +3338,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 83,
     "peakValuation": "$376.2M",
     "collapseValuation": "$19.6M",
@@ -3265,7 +3367,13 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Ore..",
       "August 03, 2026: Emergency Motion for $32.7M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #86 (Oregon) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0086",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0087",
@@ -3426,7 +3534,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 88,
     "peakValuation": "$397.2M",
     "collapseValuation": "$20.7M",
@@ -3455,7 +3563,13 @@
     "timeline": [
       "August 08, 2026: Voluntary Petition Filed in M.D. Tenn. / W.D. Tenn. / E.D. Tenn..",
       "August 08, 2026: Emergency Motion for $34.6M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #91 (Tennessee) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0091",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0092",
@@ -3616,7 +3730,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 93,
     "peakValuation": "$418.2M",
     "collapseValuation": "$21.9M",
@@ -3645,7 +3759,13 @@
     "timeline": [
       "August 01, 2026: Voluntary Petition Filed in W.D. Wash. / E.D. Wash..",
       "August 01, 2026: Emergency Motion for $36.4M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #96 (Washington) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0096",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0097",
@@ -3806,7 +3926,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 98,
     "peakValuation": "$439.2M",
     "collapseValuation": "$23.0M",
@@ -3835,7 +3955,13 @@
     "timeline": [
       "August 06, 2026: Voluntary Petition Filed in D. Alaska.",
       "August 06, 2026: Emergency Motion for $38.3M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #101 (Alaska) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0101",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0102",
@@ -3996,7 +4122,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 86,
     "peakValuation": "$460.2M",
     "collapseValuation": "$24.1M",
@@ -4025,7 +4151,13 @@
     "timeline": [
       "August 11, 2026: Voluntary Petition Filed in D. Conn..",
       "August 11, 2026: Emergency Motion for $40.1M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #106 (Connecticut) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0106",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0107",
@@ -4186,7 +4318,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 91,
     "peakValuation": "$481.2M",
     "collapseValuation": "$25.2M",
@@ -4215,7 +4347,13 @@
     "timeline": [
       "August 04, 2026: Voluntary Petition Filed in D. Idaho.",
       "August 04, 2026: Emergency Motion for $42.0M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #111 (Idaho) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0111",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0112",
@@ -4376,7 +4514,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 96,
     "peakValuation": "$502.2M",
     "collapseValuation": "$26.3M",
@@ -4405,7 +4543,13 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in E.D. Ky. / W.D. Ky..",
       "August 09, 2026: Emergency Motion for $43.8M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #116 (Kentucky) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0116",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0117",
@@ -4566,7 +4710,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 84,
     "peakValuation": "$523.2M",
     "collapseValuation": "$27.4M",
@@ -4595,7 +4739,13 @@
     "timeline": [
       "August 02, 2026: Voluntary Petition Filed in E.D. Mich. / W.D. Mich..",
       "August 02, 2026: Emergency Motion for $45.7M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #121 (Michigan) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0121",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0122",
@@ -4756,7 +4906,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 89,
     "peakValuation": "$544.2M",
     "collapseValuation": "$28.5M",
@@ -4785,7 +4935,13 @@
     "timeline": [
       "August 07, 2026: Voluntary Petition Filed in D. Neb..",
       "August 07, 2026: Emergency Motion for $47.5M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #126 (Nebraska) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0126",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0127",
@@ -4946,7 +5102,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 94,
     "peakValuation": "$565.2M",
     "collapseValuation": "$29.6M",
@@ -4975,7 +5131,13 @@
     "timeline": [
       "August 12, 2026: Voluntary Petition Filed in S.D.N.Y. / E.D.N.Y. / W.D.N.Y. / N.D.N.Y..",
       "August 12, 2026: Emergency Motion for $49.4M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #131 (New York) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0131",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0132",
@@ -5136,7 +5298,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 82,
     "peakValuation": "$586.2M",
     "collapseValuation": "$30.7M",
@@ -5165,7 +5327,13 @@
     "timeline": [
       "August 05, 2026: Voluntary Petition Filed in D. Ore..",
       "August 05, 2026: Emergency Motion for $51.2M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #136 (Oregon) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0136",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0137",
@@ -5326,7 +5494,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 87,
     "peakValuation": "$607.2M",
     "collapseValuation": "$31.8M",
@@ -5355,7 +5523,13 @@
     "timeline": [
       "August 10, 2026: Voluntary Petition Filed in M.D. Tenn. / W.D. Tenn. / E.D. Tenn..",
       "August 10, 2026: Emergency Motion for $53.1M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #141 (Tennessee) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0141",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0142",
@@ -5516,7 +5690,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 92,
     "peakValuation": "$628.2M",
     "collapseValuation": "$33.0M",
@@ -5545,7 +5719,13 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in W.D. Wash. / E.D. Wash..",
       "August 03, 2026: Emergency Motion for $54.9M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #146 (Washington) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0146",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0147",
@@ -5706,7 +5886,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 97,
     "peakValuation": "$649.2M",
     "collapseValuation": "$34.1M",
@@ -5735,7 +5915,13 @@
     "timeline": [
       "August 08, 2026: Voluntary Petition Filed in D. Alaska.",
       "August 08, 2026: Emergency Motion for $56.8M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #151 (Alaska) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0151",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0152",
@@ -5896,7 +6082,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 85,
     "peakValuation": "$670.2M",
     "collapseValuation": "$35.2M",
@@ -5925,7 +6111,13 @@
     "timeline": [
       "August 01, 2026: Voluntary Petition Filed in D. Conn..",
       "August 01, 2026: Emergency Motion for $58.6M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #156 (Connecticut) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0156",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0157",
@@ -6086,7 +6278,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 90,
     "peakValuation": "$691.2M",
     "collapseValuation": "$36.3M",
@@ -6115,7 +6307,13 @@
     "timeline": [
       "August 06, 2026: Voluntary Petition Filed in D. Idaho.",
       "August 06, 2026: Emergency Motion for $60.5M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #161 (Idaho) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0161",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0162",
@@ -6276,7 +6474,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 95,
     "peakValuation": "$712.2M",
     "collapseValuation": "$37.4M",
@@ -6305,7 +6503,13 @@
     "timeline": [
       "August 11, 2026: Voluntary Petition Filed in E.D. Ky. / W.D. Ky..",
       "August 11, 2026: Emergency Motion for $62.3M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #166 (Kentucky) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0166",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0167",
@@ -6466,7 +6670,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 83,
     "peakValuation": "$733.2M",
     "collapseValuation": "$38.5M",
@@ -6495,7 +6699,13 @@
     "timeline": [
       "August 04, 2026: Voluntary Petition Filed in E.D. Mich. / W.D. Mich..",
       "August 04, 2026: Emergency Motion for $64.2M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #171 (Michigan) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0171",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0172",
@@ -6656,7 +6866,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 88,
     "peakValuation": "$754.2M",
     "collapseValuation": "$39.6M",
@@ -6685,7 +6895,13 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D. Neb..",
       "August 09, 2026: Emergency Motion for $66.0M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #176 (Nebraska) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0176",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0177",
@@ -6846,7 +7062,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 93,
     "peakValuation": "$775.2M",
     "collapseValuation": "$40.7M",
@@ -6875,7 +7091,13 @@
     "timeline": [
       "August 02, 2026: Voluntary Petition Filed in S.D.N.Y. / E.D.N.Y. / W.D.N.Y. / N.D.N.Y..",
       "August 02, 2026: Emergency Motion for $67.9M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #181 (New York) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0181",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0182",
@@ -7036,7 +7258,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 98,
     "peakValuation": "$796.2M",
     "collapseValuation": "$41.8M",
@@ -7065,7 +7287,13 @@
     "timeline": [
       "August 07, 2026: Voluntary Petition Filed in D. Ore..",
       "August 07, 2026: Emergency Motion for $69.7M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #186 (Oregon) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0186",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0187",
@@ -7226,7 +7454,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 86,
     "peakValuation": "$817.2M",
     "collapseValuation": "$42.9M",
@@ -7255,7 +7483,13 @@
     "timeline": [
       "August 12, 2026: Voluntary Petition Filed in M.D. Tenn. / W.D. Tenn. / E.D. Tenn..",
       "August 12, 2026: Emergency Motion for $71.6M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #191 (Tennessee) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0191",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0192",
@@ -7416,7 +7650,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 91,
     "peakValuation": "$838.2M",
     "collapseValuation": "$44.1M",
@@ -7445,7 +7679,13 @@
     "timeline": [
       "August 05, 2026: Voluntary Petition Filed in W.D. Wash. / E.D. Wash..",
       "August 05, 2026: Emergency Motion for $73.4M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #196 (Washington) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0196",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0197",
@@ -7606,7 +7846,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 96,
     "peakValuation": "$859.2M",
     "collapseValuation": "$45.2M",
@@ -7635,7 +7875,13 @@
     "timeline": [
       "August 10, 2026: Voluntary Petition Filed in D. Alaska.",
       "August 10, 2026: Emergency Motion for $75.3M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #201 (Alaska) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0201",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0202",
@@ -7796,7 +8042,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 84,
     "peakValuation": "$880.2M",
     "collapseValuation": "$46.3M",
@@ -7825,7 +8071,13 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Conn..",
       "August 03, 2026: Emergency Motion for $77.1M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #206 (Connecticut) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0206",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0207",
@@ -7986,7 +8238,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 89,
     "peakValuation": "$901.2M",
     "collapseValuation": "$47.4M",
@@ -8015,7 +8267,13 @@
     "timeline": [
       "August 08, 2026: Voluntary Petition Filed in D. Idaho.",
       "August 08, 2026: Emergency Motion for $79.0M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #211 (Idaho) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0211",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0212",
@@ -8176,7 +8434,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 94,
     "peakValuation": "$922.2M",
     "collapseValuation": "$48.5M",
@@ -8205,7 +8463,13 @@
     "timeline": [
       "August 01, 2026: Voluntary Petition Filed in E.D. Ky. / W.D. Ky..",
       "August 01, 2026: Emergency Motion for $80.8M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #216 (Kentucky) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0216",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0217",
@@ -8366,7 +8630,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 82,
     "peakValuation": "$943.2M",
     "collapseValuation": "$49.6M",
@@ -8395,7 +8659,13 @@
     "timeline": [
       "August 06, 2026: Voluntary Petition Filed in E.D. Mich. / W.D. Mich..",
       "August 06, 2026: Emergency Motion for $82.7M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #221 (Michigan) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0221",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0222",
@@ -8556,7 +8826,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 87,
     "peakValuation": "$964.2M",
     "collapseValuation": "$50.7M",
@@ -8585,7 +8855,13 @@
     "timeline": [
       "August 11, 2026: Voluntary Petition Filed in D. Neb..",
       "August 11, 2026: Emergency Motion for $84.5M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #226 (Nebraska) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0226",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0227",
@@ -8746,7 +9022,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 92,
     "peakValuation": "$985.2M",
     "collapseValuation": "$51.8M",
@@ -8775,7 +9051,13 @@
     "timeline": [
       "August 04, 2026: Voluntary Petition Filed in S.D.N.Y. / E.D.N.Y. / W.D.N.Y. / N.D.N.Y..",
       "August 04, 2026: Emergency Motion for $86.4M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #231 (New York) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0231",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0232",
@@ -8936,7 +9218,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 97,
     "peakValuation": "$1006.2M",
     "collapseValuation": "$52.9M",
@@ -8965,7 +9247,13 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D. Ore..",
       "August 09, 2026: Emergency Motion for $88.2M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #236 (Oregon) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0236",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0237",
@@ -9126,7 +9414,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 85,
     "peakValuation": "$1027.2M",
     "collapseValuation": "$54.0M",
@@ -9155,7 +9443,13 @@
     "timeline": [
       "August 02, 2026: Voluntary Petition Filed in M.D. Tenn. / W.D. Tenn. / E.D. Tenn..",
       "August 02, 2026: Emergency Motion for $90.1M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #241 (Tennessee) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0241",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0242",
@@ -9316,7 +9610,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 90,
     "peakValuation": "$1048.2M",
     "collapseValuation": "$55.2M",
@@ -9345,7 +9639,13 @@
     "timeline": [
       "August 07, 2026: Voluntary Petition Filed in W.D. Wash. / E.D. Wash..",
       "August 07, 2026: Emergency Motion for $91.9M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #246 (Washington) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0246",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0247",
@@ -9506,7 +9806,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 95,
     "peakValuation": "$1069.2M",
     "collapseValuation": "$56.3M",
@@ -9535,7 +9835,13 @@
     "timeline": [
       "August 12, 2026: Voluntary Petition Filed in D. Alaska.",
       "August 12, 2026: Emergency Motion for $93.8M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #251 (Alaska) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0251",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0252",
@@ -9696,7 +10002,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 83,
     "peakValuation": "$1090.2M",
     "collapseValuation": "$57.4M",
@@ -9725,7 +10031,13 @@
     "timeline": [
       "August 05, 2026: Voluntary Petition Filed in D. Conn..",
       "August 05, 2026: Emergency Motion for $95.6M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #256 (Connecticut) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0256",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0257",
@@ -9886,7 +10198,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 88,
     "peakValuation": "$1111.2M",
     "collapseValuation": "$58.5M",
@@ -9915,7 +10227,13 @@
     "timeline": [
       "August 10, 2026: Voluntary Petition Filed in D. Idaho.",
       "August 10, 2026: Emergency Motion for $97.5M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #261 (Idaho) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0261",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0262",
@@ -10076,7 +10394,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 93,
     "peakValuation": "$1132.2M",
     "collapseValuation": "$59.6M",
@@ -10105,7 +10423,13 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in E.D. Ky. / W.D. Ky..",
       "August 03, 2026: Emergency Motion for $99.3M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #266 (Kentucky) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0266",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0267",
@@ -10266,7 +10590,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 98,
     "peakValuation": "$1153.2M",
     "collapseValuation": "$60.7M",
@@ -10295,7 +10619,13 @@
     "timeline": [
       "August 08, 2026: Voluntary Petition Filed in E.D. Mich. / W.D. Mich..",
       "August 08, 2026: Emergency Motion for $101.2M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #271 (Michigan) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0271",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0272",
@@ -10456,7 +10786,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 86,
     "peakValuation": "$1174.2M",
     "collapseValuation": "$61.8M",
@@ -10485,7 +10815,13 @@
     "timeline": [
       "August 01, 2026: Voluntary Petition Filed in D. Neb..",
       "August 01, 2026: Emergency Motion for $103.0M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #276 (Nebraska) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0276",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0277",
@@ -10646,7 +10982,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 91,
     "peakValuation": "$1195.2M",
     "collapseValuation": "$62.9M",
@@ -10675,7 +11011,13 @@
     "timeline": [
       "August 06, 2026: Voluntary Petition Filed in S.D.N.Y. / E.D.N.Y. / W.D.N.Y. / N.D.N.Y..",
       "August 06, 2026: Emergency Motion for $104.9M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #281 (New York) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0281",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0282",
@@ -10836,7 +11178,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 96,
     "peakValuation": "$1216.2M",
     "collapseValuation": "$64.0M",
@@ -10865,7 +11207,13 @@
     "timeline": [
       "August 11, 2026: Voluntary Petition Filed in D. Ore..",
       "August 11, 2026: Emergency Motion for $106.7M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #286 (Oregon) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0286",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0287",
@@ -11026,7 +11374,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 84,
     "peakValuation": "$1237.2M",
     "collapseValuation": "$65.1M",
@@ -11055,7 +11403,13 @@
     "timeline": [
       "August 04, 2026: Voluntary Petition Filed in M.D. Tenn. / W.D. Tenn. / E.D. Tenn..",
       "August 04, 2026: Emergency Motion for $108.6M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #291 (Tennessee) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0291",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0292",
@@ -11216,7 +11570,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 89,
     "peakValuation": "$1258.2M",
     "collapseValuation": "$66.3M",
@@ -11245,7 +11599,13 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in W.D. Wash. / E.D. Wash..",
       "August 09, 2026: Emergency Motion for $110.4M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #296 (Washington) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0296",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0297",
@@ -11406,7 +11766,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 94,
     "peakValuation": "$1279.2M",
     "collapseValuation": "$67.4M",
@@ -11435,7 +11795,13 @@
     "timeline": [
       "August 02, 2026: Voluntary Petition Filed in D. Alaska.",
       "August 02, 2026: Emergency Motion for $112.3M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #301 (Alaska) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0301",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0302",
@@ -11596,7 +11962,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 82,
     "peakValuation": "$1300.2M",
     "collapseValuation": "$68.5M",
@@ -11625,7 +11991,13 @@
     "timeline": [
       "August 07, 2026: Voluntary Petition Filed in D. Conn..",
       "August 07, 2026: Emergency Motion for $114.1M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #306 (Connecticut) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0306",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0307",
@@ -11786,7 +12158,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 87,
     "peakValuation": "$1321.2M",
     "collapseValuation": "$69.6M",
@@ -11815,7 +12187,13 @@
     "timeline": [
       "August 12, 2026: Voluntary Petition Filed in D. Idaho.",
       "August 12, 2026: Emergency Motion for $116.0M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #311 (Idaho) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0311",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0312",
@@ -11976,7 +12354,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 92,
     "peakValuation": "$1342.2M",
     "collapseValuation": "$70.7M",
@@ -12005,7 +12383,13 @@
     "timeline": [
       "August 05, 2026: Voluntary Petition Filed in E.D. Ky. / W.D. Ky..",
       "August 05, 2026: Emergency Motion for $117.8M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #316 (Kentucky) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0316",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0317",
@@ -12166,7 +12550,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 97,
     "peakValuation": "$1363.2M",
     "collapseValuation": "$71.8M",
@@ -12195,7 +12579,13 @@
     "timeline": [
       "August 10, 2026: Voluntary Petition Filed in E.D. Mich. / W.D. Mich..",
       "August 10, 2026: Emergency Motion for $119.7M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #321 (Michigan) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0321",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0322",
@@ -12356,7 +12746,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 85,
     "peakValuation": "$1384.2M",
     "collapseValuation": "$72.9M",
@@ -12385,7 +12775,13 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Neb..",
       "August 03, 2026: Emergency Motion for $121.5M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #326 (Nebraska) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0326",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0327",
@@ -12546,7 +12942,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 90,
     "peakValuation": "$1405.2M",
     "collapseValuation": "$74.0M",
@@ -12575,7 +12971,13 @@
     "timeline": [
       "August 08, 2026: Voluntary Petition Filed in S.D.N.Y. / E.D.N.Y. / W.D.N.Y. / N.D.N.Y..",
       "August 08, 2026: Emergency Motion for $123.4M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #331 (New York) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0331",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0332",
@@ -12736,7 +13138,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 95,
     "peakValuation": "$1426.2M",
     "collapseValuation": "$75.1M",
@@ -12765,7 +13167,13 @@
     "timeline": [
       "August 01, 2026: Voluntary Petition Filed in D. Ore..",
       "August 01, 2026: Emergency Motion for $125.2M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #336 (Oregon) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0336",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0337",
@@ -12926,7 +13334,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 83,
     "peakValuation": "$1447.2M",
     "collapseValuation": "$76.2M",
@@ -12955,7 +13363,13 @@
     "timeline": [
       "August 06, 2026: Voluntary Petition Filed in M.D. Tenn. / W.D. Tenn. / E.D. Tenn..",
       "August 06, 2026: Emergency Motion for $127.1M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #341 (Tennessee) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0341",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0342",
@@ -13116,7 +13530,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 88,
     "peakValuation": "$1468.2M",
     "collapseValuation": "$77.4M",
@@ -13145,7 +13559,13 @@
     "timeline": [
       "August 11, 2026: Voluntary Petition Filed in W.D. Wash. / E.D. Wash..",
       "August 11, 2026: Emergency Motion for $128.9M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #346 (Washington) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0346",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0347",
@@ -13306,7 +13726,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 93,
     "peakValuation": "$1489.2M",
     "collapseValuation": "$78.5M",
@@ -13335,7 +13755,13 @@
     "timeline": [
       "August 04, 2026: Voluntary Petition Filed in D. Alaska.",
       "August 04, 2026: Emergency Motion for $130.8M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #351 (Alaska) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0351",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0352",
@@ -13496,7 +13922,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 98,
     "peakValuation": "$1510.2M",
     "collapseValuation": "$79.6M",
@@ -13525,7 +13951,13 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D. Conn..",
       "August 09, 2026: Emergency Motion for $132.6M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #356 (Connecticut) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0356",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0357",
@@ -13686,7 +14118,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 86,
     "peakValuation": "$1531.2M",
     "collapseValuation": "$80.7M",
@@ -13715,7 +14147,13 @@
     "timeline": [
       "August 02, 2026: Voluntary Petition Filed in D. Idaho.",
       "August 02, 2026: Emergency Motion for $134.5M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #361 (Idaho) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0361",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0362",
@@ -13876,7 +14314,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 91,
     "peakValuation": "$1552.2M",
     "collapseValuation": "$81.8M",
@@ -13905,7 +14343,13 @@
     "timeline": [
       "August 07, 2026: Voluntary Petition Filed in E.D. Ky. / W.D. Ky..",
       "August 07, 2026: Emergency Motion for $136.3M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #366 (Kentucky) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0366",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0367",
@@ -14066,7 +14510,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 96,
     "peakValuation": "$1573.2M",
     "collapseValuation": "$82.9M",
@@ -14095,7 +14539,13 @@
     "timeline": [
       "August 12, 2026: Voluntary Petition Filed in E.D. Mich. / W.D. Mich..",
       "August 12, 2026: Emergency Motion for $138.2M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #371 (Michigan) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0371",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0372",
@@ -14256,7 +14706,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 84,
     "peakValuation": "$1594.2M",
     "collapseValuation": "$84.0M",
@@ -14285,7 +14735,13 @@
     "timeline": [
       "August 05, 2026: Voluntary Petition Filed in D. Neb..",
       "August 05, 2026: Emergency Motion for $140.0M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #376 (Nebraska) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0376",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0377",
@@ -14446,7 +14902,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 89,
     "peakValuation": "$1615.2M",
     "collapseValuation": "$85.1M",
@@ -14475,7 +14931,13 @@
     "timeline": [
       "August 10, 2026: Voluntary Petition Filed in S.D.N.Y. / E.D.N.Y. / W.D.N.Y. / N.D.N.Y..",
       "August 10, 2026: Emergency Motion for $141.9M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #381 (New York) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0381",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0382",
@@ -14636,7 +15098,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 94,
     "peakValuation": "$1636.2M",
     "collapseValuation": "$86.2M",
@@ -14665,7 +15127,13 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Ore..",
       "August 03, 2026: Emergency Motion for $143.7M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #386 (Oregon) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0386",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0387",
@@ -14826,7 +15294,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 82,
     "peakValuation": "$1657.2M",
     "collapseValuation": "$87.3M",
@@ -14855,7 +15323,13 @@
     "timeline": [
       "August 08, 2026: Voluntary Petition Filed in M.D. Tenn. / W.D. Tenn. / E.D. Tenn..",
       "August 08, 2026: Emergency Motion for $145.6M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #391 (Tennessee) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0391",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0392",
@@ -15016,7 +15490,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 87,
     "peakValuation": "$1678.2M",
     "collapseValuation": "$88.5M",
@@ -15045,7 +15519,13 @@
     "timeline": [
       "August 01, 2026: Voluntary Petition Filed in W.D. Wash. / E.D. Wash..",
       "August 01, 2026: Emergency Motion for $147.4M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #396 (Washington) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0396",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0397",
@@ -15206,7 +15686,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 92,
     "peakValuation": "$1699.2M",
     "collapseValuation": "$89.6M",
@@ -15235,7 +15715,13 @@
     "timeline": [
       "August 06, 2026: Voluntary Petition Filed in D. Alaska.",
       "August 06, 2026: Emergency Motion for $149.3M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #401 (Alaska) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0401",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0402",
@@ -15396,7 +15882,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 97,
     "peakValuation": "$1720.2M",
     "collapseValuation": "$90.7M",
@@ -15425,7 +15911,13 @@
     "timeline": [
       "August 11, 2026: Voluntary Petition Filed in D. Conn..",
       "August 11, 2026: Emergency Motion for $151.1M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #406 (Connecticut) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0406",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0407",
@@ -15586,7 +16078,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 85,
     "peakValuation": "$1741.2M",
     "collapseValuation": "$91.8M",
@@ -15615,7 +16107,13 @@
     "timeline": [
       "August 04, 2026: Voluntary Petition Filed in D. Idaho.",
       "August 04, 2026: Emergency Motion for $153.0M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #411 (Idaho) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0411",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0412",
@@ -15776,7 +16274,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 90,
     "peakValuation": "$1762.2M",
     "collapseValuation": "$92.9M",
@@ -15805,7 +16303,13 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in E.D. Ky. / W.D. Ky..",
       "August 09, 2026: Emergency Motion for $154.8M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #416 (Kentucky) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0416",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0417",
@@ -15966,7 +16470,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 95,
     "peakValuation": "$1783.2M",
     "collapseValuation": "$94.0M",
@@ -15995,7 +16499,13 @@
     "timeline": [
       "August 02, 2026: Voluntary Petition Filed in E.D. Mich. / W.D. Mich..",
       "August 02, 2026: Emergency Motion for $156.7M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #421 (Michigan) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0421",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0422",
@@ -16156,7 +16666,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 83,
     "peakValuation": "$1804.2M",
     "collapseValuation": "$95.1M",
@@ -16185,7 +16695,13 @@
     "timeline": [
       "August 07, 2026: Voluntary Petition Filed in D. Neb..",
       "August 07, 2026: Emergency Motion for $158.5M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #426 (Nebraska) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0426",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0427",
@@ -16346,7 +16862,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 88,
     "peakValuation": "$1825.2M",
     "collapseValuation": "$96.2M",
@@ -16375,7 +16891,13 @@
     "timeline": [
       "August 12, 2026: Voluntary Petition Filed in S.D.N.Y. / E.D.N.Y. / W.D.N.Y. / N.D.N.Y..",
       "August 12, 2026: Emergency Motion for $160.4M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #431 (New York) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0431",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0432",
@@ -16536,7 +17058,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 93,
     "peakValuation": "$1846.2M",
     "collapseValuation": "$97.3M",
@@ -16565,7 +17087,13 @@
     "timeline": [
       "August 05, 2026: Voluntary Petition Filed in D. Ore..",
       "August 05, 2026: Emergency Motion for $162.2M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #436 (Oregon) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0436",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0437",
@@ -16726,7 +17254,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 98,
     "peakValuation": "$1867.2M",
     "collapseValuation": "$98.4M",
@@ -16755,7 +17283,13 @@
     "timeline": [
       "August 10, 2026: Voluntary Petition Filed in M.D. Tenn. / W.D. Tenn. / E.D. Tenn..",
       "August 10, 2026: Emergency Motion for $164.1M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #441 (Tennessee) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0441",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0442",
@@ -16916,7 +17450,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 86,
     "peakValuation": "$1888.2M",
     "collapseValuation": "$99.6M",
@@ -16945,7 +17479,13 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in W.D. Wash. / E.D. Wash..",
       "August 03, 2026: Emergency Motion for $165.9M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #446 (Washington) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0446",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0447",
@@ -17106,7 +17646,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 91,
     "peakValuation": "$1909.2M",
     "collapseValuation": "$100.7M",
@@ -17135,7 +17675,13 @@
     "timeline": [
       "August 08, 2026: Voluntary Petition Filed in D. Alaska.",
       "August 08, 2026: Emergency Motion for $167.8M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #451 (Alaska) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0451",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0452",
@@ -17296,7 +17842,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 96,
     "peakValuation": "$1930.2M",
     "collapseValuation": "$101.8M",
@@ -17325,7 +17871,13 @@
     "timeline": [
       "August 01, 2026: Voluntary Petition Filed in D. Conn..",
       "August 01, 2026: Emergency Motion for $169.6M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #456 (Connecticut) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0456",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0457",
@@ -17486,7 +18038,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 84,
     "peakValuation": "$1951.2M",
     "collapseValuation": "$102.9M",
@@ -17515,7 +18067,13 @@
     "timeline": [
       "August 06, 2026: Voluntary Petition Filed in D. Idaho.",
       "August 06, 2026: Emergency Motion for $171.5M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #461 (Idaho) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0461",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0462",
@@ -17676,7 +18234,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 89,
     "peakValuation": "$1972.2M",
     "collapseValuation": "$104.0M",
@@ -17705,7 +18263,13 @@
     "timeline": [
       "August 11, 2026: Voluntary Petition Filed in E.D. Ky. / W.D. Ky..",
       "August 11, 2026: Emergency Motion for $173.3M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #466 (Kentucky) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0466",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0467",
@@ -17866,7 +18430,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 94,
     "peakValuation": "$1993.2M",
     "collapseValuation": "$105.1M",
@@ -17895,7 +18459,13 @@
     "timeline": [
       "August 04, 2026: Voluntary Petition Filed in E.D. Mich. / W.D. Mich..",
       "August 04, 2026: Emergency Motion for $175.2M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #471 (Michigan) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0471",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0472",
@@ -18056,7 +18626,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 82,
     "peakValuation": "$2014.2M",
     "collapseValuation": "$106.2M",
@@ -18085,7 +18655,13 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D. Neb..",
       "August 09, 2026: Emergency Motion for $177.0M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #476 (Nebraska) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0476",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0477",
@@ -18246,7 +18822,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 87,
     "peakValuation": "$2035.2M",
     "collapseValuation": "$107.3M",
@@ -18275,7 +18851,13 @@
     "timeline": [
       "August 02, 2026: Voluntary Petition Filed in S.D.N.Y. / E.D.N.Y. / W.D.N.Y. / N.D.N.Y..",
       "August 02, 2026: Emergency Motion for $178.9M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #481 (New York) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0481",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0482",
@@ -18436,7 +19018,7 @@
     "sectorId": "linear-media",
     "sectorName": "Linear Media",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 92,
     "peakValuation": "$2056.2M",
     "collapseValuation": "$108.4M",
@@ -18465,7 +19047,13 @@
     "timeline": [
       "August 07, 2026: Voluntary Petition Filed in D. Ore..",
       "August 07, 2026: Emergency Motion for $180.7M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Linear Corp #486 (Oregon) — Section 363 Master Store Inventory & Real Estate Lease Auction",
+    "stalkerHorseBid": "$45M Stalking-Horse Floor",
+    "auctioneer": "Hilco Merchant Resources",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0486",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($45M Stalking-Horse Floor)"
   },
   {
     "id": "corp-live-0487",
@@ -18626,7 +19214,7 @@
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 97,
     "peakValuation": "$2077.2M",
     "collapseValuation": "$109.5M",
@@ -18655,7 +19243,13 @@
     "timeline": [
       "August 12, 2026: Voluntary Petition Filed in M.D. Tenn. / W.D. Tenn. / E.D. Tenn..",
       "August 12, 2026: Emergency Motion for $182.6M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Freight Corp #491 (Tennessee) — Section 363 Logistics Terminal & Heavy Equipment Auction",
+    "stalkerHorseBid": "$110M Real Estate Floor Bid",
+    "auctioneer": "CBRE / Hilco Industrial",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0491",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
   },
   {
     "id": "corp-live-0492",
@@ -18816,7 +19410,7 @@
     "sectorId": "automotive",
     "sectorName": "Automotive & EVs",
     "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "statusBadge": "363-auction",
     "distressScore": 85,
     "peakValuation": "$2098.2M",
     "collapseValuation": "$110.7M",
@@ -18845,7 +19439,13 @@
     "timeline": [
       "August 05, 2026: Voluntary Petition Filed in W.D. Wash. / E.D. Wash..",
       "August 05, 2026: Emergency Motion for $184.4M DIP Financing."
-    ]
+    ],
+    "auctionTitle": "Automotive Corp #496 (Washington) — Section 363 Finished EV Fleet & Patent Portfolio Auction",
+    "stalkerHorseBid": "$32M Liquidator Opening Floor",
+    "auctioneer": "GA Group / Great American",
+    "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0496",
+    "assetLiquidationType": "SECTION_363_AUCTION",
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($32M Liquidator Opening Floor)"
   },
   {
     "id": "corp-live-0497",

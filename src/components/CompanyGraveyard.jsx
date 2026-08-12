@@ -312,6 +312,23 @@ export default function CompanyGraveyard({
       if (!isArchived) return false;
     }
 
+    const checkIsAuction = (item) => {
+      if (!item) return false;
+      if (item.isPreJudicial || item.courtCaseStatus === 'PRE_PETITION_WARN_SIGNAL') return false;
+      return Boolean(
+        (item.auctionTitle && item.auctionTitle.trim() !== '') ||
+        (item.auctionPortalUrl && item.auctionPortalUrl.trim() !== '') ||
+        (item.assetLiquidationType && item.assetLiquidationType.trim() !== '') ||
+        (item.stalkerHorseBid && item.stalkerHorseBid.trim() !== '') ||
+        (item.auctioneer && item.auctioneer.trim() !== '') ||
+        (item.assetLiquidationBadge && item.assetLiquidationBadge.trim() !== '') ||
+        (item.statusBadge && item.statusBadge.toLowerCase().includes('auction')) ||
+        (item.status && (item.status.toLowerCase().includes('auction') || item.status.includes('363'))) ||
+        (item.headline && item.headline.toLowerCase().includes('auction')) ||
+        (item.primaryCause && item.primaryCause.toLowerCase().includes('auction'))
+      );
+    };
+
     // Status & Stage Taxonomy Matching
     if (statusFilter !== 'ALL') {
       if (statusFilter === 'favorites') {
@@ -319,7 +336,7 @@ export default function CompanyGraveyard({
         if (!isFav) return false;
       } else {
         const isPre = Boolean(c.isPreJudicial || c.courtCaseStatus === 'PRE_PETITION_WARN_SIGNAL' || c.status?.includes('PRE-JUDICIAL') || c.status?.includes('WARN'));
-        const isAuc = !isPre && Boolean((c.auctionTitle && c.auctionTitle.trim() !== '') || (c.auctionPortalUrl && c.auctionPortalUrl.trim() !== '') || (c.status && (c.status.toUpperCase().includes('AUCTION') || c.status.includes('363'))) || (c.headline && c.headline.toLowerCase().includes('auction')));
+        const isAuc = checkIsAuction(c);
         const isChap = !isPre && !isAuc && (c.courtCaseStatus !== 'FINAL_DECREE_ISSUED' || c.status?.includes('CHAPTER 11') || c.status?.includes('DOCKET'));
         const isDis = c.courtCaseStatus === 'FINAL_DECREE_ISSUED' || c.statusBadge === 'discharge';
 
@@ -1050,7 +1067,18 @@ export default function CompanyGraveyard({
 
               {sortedCompanies.map((company) => {
                 const isPreJudicial = company.isPreJudicial || company.courtCaseStatus === 'PRE_PETITION_WARN_SIGNAL';
-                const isAuction = !isPreJudicial && Boolean((company.auctionTitle && company.auctionTitle.trim() !== '') || (company.auctionPortalUrl && company.auctionPortalUrl.trim() !== '') || (company.status && (company.status.toUpperCase().includes('AUCTION') || company.status.includes('363'))));
+                const isAuction = !isPreJudicial && Boolean(
+                  (company.auctionTitle && company.auctionTitle.trim() !== '') ||
+                  (company.auctionPortalUrl && company.auctionPortalUrl.trim() !== '') ||
+                  (company.assetLiquidationType && company.assetLiquidationType.trim() !== '') ||
+                  (company.stalkerHorseBid && company.stalkerHorseBid.trim() !== '') ||
+                  (company.auctioneer && company.auctioneer.trim() !== '') ||
+                  (company.assetLiquidationBadge && company.assetLiquidationBadge.trim() !== '') ||
+                  (company.statusBadge && company.statusBadge.toLowerCase().includes('auction')) ||
+                  (company.status && (company.status.toLowerCase().includes('auction') || company.status.includes('363'))) ||
+                  (company.headline && company.headline.toLowerCase().includes('auction')) ||
+                  (company.primaryCause && company.primaryCause.toLowerCase().includes('auction'))
+                );
                 const isActiveDocket = company.courtCaseStatus !== 'FINAL_DECREE_ISSUED' && !isPreJudicial && !isAuction;
 
 
@@ -1273,6 +1301,32 @@ export default function CompanyGraveyard({
                       </div>
                     </div>
 
+                    {/* ROW 1.5: PROMINENT 363 ASSET AUCTION HERO BANNER */}
+                    {isAuction && (
+                      <div style={{
+                        background: 'linear-gradient(90deg, rgba(16, 185, 129, 0.22) 0%, rgba(15, 23, 42, 0.95) 100%)',
+                        border: '1px solid #10B981',
+                        padding: '4px 10px',
+                        borderRadius: '6px',
+                        fontSize: '0.72rem',
+                        fontWeight: 800,
+                        color: '#A7F3D0',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        gap: '10px',
+                        margin: '2px 0'
+                      }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <span>🔨 363 AUCTION:</span>
+                          <span style={{ color: '#FFF' }}>{company.auctionTitle || company.assetLiquidationBadge || 'Court-Supervised Asset & Inventory Sale'}</span>
+                        </div>
+                        <span style={{ color: '#FCD34D', fontSize: '0.68rem', fontFamily: 'monospace' }}>
+                          {company.stalkerHorseBid ? `Stalking-Horse: ${company.stalkerHorseBid}` : 'Section 363 Bidding Active'}
+                        </span>
+                      </div>
+                    )}
+
                     {/* ROW 2: LOCATION • SECTOR • DIP CHIP • CAUSE SUMMARY • TIMESTAMP */}
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', fontSize: '0.73rem', color: '#94A3B8' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
@@ -1329,7 +1383,18 @@ export default function CompanyGraveyard({
             <div style={{ display: 'grid', gridTemplateColumns: layoutMode === 'full' ? '1fr' : 'repeat(auto-fill, minmax(360px, 1fr))', gap: '20px' }}>
               {sortedCompanies.map((company) => {
                 const isPreJudicial = company.isPreJudicial || company.courtCaseStatus === 'PRE_PETITION_WARN_SIGNAL';
-                const isAuction = !isPreJudicial && Boolean((company.auctionTitle && company.auctionTitle.trim() !== '') || (company.auctionPortalUrl && company.auctionPortalUrl.trim() !== '') || (company.status && (company.status.toUpperCase().includes('AUCTION') || company.status.includes('363'))));
+                const isAuction = !isPreJudicial && Boolean(
+                  (company.auctionTitle && company.auctionTitle.trim() !== '') ||
+                  (company.auctionPortalUrl && company.auctionPortalUrl.trim() !== '') ||
+                  (company.assetLiquidationType && company.assetLiquidationType.trim() !== '') ||
+                  (company.stalkerHorseBid && company.stalkerHorseBid.trim() !== '') ||
+                  (company.auctioneer && company.auctioneer.trim() !== '') ||
+                  (company.assetLiquidationBadge && company.assetLiquidationBadge.trim() !== '') ||
+                  (company.statusBadge && company.statusBadge.toLowerCase().includes('auction')) ||
+                  (company.status && (company.status.toLowerCase().includes('auction') || company.status.includes('363'))) ||
+                  (company.headline && company.headline.toLowerCase().includes('auction')) ||
+                  (company.primaryCause && company.primaryCause.toLowerCase().includes('auction'))
+                );
                 const isActiveDocket = company.courtCaseStatus !== 'FINAL_DECREE_ISSUED' && !isPreJudicial && !isAuction;
 
 
@@ -1467,8 +1532,8 @@ export default function CompanyGraveyard({
                         />
                       </button>
 
-                      <span className={`status-badge ${company.statusBadge}`}>
-                        {company.status}
+                      <span className={`status-badge ${company.statusBadge}`} style={isAuction ? { background: '#10B981', color: '#0F172A', fontWeight: 900 } : {}}>
+                        {isAuction ? '🔨 363 AUCTION' : company.status}
                       </span>
                     </div>
 
