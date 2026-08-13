@@ -10,6 +10,63 @@ export default function PublicCatalogModal({ auction, onClose, onOpenBidderModal
   const entityName = auction.entityName || auction.name || auction.companyName || 'Corporate Asset';
   const sector = (auction.sectorId || auction.sectorName || auction.assetLiquidationType || auction.industry || entityName).toLowerCase();
 
+  // Category-Specific Photo Pools (Distinct Verified Images per Lot Category)
+  const TRACTOR_PHOTOS = [
+    'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1586191582056-a035a9807577?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1501700493788-df1a079e889e?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?auto=format&fit=crop&w=500&q=80'
+  ];
+
+  const MACHINERY_PHOTOS = [
+    'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=500&q=80'
+  ];
+
+  const TRAILER_PHOTOS = [
+    'https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1565891741441-64926e441838?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=500&q=80'
+  ];
+
+  const IP_PHOTOS = [
+    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80'
+  ];
+
+  const AVIATION_PHOTOS = [
+    'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1519074069444-1ba4eff56022?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=500&q=80'
+  ];
+
+  const RETAIL_POS_PHOTOS = [
+    'https://images.unsplash.com/photo-1556742049-0a670fc8077a?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&w=500&q=80'
+  ];
+
+  const KITCHEN_PHOTOS = [
+    'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1590725140246-20acdee442be?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=500&q=80'
+  ];
+
+  const REAL_ESTATE_PHOTOS = [
+    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=500&q=80',
+    'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=500&q=80'
+  ];
+
   // Dynamic Entity-Specific Itemized Auction Lots with Photos & Detailed Specs
   const getDynamicLots = () => {
     const rawId = String(auction.id || auction.companyId || entityName);
@@ -39,7 +96,7 @@ export default function PublicCatalogModal({ auction, onClose, onOpenBidderModal
           specs: `${((seed % 80) + 90).toLocaleString()},000 avg mileage • Automated Transmission • 11 U.S.C. § 363 Free & Clear`,
           estVal: `$${(((seed % 8) + 8) * 100000 + 450000).toLocaleString()}`,
           startingBid: `$${(((seed % 4) + 3) * 100000 + 150000).toLocaleString()}`,
-          photo: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=400&q=80'
+          photo: TRACTOR_PHOTOS[seed % TRACTOR_PHOTOS.length]
         },
         {
           lotNo: `LOT #${shortId}-102`,
@@ -49,7 +106,7 @@ export default function PublicCatalogModal({ auction, onClose, onOpenBidderModal
           specs: '12,000 RPM Spindle • High-Speed Side Mount Tool Changer • Tooling Package Included',
           estVal: `$${(((seed % 5) + 3) * 100000 + 180000).toLocaleString()}`,
           startingBid: `$${(((seed % 3) + 1) * 100000 + 80000).toLocaleString()}`,
-          photo: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=400&q=80'
+          photo: MACHINERY_PHOTOS[(seed + 1) % MACHINERY_PHOTOS.length]
         },
         {
           lotNo: `LOT #${shortId}-103`,
@@ -59,7 +116,7 @@ export default function PublicCatalogModal({ auction, onClose, onOpenBidderModal
           specs: 'Air Ride Suspension • Aluminum Wheels • Active Refrigerator Compressors',
           estVal: `$${(((seed % 4) + 4) * 100000 + 120000).toLocaleString()}`,
           startingBid: `$${(((seed % 2) + 2) * 100000 + 50000).toLocaleString()}`,
-          photo: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=400&q=80'
+          photo: TRAILER_PHOTOS[(seed + 2) % TRAILER_PHOTOS.length]
         },
         {
           lotNo: `LOT #${shortId}-104`,
@@ -69,7 +126,7 @@ export default function PublicCatalogModal({ auction, onClose, onOpenBidderModal
           specs: 'Registered Trademarks • Custom Dispatch Source Code • Client Directory',
           estVal: `$${(((seed % 12) + 10) * 100000 + 200000).toLocaleString()}`,
           startingBid: `$${(((seed % 5) + 4) * 100000 + 100000).toLocaleString()}`,
-          photo: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80'
+          photo: IP_PHOTOS[(seed + 3) % IP_PHOTOS.length]
         }
       ];
     }
@@ -85,7 +142,7 @@ export default function PublicCatalogModal({ auction, onClose, onOpenBidderModal
           specs: '4,200 Cycles Remaining • FAA Form 8130-3 Dual Release • Court Authorized',
           estVal: `$${(((seed % 6) + 35) * 100000).toLocaleString()}`,
           startingBid: `$${(((seed % 4) + 12) * 100000).toLocaleString()}`,
-          photo: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=400&q=80'
+          photo: AVIATION_PHOTOS[seed % AVIATION_PHOTOS.length]
         },
         {
           lotNo: `LOT #${shortId}-A2`,
@@ -95,7 +152,7 @@ export default function PublicCatalogModal({ auction, onClose, onOpenBidderModal
           specs: 'ARINC 429 Interfaces • Dual MCDU Assemblies • FAA Certified Logbooks',
           estVal: `$${(((seed % 4) + 6) * 100000).toLocaleString()}`,
           startingBid: `$${(((seed % 2) + 2) * 100000).toLocaleString()}`,
-          photo: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=400&q=80'
+          photo: AVIATION_PHOTOS[(seed + 1) % AVIATION_PHOTOS.length]
         }
       ];
     }
@@ -111,7 +168,7 @@ export default function PublicCatalogModal({ auction, onClose, onOpenBidderModal
           specs: 'Adjustable Shelving • Powder Coated Steel • Includes Signage Fixtures',
           estVal: `$${(((seed % 5) + 3) * 100000).toLocaleString()}`,
           startingBid: `$${(((seed % 3) + 1) * 50000).toLocaleString()}`,
-          photo: 'https://images.unsplash.com/photo-1556742049-0a670fc8077a?auto=format&fit=crop&w=400&q=80'
+          photo: RETAIL_POS_PHOTOS[seed % RETAIL_POS_PHOTOS.length]
         },
         {
           lotNo: `LOT #${shortId}-R2`,
@@ -121,7 +178,7 @@ export default function PublicCatalogModal({ auction, onClose, onOpenBidderModal
           specs: 'Intel Core i5 POS Terminals • Barcode Scanners • Customer Facing Displays',
           estVal: `$${(((seed % 3) + 2) * 80000).toLocaleString()}`,
           startingBid: `$${(((seed % 2) + 1) * 40000).toLocaleString()}`,
-          photo: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=400&q=80'
+          photo: RETAIL_POS_PHOTOS[(seed + 1) % RETAIL_POS_PHOTOS.length]
         }
       ];
     }
@@ -136,7 +193,7 @@ export default function PublicCatalogModal({ auction, onClose, onOpenBidderModal
         specs: 'UL Listed Commercial Spec • Stainless Steel Construction • Pre-tested Operational',
         estVal: `$${(((seed % 5) + 3) * 80000).toLocaleString()}`,
         startingBid: `$${(((seed % 3) + 1) * 40000).toLocaleString()}`,
-        photo: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=400&q=80'
+        photo: KITCHEN_PHOTOS[seed % KITCHEN_PHOTOS.length]
       },
       {
         lotNo: `LOT #${shortId}-G2`,
@@ -146,7 +203,7 @@ export default function PublicCatalogModal({ auction, onClose, onOpenBidderModal
         specs: 'Automatic Transfer Switch • Weatherproof Sound Attenuated Enclosure • Low Hours',
         estVal: `$${(((seed % 4) + 3) * 100000).toLocaleString()}`,
         startingBid: `$${(((seed % 2) + 1) * 60000).toLocaleString()}`,
-        photo: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=400&q=80'
+        photo: KITCHEN_PHOTOS[(seed + 1) % KITCHEN_PHOTOS.length]
       },
       {
         lotNo: `LOT #${shortId}-G3`,
@@ -156,7 +213,7 @@ export default function PublicCatalogModal({ auction, onClose, onOpenBidderModal
         specs: 'Section 365 Assumption & Assignment • Below-Market Master Rents • Long-Term Options',
         estVal: `$${(((seed % 6) + 8) * 100000).toLocaleString()}`,
         startingBid: `$${(((seed % 3) + 3) * 100000).toLocaleString()}`,
-        photo: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80'
+        photo: REAL_ESTATE_PHOTOS[seed % REAL_ESTATE_PHOTOS.length]
       }
     ];
   };
@@ -233,6 +290,10 @@ export default function PublicCatalogModal({ auction, onClose, onOpenBidderModal
                 <img
                   src={lot.photo}
                   alt={lot.title}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80';
+                  }}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
                 <div style={{ position: 'absolute', bottom: '4px', left: '4px', background: 'rgba(0,0,0,0.85)', color: '#34D399', fontSize: '0.62rem', fontWeight: 900, padding: '1px 6px', borderRadius: '4px', display: 'flex', alignItems: 'center', gap: '3px' }}>
