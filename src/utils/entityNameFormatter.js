@@ -1,29 +1,76 @@
 /**
  * Real-World Entity Name Formatter for BusinessCollapse.Com
- * Cleans generic synthetic placeholders like "Casual Corp #35 (Oklahoma)" or "Oklahoma Enterprise #35 LLC"
- * into authentic, diverse commercial brand names.
+ * Converts synthetic placeholders like "Casual Corp #35 (Oklahoma)" or "Oklahoma Enterprise #35 LLC"
+ * into 100% realistic, distinct commercial company names WITHOUT generic # number tags.
  */
-const DIVERSE_BRAND_NAMES = [
-  "Pinnacle Industrial Logistics",
-  "Crestline Heavy Machining",
-  "Keystone Freight Systems",
-  "Prairie Fleet Operations",
-  "Atlas Precision Tooling",
-  "Summit Commercial Equipment",
-  "Vanguard Logistics & Transport",
-  "Meridian Metal Manufacturing",
-  "Highland Industrial Services",
-  "Frontier Supply Chain Solutions",
-  "Beacon Fleet Liquidations",
-  "Titan Commercial Machinery",
-  "Velocity Freight Lines",
-  "Midwest Metal Machining",
-  "Peach Tree Commercial Equipment",
-  "Gold Coast Industrial Logistics",
-  "Apex Commercial Fleet & Equipment",
-  "Cimarron Precision Engineering",
-  "Cascade Transport Services",
-  "Cascade Commercial Supply"
+
+const OKLAHOMA_FLEET_NAMES = [
+  "Tulsa Regional Fleet & Cargo Logistics LLC",
+  "Sooner State Heavy Freight Lines Inc.",
+  "Oil Capital Transport & Rigging Group",
+  "Cimarron Precision Machining & Tooling LLC",
+  "Prairie Transport & Supply Chain Corp",
+  "Thunderbird Heavy Equipment & Repair LLC",
+  "Red River Fleet Operations Inc.",
+  "Green Country Fleet Services LLC",
+  "Oklahoma Metal Fabrication & Supply",
+  "Keystone Heavy Haulers LLC"
+];
+
+const TEXAS_FLEET_NAMES = [
+  "Lone Star Heavy Fleet & Logistics LLC",
+  "Alamo Regional Transport & Supply Corp",
+  "Gulf Coast Industrial Machining LLC",
+  "Brazos Metal Stamping & Fabrication Inc.",
+  "Permian Basin Fleet & Equipment Services",
+  "Panhandle Freight & Logistics LLC",
+  "Trinity Heavy Machinery & Rigging Corp",
+  "Austin Industrial Tooling & Fleet LLC"
+];
+
+const GENERAL_FLEET_NAMES = [
+  "Pinnacle Industrial Logistics Corp",
+  "Crestline Heavy Machining & Fabrication LLC",
+  "Keystone Freight Systems Inc.",
+  "Atlas Precision Tooling & Equipment LLC",
+  "Summit Commercial Fleet Solutions Inc.",
+  "Vanguard Logistics & Transport Corp",
+  "Meridian Metal Manufacturing LLC",
+  "Highland Industrial Services Group",
+  "Frontier Supply Chain Solutions Inc.",
+  "Beacon Fleet Liquidations LLC",
+  "Titan Commercial Machinery & Tooling",
+  "Velocity Freight Lines Corp",
+  "Midwest Metal Machining LLC",
+  "Peach Tree Commercial Equipment Inc.",
+  "Gold Coast Industrial Logistics LLC",
+  "Apex Freight & Heavy Transport Corp",
+  "Cascade Commercial Storage & Logistics",
+  "Horizon Industrial Supply Chain LLC",
+  "Sterling Fleet Maintenance & Equipment",
+  "Pioneer Freight & Machinery Corp"
+];
+
+const DINING_RETAIL_NAMES = [
+  "Cimarron Dining & Hospitality Group LLC",
+  "Lone Star Grill & Restaurant Partners Inc.",
+  "Heritage Hospitality & Dining Group LLC",
+  "Southern Table Restaurant Operations Inc.",
+  "Prairie Oak Retail & Dining Group LLC"
+];
+
+const HEALTHCARE_NAMES = [
+  "Sooner State Regional Health System Inc.",
+  "Alamo Regional Medical Center LLC",
+  "CarePoint Regional Health Network Corp",
+  "Highland Regional Health System LLC"
+];
+
+const AVIATION_NAMES = [
+  "Thunderbird Aviation & Fleet Maintenance LLC",
+  "Gulf Coast Fleet Aviation Services Inc.",
+  "Skyway Air Cargo & Turbine Maintenance LLC",
+  "Pinnacle Aviation Flight Spares Inc."
 ];
 
 export function formatCleanEntityName(item) {
@@ -43,45 +90,38 @@ export function formatCleanEntityName(item) {
     return rawName;
   }
 
-  // Extract sector, state, and ID for authentic commercial name mapping
+  // Extract sector, state, and ID seed for deterministic distinct name selection
   const sector = (typeof item === 'object' ? (item.sectorId || item.sectorName || item.assetLiquidationType || item.primaryCause || '') : '').toLowerCase();
   const location = (typeof item === 'object' ? (item.locationJurisdiction || item.region || '') : '').toLowerCase();
   const isOkla = location.includes('oklahoma') || rawName.includes('Oklahoma');
   const isTex = location.includes('texas') || rawName.includes('Texas');
-  const idNum = typeof item === 'object' && item.id ? item.id.replace(/[^0-9]/g, '') : '35';
 
-  const numericId = Math.abs(parseInt(idNum, 10) || 0);
-  const brandIndex = numericId % DIVERSE_BRAND_NAMES.length;
-  const selectedBrand = DIVERSE_BRAND_NAMES[brandIndex];
+  const rawIdStr = typeof item === 'object' && item.id ? item.id : rawName;
+  let hashSeed = 0;
+  for (let i = 0; i < rawIdStr.length; i++) {
+    hashSeed = (hashSeed * 31 + rawIdStr.charCodeAt(i)) % 100000;
+  }
+  const numericId = Math.abs(hashSeed);
 
   if (rawName.includes('Casual Corp') || sector.includes('dining') || sector.includes('casual')) {
-    if (isOkla) return `Cimarron Dining Group #${idNum} LLC`;
-    if (isTex) return `Lone Star Hospitality & Grill #${idNum} LLC`;
-    return `Heritage Dining & Restaurant Group #${idNum} LLC`;
+    return DINING_RETAIL_NAMES[numericId % DINING_RETAIL_NAMES.length];
   }
 
   if (rawName.includes('Healthcare Corp') || sector.includes('health') || sector.includes('medical')) {
-    if (isOkla) return `Sooner State Regional Health System #${idNum}`;
-    if (isTex) return `Alamo Regional Medical Center #${idNum}`;
-    return `CarePoint Regional Medical Center #${idNum}`;
+    return HEALTHCARE_NAMES[numericId % HEALTHCARE_NAMES.length];
   }
 
   if (rawName.includes('Aviation Corp') || sector.includes('aviation') || sector.includes('air')) {
-    if (isOkla) return `Thunderbird Aviation & Fleet Maintenance #${idNum} LLC`;
-    if (isTex) return `Gulf Coast Fleet Aviation #${idNum} Inc.`;
-    return `Skyway Air Freight & Maintenance #${idNum} Inc.`;
+    return AVIATION_NAMES[numericId % AVIATION_NAMES.length];
   }
 
-  if (rawName.includes('Enterprise #') || rawName.includes('Subchapter V') || sector.includes('fleet') || sector.includes('truck')) {
-    if (isOkla) return `Tulsa Regional Fleet & Machining #${idNum} LLC`;
-    if (isTex) return `Lone Star Industrial Logistics #${idNum} LLC`;
-    return `${selectedBrand} #${idNum} LLC`;
-  }
-
-  // Fallback for general Oklahoma pattern names
   if (isOkla) {
-    return `Oklahoma Commercial Operations #${idNum} LLC`;
+    return OKLAHOMA_FLEET_NAMES[numericId % OKLAHOMA_FLEET_NAMES.length];
   }
 
-  return rawName;
+  if (isTex) {
+    return TEXAS_FLEET_NAMES[numericId % TEXAS_FLEET_NAMES.length];
+  }
+
+  return GENERAL_FLEET_NAMES[numericId % GENERAL_FLEET_NAMES.length];
 }
