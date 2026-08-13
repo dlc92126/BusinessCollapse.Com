@@ -90,7 +90,9 @@ STALKER-HORSE FLOOR: ${auction.stalkerHorseBid || '$15,000,000'}
                 U.S. BANKRUPTCY COURT OFFICIAL BIDDER PORTAL
               </span>
             </div>
-            <h2 style={{ fontSize: '1.8rem', fontWeight: 900, color: '#FFF' }}>{auction.entityName}</h2>
+            <h2 style={{ fontSize: '1.8rem', fontWeight: 900, color: '#FFF' }}>
+              {auction.entityName || auction.name || auction.companyName || (auction.auctionTitle ? auction.auctionTitle.split('—')[0].trim() : 'Corporate Asset')}
+            </h2>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '2px' }}>
               {auction.locationJurisdiction}
             </p>
@@ -110,7 +112,7 @@ STALKER-HORSE FLOOR: ${auction.stalkerHorseBid || '$15,000,000'}
           {/* Auction Overview Box */}
           <div className="glass-panel" style={{ padding: '20px', background: 'rgba(7, 10, 15, 0.6)', borderLeft: '4px solid #10B981' }}>
             <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#FFF', marginBottom: '8px' }}>
-              🔨 {auction.auctionTitle}
+              🔨 {auction.entityName || auction.name || auction.companyName ? `${auction.entityName || auction.name || auction.companyName} — ` : ''}{auction.auctionTitle}
             </h3>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', fontSize: '0.8rem', marginTop: '12px', color: 'var(--text-muted)' }}>
               <div>Auctioneer: <strong style={{ color: '#FFF' }}>{auction.auctioneer}</strong></div>

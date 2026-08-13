@@ -49,8 +49,8 @@
     "ticker": "C2Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 84,
     "peakValuation": "$23.4M",
     "collapseValuation": "$1.0M",
@@ -61,7 +61,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Phoenix, AZ (U.S. Bankruptcy Court D. Ariz.)",
     "ceoAtFailure": "Chief Restructuring Officer #2",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Ariz. Case #26-10002",
     "summary": "Active Chapter 11 filing in Phoenix, AZ with $8.2M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -79,7 +79,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Ariz..",
       "August 03, 2026: Emergency Motion for $1.6M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0003",
@@ -283,8 +288,8 @@
     "ticker": "C8Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 90,
     "peakValuation": "$48.6M",
     "collapseValuation": "$2.3M",
@@ -295,7 +300,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Miami, FL (U.S. Bankruptcy Court S.D. Fla. / M.D. Fla. / N.D. Fla.)",
     "ceoAtFailure": "Chief Restructuring Officer #8",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court S.D. Fla. / M.D. Fla. / N.D. Fla. Case #26-10008",
     "summary": "Active Chapter 11 filing in Miami, FL with $19.3M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -313,7 +318,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in S.D. Fla. / M.D. Fla. / N.D. Fla..",
       "August 09, 2026: Emergency Motion for $3.9M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0009",
@@ -517,8 +527,8 @@
     "ticker": "C14Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 96,
     "peakValuation": "$73.8M",
     "collapseValuation": "$3.6M",
@@ -529,7 +539,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Des Moines, IA (U.S. Bankruptcy Court N.D. Iowa / S.D. Iowa)",
     "ceoAtFailure": "Chief Restructuring Officer #14",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court N.D. Iowa / S.D. Iowa Case #26-10014",
     "summary": "Active Chapter 11 filing in Des Moines, IA with $30.4M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -547,7 +557,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in N.D. Iowa / S.D. Iowa.",
       "August 03, 2026: Emergency Motion for $6.1M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0015",
@@ -751,8 +766,8 @@
     "ticker": "C20Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 85,
     "peakValuation": "$99.0M",
     "collapseValuation": "$5.0M",
@@ -763,7 +778,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Boston, MA (U.S. Bankruptcy Court D. Mass.)",
     "ceoAtFailure": "Chief Restructuring Officer #20",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Mass. Case #26-10020",
     "summary": "Active Chapter 11 filing in Boston, MA with $41.5M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -781,7 +796,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D. Mass..",
       "August 09, 2026: Emergency Motion for $8.3M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0021",
@@ -985,8 +1005,8 @@
     "ticker": "C26Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 91,
     "peakValuation": "$124.2M",
     "collapseValuation": "$6.3M",
@@ -997,7 +1017,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Omaha, NE (U.S. Bankruptcy Court D. Neb.)",
     "ceoAtFailure": "Chief Restructuring Officer #26",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Neb. Case #26-10026",
     "summary": "Active Chapter 11 filing in Omaha, NE with $52.6M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -1021,7 +1041,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0026",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0027",
@@ -1225,8 +1250,8 @@
     "ticker": "C32Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 97,
     "peakValuation": "$149.4M",
     "collapseValuation": "$7.6M",
@@ -1237,7 +1262,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Charlotte, NC (U.S. Bankruptcy Court W.D.N.C. / M.D.N.C. / E.D.N.C.)",
     "ceoAtFailure": "Chief Restructuring Officer #32",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court W.D.N.C. / M.D.N.C. / E.D.N.C. Case #26-10032",
     "summary": "Active Chapter 11 filing in Charlotte, NC with $63.7M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -1255,7 +1280,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in W.D.N.C. / M.D.N.C. / E.D.N.C..",
       "August 09, 2026: Emergency Motion for $12.7M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0033",
@@ -1459,8 +1489,8 @@
     "ticker": "C38Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 86,
     "peakValuation": "$174.6M",
     "collapseValuation": "$9.0M",
@@ -1471,7 +1501,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Providence, RI (U.S. Bankruptcy Court D.R.I.)",
     "ceoAtFailure": "Chief Restructuring Officer #38",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D.R.I. Case #26-10038",
     "summary": "Active Chapter 11 filing in Providence, RI with $74.8M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -1489,7 +1519,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D.R.I..",
       "August 03, 2026: Emergency Motion for $15.0M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0039",
@@ -1693,8 +1728,8 @@
     "ticker": "C44Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 92,
     "peakValuation": "$199.8M",
     "collapseValuation": "$10.3M",
@@ -1705,7 +1740,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Burlington, VT (U.S. Bankruptcy Court D. Vt.)",
     "ceoAtFailure": "Chief Restructuring Officer #44",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Vt. Case #26-10044",
     "summary": "Active Chapter 11 filing in Burlington, VT with $85.9M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -1723,7 +1758,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D. Vt..",
       "August 09, 2026: Emergency Motion for $17.2M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0045",
@@ -1927,8 +1967,8 @@
     "ticker": "C50Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 98,
     "peakValuation": "$225.0M",
     "collapseValuation": "$11.6M",
@@ -1939,7 +1979,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Mobile, AL (U.S. Bankruptcy Court N.D. Ala. / M.D. Ala. / S.D. Ala.)",
     "ceoAtFailure": "Chief Restructuring Officer #50",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court N.D. Ala. / M.D. Ala. / S.D. Ala. Case #26-10050",
     "summary": "Active Chapter 11 filing in Mobile, AL with $97.0M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -1957,7 +1997,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in N.D. Ala. / M.D. Ala. / S.D. Ala..",
       "August 03, 2026: Emergency Motion for $19.4M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0051",
@@ -2161,8 +2206,8 @@
     "ticker": "C56Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 87,
     "peakValuation": "$250.2M",
     "collapseValuation": "$13.0M",
@@ -2173,7 +2218,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Bridgeport, CT (U.S. Bankruptcy Court D. Conn.)",
     "ceoAtFailure": "Chief Restructuring Officer #56",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Conn. Case #26-10056",
     "summary": "Active Chapter 11 filing in Bridgeport, CT with $108.1M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -2197,7 +2242,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0056",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0057",
@@ -2401,8 +2451,8 @@
     "ticker": "C62Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 93,
     "peakValuation": "$275.4M",
     "collapseValuation": "$14.3M",
@@ -2413,7 +2463,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Chicago, IL (U.S. Bankruptcy Court N.D. Ill. / C.D. Ill. / S.D. Ill.)",
     "ceoAtFailure": "Chief Restructuring Officer #62",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court N.D. Ill. / C.D. Ill. / S.D. Ill. Case #26-10062",
     "summary": "Active Chapter 11 filing in Chicago, IL with $119.2M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -2431,7 +2481,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in N.D. Ill. / C.D. Ill. / S.D. Ill..",
       "August 03, 2026: Emergency Motion for $23.8M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0063",
@@ -2635,8 +2690,8 @@
     "ticker": "C68Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 82,
     "peakValuation": "$300.6M",
     "collapseValuation": "$15.6M",
@@ -2647,7 +2702,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Portland, ME (U.S. Bankruptcy Court D. Maine)",
     "ceoAtFailure": "Chief Restructuring Officer #68",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Maine Case #26-10068",
     "summary": "Active Chapter 11 filing in Portland, ME with $130.3M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -2665,7 +2720,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D. Maine.",
       "August 09, 2026: Emergency Motion for $26.1M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0069",
@@ -2869,8 +2929,8 @@
     "ticker": "C74Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 88,
     "peakValuation": "$325.8M",
     "collapseValuation": "$17.0M",
@@ -2881,7 +2941,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "St. Louis, MO (U.S. Bankruptcy Court E.D. Mo. / W.D. Mo.)",
     "ceoAtFailure": "Chief Restructuring Officer #74",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court E.D. Mo. / W.D. Mo. Case #26-10074",
     "summary": "Active Chapter 11 filing in St. Louis, MO with $141.4M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -2899,7 +2959,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in E.D. Mo. / W.D. Mo..",
       "August 03, 2026: Emergency Motion for $28.3M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0075",
@@ -3103,8 +3168,8 @@
     "ticker": "C80Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 94,
     "peakValuation": "$351.0M",
     "collapseValuation": "$18.3M",
@@ -3115,7 +3180,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Albuquerque, NM (U.S. Bankruptcy Court D.N.M.)",
     "ceoAtFailure": "Chief Restructuring Officer #80",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D.N.M. Case #26-10080",
     "summary": "Active Chapter 11 filing in Albuquerque, NM with $152.5M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -3133,7 +3198,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D.N.M..",
       "August 09, 2026: Emergency Motion for $30.5M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0081",
@@ -3337,8 +3407,8 @@
     "ticker": "C86Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 83,
     "peakValuation": "$376.2M",
     "collapseValuation": "$19.6M",
@@ -3349,7 +3419,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Portland, OR (U.S. Bankruptcy Court D. Ore.)",
     "ceoAtFailure": "Chief Restructuring Officer #86",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Ore. Case #26-10086",
     "summary": "Active Chapter 11 filing in Portland, OR with $163.6M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -3373,7 +3443,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0086",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0087",
@@ -3577,8 +3652,8 @@
     "ticker": "C92Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 89,
     "peakValuation": "$401.4M",
     "collapseValuation": "$21.0M",
@@ -3589,7 +3664,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Houston, TX (U.S. Bankruptcy Court S.D. Tex. / N.D. Tex. / W.D. Tex. / E.D. Tex.)",
     "ceoAtFailure": "Chief Restructuring Officer #92",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court S.D. Tex. / N.D. Tex. / W.D. Tex. / E.D. Tex. Case #26-10092",
     "summary": "Active Chapter 11 filing in Houston, TX with $174.7M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -3607,7 +3682,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in S.D. Tex. / N.D. Tex. / W.D. Tex. / E.D. Tex..",
       "August 09, 2026: Emergency Motion for $34.9M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0093",
@@ -3811,8 +3891,8 @@
     "ticker": "C98Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 95,
     "peakValuation": "$426.6M",
     "collapseValuation": "$22.3M",
@@ -3823,7 +3903,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Milwaukee, WI (U.S. Bankruptcy Court E.D. Wis. / W.D. Wis.)",
     "ceoAtFailure": "Chief Restructuring Officer #98",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court E.D. Wis. / W.D. Wis. Case #26-10098",
     "summary": "Active Chapter 11 filing in Milwaukee, WI with $185.8M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -3841,7 +3921,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in E.D. Wis. / W.D. Wis..",
       "August 03, 2026: Emergency Motion for $37.2M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0099",
@@ -4045,8 +4130,8 @@
     "ticker": "C104Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 84,
     "peakValuation": "$451.8M",
     "collapseValuation": "$23.6M",
@@ -4057,7 +4142,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Los Angeles, CA (U.S. Bankruptcy Court C.D. Cal. / N.D. Cal. / S.D. Cal. / E.D. Cal.)",
     "ceoAtFailure": "Chief Restructuring Officer #104",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court C.D. Cal. / N.D. Cal. / S.D. Cal. / E.D. Cal. Case #26-10104",
     "summary": "Active Chapter 11 filing in Los Angeles, CA with $196.9M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -4075,7 +4160,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in C.D. Cal. / N.D. Cal. / S.D. Cal. / E.D. Cal..",
       "August 09, 2026: Emergency Motion for $39.4M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0105",
@@ -4279,8 +4369,8 @@
     "ticker": "C110Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 90,
     "peakValuation": "$477.0M",
     "collapseValuation": "$25.0M",
@@ -4291,7 +4381,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Honolulu, HI (U.S. Bankruptcy Court D. Hawaii)",
     "ceoAtFailure": "Chief Restructuring Officer #110",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Hawaii Case #26-10110",
     "summary": "Active Chapter 11 filing in Honolulu, HI with $208.0M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -4309,7 +4399,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Hawaii.",
       "August 03, 2026: Emergency Motion for $41.6M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0111",
@@ -4513,8 +4608,8 @@
     "ticker": "C116Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 96,
     "peakValuation": "$502.2M",
     "collapseValuation": "$26.3M",
@@ -4525,7 +4620,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Louisville, KY (U.S. Bankruptcy Court E.D. Ky. / W.D. Ky.)",
     "ceoAtFailure": "Chief Restructuring Officer #116",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court E.D. Ky. / W.D. Ky. Case #26-10116",
     "summary": "Active Chapter 11 filing in Louisville, KY with $219.1M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -4549,7 +4644,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0116",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0117",
@@ -4753,8 +4853,8 @@
     "ticker": "C122Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 85,
     "peakValuation": "$527.4M",
     "collapseValuation": "$27.6M",
@@ -4765,7 +4865,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Minneapolis, MN (U.S. Bankruptcy Court D. Minn.)",
     "ceoAtFailure": "Chief Restructuring Officer #122",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Minn. Case #26-10122",
     "summary": "Active Chapter 11 filing in Minneapolis, MN with $230.2M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -4783,7 +4883,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Minn..",
       "August 03, 2026: Emergency Motion for $46.0M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0123",
@@ -4987,8 +5092,8 @@
     "ticker": "C128Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 91,
     "peakValuation": "$552.6M",
     "collapseValuation": "$29.0M",
@@ -4999,7 +5104,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Manchester, NH (U.S. Bankruptcy Court D.N.H.)",
     "ceoAtFailure": "Chief Restructuring Officer #128",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D.N.H. Case #26-10128",
     "summary": "Active Chapter 11 filing in Manchester, NH with $241.3M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -5017,7 +5122,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D.N.H..",
       "August 09, 2026: Emergency Motion for $48.3M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0129",
@@ -5221,8 +5331,8 @@
     "ticker": "C134Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 97,
     "peakValuation": "$577.8M",
     "collapseValuation": "$30.3M",
@@ -5233,7 +5343,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Cincinnati, OH (U.S. Bankruptcy Court N.D. Ohio / S.D. Ohio)",
     "ceoAtFailure": "Chief Restructuring Officer #134",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court N.D. Ohio / S.D. Ohio Case #26-10134",
     "summary": "Active Chapter 11 filing in Cincinnati, OH with $252.4M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -5251,7 +5361,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in N.D. Ohio / S.D. Ohio.",
       "August 03, 2026: Emergency Motion for $50.5M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0135",
@@ -5455,8 +5570,8 @@
     "ticker": "C140Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 86,
     "peakValuation": "$603.0M",
     "collapseValuation": "$31.6M",
@@ -5467,7 +5582,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Sioux Falls, SD (U.S. Bankruptcy Court D.S.D.)",
     "ceoAtFailure": "Chief Restructuring Officer #140",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D.S.D. Case #26-10140",
     "summary": "Active Chapter 11 filing in Sioux Falls, SD with $263.5M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -5485,7 +5600,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D.S.D..",
       "August 09, 2026: Emergency Motion for $52.7M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0141",
@@ -5689,8 +5809,8 @@
     "ticker": "C146Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 92,
     "peakValuation": "$628.2M",
     "collapseValuation": "$33.0M",
@@ -5701,7 +5821,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Seattle, WA (U.S. Bankruptcy Court W.D. Wash. / E.D. Wash.)",
     "ceoAtFailure": "Chief Restructuring Officer #146",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court W.D. Wash. / E.D. Wash. Case #26-10146",
     "summary": "Active Chapter 11 filing in Seattle, WA with $274.6M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -5725,7 +5845,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0146",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0147",
@@ -5929,8 +6054,8 @@
     "ticker": "C152Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 98,
     "peakValuation": "$653.4M",
     "collapseValuation": "$34.3M",
@@ -5941,7 +6066,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Phoenix, AZ (U.S. Bankruptcy Court D. Ariz.)",
     "ceoAtFailure": "Chief Restructuring Officer #152",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Ariz. Case #26-10152",
     "summary": "Active Chapter 11 filing in Phoenix, AZ with $285.7M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -5959,7 +6084,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D. Ariz..",
       "August 09, 2026: Emergency Motion for $57.1M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0153",
@@ -6163,8 +6293,8 @@
     "ticker": "C158Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 87,
     "peakValuation": "$678.6M",
     "collapseValuation": "$35.6M",
@@ -6175,7 +6305,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Tampa, FL (U.S. Bankruptcy Court S.D. Fla. / M.D. Fla. / N.D. Fla.)",
     "ceoAtFailure": "Chief Restructuring Officer #158",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court S.D. Fla. / M.D. Fla. / N.D. Fla. Case #26-10158",
     "summary": "Active Chapter 11 filing in Tampa, FL with $296.8M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -6193,7 +6323,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in S.D. Fla. / M.D. Fla. / N.D. Fla..",
       "August 03, 2026: Emergency Motion for $59.4M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0159",
@@ -6397,8 +6532,8 @@
     "ticker": "C164Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 93,
     "peakValuation": "$703.8M",
     "collapseValuation": "$36.9M",
@@ -6409,7 +6544,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Des Moines, IA (U.S. Bankruptcy Court N.D. Iowa / S.D. Iowa)",
     "ceoAtFailure": "Chief Restructuring Officer #164",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court N.D. Iowa / S.D. Iowa Case #26-10164",
     "summary": "Active Chapter 11 filing in Des Moines, IA with $307.9M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -6427,7 +6562,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in N.D. Iowa / S.D. Iowa.",
       "August 09, 2026: Emergency Motion for $61.6M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0165",
@@ -6631,8 +6771,8 @@
     "ticker": "C170Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 82,
     "peakValuation": "$729.0M",
     "collapseValuation": "$38.3M",
@@ -6643,7 +6783,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Boston, MA (U.S. Bankruptcy Court D. Mass.)",
     "ceoAtFailure": "Chief Restructuring Officer #170",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Mass. Case #26-10170",
     "summary": "Active Chapter 11 filing in Boston, MA with $319.0M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -6661,7 +6801,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Mass..",
       "August 03, 2026: Emergency Motion for $63.8M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0171",
@@ -6865,8 +7010,8 @@
     "ticker": "C176Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 88,
     "peakValuation": "$754.2M",
     "collapseValuation": "$39.6M",
@@ -6877,7 +7022,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Omaha, NE (U.S. Bankruptcy Court D. Neb.)",
     "ceoAtFailure": "Chief Restructuring Officer #176",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Neb. Case #26-10176",
     "summary": "Active Chapter 11 filing in Omaha, NE with $330.1M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -6901,7 +7046,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0176",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0177",
@@ -7105,8 +7255,8 @@
     "ticker": "C182Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 94,
     "peakValuation": "$779.4M",
     "collapseValuation": "$40.9M",
@@ -7117,7 +7267,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Charlotte, NC (U.S. Bankruptcy Court W.D.N.C. / M.D.N.C. / E.D.N.C.)",
     "ceoAtFailure": "Chief Restructuring Officer #182",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court W.D.N.C. / M.D.N.C. / E.D.N.C. Case #26-10182",
     "summary": "Active Chapter 11 filing in Charlotte, NC with $341.2M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -7135,7 +7285,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in W.D.N.C. / M.D.N.C. / E.D.N.C..",
       "August 03, 2026: Emergency Motion for $68.2M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0183",
@@ -7339,8 +7494,8 @@
     "ticker": "C188Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 83,
     "peakValuation": "$804.6M",
     "collapseValuation": "$42.3M",
@@ -7351,7 +7506,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Providence, RI (U.S. Bankruptcy Court D.R.I.)",
     "ceoAtFailure": "Chief Restructuring Officer #188",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D.R.I. Case #26-10188",
     "summary": "Active Chapter 11 filing in Providence, RI with $352.3M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -7369,7 +7524,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D.R.I..",
       "August 09, 2026: Emergency Motion for $70.5M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0189",
@@ -7573,8 +7733,8 @@
     "ticker": "C194Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 89,
     "peakValuation": "$829.8M",
     "collapseValuation": "$43.6M",
@@ -7585,7 +7745,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Burlington, VT (U.S. Bankruptcy Court D. Vt.)",
     "ceoAtFailure": "Chief Restructuring Officer #194",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Vt. Case #26-10194",
     "summary": "Active Chapter 11 filing in Burlington, VT with $363.4M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -7603,7 +7763,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Vt..",
       "August 03, 2026: Emergency Motion for $72.7M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0195",
@@ -7807,8 +7972,8 @@
     "ticker": "C200Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 95,
     "peakValuation": "$855.0M",
     "collapseValuation": "$44.9M",
@@ -7819,7 +7984,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Mobile, AL (U.S. Bankruptcy Court N.D. Ala. / M.D. Ala. / S.D. Ala.)",
     "ceoAtFailure": "Chief Restructuring Officer #200",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court N.D. Ala. / M.D. Ala. / S.D. Ala. Case #26-10200",
     "summary": "Active Chapter 11 filing in Mobile, AL with $374.5M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -7837,7 +8002,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in N.D. Ala. / M.D. Ala. / S.D. Ala..",
       "August 09, 2026: Emergency Motion for $74.9M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0201",
@@ -8041,8 +8211,8 @@
     "ticker": "C206Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 84,
     "peakValuation": "$880.2M",
     "collapseValuation": "$46.3M",
@@ -8053,7 +8223,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Bridgeport, CT (U.S. Bankruptcy Court D. Conn.)",
     "ceoAtFailure": "Chief Restructuring Officer #206",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Conn. Case #26-10206",
     "summary": "Active Chapter 11 filing in Bridgeport, CT with $385.6M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -8077,7 +8247,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0206",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0207",
@@ -8281,8 +8456,8 @@
     "ticker": "C212Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 90,
     "peakValuation": "$905.4M",
     "collapseValuation": "$47.6M",
@@ -8293,7 +8468,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Chicago, IL (U.S. Bankruptcy Court N.D. Ill. / C.D. Ill. / S.D. Ill.)",
     "ceoAtFailure": "Chief Restructuring Officer #212",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court N.D. Ill. / C.D. Ill. / S.D. Ill. Case #26-10212",
     "summary": "Active Chapter 11 filing in Chicago, IL with $396.7M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -8311,7 +8486,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in N.D. Ill. / C.D. Ill. / S.D. Ill..",
       "August 09, 2026: Emergency Motion for $79.3M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0213",
@@ -8515,8 +8695,8 @@
     "ticker": "C218Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 96,
     "peakValuation": "$930.6M",
     "collapseValuation": "$48.9M",
@@ -8527,7 +8707,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Portland, ME (U.S. Bankruptcy Court D. Maine)",
     "ceoAtFailure": "Chief Restructuring Officer #218",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Maine Case #26-10218",
     "summary": "Active Chapter 11 filing in Portland, ME with $407.8M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -8545,7 +8725,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Maine.",
       "August 03, 2026: Emergency Motion for $81.6M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0219",
@@ -8749,8 +8934,8 @@
     "ticker": "C224Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 85,
     "peakValuation": "$955.8M",
     "collapseValuation": "$50.3M",
@@ -8761,7 +8946,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "St. Louis, MO (U.S. Bankruptcy Court E.D. Mo. / W.D. Mo.)",
     "ceoAtFailure": "Chief Restructuring Officer #224",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court E.D. Mo. / W.D. Mo. Case #26-10224",
     "summary": "Active Chapter 11 filing in St. Louis, MO with $418.9M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -8779,7 +8964,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in E.D. Mo. / W.D. Mo..",
       "August 09, 2026: Emergency Motion for $83.8M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0225",
@@ -8983,8 +9173,8 @@
     "ticker": "C230Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 91,
     "peakValuation": "$981.0M",
     "collapseValuation": "$51.6M",
@@ -8995,7 +9185,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Albuquerque, NM (U.S. Bankruptcy Court D.N.M.)",
     "ceoAtFailure": "Chief Restructuring Officer #230",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D.N.M. Case #26-10230",
     "summary": "Active Chapter 11 filing in Albuquerque, NM with $430.0M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -9013,7 +9203,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D.N.M..",
       "August 03, 2026: Emergency Motion for $86.0M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0231",
@@ -9217,8 +9412,8 @@
     "ticker": "C236Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 97,
     "peakValuation": "$1006.2M",
     "collapseValuation": "$52.9M",
@@ -9229,7 +9424,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Portland, OR (U.S. Bankruptcy Court D. Ore.)",
     "ceoAtFailure": "Chief Restructuring Officer #236",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Ore. Case #26-10236",
     "summary": "Active Chapter 11 filing in Portland, OR with $441.1M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -9253,7 +9448,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0236",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0237",
@@ -9457,8 +9657,8 @@
     "ticker": "C242Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 86,
     "peakValuation": "$1031.4M",
     "collapseValuation": "$54.3M",
@@ -9469,7 +9669,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Austin, TX (U.S. Bankruptcy Court S.D. Tex. / N.D. Tex. / W.D. Tex. / E.D. Tex.)",
     "ceoAtFailure": "Chief Restructuring Officer #242",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court S.D. Tex. / N.D. Tex. / W.D. Tex. / E.D. Tex. Case #26-10242",
     "summary": "Active Chapter 11 filing in Austin, TX with $452.2M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -9487,7 +9687,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in S.D. Tex. / N.D. Tex. / W.D. Tex. / E.D. Tex..",
       "August 03, 2026: Emergency Motion for $90.4M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0243",
@@ -9691,8 +9896,8 @@
     "ticker": "C248Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 92,
     "peakValuation": "$1056.6M",
     "collapseValuation": "$55.6M",
@@ -9703,7 +9908,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Milwaukee, WI (U.S. Bankruptcy Court E.D. Wis. / W.D. Wis.)",
     "ceoAtFailure": "Chief Restructuring Officer #248",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court E.D. Wis. / W.D. Wis. Case #26-10248",
     "summary": "Active Chapter 11 filing in Milwaukee, WI with $463.3M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -9721,7 +9926,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in E.D. Wis. / W.D. Wis..",
       "August 09, 2026: Emergency Motion for $92.7M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0249",
@@ -9925,8 +10135,8 @@
     "ticker": "C254Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 98,
     "peakValuation": "$1081.8M",
     "collapseValuation": "$56.9M",
@@ -9937,7 +10147,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "San Diego, CA (U.S. Bankruptcy Court C.D. Cal. / N.D. Cal. / S.D. Cal. / E.D. Cal.)",
     "ceoAtFailure": "Chief Restructuring Officer #254",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court C.D. Cal. / N.D. Cal. / S.D. Cal. / E.D. Cal. Case #26-10254",
     "summary": "Active Chapter 11 filing in San Diego, CA with $474.4M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -9955,7 +10165,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in C.D. Cal. / N.D. Cal. / S.D. Cal. / E.D. Cal..",
       "August 03, 2026: Emergency Motion for $94.9M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0255",
@@ -10159,8 +10374,8 @@
     "ticker": "C260Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 87,
     "peakValuation": "$1107.0M",
     "collapseValuation": "$58.3M",
@@ -10171,7 +10386,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Honolulu, HI (U.S. Bankruptcy Court D. Hawaii)",
     "ceoAtFailure": "Chief Restructuring Officer #260",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Hawaii Case #26-10260",
     "summary": "Active Chapter 11 filing in Honolulu, HI with $485.5M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -10189,7 +10404,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D. Hawaii.",
       "August 09, 2026: Emergency Motion for $97.1M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0261",
@@ -10393,8 +10613,8 @@
     "ticker": "C266Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 93,
     "peakValuation": "$1132.2M",
     "collapseValuation": "$59.6M",
@@ -10405,7 +10625,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Louisville, KY (U.S. Bankruptcy Court E.D. Ky. / W.D. Ky.)",
     "ceoAtFailure": "Chief Restructuring Officer #266",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court E.D. Ky. / W.D. Ky. Case #26-10266",
     "summary": "Active Chapter 11 filing in Louisville, KY with $496.6M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -10429,7 +10649,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0266",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0267",
@@ -10633,8 +10858,8 @@
     "ticker": "C272Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 82,
     "peakValuation": "$1157.4M",
     "collapseValuation": "$60.9M",
@@ -10645,7 +10870,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Minneapolis, MN (U.S. Bankruptcy Court D. Minn.)",
     "ceoAtFailure": "Chief Restructuring Officer #272",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Minn. Case #26-10272",
     "summary": "Active Chapter 11 filing in Minneapolis, MN with $507.7M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -10663,7 +10888,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D. Minn..",
       "August 09, 2026: Emergency Motion for $101.5M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0273",
@@ -10867,8 +11097,8 @@
     "ticker": "C278Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 88,
     "peakValuation": "$1182.6M",
     "collapseValuation": "$62.3M",
@@ -10879,7 +11109,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Manchester, NH (U.S. Bankruptcy Court D.N.H.)",
     "ceoAtFailure": "Chief Restructuring Officer #278",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D.N.H. Case #26-10278",
     "summary": "Active Chapter 11 filing in Manchester, NH with $518.8M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -10897,7 +11127,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D.N.H..",
       "August 03, 2026: Emergency Motion for $103.8M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0279",
@@ -11101,8 +11336,8 @@
     "ticker": "C284Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 94,
     "peakValuation": "$1207.8M",
     "collapseValuation": "$63.6M",
@@ -11113,7 +11348,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Cincinnati, OH (U.S. Bankruptcy Court N.D. Ohio / S.D. Ohio)",
     "ceoAtFailure": "Chief Restructuring Officer #284",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court N.D. Ohio / S.D. Ohio Case #26-10284",
     "summary": "Active Chapter 11 filing in Cincinnati, OH with $529.9M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -11131,7 +11366,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in N.D. Ohio / S.D. Ohio.",
       "August 09, 2026: Emergency Motion for $106.0M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0285",
@@ -11335,8 +11575,8 @@
     "ticker": "C290Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 83,
     "peakValuation": "$1233.0M",
     "collapseValuation": "$64.9M",
@@ -11347,7 +11587,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Sioux Falls, SD (U.S. Bankruptcy Court D.S.D.)",
     "ceoAtFailure": "Chief Restructuring Officer #290",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D.S.D. Case #26-10290",
     "summary": "Active Chapter 11 filing in Sioux Falls, SD with $541.0M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -11365,7 +11605,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D.S.D..",
       "August 03, 2026: Emergency Motion for $108.2M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0291",
@@ -11569,8 +11814,8 @@
     "ticker": "C296Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 89,
     "peakValuation": "$1258.2M",
     "collapseValuation": "$66.3M",
@@ -11581,7 +11826,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Seattle, WA (U.S. Bankruptcy Court W.D. Wash. / E.D. Wash.)",
     "ceoAtFailure": "Chief Restructuring Officer #296",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court W.D. Wash. / E.D. Wash. Case #26-10296",
     "summary": "Active Chapter 11 filing in Seattle, WA with $552.1M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -11605,7 +11850,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0296",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0297",
@@ -11809,8 +12059,8 @@
     "ticker": "C302Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 95,
     "peakValuation": "$1283.4M",
     "collapseValuation": "$67.6M",
@@ -11821,7 +12071,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Phoenix, AZ (U.S. Bankruptcy Court D. Ariz.)",
     "ceoAtFailure": "Chief Restructuring Officer #302",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Ariz. Case #26-10302",
     "summary": "Active Chapter 11 filing in Phoenix, AZ with $563.2M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -11839,7 +12089,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Ariz..",
       "August 03, 2026: Emergency Motion for $112.6M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0303",
@@ -12043,8 +12298,8 @@
     "ticker": "C308Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 84,
     "peakValuation": "$1308.6M",
     "collapseValuation": "$68.9M",
@@ -12055,7 +12310,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Miami, FL (U.S. Bankruptcy Court S.D. Fla. / M.D. Fla. / N.D. Fla.)",
     "ceoAtFailure": "Chief Restructuring Officer #308",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court S.D. Fla. / M.D. Fla. / N.D. Fla. Case #26-10308",
     "summary": "Active Chapter 11 filing in Miami, FL with $574.3M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -12073,7 +12328,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in S.D. Fla. / M.D. Fla. / N.D. Fla..",
       "August 09, 2026: Emergency Motion for $114.9M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0309",
@@ -12277,8 +12537,8 @@
     "ticker": "C314Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 90,
     "peakValuation": "$1333.8M",
     "collapseValuation": "$70.2M",
@@ -12289,7 +12549,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Des Moines, IA (U.S. Bankruptcy Court N.D. Iowa / S.D. Iowa)",
     "ceoAtFailure": "Chief Restructuring Officer #314",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court N.D. Iowa / S.D. Iowa Case #26-10314",
     "summary": "Active Chapter 11 filing in Des Moines, IA with $585.4M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -12307,7 +12567,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in N.D. Iowa / S.D. Iowa.",
       "August 03, 2026: Emergency Motion for $117.1M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0315",
@@ -12511,8 +12776,8 @@
     "ticker": "C320Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 96,
     "peakValuation": "$1359.0M",
     "collapseValuation": "$71.6M",
@@ -12523,7 +12788,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Boston, MA (U.S. Bankruptcy Court D. Mass.)",
     "ceoAtFailure": "Chief Restructuring Officer #320",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Mass. Case #26-10320",
     "summary": "Active Chapter 11 filing in Boston, MA with $596.5M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -12541,7 +12806,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D. Mass..",
       "August 09, 2026: Emergency Motion for $119.3M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0321",
@@ -12745,8 +13015,8 @@
     "ticker": "C326Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 85,
     "peakValuation": "$1384.2M",
     "collapseValuation": "$72.9M",
@@ -12757,7 +13027,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Omaha, NE (U.S. Bankruptcy Court D. Neb.)",
     "ceoAtFailure": "Chief Restructuring Officer #326",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Neb. Case #26-10326",
     "summary": "Active Chapter 11 filing in Omaha, NE with $607.6M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -12781,7 +13051,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0326",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0327",
@@ -12985,8 +13260,8 @@
     "ticker": "C332Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 91,
     "peakValuation": "$1409.4M",
     "collapseValuation": "$74.2M",
@@ -12997,7 +13272,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Charlotte, NC (U.S. Bankruptcy Court W.D.N.C. / M.D.N.C. / E.D.N.C.)",
     "ceoAtFailure": "Chief Restructuring Officer #332",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court W.D.N.C. / M.D.N.C. / E.D.N.C. Case #26-10332",
     "summary": "Active Chapter 11 filing in Charlotte, NC with $618.7M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -13015,7 +13290,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in W.D.N.C. / M.D.N.C. / E.D.N.C..",
       "August 09, 2026: Emergency Motion for $123.7M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0333",
@@ -13219,8 +13499,8 @@
     "ticker": "C338Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 97,
     "peakValuation": "$1434.6M",
     "collapseValuation": "$75.6M",
@@ -13231,7 +13511,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Providence, RI (U.S. Bankruptcy Court D.R.I.)",
     "ceoAtFailure": "Chief Restructuring Officer #338",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D.R.I. Case #26-10338",
     "summary": "Active Chapter 11 filing in Providence, RI with $629.8M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -13249,7 +13529,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D.R.I..",
       "August 03, 2026: Emergency Motion for $126.0M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0339",
@@ -13453,8 +13738,8 @@
     "ticker": "C344Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 86,
     "peakValuation": "$1459.8M",
     "collapseValuation": "$76.9M",
@@ -13465,7 +13750,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Burlington, VT (U.S. Bankruptcy Court D. Vt.)",
     "ceoAtFailure": "Chief Restructuring Officer #344",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Vt. Case #26-10344",
     "summary": "Active Chapter 11 filing in Burlington, VT with $640.9M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -13483,7 +13768,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D. Vt..",
       "August 09, 2026: Emergency Motion for $128.2M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0345",
@@ -13687,8 +13977,8 @@
     "ticker": "C350Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 92,
     "peakValuation": "$1485.0M",
     "collapseValuation": "$78.2M",
@@ -13699,7 +13989,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Mobile, AL (U.S. Bankruptcy Court N.D. Ala. / M.D. Ala. / S.D. Ala.)",
     "ceoAtFailure": "Chief Restructuring Officer #350",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court N.D. Ala. / M.D. Ala. / S.D. Ala. Case #26-10350",
     "summary": "Active Chapter 11 filing in Mobile, AL with $652.0M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -13717,7 +14007,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in N.D. Ala. / M.D. Ala. / S.D. Ala..",
       "August 03, 2026: Emergency Motion for $130.4M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0351",
@@ -13921,8 +14216,8 @@
     "ticker": "C356Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 98,
     "peakValuation": "$1510.2M",
     "collapseValuation": "$79.6M",
@@ -13933,7 +14228,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Bridgeport, CT (U.S. Bankruptcy Court D. Conn.)",
     "ceoAtFailure": "Chief Restructuring Officer #356",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Conn. Case #26-10356",
     "summary": "Active Chapter 11 filing in Bridgeport, CT with $663.1M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -13957,7 +14252,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0356",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0357",
@@ -14161,8 +14461,8 @@
     "ticker": "C362Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 87,
     "peakValuation": "$1535.4M",
     "collapseValuation": "$80.9M",
@@ -14173,7 +14473,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Chicago, IL (U.S. Bankruptcy Court N.D. Ill. / C.D. Ill. / S.D. Ill.)",
     "ceoAtFailure": "Chief Restructuring Officer #362",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court N.D. Ill. / C.D. Ill. / S.D. Ill. Case #26-10362",
     "summary": "Active Chapter 11 filing in Chicago, IL with $674.2M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -14191,7 +14491,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in N.D. Ill. / C.D. Ill. / S.D. Ill..",
       "August 03, 2026: Emergency Motion for $134.8M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0363",
@@ -14395,8 +14700,8 @@
     "ticker": "C368Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 93,
     "peakValuation": "$1560.6M",
     "collapseValuation": "$82.2M",
@@ -14407,7 +14712,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Portland, ME (U.S. Bankruptcy Court D. Maine)",
     "ceoAtFailure": "Chief Restructuring Officer #368",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Maine Case #26-10368",
     "summary": "Active Chapter 11 filing in Portland, ME with $685.3M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -14425,7 +14730,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D. Maine.",
       "August 09, 2026: Emergency Motion for $137.1M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0369",
@@ -14629,8 +14939,8 @@
     "ticker": "C374Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 82,
     "peakValuation": "$1585.8M",
     "collapseValuation": "$83.6M",
@@ -14641,7 +14951,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "St. Louis, MO (U.S. Bankruptcy Court E.D. Mo. / W.D. Mo.)",
     "ceoAtFailure": "Chief Restructuring Officer #374",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court E.D. Mo. / W.D. Mo. Case #26-10374",
     "summary": "Active Chapter 11 filing in St. Louis, MO with $696.4M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -14659,7 +14969,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in E.D. Mo. / W.D. Mo..",
       "August 03, 2026: Emergency Motion for $139.3M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0375",
@@ -14863,8 +15178,8 @@
     "ticker": "C380Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 88,
     "peakValuation": "$1611.0M",
     "collapseValuation": "$84.9M",
@@ -14875,7 +15190,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Albuquerque, NM (U.S. Bankruptcy Court D.N.M.)",
     "ceoAtFailure": "Chief Restructuring Officer #380",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D.N.M. Case #26-10380",
     "summary": "Active Chapter 11 filing in Albuquerque, NM with $707.5M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -14893,7 +15208,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D.N.M..",
       "August 09, 2026: Emergency Motion for $141.5M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0381",
@@ -15097,8 +15417,8 @@
     "ticker": "C386Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 94,
     "peakValuation": "$1636.2M",
     "collapseValuation": "$86.2M",
@@ -15109,7 +15429,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Portland, OR (U.S. Bankruptcy Court D. Ore.)",
     "ceoAtFailure": "Chief Restructuring Officer #386",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Ore. Case #26-10386",
     "summary": "Active Chapter 11 filing in Portland, OR with $718.6M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -15133,7 +15453,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0386",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0387",
@@ -15337,8 +15662,8 @@
     "ticker": "C392Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 83,
     "peakValuation": "$1661.4M",
     "collapseValuation": "$87.6M",
@@ -15349,7 +15674,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Houston, TX (U.S. Bankruptcy Court S.D. Tex. / N.D. Tex. / W.D. Tex. / E.D. Tex.)",
     "ceoAtFailure": "Chief Restructuring Officer #392",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court S.D. Tex. / N.D. Tex. / W.D. Tex. / E.D. Tex. Case #26-10392",
     "summary": "Active Chapter 11 filing in Houston, TX with $729.7M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -15367,7 +15692,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in S.D. Tex. / N.D. Tex. / W.D. Tex. / E.D. Tex..",
       "August 09, 2026: Emergency Motion for $145.9M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0393",
@@ -15571,8 +15901,8 @@
     "ticker": "C398Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 89,
     "peakValuation": "$1686.6M",
     "collapseValuation": "$88.9M",
@@ -15583,7 +15913,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Milwaukee, WI (U.S. Bankruptcy Court E.D. Wis. / W.D. Wis.)",
     "ceoAtFailure": "Chief Restructuring Officer #398",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court E.D. Wis. / W.D. Wis. Case #26-10398",
     "summary": "Active Chapter 11 filing in Milwaukee, WI with $740.8M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -15601,7 +15931,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in E.D. Wis. / W.D. Wis..",
       "August 03, 2026: Emergency Motion for $148.2M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0399",
@@ -15805,8 +16140,8 @@
     "ticker": "C404Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 95,
     "peakValuation": "$1711.8M",
     "collapseValuation": "$90.2M",
@@ -15817,7 +16152,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Los Angeles, CA (U.S. Bankruptcy Court C.D. Cal. / N.D. Cal. / S.D. Cal. / E.D. Cal.)",
     "ceoAtFailure": "Chief Restructuring Officer #404",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court C.D. Cal. / N.D. Cal. / S.D. Cal. / E.D. Cal. Case #26-10404",
     "summary": "Active Chapter 11 filing in Los Angeles, CA with $751.9M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -15835,7 +16170,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in C.D. Cal. / N.D. Cal. / S.D. Cal. / E.D. Cal..",
       "August 09, 2026: Emergency Motion for $150.4M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0405",
@@ -16039,8 +16379,8 @@
     "ticker": "C410Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 84,
     "peakValuation": "$1737.0M",
     "collapseValuation": "$91.6M",
@@ -16051,7 +16391,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Honolulu, HI (U.S. Bankruptcy Court D. Hawaii)",
     "ceoAtFailure": "Chief Restructuring Officer #410",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Hawaii Case #26-10410",
     "summary": "Active Chapter 11 filing in Honolulu, HI with $763.0M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -16069,7 +16409,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Hawaii.",
       "August 03, 2026: Emergency Motion for $152.6M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0411",
@@ -16273,8 +16618,8 @@
     "ticker": "C416Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 90,
     "peakValuation": "$1762.2M",
     "collapseValuation": "$92.9M",
@@ -16285,7 +16630,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Louisville, KY (U.S. Bankruptcy Court E.D. Ky. / W.D. Ky.)",
     "ceoAtFailure": "Chief Restructuring Officer #416",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court E.D. Ky. / W.D. Ky. Case #26-10416",
     "summary": "Active Chapter 11 filing in Louisville, KY with $774.1M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -16309,7 +16654,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0416",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0417",
@@ -16513,8 +16863,8 @@
     "ticker": "C422Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 96,
     "peakValuation": "$1787.4M",
     "collapseValuation": "$94.2M",
@@ -16525,7 +16875,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Minneapolis, MN (U.S. Bankruptcy Court D. Minn.)",
     "ceoAtFailure": "Chief Restructuring Officer #422",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Minn. Case #26-10422",
     "summary": "Active Chapter 11 filing in Minneapolis, MN with $785.2M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -16543,7 +16893,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Minn..",
       "August 03, 2026: Emergency Motion for $157.0M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0423",
@@ -16747,8 +17102,8 @@
     "ticker": "C428Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 85,
     "peakValuation": "$1812.6M",
     "collapseValuation": "$95.6M",
@@ -16759,7 +17114,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Manchester, NH (U.S. Bankruptcy Court D.N.H.)",
     "ceoAtFailure": "Chief Restructuring Officer #428",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D.N.H. Case #26-10428",
     "summary": "Active Chapter 11 filing in Manchester, NH with $796.3M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -16777,7 +17132,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D.N.H..",
       "August 09, 2026: Emergency Motion for $159.3M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0429",
@@ -16981,8 +17341,8 @@
     "ticker": "C434Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 91,
     "peakValuation": "$1837.8M",
     "collapseValuation": "$96.9M",
@@ -16993,7 +17353,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Cincinnati, OH (U.S. Bankruptcy Court N.D. Ohio / S.D. Ohio)",
     "ceoAtFailure": "Chief Restructuring Officer #434",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court N.D. Ohio / S.D. Ohio Case #26-10434",
     "summary": "Active Chapter 11 filing in Cincinnati, OH with $807.4M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -17011,7 +17371,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in N.D. Ohio / S.D. Ohio.",
       "August 03, 2026: Emergency Motion for $161.5M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0435",
@@ -17215,8 +17580,8 @@
     "ticker": "C440Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 97,
     "peakValuation": "$1863.0M",
     "collapseValuation": "$98.2M",
@@ -17227,7 +17592,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Sioux Falls, SD (U.S. Bankruptcy Court D.S.D.)",
     "ceoAtFailure": "Chief Restructuring Officer #440",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D.S.D. Case #26-10440",
     "summary": "Active Chapter 11 filing in Sioux Falls, SD with $818.5M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -17245,7 +17610,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D.S.D..",
       "August 09, 2026: Emergency Motion for $163.7M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0441",
@@ -17449,8 +17819,8 @@
     "ticker": "C446Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 86,
     "peakValuation": "$1888.2M",
     "collapseValuation": "$99.6M",
@@ -17461,7 +17831,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Seattle, WA (U.S. Bankruptcy Court W.D. Wash. / E.D. Wash.)",
     "ceoAtFailure": "Chief Restructuring Officer #446",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court W.D. Wash. / E.D. Wash. Case #26-10446",
     "summary": "Active Chapter 11 filing in Seattle, WA with $829.6M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -17485,7 +17855,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0446",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0447",
@@ -17689,8 +18064,8 @@
     "ticker": "C452Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 92,
     "peakValuation": "$1913.4M",
     "collapseValuation": "$100.9M",
@@ -17701,7 +18076,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Phoenix, AZ (U.S. Bankruptcy Court D. Ariz.)",
     "ceoAtFailure": "Chief Restructuring Officer #452",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Ariz. Case #26-10452",
     "summary": "Active Chapter 11 filing in Phoenix, AZ with $840.7M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -17719,7 +18094,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D. Ariz..",
       "August 09, 2026: Emergency Motion for $168.1M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0453",
@@ -17923,8 +18303,8 @@
     "ticker": "C458Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 98,
     "peakValuation": "$1938.6M",
     "collapseValuation": "$102.2M",
@@ -17935,7 +18315,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Tampa, FL (U.S. Bankruptcy Court S.D. Fla. / M.D. Fla. / N.D. Fla.)",
     "ceoAtFailure": "Chief Restructuring Officer #458",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court S.D. Fla. / M.D. Fla. / N.D. Fla. Case #26-10458",
     "summary": "Active Chapter 11 filing in Tampa, FL with $851.8M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -17953,7 +18333,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in S.D. Fla. / M.D. Fla. / N.D. Fla..",
       "August 03, 2026: Emergency Motion for $170.4M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0459",
@@ -18157,8 +18542,8 @@
     "ticker": "C464Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 87,
     "peakValuation": "$1963.8M",
     "collapseValuation": "$103.5M",
@@ -18169,7 +18554,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Des Moines, IA (U.S. Bankruptcy Court N.D. Iowa / S.D. Iowa)",
     "ceoAtFailure": "Chief Restructuring Officer #464",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court N.D. Iowa / S.D. Iowa Case #26-10464",
     "summary": "Active Chapter 11 filing in Des Moines, IA with $862.9M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -18187,7 +18572,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in N.D. Iowa / S.D. Iowa.",
       "August 09, 2026: Emergency Motion for $172.6M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0465",
@@ -18391,8 +18781,8 @@
     "ticker": "C470Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 93,
     "peakValuation": "$1989.0M",
     "collapseValuation": "$104.9M",
@@ -18403,7 +18793,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Boston, MA (U.S. Bankruptcy Court D. Mass.)",
     "ceoAtFailure": "Chief Restructuring Officer #470",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Mass. Case #26-10470",
     "summary": "Active Chapter 11 filing in Boston, MA with $874.0M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -18421,7 +18811,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Mass..",
       "August 03, 2026: Emergency Motion for $174.8M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0471",
@@ -18625,8 +19020,8 @@
     "ticker": "C476Q",
     "sectorId": "logistics",
     "sectorName": "Freight & Logistics",
-    "status": "Chapter 11",
-    "statusBadge": "363-auction",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 82,
     "peakValuation": "$2014.2M",
     "collapseValuation": "$106.2M",
@@ -18637,7 +19032,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Omaha, NE (U.S. Bankruptcy Court D. Neb.)",
     "ceoAtFailure": "Chief Restructuring Officer #476",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Neb. Case #26-10476",
     "summary": "Active Chapter 11 filing in Omaha, NE with $885.1M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -18661,7 +19056,12 @@
     "auctioneer": "CBRE / Hilco Industrial",
     "auctionPortalUrl": "https://pacer.uscourts.gov/dockets/363-auction-corp-live-0476",
     "assetLiquidationType": "SECTION_363_AUCTION",
-    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)"
+    "assetLiquidationBadge": "🔨 Section 363 Asset Auction ($110M Real Estate Floor Bid)",
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0477",
@@ -18865,8 +19265,8 @@
     "ticker": "C482Q",
     "sectorId": "cre",
     "sectorName": "Commercial Real Estate",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 88,
     "peakValuation": "$2039.4M",
     "collapseValuation": "$107.5M",
@@ -18877,7 +19277,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Charlotte, NC (U.S. Bankruptcy Court W.D.N.C. / M.D.N.C. / E.D.N.C.)",
     "ceoAtFailure": "Chief Restructuring Officer #482",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court W.D.N.C. / M.D.N.C. / E.D.N.C. Case #26-10482",
     "summary": "Active Chapter 11 filing in Charlotte, NC with $896.2M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -18895,7 +19295,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in W.D.N.C. / M.D.N.C. / E.D.N.C..",
       "August 03, 2026: Emergency Motion for $179.2M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0483",
@@ -19099,8 +19504,8 @@
     "ticker": "C488Q",
     "sectorId": "energy",
     "sectorName": "Energy & Utilities",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 94,
     "peakValuation": "$2064.6M",
     "collapseValuation": "$108.9M",
@@ -19111,7 +19516,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Providence, RI (U.S. Bankruptcy Court D.R.I.)",
     "ceoAtFailure": "Chief Restructuring Officer #488",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D.R.I. Case #26-10488",
     "summary": "Active Chapter 11 filing in Providence, RI with $907.3M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -19129,7 +19534,12 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in D.R.I..",
       "August 09, 2026: Emergency Motion for $181.5M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0489",
@@ -19333,8 +19743,8 @@
     "ticker": "C494Q",
     "sectorId": "manufacturing",
     "sectorName": "Industrial & Manufacturing",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 83,
     "peakValuation": "$2089.8M",
     "collapseValuation": "$110.2M",
@@ -19345,7 +19755,7 @@
     "officialFilingDate": "August 03, 2026",
     "locationJurisdiction": "Burlington, VT (U.S. Bankruptcy Court D. Vt.)",
     "ceoAtFailure": "Chief Restructuring Officer #494",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "1st Lien Credit Facility Default & Term Sheet Expiration",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court D. Vt. Case #26-10494",
     "summary": "Active Chapter 11 filing in Burlington, VT with $918.4M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -19363,7 +19773,12 @@
     "timeline": [
       "August 03, 2026: Voluntary Petition Filed in D. Vt..",
       "August 03, 2026: Emergency Motion for $183.7M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "REFINANCING_DEFAULT",
+    "signalType": "🏢 1st Lien Credit Facility Default & Forbearance Expiration",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 🏢 1st Lien Credit Facility Default & Forbearance Expiration monitored by AI ingestion engine 60 days prior to expected petition filing."
   },
   {
     "id": "corp-live-0495",
@@ -19567,8 +19982,8 @@
     "ticker": "C500Q",
     "sectorId": "casual-dining",
     "sectorName": "Casual Dining",
-    "status": "Chapter 11",
-    "statusBadge": "chapter-11",
+    "status": "PRE_PETITION_WARN",
+    "statusBadge": "🟨 PRE-JUDICIAL WARN NOTICE",
     "distressScore": 89,
     "peakValuation": "$2115.0M",
     "collapseValuation": "$111.5M",
@@ -19579,7 +19994,7 @@
     "officialFilingDate": "August 09, 2026",
     "locationJurisdiction": "Mobile, AL (U.S. Bankruptcy Court N.D. Ala. / M.D. Ala. / S.D. Ala.)",
     "ceoAtFailure": "Chief Restructuring Officer #500",
-    "primaryCause": "Senior Debt Maturity Wall, Lease Overload & Refinancing Default",
+    "primaryCause": "C-Suite Resignations & CRO Appointment Ahead of Chapter 11",
     "sourceType": "PACER_LIVE_FEED",
     "sourceName": "U.S. Bankruptcy Court N.D. Ala. / M.D. Ala. / S.D. Ala. Case #26-10500",
     "summary": "Active Chapter 11 filing in Mobile, AL with $929.5M total liabilities. Emergency DIP financing and Section 363 bidding procedures pending court approval.",
@@ -19597,6 +20012,11 @@
     "timeline": [
       "August 09, 2026: Voluntary Petition Filed in N.D. Ala. / M.D. Ala. / S.D. Ala..",
       "August 09, 2026: Emergency Motion for $185.9M DIP Financing."
-    ]
+    ],
+    "isPreJudicial": true,
+    "courtCaseStatus": "PRE_PETITION_WARN_SIGNAL",
+    "signalCategory": "C_SUITE_EXODUS",
+    "signalType": "💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed",
+    "courtLegalNotice": "PRE-PETITION WARN SIGNAL: 💼 C-Suite Emergency Exodus & Chief Restructuring Officer Appointed monitored by AI ingestion engine 60 days prior to expected petition filing."
   }
 ]

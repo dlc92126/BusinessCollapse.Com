@@ -41,6 +41,7 @@ import NewsroomStudioModal from './components/NewsroomStudioModal';
 import AINewsroomStudio from './components/AINewsroomStudio';
 import sub10mCatalog from './data/sub10m_companies.json';
 import { extractStateCode } from './utils/stateExtractor';
+import { formatCleanEntityName } from './utils/entityNameFormatter';
 import UniversalShareModal from './components/UniversalShareModal';
 import EmailClientModal from './components/EmailClientModal';
 import SubscriberBackOfficeModal from './components/SubscriberBackOfficeModal';
@@ -217,9 +218,30 @@ export default function App() {
 
 
   // Dynamic CMS Managed Datasets with LocalStorage Rehydration
-  const [companies, setCompanies] = useState(() => getSavedIngestionState().companies);
-  const [breakingNews, setBreakingNews] = useState(() => getSavedIngestionState().news);
-  const [auctions, setAuctions] = useState(() => getSavedIngestionState().auctions);
+  const [companies, setCompanies] = useState(() => {
+    const list = getSavedIngestionState().companies || [];
+    return list.map(c => {
+      if (!c) return c;
+      const eName = formatCleanEntityName(c);
+      return { ...c, name: eName, entityName: eName };
+    });
+  });
+  const [breakingNews, setBreakingNews] = useState(() => {
+    const list = getSavedIngestionState().news || [];
+    return list.map(n => {
+      if (!n) return n;
+      const eName = formatCleanEntityName(n);
+      return { ...n, name: eName, entityName: eName };
+    });
+  });
+  const [auctions, setAuctions] = useState(() => {
+    const list = getSavedIngestionState().auctions || [];
+    return list.map(a => {
+      if (!a) return a;
+      const eName = formatCleanEntityName(a);
+      return { ...a, name: eName, entityName: eName };
+    });
+  });
 
 
   // Watchlist state initialized safely from localStorage
@@ -369,7 +391,12 @@ export default function App() {
     return sub10mCatalog || [];
   })();
 
-  const allCombinedCompanies = [...companies, ...formattedRadarCompanies, ...hydratedSub10mCatalog];
+  const rawCombinedCompanies = [...companies, ...formattedRadarCompanies, ...hydratedSub10mCatalog];
+  const allCombinedCompanies = rawCombinedCompanies.map(c => {
+    if (!c) return c;
+    const eName = formatCleanEntityName(c);
+    return { ...c, name: eName, entityName: eName };
+  });
 
   // URL Deep-Link Router (e.g. ?company=tupq or ?citation=docket001 or /case/tupq)
   useEffect(() => {
@@ -784,10 +811,15 @@ export default function App() {
             {activeWorkspace === 'media' && (
               <MediaPressWorkstation
                 companies={allCombinedCompanies}
+                watchlist={watchlist}
                 breakingNews={breakingNews}
                 onSelectCompany={(company) => setSelectedCompany(company)}
                 onOpenNewsroomStudio={handleOpenNewsroomStudio}
                 onOpenEmailClient={() => setIsEmailClientOpen(true)}
+                onSwitchWorkspace={(ws, comp) => {
+                  if (comp) setSelectedCompany(comp);
+                  setActiveWorkspace(ws);
+                }}
                 onGoBack={() => { setActiveWorkspace('all'); setActiveTab('graveyard'); }}
               />
             )}
@@ -795,7 +827,13 @@ export default function App() {
             {activeWorkspace === 'headhunter' && (
               <HeadhunterTalentWorkstation
                 companies={allCombinedCompanies}
+                watchlist={watchlist}
+                onToggleBookmark={toggleWatchlist}
                 onOpenEmailClient={() => setIsEmailClientOpen(true)}
+                onSwitchWorkspace={(ws, comp) => {
+                  if (comp) setSelectedCompany(comp);
+                  setActiveWorkspace(ws);
+                }}
                 onGoBack={() => { setActiveWorkspace('all'); setActiveTab('graveyard'); }}
               />
             )}
@@ -803,10 +841,16 @@ export default function App() {
             {activeWorkspace === 'investor' && (
               <InvestorLenderWorkstation
                 companies={allCombinedCompanies}
+                watchlist={watchlist}
+                onToggleBookmark={toggleWatchlist}
                 onSelectCompany={(company) => setSelectedCompany(company)}
                 onOpenWaterfall={(c) => {
                   setWaterfallCompany(c);
                   setIsWaterfallOpen(true);
+                }}
+                onSwitchWorkspace={(ws, comp) => {
+                  if (comp) setSelectedCompany(comp);
+                  setActiveWorkspace(ws);
                 }}
                 onGoBack={() => { setActiveWorkspace('all'); setActiveTab('graveyard'); }}
               />
@@ -816,8 +860,14 @@ export default function App() {
               <Marketplace363Workstation
                 auctions={auctions}
                 companies={allCombinedCompanies}
+                watchlist={watchlist}
+                onToggleBookmark={toggleWatchlist}
                 onSelectAuction={(auc) => setSelectedAuction(auc)}
                 onOpenDiligenceBrief={(entity) => setDiligenceBriefEntity(entity)}
+                onSwitchWorkspace={(ws, comp) => {
+                  if (comp) setSelectedCompany(comp);
+                  setActiveWorkspace(ws);
+                }}
                 onGoBack={() => { setActiveWorkspace('all'); setActiveTab('graveyard'); }}
               />
             )}
@@ -825,9 +875,15 @@ export default function App() {
             {activeWorkspace === 'creditor' && (
               <CreditorActionWorkstation
                 companies={allCombinedCompanies}
+                watchlist={watchlist}
+                onToggleBookmark={toggleWatchlist}
                 onOpenEmailClient={() => setIsEmailClientOpen(true)}
                 onOpenOnboarding={() => setIsOnboardingOpen(true)}
                 onOpenForm410Wizard={() => setIsForm410WizardOpen(true)}
+                onSwitchWorkspace={(ws, comp) => {
+                  if (comp) setSelectedCompany(comp);
+                  setActiveWorkspace(ws);
+                }}
                 onGoBack={() => { setActiveWorkspace('all'); setActiveTab('graveyard'); }}
               />
             )}
@@ -859,6 +915,8 @@ export default function App() {
         {activeWorkspace === 'media' && (
           <MediaPressWorkstation
             companies={allCombinedCompanies}
+            watchlist={watchlist}
+            onToggleBookmark={toggleWatchlist}
             breakingNews={breakingNews}
             onSelectCompany={(company) => setSelectedCompany(company)}
             onOpenNewsroomStudio={handleOpenNewsroomStudio}
@@ -1097,6 +1155,14 @@ export default function App() {
           isStarred={activeWatchlist && activeWatchlist.includes(diligenceBriefEntity.id || diligenceBriefEntity.entityName || diligenceBriefEntity.name)}
           isCustomTracked={diligenceBriefEntity.isCustomTracked || (diligenceBriefEntity.id && String(diligenceBriefEntity.id).includes('custom'))}
           onClose={() => setDiligenceBriefEntity(null)}
+          onOpenPublicCatalog={(entity) => {
+            setDiligenceBriefEntity(null);
+            setSelectedPublicCatalog(typeof entity === 'object' ? entity : { name: entity, auctionTitle: 'Section 363 Asset Catalog' });
+          }}
+          onOpenCourtPortal={(entity) => {
+            setDiligenceBriefEntity(null);
+            setSelectedAuction(typeof entity === 'object' ? entity : { name: entity, entityName: entity, auctionTitle: 'Section 363 Official Court Bidding Portal' });
+          }}
         />
       )}
 

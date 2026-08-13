@@ -70,7 +70,7 @@ export default function WatchlistTracker({
 
   const starredAuctions = (auctions || []).filter(a => a && Array.isArray(watchlist) && watchlist.includes(a.id)).map(a => ({
     ...a,
-    name: a.entityName || a.auctionTitle,
+    name: a.entityName || a.name || a.companyName || a.auctionTitle,
     assetType: 'AUCTION',
     assetTypeLabel: '🔨 363 COURT AUCTION',
     badgeColor: '#3B82F6'

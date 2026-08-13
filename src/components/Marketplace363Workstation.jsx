@@ -2,18 +2,22 @@ import React, { useState } from 'react';
 import { 
   Gavel, DollarSign, Layers, ShieldCheck, Download, Share2, Sparkles, Send, Copy, 
   ExternalLink, Search, Filter, AlertTriangle, Clock, Briefcase, FileSpreadsheet, 
-  Linkedin, Mail, ArrowRight, Upload, RefreshCw, CheckCircle2, ChevronRight, MapPin, Building2, Lock, Tag, Folder, Eye, Edit3, ShoppingBag, FileText
+  Linkedin, Mail, ArrowRight, Upload, RefreshCw, CheckCircle2, ChevronRight, MapPin, Building2, Lock, Tag, Folder, Eye, Edit3, ShoppingBag, FileText, Star, TrendingUp
 } from 'lucide-react';
 import AuctionDirectory from './AuctionDirectory';
 import ExecutiveYouTubeShareModal from './ExecutiveYouTubeShareModal';
 import BCCCitationWrapperModal from './BCCCitationWrapperModal';
 import FullScreenAIEditorModal from './FullScreenAIEditorModal';
+import AuctionCompsSandbox from './AuctionCompsSandbox';
 
 export default function Marketplace363Workstation({
   auctions = [],
   companies = [],
+  watchlist = [],
+  onToggleBookmark,
   onSelectAuction,
   onOpenDiligenceBrief,
+  onSwitchWorkspace,
   onGoBack
 }) {
   // Target Company / Auction Selection State (Left Sidebar DNA)
@@ -26,8 +30,11 @@ export default function Marketplace363Workstation({
   });
 
   // Workstation DNA State
-  const [activeDesk, setActiveDesk] = useState('directory'); // 'directory' (Desk 1) | 'apa' (Desk 2) | 'leases' (Desk 3) | 'bidmemo' (Desk 4)
+  const [activeDesk, setActiveDesk] = useState(null); // null (Default 363 Asset Dossier Stage) | 'directory' (Desk 1) | 'apa' (Desk 2) | 'leases' (Desk 3) | 'bidmemo' (Desk 4)
   const [priorityTag, setPriorityTag] = useState('auction');
+  const [assetSearchQuery, setAssetSearchQuery] = useState('');
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [dismissedCompanyIds, setDismissedCompanyIds] = useState([]);
   const [aiBidPrompt, setAiBidPrompt] = useState('Draft a 363 Stalking Horse asset acquisition teaser detailing opening bid floor & break-up fee terms.');
   const [isGeneratingBid, setIsGeneratingBid] = useState(false);
 
@@ -136,6 +143,8 @@ export default function Marketplace363Workstation({
           </span>
         </div>
 
+
+
         {/* Action Buttons Bar */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
 
@@ -192,16 +201,18 @@ export default function Marketplace363Workstation({
         gap: '10px'
       }}>
         {[
+          { id: null, label: '📋 363 Liquidation Asset Dossier (Overview)', icon: Building2, color: '#EC4899' },
           { id: 'directory', label: '🔨 Desk 1: Court 363 Auction Floor Directory', icon: Gavel, color: '#EC4899' },
           { id: 'apa', label: '📜 Desk 2: Stalking Horse APA Diligence Vault', icon: FileText, color: '#F59E0B' },
           { id: 'leases', label: '🏬 Desk 3: Section 365 Lease Rejection & Asset Catalog', icon: ShoppingBag, color: '#38BDF8' },
-          { id: 'bidmemo', label: '✍️ Desk 4: AI Asset Acquisition Teaser & Bid Memo Builder', icon: Mail, color: '#10B981' }
+          { id: 'bidmemo', label: '✍️ Desk 4: AI Asset Acquisition Teaser & Bid Memo Builder', icon: Mail, color: '#10B981' },
+          { id: 'comps', label: '📊 Desk 5: Historical 363 Valuation Comps & Realized Price Matrix', icon: TrendingUp, color: '#34D399' }
         ].map(desk => {
           const Icon = desk.icon;
           const isActive = activeDesk === desk.id;
           return (
             <button
-              key={desk.id}
+              key={desk.id || 'overview'}
               onClick={() => setActiveDesk(desk.id)}
               style={{
                 padding: '6px 14px',
@@ -228,7 +239,7 @@ export default function Marketplace363Workstation({
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
 
         {/* ---------------------------------------------------- */}
-        {/* LEFT COLUMN: SHARED WORKSTATION ORGANIZER & SELECTOR */}
+        {/* LEFT COLUMN: UNIFIED SHARED WORKSTATION SIDEBAR     */}
         {/* ---------------------------------------------------- */}
         <div style={{
           width: '340px',
@@ -237,160 +248,158 @@ export default function Marketplace363Workstation({
           padding: '16px',
           display: 'flex',
           flexDirection: 'column',
-          gap: '16px',
+          gap: '14px',
           overflowY: 'auto'
         }}>
 
-          {/* Section 1: Target Distressed Entity Selector (Unified DNA) */}
-          <div>
-            <div style={{ fontSize: '0.76rem', fontWeight: 950, color: '#EC4899', letterSpacing: '0.05em', marginBottom: '8px' }}>
-              🏢 TARGET AUCTION ENTITIES ({companies.length})
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '220px', overflowY: 'auto' }}>
-              {companies.map(comp => (
-                <div
-                  key={comp.id || comp.ticker}
-                  onClick={() => setSelectedTargetCompany(comp)}
-                  style={{
-                    background: selectedTargetCompany.ticker === comp.ticker ? 'rgba(236, 72, 153, 0.25)' : 'rgba(30, 41, 59, 0.6)',
-                    border: selectedTargetCompany.ticker === comp.ticker ? '1.5px solid #EC4899' : '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '8px',
-                    padding: '10px 12px',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: '0.82rem', fontWeight: 950, color: selectedTargetCompany.ticker === comp.ticker ? '#FFF' : '#CBD5E1' }}>
-                      {comp.name}
-                    </span>
-                    <span style={{ fontSize: '0.65rem', fontWeight: 900, background: 'rgba(236,72,153,0.2)', color: '#F472B6', padding: '2px 6px', borderRadius: '4px' }}>
-                      {comp.ticker || '363 BID'}
-                    </span>
-                  </div>
-                  <div style={{ fontSize: '0.72rem', color: '#94A3B8', marginTop: '2px' }}>
-                    {comp.debtAtCollapse || '$500M+ Debt'} • {comp.locationJurisdiction || 'US Court'}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Section 2: Priority Tagging */}
-          <div>
-            <span style={{ fontSize: '0.72rem', color: '#FFF', fontWeight: 800, display: 'block', marginBottom: '8px' }}>
-              🏷️ Asset Auction Priority Tag:
-            </span>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px' }}>
-              {[
-                { id: 'breaking', label: '🚨 Breaking', color: '#EF4444' },
-                { id: 'investigation', label: '📊 Deep Invest.', color: '#38BDF8' },
-                { id: 'auction', label: '💰 363 Auction', color: '#EC4899' },
-                { id: 'stalking', label: '📜 Stalking Horse', color: '#F59E0B' }
-              ].map(tag => (
-                <button
-                  key={tag.id}
-                  onClick={() => setPriorityTag(tag.id)}
-                  style={{
-                    padding: '6px 8px',
-                    borderRadius: '6px',
-                    fontSize: '0.7rem',
-                    fontWeight: 900,
-                    cursor: 'pointer',
-                    border: priorityTag === tag.id ? `1.5px solid ${tag.color}` : '1px solid rgba(255,255,255,0.1)',
-                    background: priorityTag === tag.id ? `${tag.color}25` : 'rgba(30, 41, 59, 0.5)',
-                    color: priorityTag === tag.id ? '#FFF' : '#94A3B8'
-                  }}
-                >
-                  {tag.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Section 3: PACER Citation Vault Trigger */}
-          <div style={{ background: 'rgba(3, 7, 18, 0.8)', border: '1px solid rgba(236, 72, 153, 0.3)', borderRadius: '8px', padding: '12px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-              <span style={{ fontSize: '0.72rem', color: '#F472B6', fontWeight: 900 }}>
-                📄 COURT 363 AUCTION ORDER
-              </span>
+          {/* Position #1: TOP-MOUNTED WORKSTATION ASSET SEARCH BAR */}
+          <div style={{ position: 'relative', width: '100%' }}>
+            <Search size={13} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#EC4899' }} />
+            <input
+              type="text"
+              placeholder="Search 363 assets (e.g. fleet, aircraft, IP)..."
+              value={assetSearchQuery}
+              onChange={(e) => setAssetSearchQuery(e.target.value)}
+              style={{
+                width: '100%',
+                background: 'rgba(15, 23, 42, 0.95)',
+                border: assetSearchQuery ? '1.5px solid #EC4899' : '1px solid rgba(236, 72, 153, 0.4)',
+                color: '#FFF',
+                padding: '6px 28px 6px 30px',
+                borderRadius: '6px',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                outline: 'none',
+                boxShadow: assetSearchQuery ? '0 0 12px rgba(236, 72, 153, 0.4)' : 'none',
+                boxSizing: 'border-box'
+              }}
+            />
+            {assetSearchQuery && (
               <button
-                onClick={() => setIsCitationWrapperOpen(true)}
-                style={{
-                  background: 'rgba(236, 72, 153, 0.2)',
-                  color: '#F472B6',
-                  border: '1px solid #EC4899',
-                  borderRadius: '4px',
-                  padding: '2px 6px',
-                  fontSize: '0.65rem',
-                  fontWeight: 900,
-                  cursor: 'pointer'
-                }}
+                onClick={() => setAssetSearchQuery('')}
+                style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer', fontSize: '0.7rem', fontWeight: 900 }}
               >
-                👁️ Preview Order
+                ✕
               </button>
-            </div>
-            <div style={{ fontSize: '0.74rem', color: '#CBD5E1', lineHeight: 1.5 }}>
-              Official Section 363 Bidding Procedures Order & Stalking Horse APA for <strong>{selectedTargetCompany.name}</strong>.
-            </div>
-          </div>
-
-          {/* Section 4: Saved Auction Bids Vault */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span style={{ fontSize: '0.72rem', color: '#FFF', fontWeight: 800 }}>
-                📁 Saved Auction Bids ({savedBids.length}):
-              </span>
-              <button
-                onClick={handleSaveBid}
-                style={{
-                  padding: '3px 8px',
-                  background: 'rgba(236, 72, 153, 0.2)',
-                  color: '#F472B6',
-                  border: '1px solid #EC4899',
-                  borderRadius: '4px',
-                  fontSize: '0.68rem',
-                  fontWeight: 900,
-                  cursor: 'pointer'
-                }}
-              >
-                + Save Bid
-              </button>
-            </div>
-
-            {savedStatusText && (
-              <div style={{ fontSize: '0.7rem', color: '#F472B6', fontWeight: 900 }}>
-                {savedStatusText}
-              </div>
             )}
+          </div>
+
+          {/* Position #2: TARGET 363 ASSETS TRAY WITH DISMISS FUNCTIONALITY */}
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+              <span style={{ fontSize: '0.74rem', fontWeight: 950, color: '#F472B6', letterSpacing: '0.05em' }}>
+                {assetSearchQuery ? '🔍 SEARCH RESULTS' : `⭐ SAVED WORKSPACE FAVORITES (${watchlist.length})`}
+              </span>
+              {dismissedCompanyIds.length > 0 && (
+                <button
+                  onClick={() => setDismissedCompanyIds([])}
+                  style={{ fontSize: '0.62rem', color: '#94A3B8', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}
+                >
+                  Restore ({dismissedCompanyIds.length}) Hidden
+                </button>
+              )}
+            </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', overflowY: 'auto', flex: 1 }}>
-              {savedBids.map(bid => (
-                <div
-                  key={bid.id}
-                  onClick={() => setActiveBidId(bid.id)}
-                  style={{
-                    background: activeBidId === bid.id ? 'rgba(236, 72, 153, 0.25)' : 'rgba(30, 41, 59, 0.6)',
-                    border: activeBidId === bid.id ? '1px solid #EC4899' : '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '6px',
-                    padding: '8px 10px',
-                    fontSize: '0.72rem',
-                    cursor: 'pointer'
-                  }}
-                >
-                  <div style={{ fontWeight: 900, color: activeBidId === bid.id ? '#F472B6' : '#F8FAFC' }}>
-                    {bid.title}
-                  </div>
-                  <div style={{ fontSize: '0.65rem', color: '#94A3B8', display: 'flex', justifyContent: 'space-between', marginTop: '2px' }}>
-                    <span>Floor: {bid.floor}</span>
-                    <span>{bid.date}</span>
-                  </div>
-                </div>
-              ))}
+              {companies
+                .filter(comp => {
+                  const compName = comp.name || comp.entityName || comp.companyName || 'Corporate Entity';
+                  const compId = comp.id || comp.ticker || compName;
+                  if (dismissedCompanyIds.includes(compId)) return false;
+                  
+                  if (assetSearchQuery) {
+                    const q = assetSearchQuery.toLowerCase();
+                    return (compName.toLowerCase().includes(q)) ||
+                           (comp.ticker && comp.ticker.toLowerCase().includes(q)) ||
+                           (comp.primaryCause && comp.primaryCause.toLowerCase().includes(q)) ||
+                           (comp.locationJurisdiction && comp.locationJurisdiction.toLowerCase().includes(q)) ||
+                           (comp.summary && comp.summary.toLowerCase().includes(q));
+                  }
+
+                  // STRICT FAVORITES + ACTIVE SELECTION ONLY (DUMP HUGE UNFILTERED LIST)
+                  const isFav = comp.isBookmarked || (watchlist && (watchlist.includes(comp.id) || watchlist.includes(comp.ticker)));
+                  const targetName = selectedTargetCompany.name || selectedTargetCompany.entityName || 'Corporate Entity';
+                  const isSelected = (selectedTargetCompany.id && selectedTargetCompany.id === comp.id) || targetName === compName;
+                  return isFav || isSelected;
+                })
+                .map(comp => {
+                  const compName = comp.name || comp.entityName || comp.companyName || 'Corporate Entity';
+                  const compId = comp.id || comp.ticker || compName;
+                  const isFav = comp.isBookmarked || (watchlist && (watchlist.includes(comp.id) || watchlist.includes(comp.ticker)));
+                  const targetName = selectedTargetCompany.name || selectedTargetCompany.entityName || 'Corporate Entity';
+                  const isSelected = (selectedTargetCompany.id && selectedTargetCompany.id === comp.id) || targetName === compName;
+                  return (
+                    <div
+                      key={compId}
+                      onClick={() => {
+                        setSelectedTargetCompany(comp);
+                        setActiveDesk(null); // DIRECTLY DISPLAY FULL DOSSIER ON CANVAS BELOW TELEPORT MENU
+                      }}
+                      style={{
+                        background: isSelected ? 'rgba(236, 72, 153, 0.25)' : 'rgba(30, 41, 59, 0.6)',
+                        border: isSelected ? '1.5px solid #EC4899' : '1px solid rgba(255,255,255,0.08)',
+                        borderRadius: '8px',
+                        padding: '8px 10px',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        position: 'relative'
+                      }}
+                      className="group"
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <span style={{ fontSize: '0.8rem', fontWeight: 950, color: isSelected ? '#FFF' : '#CBD5E1', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          {isFav && <Star size={11} color="#F59E0B" fill="#F59E0B" />}
+                          {compName}
+                        </span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          {/* EXPLICIT SAVE / FAVORITE BUTTON FOR SEARCHED AND SAVED ENTITIES */}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (onToggleBookmark) onToggleBookmark(compId);
+                            }}
+                            title={isFav ? "Remove from Favorites" : "Save to Workspace Favorites"}
+                            style={{
+                              background: isFav ? 'rgba(245, 158, 11, 0.3)' : 'rgba(255, 255, 255, 0.08)',
+                              border: isFav ? '1px solid #F59E0B' : '1px solid rgba(255, 255, 255, 0.2)',
+                              color: isFav ? '#FCD34D' : '#94A3B8',
+                              borderRadius: '4px',
+                              padding: '2px 6px',
+                              fontSize: '0.62rem',
+                              fontWeight: 900,
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '3px'
+                            }}
+                          >
+                            <Star size={9} color={isFav ? '#FCD34D' : '#94A3B8'} fill={isFav ? '#FCD34D' : 'none'} />
+                            {isFav ? 'SAVED' : 'SAVE'}
+                          </button>
+
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setDismissedCompanyIds([...dismissedCompanyIds, compId]);
+                            }}
+                            title="Dismiss from desk"
+                            style={{ background: 'none', border: 'none', color: '#64748B', cursor: 'pointer', fontSize: '0.7rem', fontWeight: 900, padding: '0 2px' }}
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      </div>
+                      <div style={{ fontSize: '0.7rem', color: '#94A3B8', marginTop: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span>{comp.debtAtCollapse || '$500M+ Debt'} • {comp.locationJurisdiction || 'US Court'}</span>
+                        <span style={{ fontSize: '0.6rem', fontWeight: 900, background: 'rgba(236,72,153,0.2)', color: '#F472B6', padding: '1px 4px', borderRadius: '3px' }}>
+                          {comp.ticker || '363 BID'}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
             </div>
           </div>
-
         </div>
 
         {/* ---------------------------------------------------- */}
@@ -405,6 +414,121 @@ export default function Marketplace363Workstation({
           flexDirection: 'column',
           gap: '20px'
         }}>
+
+          {/* UNIVERSAL CROSS-WORKSPACE TELEPORT STRIP (PERFECT ON ALL DESKS) */}
+          <div style={{
+            background: 'rgba(9, 13, 22, 0.98)',
+            border: '1.5px solid rgba(236, 72, 153, 0.4)',
+            borderRadius: '12px',
+            padding: '12px 18px',
+            display: 'flex',
+            alignItems: 'center',
+            justify: 'space-between',
+            gap: '12px',
+            boxShadow: '0 8px 20px rgba(0,0,0,0.4)',
+            flexWrap: 'wrap'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', fontWeight: 950, color: '#F472B6' }}>
+              <Sparkles size={16} color="#F472B6" />
+              <span>CROSS-WORKSPACE TELEPORT ({selectedTargetCompany.name.toUpperCase()}):</span>
+            </div>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('investor', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(16, 185, 129, 0.2)', color: '#34D399', border: '1px solid #10B981', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                💳 Investor & Lender
+              </button>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('creditor', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(139, 92, 246, 0.2)', color: '#C084FC', border: '1px solid #8B5CF6', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                🛡️ Creditor Action
+              </button>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('headhunter', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(245, 158, 11, 0.2)', color: '#FCD34D', border: '1px solid #F59E0B', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                👔 Headhunter Radar
+              </button>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('media', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(56, 189, 248, 0.2)', color: '#38BDF8', border: '1px solid #38BDF8', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                📰 Media & Press
+              </button>
+            </div>
+          </div>
+
+          {/* DEFAULT OVERVIEW: 363 LIQUIDATION ASSET DOSSIER STAGE */}
+          {activeDesk === null && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              
+              {/* Company Dossier Banner */}
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(9, 13, 22, 0.98) 100%)',
+                border: '1.5px solid #EC4899',
+                borderRadius: '14px',
+                padding: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                justify: 'space-between',
+                boxShadow: '0 12px 30px rgba(0,0,0,0.6)'
+              }}>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 950, background: 'rgba(236, 72, 153, 0.2)', color: '#F472B6', padding: '3px 8px', borderRadius: '4px', border: '1px solid #EC4899' }}>
+                      363 AUCTION ASSET DOSSIER
+                    </span>
+                    <span style={{ fontSize: '0.7rem', color: '#94A3B8' }}>
+                      PACER Docket #{selectedTargetCompany.courtCaseNumber || '26-10492'}
+                    </span>
+                  </div>
+                  <h2 style={{ margin: '8px 0 2px 0', fontSize: '1.4rem', fontWeight: 950, color: '#FFF' }}>
+                    {selectedTargetCompany.name || selectedTargetCompany.entityName || 'Corporate Entity'} ({selectedTargetCompany.ticker || '363 BID'})
+                  </h2>
+                  <div style={{ fontSize: '0.82rem', color: '#94A3B8' }}>
+                    📍 {selectedTargetCompany.locationJurisdiction || 'Wilmington, DE'} • Stalking Horse Bidding Active
+                  </div>
+                </div>
+
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: '0.72rem', color: '#94A3B8', fontWeight: 800 }}>OPENING BID FLOOR</div>
+                  <div style={{ fontSize: '1.5rem', fontWeight: 950, color: '#34D399' }}>
+                    {selectedTargetCompany.debtAtCollapse ? `$${Math.round(parseInt(selectedTargetCompany.debtAtCollapse.replace(/[^0-9]/g, '') || 500) * 0.35)}M Cash` : '$185,000,000'}
+                  </div>
+                </div>
+              </div>
+
+              {/* Asset Details Grid — DYNAMICALLY SLAVED TO selectedTargetCompany */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
+                <div style={{ background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(236, 72, 153, 0.4)', borderRadius: '12px', padding: '18px' }}>
+                  <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', fontWeight: 950, color: '#F472B6' }}>
+                    🏷️ ASSETS UP FOR LIQUIDATION ({(selectedTargetCompany.name || selectedTargetCompany.entityName || 'TARGET').toUpperCase()})
+                  </h4>
+                  <div style={{ fontSize: '0.78rem', color: '#CBD5E1', lineHeight: 1.6 }}>
+                    • Primary Operations & Brand Intellectual Property<br/>
+                    • Automated Regional Logistics & Distribution Hubs<br/>
+                    • Specialty Equipment & Fleet Inventory<br/>
+                    • Free & Clear Title Transfer under 11 U.S.C. § 363(f)
+                  </div>
+                </div>
+
+                <div style={{ background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(245, 158, 11, 0.4)', borderRadius: '12px', padding: '18px' }}>
+                  <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', fontWeight: 950, color: '#FCD34D' }}>
+                    💰 BIDDING PROCEDURES & BREAK-UP FEE
+                  </h4>
+                  <div style={{ fontSize: '0.78rem', color: '#CBD5E1', lineHeight: 1.6 }}>
+                    • Stalking Horse Opening Bid: {selectedTargetCompany.debtAtCollapse ? `$${Math.round(parseInt(selectedTargetCompany.debtAtCollapse.replace(/[^0-9]/g, '') || 500) * 0.35)}M Cash` : '$185M Cash'}<br/>
+                    • Break-Up Fee Protection: 3.0% Court Approved<br/>
+                    • Overbid Minimum Increment: $2,500,000<br/>
+                    • Escrow Deposit Required: 10% Cash Deposit
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          )}
 
           {/* DESK 1: COURT 363 AUCTION FLOOR DIRECTORY */}
           {activeDesk === 'directory' && (
@@ -642,6 +766,13 @@ export default function Marketplace363Workstation({
                   <Edit3 size={14} /> Open Full-Screen Auction Editor & Mobile Preview
                 </button>
               </div>
+            </div>
+          )}
+
+          {/* DESK 5: HISTORICAL 363 VALUATION COMPS MATRIX */}
+          {activeDesk === 'comps' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <AuctionCompsSandbox auctionItem={selectedTargetCompany} />
             </div>
           )}
 

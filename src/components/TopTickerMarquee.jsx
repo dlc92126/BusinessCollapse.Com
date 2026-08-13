@@ -455,37 +455,7 @@ export default function TopTickerMarquee({
         </div>
       </div>
 
-      {/* Row 2: Customized Ticker Preset Templates Bar */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', overflowX: 'auto', paddingBottom: '2px' }}>
-        <span style={{ fontSize: '0.65rem', color: '#64748B', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>
-          🎯 TICKER PRESETS:
-        </span>
-        {presetTemplates.map(preset => (
-          <button
-            key={preset.id}
-            onClick={() => handlePresetSelect(preset.id)}
-            style={{
-              background: activePreset === preset.id ? 'rgba(239, 68, 68, 0.35)' : 'rgba(15, 23, 42, 0.7)',
-              border: activePreset === preset.id ? '1px solid #EF4444' : '1px solid rgba(255, 255, 255, 0.12)',
-              color: activePreset === preset.id ? '#FFFFFF' : '#94A3B8',
-              padding: '2px 8px',
-              borderRadius: '4px',
-              fontSize: '0.65rem',
-              fontWeight: activePreset === preset.id ? 800 : 600,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '4px',
-              transition: 'all 0.15s ease'
-            }}
-          >
-            {preset.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Row 3: Ticker Content (Compact Tape vs Grid View) */}
+      {/* Row 2: Ticker Content (Compact Tape vs Grid View) */}
       {viewMode === 'compact' ? (
         <div style={{ overflow: 'hidden', flex: 1, padding: '2px 0' }}>
           <div className={`marquee-track ${isPaused ? 'marquee-track-paused' : ''}`}>

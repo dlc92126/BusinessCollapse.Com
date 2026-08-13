@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Users, UserCheck, ShieldCheck, Download, Share2, Sparkles, Send, Copy, Check, 
   ExternalLink, Search, Filter, AlertTriangle, Clock, Briefcase, FileSpreadsheet, 
-  Linkedin, Mail, ArrowRight, Upload, RefreshCw, CheckCircle2, ChevronRight, MapPin, Building2, Lock, Tag, Folder, Eye, Edit3, Monitor, Smartphone, Link
+  Linkedin, Mail, ArrowRight, Upload, RefreshCw, CheckCircle2, ChevronRight, MapPin, Building2, Lock, Tag, Folder, Eye, Edit3, Monitor, Smartphone, Link, Star
 } from 'lucide-react';
 import ExecutiveYouTubeShareModal from './ExecutiveYouTubeShareModal';
 import BCCCitationWrapperModal from './BCCCitationWrapperModal';
@@ -10,7 +10,10 @@ import FullScreenAIEditorModal from './FullScreenAIEditorModal';
 
 export default function HeadhunterTalentWorkstation({
   companies = [],
+  watchlist = [],
+  onToggleBookmark,
   onOpenEmailClient,
+  onSwitchWorkspace,
   onGoBack
 }) {
   // Target Company Selection State (Left Sidebar DNA)
@@ -23,8 +26,11 @@ export default function HeadhunterTalentWorkstation({
   });
 
   // Workstation DNA State
-  const [activeDesk, setActiveDesk] = useState('radar'); // 'radar' | 'warn' | 'matcher' | 'pitch'
-  const [priorityTag, setPriorityTag] = useState('talent');
+  const [activeDesk, setActiveDesk] = useState(null); // null (Default Executive Talent Dossier Stage) | 'execs' (Desk 1) | 'warn' (Desk 2) | 'matcher' (Desk 3) | 'outreach' (Desk 4)
+  const [priorityTag, setPriorityTag] = useState('c_suite');
+  const [assetSearchQuery, setAssetSearchQuery] = useState('');
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [dismissedCompanyIds, setDismissedCompanyIds] = useState([]);
   const [viewportMode, setViewportMode] = useState('pc');
   const [viewTab, setViewTab] = useState('edit');
   const [searchQuery, setSearchQuery] = useState('');
@@ -144,13 +150,125 @@ export default function HeadhunterTalentWorkstation({
   const [isCitationWrapperOpen, setIsCitationWrapperOpen] = useState(false);
   const [isEditorModalOpen, setIsEditorModalOpen] = useState(false);
 
-  // Filter candidates for selected company
-  const companyCandidates = candidateDatabase.filter(c => 
-    c.company.toLowerCase().includes(selectedTargetCompany.name.toLowerCase()) || 
-    (c.ticker && selectedTargetCompany.ticker && c.ticker.toLowerCase() === selectedTargetCompany.ticker.toLowerCase())
-  );
+  // Deterministic unique seed helper for target company executive generation
+  const getCompanySeed = (str) => {
+    let hash = 0;
+    if (!str) return 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = (hash << 5) - hash + str.charCodeAt(i);
+      hash |= 0;
+    }
+    return Math.abs(hash);
+  };
 
-  const displayCandidates = companyCandidates.length > 0 ? companyCandidates : candidateDatabase;
+  const displayCandidates = React.useMemo(() => {
+    if (!selectedTargetCompany) return [];
+
+    const compName = selectedTargetCompany.name || 'Target Entity';
+    const ticker = (selectedTargetCompany.ticker || 'DEBT').toUpperCase();
+
+    // Check if there are handcrafted candidates specifically matching this exact company name
+    const exactMatches = candidateDatabase.filter(c => 
+      c.company && c.company.toLowerCase() === compName.toLowerCase()
+    );
+    if (exactMatches.length > 0) return exactMatches;
+
+    // Generate unique, realistic executive candidates dynamically for this specific target company
+    const idSeed = selectedTargetCompany.id || compName;
+    const seed = getCompanySeed(idSeed + compName + ticker);
+    const domain = (selectedTargetCompany.ticker || compName.split(' ')[0]).toLowerCase().replace(/[^a-z0-9]/g, '') || 'exec';
+
+    const firstNames = ['Robert', 'Catherine', 'William', 'Elizabeth', 'Michael', 'Victoria', 'James', 'Alexandra', 'Richard', 'Eleanor', 'Thomas', 'Margaret', 'Charles', 'Patricia', 'Daniel', 'Sophia', 'Christopher', 'Jennifer', 'Matthew', 'Linda', 'Brandon', 'Rachel', 'Steven', 'Amanda'];
+    const lastNames = ['Sterling', 'Vance', 'Thorne', 'Rostova', 'Chandler', 'Hawthorne', 'Montgomery', 'Sinclair', 'Blackwood', 'Kensington', 'Mercer', 'DuPont', 'Gallagher', 'Prescott', 'Livingston', 'Fairfax', 'Barrington', 'Carrington', 'Pembroke', 'Winslow', 'Vanderbilt', 'Ashford', 'Kingsley', 'Thornton'];
+
+    const fn1 = firstNames[(seed * 3 + 1) % firstNames.length];
+    const ln1 = lastNames[(seed * 7 + 2) % lastNames.length];
+    const fn2 = firstNames[(seed * 5 + 3) % firstNames.length];
+    const ln2 = lastNames[(seed * 11 + 4) % lastNames.length];
+    const fn3 = firstNames[(seed * 9 + 5) % firstNames.length];
+    const ln3 = lastNames[(seed * 13 + 6) % lastNames.length];
+    const fn4 = firstNames[(seed * 15 + 7) % firstNames.length];
+    const ln4 = lastNames[(seed * 17 + 8) % lastNames.length];
+
+    const loc = selectedTargetCompany.locationJurisdiction || 'US Court Jurisdiction';
+    const debt = selectedTargetCompany.debtAtCollapse || selectedTargetCompany.peakValuation || '$350M Debt';
+    const cause = selectedTargetCompany.primaryCause || 'Chapter 11 Restructuring';
+
+    return [
+      {
+        id: `exec-${seed}-cfo`,
+        name: `${fn1} ${ln1}`,
+        currentRole: "Chief Financial Officer (CFO)",
+        tier: "csuite",
+        company: compName,
+        ticker: ticker,
+        distressContext: `${cause} (${debt})`,
+        distressCategory: "ch11",
+        readinessScore: 92 + (seed % 8),
+        flightRisk: "CRITICAL HIGH",
+        kerpStatus: "KERP Rejected / Free Agent Ready",
+        location: loc,
+        experienceYears: `${15 + (seed % 9)} Years Corporate Finance`,
+        linkedInQuery: `"${fn1} ${ln1}" OR ("CFO" AND "${compName}")`,
+        email: `${fn1[0].toLowerCase()}.${ln1.toLowerCase()}@${domain}-exec.com`,
+        summary: `Chief Financial Officer directing cash-flow liquidity, 1st lien debt negotiations, and DIP compliance for ${compName}.`
+      },
+      {
+        id: `exec-${seed}-coo`,
+        name: `${fn2} ${ln2}`,
+        currentRole: "Chief Operating Officer (COO)",
+        tier: "csuite",
+        company: compName,
+        ticker: ticker,
+        distressContext: `WARN Layoff Notice & Plant Lease Consolidation`,
+        distressCategory: "warn",
+        readinessScore: 89 + (seed % 9),
+        flightRisk: "HIGH RISK",
+        kerpStatus: "KERP Pending Court Approval",
+        location: loc,
+        experienceYears: `${14 + (seed % 7)} Years Global Operations`,
+        linkedInQuery: `"${fn2} ${ln2}" OR ("COO" AND "${compName}")`,
+        email: `${fn2[0].toLowerCase()}.${ln2.toLowerCase()}@${domain}-exec.com`,
+        summary: `Head of Operations overseeing facility lease rejections under § 365 and workforce restructuring for ${compName}.`
+      },
+      {
+        id: `exec-${seed}-vp-sales`,
+        name: `${fn3} ${ln3}`,
+        currentRole: "VP of Enterprise Commercial Sales",
+        tier: "vp",
+        company: compName,
+        ticker: ticker,
+        distressContext: `Section 363 Stalking Horse Asset Sale Active`,
+        distressCategory: "ch11",
+        readinessScore: 86 + (seed % 10),
+        flightRisk: "MODERATE",
+        kerpStatus: "KERP Active (11 U.S.C. § 503(c))",
+        location: loc,
+        experienceYears: `${12 + (seed % 6)} Years Enterprise Revenue`,
+        linkedInQuery: `"${fn3} ${ln3}" OR ("VP Sales" AND "${compName}")`,
+        email: `${fn3[0].toLowerCase()}.${ln3.toLowerCase()}@${domain}-exec.com`,
+        summary: `Directing key commercial customer retention and revenue transition during ${compName}'s Section 363 asset sale.`
+      },
+      {
+        id: `exec-${seed}-cro`,
+        name: `${fn4} ${ln4}`,
+        currentRole: "General Counsel & Chief Restructuring Officer",
+        tier: "csuite",
+        company: compName,
+        ticker: ticker,
+        distressContext: `State WARN Notice & 1st Lien Credit Default`,
+        distressCategory: "warn",
+        readinessScore: 94 + (seed % 5),
+        flightRisk: "FREE AGENT READY",
+        kerpStatus: "KERP Approved by Court",
+        location: loc,
+        experienceYears: `${18 + (seed % 8)} Years Legal & Restructuring`,
+        linkedInQuery: `"${fn4} ${ln4}" OR ("General Counsel" AND "${compName}")`,
+        email: `${fn4[0].toLowerCase()}.${ln4.toLowerCase()}@${domain}-exec.com`,
+        summary: `Chief Restructuring Officer liaison to Unsecured Creditors Committee (UCC) and 363 stalking horse asset buyers for ${compName}.`
+      }
+    ];
+  }, [selectedTargetCompany]);
 
   const handleSaveTargetPool = () => {
     const newTarget = {
@@ -298,16 +416,17 @@ export default function HeadhunterTalentWorkstation({
         gap: '10px'
       }}>
         {[
-          { id: 'radar', label: '🎯 Desk 1: Deep C-Suite & KERP Talent Radar', icon: Users, color: '#F59E0B' },
-          { id: 'warn', label: '📄 Desk 2: WARN Act State Layoff Feed', icon: Clock, color: '#EF4444' },
-          { id: 'matcher', label: '💼 Desk 3: Private Headhunter Candidate Asset Matcher', icon: Upload, color: '#38BDF8' },
+          { id: null, label: '📋 Executive Talent & C-Suite Dossier (Overview)', icon: Building2, color: '#F59E0B' },
+          { id: 'executives', label: '👔 Desk 1: Deep C-Suite & KERP Talent Raid Radar', icon: Users, color: '#F59E0B' },
+          { id: 'warn', label: '📜 Desk 2: State WARN Layoff Wire & Plant Closures', icon: FileSpreadsheet, color: '#EF4444' },
+          { id: 'poach', label: '🎯 Desk 3: PE Candidate Asset Matcher', icon: UserCheck, color: '#38BDF8' },
           { id: 'pitch', label: '✉️ Desk 4: AI Outbound Recruiter Pitch Builder', icon: Mail, color: '#10B981' }
         ].map(desk => {
           const Icon = desk.icon;
           const isActive = activeDesk === desk.id;
           return (
             <button
-              key={desk.id}
+              key={desk.id || 'overview'}
               onClick={() => setActiveDesk(desk.id)}
               style={{
                 padding: '6px 14px',
@@ -334,7 +453,7 @@ export default function HeadhunterTalentWorkstation({
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
 
         {/* ---------------------------------------------------- */}
-        {/* LEFT COLUMN: SHARED WORKSTATION ORGANIZER & SELECTOR */}
+        {/* LEFT COLUMN: UNIFIED SHARED WORKSTATION SIDEBAR     */}
         {/* ---------------------------------------------------- */}
         <div style={{
           width: '340px',
@@ -343,157 +462,151 @@ export default function HeadhunterTalentWorkstation({
           padding: '16px',
           display: 'flex',
           flexDirection: 'column',
-          gap: '16px',
+          gap: '14px',
           overflowY: 'auto'
         }}>
 
-          {/* Section 1: Target Distressed Company Selector (Unified DNA) */}
-          <div>
-            <div style={{ fontSize: '0.76rem', fontWeight: 950, color: '#F59E0B', letterSpacing: '0.05em', marginBottom: '8px' }}>
-              🏢 TARGET DISTRESSED COMPANIES ({companies.length})
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '220px', overflowY: 'auto' }}>
-              {companies.map(comp => (
-                <div
-                  key={comp.id || comp.ticker}
-                  onClick={() => setSelectedTargetCompany(comp)}
-                  style={{
-                    background: selectedTargetCompany.ticker === comp.ticker ? 'rgba(245, 158, 11, 0.25)' : 'rgba(30, 41, 59, 0.6)',
-                    border: selectedTargetCompany.ticker === comp.ticker ? '1.5px solid #F59E0B' : '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '8px',
-                    padding: '10px 12px',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: '0.82rem', fontWeight: 950, color: selectedTargetCompany.ticker === comp.ticker ? '#FFF' : '#CBD5E1' }}>
-                      {comp.name}
-                    </span>
-                    <span style={{ fontSize: '0.65rem', fontWeight: 900, background: 'rgba(239,68,68,0.2)', color: '#EF4444', padding: '2px 6px', borderRadius: '4px' }}>
-                      {comp.ticker || 'DEBT'}
-                    </span>
-                  </div>
-                  <div style={{ fontSize: '0.72rem', color: '#94A3B8', marginTop: '2px' }}>
-                    {comp.debtAtCollapse || '$500M+ Debt'} • {comp.locationJurisdiction || 'US Court'}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Section 2: Story & Talent Priority Tagging */}
-          <div>
-            <span style={{ fontSize: '0.72rem', color: '#FFF', fontWeight: 800, display: 'block', marginBottom: '8px' }}>
-              🏷️ Story & Raid Priority Tag:
-            </span>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px' }}>
-              {[
-                { id: 'breaking', label: '🚨 Breaking', color: '#EF4444' },
-                { id: 'investigation', label: '📊 Deep Invest.', color: '#38BDF8' },
-                { id: 'talent', label: '💼 C-Suite Raid', color: '#F59E0B' },
-                { id: 'auction', label: '💰 363 Auction', color: '#10B981' }
-              ].map(tag => (
-                <button
-                  key={tag.id}
-                  onClick={() => setPriorityTag(tag.id)}
-                  style={{
-                    padding: '6px 8px',
-                    borderRadius: '6px',
-                    fontSize: '0.7rem',
-                    fontWeight: 900,
-                    cursor: 'pointer',
-                    border: priorityTag === tag.id ? `1.5px solid ${tag.color}` : '1px solid rgba(255,255,255,0.1)',
-                    background: priorityTag === tag.id ? `${tag.color}25` : 'rgba(30, 41, 59, 0.5)',
-                    color: priorityTag === tag.id ? '#FFF' : '#94A3B8'
-                  }}
-                >
-                  {tag.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Section 3: PACER Citation Vault Trigger */}
-          <div style={{ background: 'rgba(3, 7, 18, 0.8)', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: '8px', padding: '12px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-              <span style={{ fontSize: '0.72rem', color: '#FCD34D', fontWeight: 900 }}>
-                📄 PACER COURT EVIDENCE VAULT
-              </span>
+          {/* Position #1: TOP-MOUNTED WORKSTATION ASSET SEARCH BAR */}
+          <div style={{ position: 'relative', width: '100%' }}>
+            <Search size={13} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#F59E0B' }} />
+            <input
+              type="text"
+              placeholder="Search displaced executive talent & CROs..."
+              value={assetSearchQuery}
+              onChange={(e) => setAssetSearchQuery(e.target.value)}
+              style={{
+                width: '100%',
+                background: 'rgba(15, 23, 42, 0.95)',
+                border: assetSearchQuery ? '1.5px solid #F59E0B' : '1px solid rgba(245, 158, 11, 0.4)',
+                color: '#FFF',
+                padding: '6px 28px 6px 30px',
+                borderRadius: '6px',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                outline: 'none',
+                boxShadow: assetSearchQuery ? '0 0 12px rgba(245, 158, 11, 0.4)' : 'none',
+                boxSizing: 'border-box'
+              }}
+            />
+            {assetSearchQuery && (
               <button
-                onClick={() => setIsCitationWrapperOpen(true)}
-                style={{
-                  background: 'rgba(16, 185, 129, 0.2)',
-                  color: '#34D399',
-                  border: '1px solid #10B981',
-                  borderRadius: '4px',
-                  padding: '2px 6px',
-                  fontSize: '0.65rem',
-                  fontWeight: 900,
-                  cursor: 'pointer'
-                }}
+                onClick={() => setAssetSearchQuery('')}
+                style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer', fontSize: '0.7rem', fontWeight: 900 }}
               >
-                👁️ Preview Wrapper
+                ✕
               </button>
-            </div>
-            <div style={{ fontSize: '0.74rem', color: '#CBD5E1', lineHeight: 1.5 }}>
-              Official Court Petition Docket #001 & Section 365 Lease Rejection Motion for <strong>{selectedTargetCompany.name}</strong>.
-            </div>
-          </div>
-
-          {/* Section 4: Saved Target Candidate Pools Vault */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span style={{ fontSize: '0.72rem', color: '#FFF', fontWeight: 800 }}>
-                📁 Saved Target Pools ({savedTargets.length}):
-              </span>
-              <button
-                onClick={handleSaveTargetPool}
-                style={{
-                  padding: '3px 8px',
-                  background: 'rgba(16, 185, 129, 0.2)',
-                  color: '#34D399',
-                  border: '1px solid #10B981',
-                  borderRadius: '4px',
-                  fontSize: '0.68rem',
-                  fontWeight: 900,
-                  cursor: 'pointer'
-                }}
-              >
-                + Save Target
-              </button>
-            </div>
-
-            {savedStatusText && (
-              <div style={{ fontSize: '0.7rem', color: '#10B981', fontWeight: 900 }}>
-                {savedStatusText}
-              </div>
             )}
+          </div>
+
+          {/* Position #2: TARGET DISTRESSED COMPANIES TRAY WITH DISMISS FUNCTIONALITY */}
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+              <span style={{ fontSize: '0.74rem', fontWeight: 950, color: '#FCD34D', letterSpacing: '0.05em' }}>
+                {assetSearchQuery ? '🔍 SEARCH RESULTS' : `⭐ SAVED WORKSPACE FAVORITES (${watchlist.length})`}
+              </span>
+              {dismissedCompanyIds.length > 0 && (
+                <button
+                  onClick={() => setDismissedCompanyIds([])}
+                  style={{ fontSize: '0.62rem', color: '#94A3B8', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}
+                >
+                  Restore ({dismissedCompanyIds.length}) Hidden
+                </button>
+              )}
+            </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', overflowY: 'auto', flex: 1 }}>
-              {savedTargets.map(tgt => (
-                <div
-                  key={tgt.id}
-                  onClick={() => setActiveTargetId(tgt.id)}
-                  style={{
-                    background: activeTargetId === tgt.id ? 'rgba(245, 158, 11, 0.25)' : 'rgba(30, 41, 59, 0.6)',
-                    border: activeTargetId === tgt.id ? '1px solid #F59E0B' : '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '6px',
-                    padding: '8px 10px',
-                    fontSize: '0.72rem',
-                    cursor: 'pointer'
-                  }}
-                >
-                  <div style={{ fontWeight: 900, color: activeTargetId === tgt.id ? '#FCD34D' : '#F8FAFC' }}>
-                    {tgt.title}
-                  </div>
-                  <div style={{ fontSize: '0.65rem', color: '#94A3B8', display: 'flex', justifyContent: 'space-between', marginTop: '2px' }}>
-                    <span>{tgt.count}</span>
-                    <span>{tgt.date}</span>
-                  </div>
-                </div>
-              ))}
+              {companies
+                .filter(comp => {
+                  const compId = comp.id || comp.ticker || comp.name;
+                  if (dismissedCompanyIds.includes(compId)) return false;
+                  
+                  if (assetSearchQuery) {
+                    const q = assetSearchQuery.toLowerCase();
+                    return (comp.name && comp.name.toLowerCase().includes(q)) ||
+                           (comp.ticker && comp.ticker.toLowerCase().includes(q)) ||
+                           (comp.primaryCause && comp.primaryCause.toLowerCase().includes(q)) ||
+                           (comp.locationJurisdiction && comp.locationJurisdiction.toLowerCase().includes(q)) ||
+                           (comp.summary && comp.summary.toLowerCase().includes(q));
+                  }
+
+                  // STRICT FAVORITES + ACTIVE SELECTION ONLY (DUMP HUGE UNFILTERED LIST)
+                  const isFav = comp.isBookmarked || (watchlist && (watchlist.includes(comp.id) || watchlist.includes(comp.ticker)));
+                  const isSelected = (selectedTargetCompany.id && selectedTargetCompany.id === comp.id) || selectedTargetCompany.name === comp.name;
+                  return isFav || isSelected;
+                })
+                .map(comp => {
+                  const compId = comp.id || comp.ticker || comp.name;
+                  const isFav = comp.isBookmarked || (watchlist && (watchlist.includes(comp.id) || watchlist.includes(comp.ticker)));
+                  const isSelected = (selectedTargetCompany.id && selectedTargetCompany.id === comp.id) || selectedTargetCompany.name === comp.name;
+                  return (
+                    <div
+                      key={compId}
+                      onClick={() => {
+                        setSelectedTargetCompany(comp);
+                        setActiveDesk(null); // DIRECTLY DISPLAY FULL DOSSIER ON CANVAS BELOW TELEPORT MENU
+                      }}
+                      style={{
+                        background: isSelected ? 'rgba(245, 158, 11, 0.25)' : 'rgba(30, 41, 59, 0.6)',
+                        border: isSelected ? '1.5px solid #F59E0B' : '1px solid rgba(255,255,255,0.08)',
+                        borderRadius: '8px',
+                        padding: '8px 10px',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        position: 'relative'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <span style={{ fontSize: '0.8rem', fontWeight: 950, color: isSelected ? '#FFF' : '#CBD5E1', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          {isFav && <Star size={11} color="#F59E0B" fill="#F59E0B" />}
+                          {comp.name}
+                        </span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          {/* EXPLICIT SAVE / FAVORITE BUTTON FOR SEARCHED AND SAVED ENTITIES */}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (onToggleBookmark) onToggleBookmark(compId);
+                            }}
+                            title={isFav ? "Remove from Favorites" : "Save to Workspace Favorites"}
+                            style={{
+                              background: isFav ? 'rgba(245, 158, 11, 0.3)' : 'rgba(255, 255, 255, 0.08)',
+                              border: isFav ? '1px solid #F59E0B' : '1px solid rgba(255, 255, 255, 0.2)',
+                              color: isFav ? '#FCD34D' : '#94A3B8',
+                              borderRadius: '4px',
+                              padding: '2px 6px',
+                              fontSize: '0.62rem',
+                              fontWeight: 900,
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '3px'
+                            }}
+                          >
+                            <Star size={9} color={isFav ? '#FCD34D' : '#94A3B8'} fill={isFav ? '#FCD34D' : 'none'} />
+                            {isFav ? 'SAVED' : 'SAVE'}
+                          </button>
+
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setDismissedCompanyIds([...dismissedCompanyIds, compId]);
+                            }}
+                            title="Dismiss from desk"
+                            style={{ background: 'none', border: 'none', color: '#64748B', cursor: 'pointer', fontSize: '0.7rem', fontWeight: 900, padding: '0 2px' }}
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      </div>
+                      <div style={{ fontSize: '0.7rem', color: '#94A3B8', marginTop: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span>{comp.debtAtCollapse || '$500M+ Debt'} • {comp.locationJurisdiction || 'US Court'}</span>
+                        <span style={{ fontSize: '0.6rem', fontWeight: 900, background: 'rgba(245,158,11,0.2)', color: '#FCD34D', padding: '1px 4px', borderRadius: '3px' }}>
+                          {comp.ticker || 'TALENT'}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
             </div>
           </div>
 
@@ -512,8 +625,123 @@ export default function HeadhunterTalentWorkstation({
           gap: '20px'
         }}>
 
+          {/* UNIVERSAL CROSS-WORKSPACE TELEPORT STRIP (PERFECT ON ALL DESKS) */}
+          <div style={{
+            background: 'rgba(9, 13, 22, 0.98)',
+            border: '1.5px solid rgba(245, 158, 11, 0.4)',
+            borderRadius: '12px',
+            padding: '12px 18px',
+            display: 'flex',
+            alignItems: 'center',
+            justify: 'space-between',
+            gap: '12px',
+            boxShadow: '0 8px 20px rgba(0,0,0,0.4)',
+            flexWrap: 'wrap'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', fontWeight: 950, color: '#FCD34D' }}>
+              <Sparkles size={16} color="#FCD34D" />
+              <span>CROSS-WORKSPACE TELEPORT ({selectedTargetCompany.name.toUpperCase()}):</span>
+            </div>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('investor', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(16, 185, 129, 0.2)', color: '#34D399', border: '1px solid #10B981', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                💳 Investor & Lender
+              </button>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('marketplace', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(236, 72, 153, 0.2)', color: '#F472B6', border: '1px solid #EC4899', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                🔨 363 Marketplace
+              </button>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('creditor', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(139, 92, 246, 0.2)', color: '#C084FC', border: '1px solid #8B5CF6', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                🛡️ Creditor Action
+              </button>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('media', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(56, 189, 248, 0.2)', color: '#38BDF8', border: '1px solid #38BDF8', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                📰 Media & Press
+              </button>
+            </div>
+          </div>
+
+          {/* DEFAULT OVERVIEW: EXECUTIVE TALENT & C-SUITE DOSSIER STAGE */}
+          {activeDesk === null && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              
+              {/* Company Dossier Banner */}
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(9, 13, 22, 0.98) 100%)',
+                border: '1.5px solid #F59E0B',
+                borderRadius: '14px',
+                padding: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                justify: 'space-between',
+                boxShadow: '0 12px 30px rgba(0,0,0,0.6)'
+              }}>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 950, background: 'rgba(245, 158, 11, 0.2)', color: '#FCD34D', padding: '3px 8px', borderRadius: '4px', border: '1px solid #F59E0B' }}>
+                      C-SUITE TALENT DOSSIER
+                    </span>
+                    <span style={{ fontSize: '0.7rem', color: '#94A3B8' }}>
+                      KERP Retention Retention Status: High Risk
+                    </span>
+                  </div>
+                  <h2 style={{ margin: '8px 0 2px 0', fontSize: '1.4rem', fontWeight: 950, color: '#FFF' }}>
+                    {selectedTargetCompany.name} ({selectedTargetCompany.ticker || 'TALENT'})
+                  </h2>
+                  <div style={{ fontSize: '0.82rem', color: '#94A3B8' }}>
+                    📍 {selectedTargetCompany.locationJurisdiction || 'Wilmington, DE'} • 4 Executive C-Suite Officers Identified
+                  </div>
+                </div>
+
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: '0.72rem', color: '#94A3B8', fontWeight: 800 }}>DISPLACED WORKFORCE</div>
+                  <div style={{ fontSize: '1.5rem', fontWeight: 950, color: '#FCD34D' }}>
+                    450+ Execs & Staff
+                  </div>
+                </div>
+              </div>
+
+              {/* Talent Roster Summary Grid — DYNAMICALLY SLAVED TO selectedTargetCompany */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
+                <div style={{ background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: '12px', padding: '18px' }}>
+                  <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', fontWeight: 950, color: '#FCD34D' }}>
+                    👔 C-SUITE EXECUTIVE FLIGHT RISK
+                  </h4>
+                  <div style={{ fontSize: '0.78rem', color: '#CBD5E1', lineHeight: 1.6 }}>
+                    • Chief Financial Officer (CFO) — Active Job Seeker<br/>
+                    • Chief Operating Officer (COO) — KERP Retention Plan Expiry<br/>
+                    • VP Corporate Sales — Restructuring Free Agent<br/>
+                    • General Counsel / CRO — Chapter 11 Experienced
+                  </div>
+                </div>
+
+                <div style={{ background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '18px' }}>
+                  <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', fontWeight: 950, color: '#FCA5A5' }}>
+                    📜 STATE WARN LAYOFF DISCLOSURES
+                  </h4>
+                  <div style={{ fontSize: '0.78rem', color: '#CBD5E1', lineHeight: 1.6 }}>
+                    • WARN Notice Filed with State Dept of Labor<br/>
+                    • 450 Full-Time Employees Impacted<br/>
+                    • Plant & HQ Facility Shutdown Date: 30 Days<br/>
+                    • Severance & Outplacement Package Filed
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          )}
+
           {/* DESK 1: DEEP C-SUITE & KERP TALENT RAID RADAR */}
-          {activeDesk === 'radar' && (
+          {(activeDesk === 'executives' || activeDesk === 'radar' || activeDesk === 'desk1') && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div style={{
                 background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(9, 13, 22, 0.98) 100%)',
@@ -627,6 +855,115 @@ export default function HeadhunterTalentWorkstation({
                       </button>
                     </div>
 
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* DESK 2: WARN ACT STATE LAYOFF FEED & PLANT CLOSURES */}
+          {(activeDesk === 'warn' || activeDesk === 'desk2') && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ background: 'rgba(15, 23, 42, 0.95)', border: '1.5px solid #EF4444', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 950, color: '#FFF', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Clock size={18} color="#EF4444" /> STATE WARN ACT LAYOFF & PLANT CLOSURE WIRE — {selectedTargetCompany.name.toUpperCase()}
+                  </div>
+                  <div style={{ fontSize: '0.76rem', color: '#94A3B8', marginTop: '2px' }}>
+                    Jurisdiction: {selectedTargetCompany.locationJurisdiction || 'State Labor Department'} • Status: {selectedTargetCompany.courtCaseStatus || 'WARN Notice Disclosed'}
+                  </div>
+                </div>
+                <span style={{ fontSize: '0.75rem', fontWeight: 950, background: 'rgba(239, 68, 68, 0.2)', color: '#FCA5A5', padding: '4px 10px', borderRadius: '6px', border: '1px solid #EF4444' }}>
+                  STATE LABOR VERIFIED
+                </span>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '16px' }}>
+                {[
+                  {
+                    title: `WARN Layoff Notice: Corporate HQ & Ops (${selectedTargetCompany.name})`,
+                    location: selectedTargetCompany.locationJurisdiction || 'State HQ Facility',
+                    employees: '450 Impacted Employees',
+                    date: 'Disclosed 14 Days Prior to Petition',
+                    details: 'State Department of Labor filing indicating executive & operational layoffs effective 60 days post-notice.'
+                  },
+                  {
+                    title: `Plant & Warehouse Lease Rejection (#365 Motion)`,
+                    location: `${selectedTargetCompany.locationJurisdiction || 'Regional Logistics Hub'}`,
+                    employees: '210 Regional Distribution Staff',
+                    date: 'Effective Immediately upon Order',
+                    details: 'Motion filed under 11 U.S.C. § 365 to reject commercial lease liabilities and consolidate freight operations.'
+                  }
+                ].map((warnItem, wIdx) => (
+                  <div key={wIdx} style={{ background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(239, 68, 68, 0.35)', borderRadius: '12px', padding: '18px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <span style={{ fontSize: '0.68rem', fontWeight: 950, background: 'rgba(239, 68, 68, 0.2)', color: '#FCA5A5', padding: '2px 8px', borderRadius: '4px' }}>
+                        {warnItem.employees}
+                      </span>
+                      <span style={{ fontSize: '0.68rem', fontWeight: 900, color: '#94A3B8' }}>{warnItem.date}</span>
+                    </div>
+                    <h4 style={{ margin: 0, fontSize: '0.98rem', fontWeight: 950, color: '#FFF' }}>{warnItem.title}</h4>
+                    <div style={{ fontSize: '0.76rem', color: '#38BDF8', fontWeight: 800 }}>📍 Location: {warnItem.location}</div>
+                    <p style={{ margin: 0, fontSize: '0.74rem', color: '#94A3B8', lineHeight: 1.5 }}>{warnItem.details}</p>
+                    <button
+                      onClick={() => alert(`Generated State WARN Verification Memorandum for ${warnItem.title}`)}
+                      style={{ padding: '6px 12px', background: 'rgba(239, 68, 68, 0.2)', color: '#FCA5A5', border: '1px solid #EF4444', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 900, cursor: 'pointer', marginTop: '6px' }}
+                    >
+                      📄 Download State WARN Disclosure Notice (.PDF)
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* DESK 3: PRIVATE HEADHUNTER CANDIDATE ASSET MATCHER */}
+          {(activeDesk === 'matcher' || activeDesk === 'poach' || activeDesk === 'desk3') && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ background: 'rgba(15, 23, 42, 0.95)', border: '1.5px solid #38BDF8', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 950, color: '#FFF', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Upload size={18} color="#38BDF8" /> CANDIDATE-TO-PE PORTFOLIO ASSET MATCHER — {selectedTargetCompany.name.toUpperCase()}
+                  </div>
+                  <div style={{ fontSize: '0.76rem', color: '#94A3B8', marginTop: '2px' }}>
+                    Matching Executive Officers to PE Turnaround Portfolios & 363 Stalking Horse Buyers
+                  </div>
+                </div>
+                <span style={{ fontSize: '0.75rem', fontWeight: 950, background: 'rgba(56, 189, 248, 0.2)', color: '#38BDF8', padding: '4px 10px', borderRadius: '6px', border: '1px solid #38BDF8' }}>
+                  MATCH ALGORITHM ACTIVE
+                </span>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '16px' }}>
+                {displayCandidates.map((cand, mIdx) => (
+                  <div key={mIdx} style={{ background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(56, 189, 248, 0.35)', borderRadius: '12px', padding: '18px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <span style={{ fontSize: '0.72rem', fontWeight: 950, background: 'rgba(16, 185, 129, 0.25)', color: '#34D399', padding: '2px 8px', borderRadius: '4px', border: '1px solid #10B981' }}>
+                        MATCH FIT: {94 + (mIdx % 5)}% EXCELLENT
+                      </span>
+                      <span style={{ fontSize: '0.68rem', fontWeight: 900, color: '#FCD34D' }}>PE Turnaround Role</span>
+                    </div>
+
+                    <div>
+                      <h3 style={{ margin: 0, fontSize: '1.02rem', fontWeight: 950, color: '#FFF' }}>{cand.name}</h3>
+                      <div style={{ fontSize: '0.8rem', color: '#38BDF8', fontWeight: 900, marginTop: '2px' }}>{cand.currentRole}</div>
+                      <div style={{ fontSize: '0.72rem', color: '#94A3B8', marginTop: '2px' }}>Target: {cand.company} ({cand.ticker})</div>
+                    </div>
+
+                    <div style={{ background: 'rgba(3, 7, 18, 0.8)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', padding: '10px', fontSize: '0.74rem', color: '#CBD5E1' }}>
+                      <strong style={{ color: '#38BDF8' }}>Matched PE Target Opportunity:</strong>
+                      <div style={{ marginTop: '2px' }}>Turnaround Chief Restructuring / Portfolio Lead for $500M+ PE Buyout Fund</div>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        setPitchText(`CONFIDENTIAL HEADHUNTER CANDIDATE SUBMISSION\n\nTarget Executive: ${cand.name} (${cand.currentRole})\nCompany: ${cand.company}\nMatch Rating: 96%\n\nCandidate is free-agent ready following Chapter 11 proceedings.`);
+                        setActiveDesk('pitch');
+                      }}
+                      style={{ padding: '8px 14px', background: 'linear-gradient(135deg, #38BDF8 0%, #0284C7 100%)', color: '#000', border: 'none', borderRadius: '6px', fontSize: '0.76rem', fontWeight: 950, cursor: 'pointer' }}
+                    >
+                      💼 Submit Candidate to PE Hiring Committee
+                    </button>
                   </div>
                 ))}
               </div>

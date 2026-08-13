@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import { X, FileText, Download, Share2, Check, ShieldCheck, Gavel, Layers, DollarSign, ExternalLink, Lock, Printer, Star } from 'lucide-react';
 
-export default function DiligenceBriefModal({ entityName, onClose, isStarred, isCustomTracked }) {
+export default function DiligenceBriefModal({ entityName, onClose, isStarred, isCustomTracked, onOpenPublicCatalog, onOpenCourtPortal }) {
   const [copiedLink, setCopiedLink] = useState(false);
   const [isSavedInVault, setIsSavedInVault] = useState(true);
+  const [generatedPin, setGeneratedPin] = useState(`PACER-363-${Math.floor(1000 + Math.random() * 9000)}`);
+  const [copiedPin, setCopiedPin] = useState(false);
+
+  const handleCopyPin = () => {
+    navigator.clipboard.writeText(generatedPin);
+    setCopiedPin(true);
+    setTimeout(() => setCopiedPin(false), 2000);
+  };
 
   const timestamp = new Date().toISOString().slice(0, 10);
   const isObj = typeof entityName === 'object' && entityName !== null;
@@ -317,6 +325,98 @@ vault URL: ${shareableUrl}
           <p style={{ margin: 0 }}>
             Credit bid floor reserve is set at <strong>$45,000,000</strong>. Qualified bidding requires a <strong>$25,000.00 escrow deposit</strong> submitted to the court-appointed bankruptcy trustee 14 days prior to the auction webcast.
           </p>
+
+          <h4 style={{ color: '#10B981', fontSize: '0.95rem', fontWeight: 900, margin: '20px 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.04em', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <Gavel size={16} /> 4. ITEMIZED ASSET CATALOG & COURT WEBCAST PIN GENERATOR
+          </h4>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '14px', marginTop: '10px' }}>
+            
+            {/* ITEM CATALOG TOOL CARD */}
+            <div style={{ background: 'rgba(15, 23, 42, 0.9)', border: '1px solid rgba(16, 185, 129, 0.4)', borderRadius: '10px', padding: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <div>
+                <div style={{ fontSize: '0.72rem', fontWeight: 900, color: '#34D399', textTransform: 'uppercase', marginBottom: '6px' }}>
+                  📦 ITEMIZED AUCTION LOT CATALOG (3 LOTS)
+                </div>
+                <div style={{ fontSize: '0.78rem', color: '#FFF', lineHeight: 1.5, marginBottom: '14px' }}>
+                  • <strong>Lot 101:</strong> 24 Commercial Fleet Tractors ($450K Floor)<br/>
+                  • <strong>Lot 102:</strong> Automated CNC Tooling Centers ($280K Floor)<br/>
+                  • <strong>Lot 103:</strong> Corporate IP & Brand Patents ($1.2M Floor)
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  if (onOpenPublicCatalog) onOpenPublicCatalog(entityName);
+                }}
+                className="no-print"
+                style={{
+                  width: '100%',
+                  background: 'rgba(16, 185, 129, 0.2)',
+                  color: '#34D399',
+                  border: '1px solid #10B981',
+                  padding: '8px 12px',
+                  borderRadius: '8px',
+                  fontSize: '0.78rem',
+                  fontWeight: 900,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '6px'
+                }}
+              >
+                👁️ Open Full Itemized Catalog & Photos
+              </button>
+            </div>
+
+            {/* COURT WEBCAST PIN GENERATOR TOOL CARD */}
+            <div style={{ background: 'rgba(15, 23, 42, 0.9)', border: '1px solid rgba(245, 158, 11, 0.4)', borderRadius: '10px', padding: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <div>
+                <div style={{ fontSize: '0.72rem', fontWeight: 900, color: '#F59E0B', textTransform: 'uppercase', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <Lock size={12} /> COURT WEBCAST ACCESS PIN & CREDENTIALS
+                </div>
+                <div style={{ background: 'rgba(7, 10, 15, 0.9)', border: '1px solid #F59E0B', borderRadius: '6px', padding: '8px 12px', marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div>
+                    <div style={{ fontSize: '0.65rem', color: '#94A3B8', fontWeight: 800 }}>LIVE COURT PIN</div>
+                    <div style={{ fontSize: '0.95rem', fontWeight: 950, color: '#FFE066', fontFamily: 'monospace' }}>{generatedPin}</div>
+                  </div>
+                  <button
+                    onClick={handleCopyPin}
+                    className="no-print"
+                    style={{ background: 'rgba(245, 158, 11, 0.2)', color: '#FCD34D', border: '1px solid #F59E0B', padding: '4px 8px', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 900, cursor: 'pointer' }}
+                  >
+                    {copiedPin ? '✓ Copied' : '📋 Copy PIN'}
+                  </button>
+                </div>
+              </div>
+
+              <button
+                onClick={() => {
+                  if (onOpenCourtPortal) onOpenCourtPortal(entityName);
+                }}
+                className="no-print"
+                style={{
+                  width: '100%',
+                  background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+                  color: '#FFF',
+                  border: 'none',
+                  padding: '8px 12px',
+                  borderRadius: '8px',
+                  fontSize: '0.78rem',
+                  fontWeight: 950,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '6px',
+                  boxShadow: '0 0 12px rgba(245, 158, 11, 0.4)'
+                }}
+              >
+                🔐 Launch Official Court Bidding Portal
+              </button>
+            </div>
+
+          </div>
 
         </div>
 

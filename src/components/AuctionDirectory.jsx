@@ -88,50 +88,54 @@ export default function AuctionDirectory({ auctions, onSelectAuction, onOpenPubl
 
       {/* Grid of Auctions */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(420px, 1fr))', gap: '24px' }}>
-        {(auctions || []).map((auction) => (
+        {(auctions || []).map((auction) => {
+          const entityName = auction.entityName || auction.name || auction.companyName || auction.company || (auction.auctionTitle ? auction.auctionTitle.split('-')[0].trim() : 'Corporate Asset');
+          const ticker = auction.ticker || auction.symbol || '363 BID';
+          const auctionKey = auction.id || entityName;
 
-          <div
-            key={auction.id}
-            className="glass-panel glass-panel-interactive"
-            style={{ padding: '24px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: '1px solid rgba(16, 185, 129, 0.35)' }}
-          >
-            <div>
-              {/* Header */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
-                <div>
+          return (
+            <div
+              key={auction.id || auctionKey}
+              className="glass-panel glass-panel-interactive"
+              style={{ padding: '24px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: '1px solid rgba(16, 185, 129, 0.35)' }}
+            >
+              <div>
+                {/* Header */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#FFF' }}>{entityName}</h3>
+                      <span style={{ fontSize: '0.7rem', color: 'var(--text-dim)', background: 'rgba(255, 255, 255, 0.06)', padding: '2px 6px', borderRadius: '4px', fontFamily: 'var(--font-mono)' }}>
+                        {ticker}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: '0.8rem', color: '#10B981', fontWeight: 700, marginTop: '2px' }}>
+                      Auctioneer: {auction.auctioneer}
+                    </div>
+                  </div>
+
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#FFF' }}>{auction.entityName}</h3>
-                    <span style={{ fontSize: '0.7rem', color: 'var(--text-dim)', background: 'rgba(255, 255, 255, 0.06)', padding: '2px 6px', borderRadius: '4px', fontFamily: 'var(--font-mono)' }}>
-                      {auction.ticker}
+                    {toggleWatchlist && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleWatchlist(auctionKey);
+                        }}
+                        style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px' }}
+                        title={watchlist && watchlist.includes(auctionKey) ? 'Remove from Watchlist' : 'Bookmark Auction to Watchlist'}
+                      >
+                        <Star
+                          size={18}
+                          color={watchlist && watchlist.includes(auctionKey) ? '#F59E0B' : 'var(--text-dim)'}
+                          fill={watchlist && watchlist.includes(auctionKey) ? '#F59E0B' : 'none'}
+                        />
+                      </button>
+                    )}
+                    <span className={`status-badge ${auction.statusBadge}`}>
+                      {auction.status}
                     </span>
                   </div>
-                  <div style={{ fontSize: '0.8rem', color: '#10B981', fontWeight: 700, marginTop: '2px' }}>
-                    Auctioneer: {auction.auctioneer}
-                  </div>
                 </div>
-
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  {toggleWatchlist && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleWatchlist(auction.id || auction.entityName);
-                      }}
-                      style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px' }}
-                      title={watchlist && watchlist.includes(auction.id || auction.entityName) ? 'Remove from Watchlist' : 'Bookmark Auction to Watchlist'}
-                    >
-                      <Star
-                        size={18}
-                        color={watchlist && watchlist.includes(auction.id || auction.entityName) ? '#F59E0B' : 'var(--text-dim)'}
-                        fill={watchlist && watchlist.includes(auction.id || auction.entityName) ? '#F59E0B' : 'none'}
-                      />
-                    </button>
-                  )}
-                  <span className={`status-badge ${auction.statusBadge}`}>
-                    {auction.status}
-                  </span>
-                </div>
-              </div>
 
               {/* Auction Title */}
               <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#FFF', marginBottom: '14px', lineHeight: 1.3 }}>
@@ -197,15 +201,25 @@ export default function AuctionDirectory({ auctions, onSelectAuction, onOpenPubl
                 📜 View Section 363 Diligence Brief
               </button>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '8px' }}>
                 <button
                   onClick={() => {
                     if (onOpenPublicCatalog) onOpenPublicCatalog(auction);
                   }}
                   className="btn-secondary"
-                  style={{ justifyContent: 'center', fontSize: '0.78rem', background: 'rgba(15, 23, 42, 0.9)' }}
+                  style={{ justifyContent: 'center', fontSize: '0.74rem', background: 'rgba(15, 23, 42, 0.9)' }}
                 >
-                  👁️ Free Catalog
+                  👁️ Catalog
+                </button>
+
+                <button
+                  onClick={() => {
+                    if (onOpenDiligenceBrief) onOpenDiligenceBrief(auction);
+                  }}
+                  className="btn-secondary"
+                  style={{ justifyContent: 'center', fontSize: '0.74rem', background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8', border: '1px solid rgba(56, 189, 248, 0.4)' }}
+                >
+                  📊 363 Comps
                 </button>
 
                 <button
@@ -213,14 +227,15 @@ export default function AuctionDirectory({ auctions, onSelectAuction, onOpenPubl
                     if (onSelectAuction) onSelectAuction(auction);
                   }}
                   className="btn-primary"
-                  style={{ justifyContent: 'center', background: 'linear-gradient(135deg, #10B981 0%, #047857 100%)', fontSize: '0.78rem' }}
+                  style={{ justifyContent: 'center', background: 'linear-gradient(135deg, #10B981 0%, #047857 100%)', fontSize: '0.74rem' }}
                 >
-                  🔐 Bidder Log-In <ExternalLink size={12} />
+                  🔐 Bid Log-In
                 </button>
               </div>
             </div>
           </div>
-        ))}
+        );
+      })}
       </div>
     </div>
   );

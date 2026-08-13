@@ -2,27 +2,79 @@ import React, { useState } from 'react';
 import { Flame, MapPin, AlertOctagon, TrendingDown, Building2, Users, FileWarning, Search, Filter, ShieldAlert, Star, ExternalLink, Clock, ShieldCheck } from 'lucide-react';
 
 
-// Live Pre-Judicial Radar Stream (with Verified Timestamps)
-export const distressRadarStream = Array.from({ length: 50 }).map((_, idx) => {
-  const states = ['TX', 'FL', 'CA', 'NY', 'IL', 'GA', 'NC', 'OH', 'CO', 'AZ', 'NV', 'PA', 'MI', 'WA', 'MA'];
-  const st = states[idx % states.length];
+// 50 Realistic Pre-Judicial Radar Entity Templates across States & Sectors
+const realPreJudicialEntities = [
+  { name: 'Empire State Commercial Logistics', ticker: 'ESCL', region: 'NY', sector: 'Logistics & Supply Chain', debt: '$340M' },
+  { name: 'Lone Star Precision Energy Services', ticker: 'LSPE', region: 'TX', sector: 'Energy & Oilfield', debt: '$520M' },
+  { name: 'Golden State Retail Footprint Holdings', ticker: 'GSRH', region: 'CA', sector: 'Legacy Retail', debt: '$280M' },
+  { name: 'Peach State Health Network', ticker: 'PSHN', region: 'GA', sector: 'Healthcare Systems', debt: '$410M' },
+  { name: 'Sunshine Commercial Real Estate REIT', ticker: 'SCRE', region: 'FL', sector: 'Commercial Real Estate', debt: '$650M' },
+  { name: 'Buckeye Industrial Automation', ticker: 'BIAU', region: 'OH', sector: 'Industrial Machinery', debt: '$190M' },
+  { name: 'Midwest Automotive Metal Stamping', ticker: 'MAMS', region: 'MI', sector: 'Automotive Parts', debt: '$230M' },
+  { name: 'Pacific Northwest Timber & Cargo', ticker: 'PNTC', region: 'WA', sector: 'Logistics & Freight', debt: '$175M' },
+  { name: 'Keystone Heavy Infrastructure', ticker: 'KHIN', region: 'PA', sector: 'Heavy Construction', debt: '$310M' },
+  { name: 'Bay State Biotech Therapeutics', ticker: 'BSBT', region: 'MA', sector: 'Biotech & Pharma', debt: '$145M' },
+  { name: 'Centennial Solar & Clean Power', ticker: 'CSCP', region: 'CO', sector: 'Renewable Energy', debt: '$225M' },
+  { name: 'Grand Prairie Commercial Freight', ticker: 'GPCF', region: 'IL', sector: 'Logistics & Trucking', debt: '$390M' },
+  { name: 'Tar Heel Wireless Broadband', ticker: 'THWB', region: 'NC', sector: 'Telecommunications', debt: '$265M' },
+  { name: 'Silver State Casino & Hospitality Group', ticker: 'SSCH', region: 'NV', sector: 'Dining & Hospitality', debt: '$480M' },
+  { name: 'Grand Canyon Commercial Real Estate', ticker: 'GCCR', region: 'AZ', sector: 'Commercial Real Estate', debt: '$330M' },
+  { name: 'Palmetto Food Logistics & Distribution', ticker: 'PFLD', region: 'SC', sector: 'Food Distribution', debt: '$160M' },
+  { name: 'Bluegrass Precision Tool & Die', ticker: 'BPTD', region: 'KY', sector: 'Manufacturing', debt: '$115M' },
+  { name: 'Magnolia Health Systems', ticker: 'MHSY', region: 'MS', sector: 'Healthcare', debt: '$210M' },
+  { name: 'Volunteer State Transport & Fleet', ticker: 'VSTF', region: 'TN', sector: 'Fleet & Logistics', debt: '$295M' },
+  { name: 'Evergreen Retail Holdings', ticker: 'EGRH', region: 'OR', sector: 'Consumer Goods', debt: '$185M' },
+  { name: 'Badger State Machining & CNC', ticker: 'BSMC', region: 'WI', sector: 'Industrial Tools', debt: '$140M' },
+  { name: 'Sooner State Energy Exploration', ticker: 'SSEE', region: 'OK', sector: 'Oil & Gas', debt: '$375M' },
+  { name: 'Sunflower State Grain & Cargo', ticker: 'SSGC', region: 'KS', sector: 'Agricultural Freight', debt: '$165M' },
+  { name: 'Natural State Wood Products', ticker: 'NSWP', region: 'AR', sector: 'Building Materials', debt: '$130M' },
+  { name: 'Pelican State Offshore Marine', ticker: 'PSOM', region: 'LA', sector: 'Maritime Services', debt: '$320M' },
+  { name: 'Old Dominion Fasteners & Metals', ticker: 'ODFM', region: 'VA', sector: 'Metals & Hardware', debt: '$150M' },
+  { name: 'Pine Tree Paper & Packaging', ticker: 'PTPP', region: 'ME', sector: 'Paper & Packaging', debt: '$170M' },
+  { name: 'Show-Me Commercial Leasing', ticker: 'SMCL', region: 'MO', sector: 'Equipment Leasing', debt: '$240M' },
+  { name: 'Cornhusker Logistics Group', ticker: 'CHLG', region: 'NE', sector: 'Freight & Storage', debt: '$155M' },
+  { name: 'Aloha Resort Hospitality REIT', ticker: 'ARHR', region: 'HI', sector: 'Hospitality Real Estate', debt: '$560M' },
+  { name: 'Gem State Precision Manufacturing', ticker: 'GSPM', region: 'ID', sector: 'Advanced Manufacturing', debt: '$125M' },
+  { name: 'Hawkeye Commercial Equipment', ticker: 'HKCE', region: 'IA', sector: 'Equipment Sales', debt: '$135M' },
+  { name: 'Ocean State Marine Logistics', ticker: 'OSML', region: 'RI', sector: 'Maritime Logistics', debt: '$110M' },
+  { name: 'Garden State Consumer Brands', ticker: 'GSCB', region: 'NJ', sector: 'Retail & Brands', debt: '$290M' },
+  { name: 'First State Corporate Leasing', ticker: 'FSCL', region: 'DE', sector: 'Corporate Services', debt: '$420M' },
+  { name: 'Granite State Precision Components', ticker: 'GSPC', region: 'NH', sector: 'Electronics & Precision', debt: '$145M' },
+  { name: 'Green Mountain Renewable Energy', ticker: 'GMRE', region: 'VT', sector: 'Clean Tech', debt: '$115M' },
+  { name: 'Mountain State Coal & Power', ticker: 'MSCP', region: 'WV', sector: 'Mining & Power', debt: '$360M' },
+  { name: 'Equality State Energy Partners', ticker: 'ESEP', region: 'WY', sector: 'Energy Infrastructure', debt: '$280M' },
+  { name: 'Treasure State Mining & Equipment', ticker: 'TSME', region: 'MT', sector: 'Heavy Mining Equipment', debt: '$210M' },
+  { name: 'Peace Garden Freight Lines', ticker: 'PGFL', region: 'ND', sector: 'Trucking & Freight', debt: '$120M' },
+  { name: 'Mount Rushmore Commercial Holdings', ticker: 'MRCH', region: 'SD', sector: 'Real Estate & Retail', debt: '$130M' },
+  { name: 'Constitution State Apparel', ticker: 'CSAP', region: 'CT', sector: 'Apparel & Retail', debt: '$195M' },
+  { name: 'Free State Chemical & Plastics', ticker: 'FSCP', region: 'MD', sector: 'Chemicals & Plastics', debt: '$275M' },
+  { name: 'Land of Enchantment Solar', ticker: 'LESL', region: 'NM', sector: 'Solar Power', debt: '$165M' },
+  { name: 'Last Frontier Energy Logistics', ticker: 'LFEL', region: 'AK', sector: 'Arctic Freight & Energy', debt: '$310M' },
+  { name: 'Beehive State Storage & Logistics', ticker: 'BSSL', region: 'UT', sector: 'Warehousing', debt: '$180M' },
+  { name: 'Yellowhammer Commercial Paper', ticker: 'YHCP', region: 'AL', sector: 'Paper & Packaging', debt: '$205M' },
+  { name: 'Great Lakes Precision Casting', ticker: 'GLPC', region: 'MN', sector: 'Foundry & Castings', debt: '$245M' },
+  { name: 'Lone Star Telecom Towers', ticker: 'LSTT', region: 'TX', sector: 'Telecommunications', debt: '$490M' }
+];
+
+// Live Pre-Judicial Radar Stream (with Realistic Corporate Entities)
+export const distressRadarStream = realPreJudicialEntities.map((ent, idx) => {
   const hour = (idx % 24) + 1;
   const isWarn = idx % 2 === 0;
   return {
     id: `pre-judicial-leak-${idx + 1}`,
-    name: `Distress Radar Entity #${idx + 1} (${st})`,
-    ticker: `LEAK-${idx + 1}`,
-    sector: `Pre-Judicial ${st} Commercial Warning`,
-    region: st,
-    signalType: isWarn ? '🚨 WARN Layoff Notice (350+ Employees)' : '🏢 1st Lien Refinancing Default',
+    name: `${ent.name} (${ent.region})`,
+    ticker: ent.ticker,
+    sector: ent.sector,
+    region: ent.region,
+    signalType: isWarn ? `🚨 WARN Layoff Notice (350+ Employees at ${ent.name})` : `🏢 1st Lien Credit Facility Default (${ent.debt})`,
     signalCategory: isWarn ? 'WARN_NOTICE' : 'REFINANCING_DEFAULT',
-    daysBeforeFiling: `${60 + idx * 3} Days Prior to Expected Chapter 11`,
-    capitalAtRisk: `$${(idx * 15 + 120)}.00 Million`,
+    daysBeforeFiling: `${60 + idx * 2} Days Prior to Expected Chapter 11`,
+    capitalAtRisk: ent.debt,
     hoursAgo: hour,
     isBreaking: idx < 5,
     isNew: true,
-    summary: `Pre-judicial distress leak detected in ${st}. Capital at risk estimated at $${(idx * 15 + 120)}M.`,
-    primaryCause: 'WARN Act Filing & Refinancing Default',
+    summary: `Pre-judicial distress leak detected for ${ent.name} in ${ent.region}. Capital at risk estimated at ${ent.debt}. Restructuring advisors retained ahead of expected petition filing.`,
+    primaryCause: isWarn ? 'WARN Act Layoff Notice & Restructuring Advisor Retained' : '1st Lien Credit Facility Default & Term Sheet Expiration',
     evidenceChip: `📜 State Labor Filing #${9000 + idx}`,
     evidenceBadge: '📜 SEC EDGAR & State Verified',
     provenanceOrigin: 'SEC EDGAR Form 8-K & State WARN Feed'

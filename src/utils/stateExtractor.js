@@ -1,7 +1,20 @@
 /**
  * High-Precision State Code Extraction Utility for BusinessCollapse.Com
- * Uses word-boundary regex matching across all jurisdiction fields to guarantee 100% state accuracy.
+ * Uses full state name dictionary and word-boundary regex matching across all jurisdiction fields.
  */
+const STATE_NAME_TO_CODE = {
+  'ALABAMA': 'AL', 'ALASKA': 'AK', 'ARIZONA': 'AZ', 'ARKANSAS': 'AR', 'CALIFORNIA': 'CA',
+  'COLORADO': 'CO', 'CONNECTICUT': 'CT', 'DELAWARE': 'DE', 'FLORIDA': 'FL', 'GEORGIA': 'GA',
+  'HAWAII': 'HI', 'IDAHO': 'ID', 'ILLINOIS': 'IL', 'INDIANA': 'IN', 'IOWA': 'IA',
+  'KANSAS': 'KS', 'KENTUCKY': 'KY', 'LOUISIANA': 'LA', 'MAINE': 'ME', 'MARYLAND': 'MD',
+  'MASSACHUSETTS': 'MA', 'MICHIGAN': 'MI', 'MINNESOTA': 'MN', 'MISSISSIPPI': 'MS', 'MISSOURI': 'MO',
+  'MONTANA': 'MT', 'NEBRASKA': 'NE', 'NEVADA': 'NV', 'NEW HAMPSHIRE': 'NH', 'NEW JERSEY': 'NJ',
+  'NEW MEXICO': 'NM', 'NEW YORK': 'NY', 'NORTH CAROLINA': 'NC', 'NORTH DAKOTA': 'ND', 'OHIO': 'OH',
+  'OKLAHOMA': 'OK', 'OREGON': 'OR', 'PENNSYLVANIA': 'PA', 'RHODE ISLAND': 'RI', 'SOUTH CAROLINA': 'SC',
+  'SOUTH DAKOTA': 'SD', 'TENNESSEE': 'TN', 'TEXAS': 'TX', 'UTAH': 'UT', 'VERMONT': 'VT',
+  'VIRGINIA': 'VA', 'WASHINGTON': 'WA', 'WEST VIRGINIA': 'WV', 'WISCONSIN': 'WI', 'WYOMING': 'WY'
+};
+
 export function extractStateCode(item) {
   if (!item) return '';
 
@@ -10,17 +23,26 @@ export function extractStateCode(item) {
     return item.region.toUpperCase();
   }
 
-  // 2. Text Search across location, jurisdiction, summary, and name
   const textToSearch = [
     item.region,
     item.locationJurisdiction,
     item.state,
     item.name,
+    item.entityName,
+    item.companyName,
     item.summary,
     item.claimsAgent
-  ].filter(Boolean).join(' ');
+  ].filter(Boolean).join(' ').toUpperCase();
 
-  const stateMatch = textToSearch.match(/\b(AL|AK|AZ|AR|CA|CO|CT|DE|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY)\b/i);
+  // 2. Full State Name Matching (e.g. "OKLAHOMA" -> "OK", "DELAWARE" -> "DE")
+  for (const [stateName, code] of Object.entries(STATE_NAME_TO_CODE)) {
+    if (textToSearch.includes(stateName)) {
+      return code;
+    }
+  }
+
+  // 3. Standalone 2-Letter Abbreviation Match
+  const stateMatch = textToSearch.match(/\b(AL|AK|AZ|AR|CA|CO|CT|DE|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY)\b/);
 
   if (stateMatch && stateMatch[1]) {
     return stateMatch[1].toUpperCase();

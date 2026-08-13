@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   ShieldCheck, FileText, Clock, AlertTriangle, Download, Share2, Sparkles, Send, Copy, 
   ExternalLink, Search, Filter, Briefcase, FileSpreadsheet, Linkedin, Mail, ArrowRight, 
-  Upload, RefreshCw, CheckCircle2, ChevronRight, MapPin, Building2, Lock, Tag, Folder, Eye, Edit3, Scale
+  Upload, RefreshCw, CheckCircle2, ChevronRight, MapPin, Building2, Lock, Tag, Folder, Eye, Edit3, Scale, Star
 } from 'lucide-react';
 import ExecutiveYouTubeShareModal from './ExecutiveYouTubeShareModal';
 import BCCCitationWrapperModal from './BCCCitationWrapperModal';
@@ -11,9 +11,12 @@ import Form410ClaimWizardModal from './Form410ClaimWizardModal';
 
 export default function CreditorActionWorkstation({
   companies = [],
+  watchlist = [],
+  onToggleBookmark,
   onOpenEmailClient,
   onOpenOnboarding,
   onOpenForm410Wizard,
+  onSwitchWorkspace,
   onGoBack
 }) {
   // Target Company Selection State (Left Sidebar DNA)
@@ -26,8 +29,11 @@ export default function CreditorActionWorkstation({
   });
 
   // Workstation DNA State
-  const [activeDesk, setActiveDesk] = useState('wizard'); // 'wizard' (Desk 1) | 'bardates' (Desk 2) | 'leases' (Desk 3) | 'objection' (Desk 4)
-  const [priorityTag, setPriorityTag] = useState('breaking');
+  const [activeDesk, setActiveDesk] = useState(null); // null (Default Creditor Claim Dossier Stage) | 'wizard' (Desk 1) | 'bardates' (Desk 2) | 'leases' (Desk 3) | 'objection' (Desk 4)
+  const [priorityTag, setPriorityTag] = useState('high_priority');
+  const [assetSearchQuery, setAssetSearchQuery] = useState('');
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [dismissedCompanyIds, setDismissedCompanyIds] = useState([]);
   const [aiObjectionPrompt, setAiObjectionPrompt] = useState('Draft an official Creditor Objection to Chapter 11 Debtor Disclosure Statement & Bar Date Order.');
   const [isGeneratingObjection, setIsGeneratingObjection] = useState(false);
 
@@ -137,6 +143,8 @@ export default function CreditorActionWorkstation({
           </span>
         </div>
 
+        {/* WORKSTATION BRANDING TITLE */}
+
         {/* Action Buttons Bar */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
 
@@ -193,6 +201,7 @@ export default function CreditorActionWorkstation({
         gap: '10px'
       }}>
         {[
+          { id: null, label: '📋 Creditor Claim & Case Dossier (Overview)', icon: Building2, color: '#8B5CF6' },
           { id: 'wizard', label: '🛡️ Desk 1: Official Form 410 Proof of Claim Wizard', icon: FileText, color: '#8B5CF6' },
           { id: 'bardates', label: '⏰ Desk 2: Bar Date Countdown & Deadline Alerts', icon: Clock, color: '#EF4444' },
           { id: 'leases', label: '🏬 Desk 3: Section 365 Lease Rejection Claim Hub', icon: Scale, color: '#F59E0B' },
@@ -202,7 +211,7 @@ export default function CreditorActionWorkstation({
           const isActive = activeDesk === desk.id;
           return (
             <button
-              key={desk.id}
+              key={desk.id || 'overview'}
               onClick={() => setActiveDesk(desk.id)}
               style={{
                 padding: '6px 14px',
@@ -229,7 +238,7 @@ export default function CreditorActionWorkstation({
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
 
         {/* ---------------------------------------------------- */}
-        {/* LEFT COLUMN: SHARED WORKSTATION ORGANIZER & SELECTOR */}
+        {/* LEFT COLUMN: UNIFIED SHARED WORKSTATION SIDEBAR     */}
         {/* ---------------------------------------------------- */}
         <div style={{
           width: '340px',
@@ -238,157 +247,151 @@ export default function CreditorActionWorkstation({
           padding: '16px',
           display: 'flex',
           flexDirection: 'column',
-          gap: '16px',
+          gap: '14px',
           overflowY: 'auto'
         }}>
 
-          {/* Section 1: Target Distressed Entity Selector (Unified DNA) */}
-          <div>
-            <div style={{ fontSize: '0.76rem', fontWeight: 950, color: '#A78BFA', letterSpacing: '0.05em', marginBottom: '8px' }}>
-              🏢 TARGET CREDITOR ENTITIES ({companies.length})
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '220px', overflowY: 'auto' }}>
-              {companies.map(comp => (
-                <div
-                  key={comp.id || comp.ticker}
-                  onClick={() => setSelectedTargetCompany(comp)}
-                  style={{
-                    background: selectedTargetCompany.ticker === comp.ticker ? 'rgba(139, 92, 246, 0.25)' : 'rgba(30, 41, 59, 0.6)',
-                    border: selectedTargetCompany.ticker === comp.ticker ? '1.5px solid #8B5CF6' : '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '8px',
-                    padding: '10px 12px',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: '0.82rem', fontWeight: 950, color: selectedTargetCompany.ticker === comp.ticker ? '#FFF' : '#CBD5E1' }}>
-                      {comp.name}
-                    </span>
-                    <span style={{ fontSize: '0.65rem', fontWeight: 900, background: 'rgba(139,92,246,0.2)', color: '#C084FC', padding: '2px 6px', borderRadius: '4px' }}>
-                      {comp.ticker || 'CLAIM'}
-                    </span>
-                  </div>
-                  <div style={{ fontSize: '0.72rem', color: '#94A3B8', marginTop: '2px' }}>
-                    {comp.debtAtCollapse || '$500M+ Debt'} • {comp.locationJurisdiction || 'US Court'}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Section 2: Priority Tagging */}
-          <div>
-            <span style={{ fontSize: '0.72rem', color: '#FFF', fontWeight: 800, display: 'block', marginBottom: '8px' }}>
-              🏷️ Creditor Action Priority Tag:
-            </span>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px' }}>
-              {[
-                { id: 'breaking', label: '🚨 Breaking', color: '#EF4444' },
-                { id: 'investigation', label: '📊 Deep Invest.', color: '#38BDF8' },
-                { id: 'claim', label: '🛡️ Form 410', color: '#8B5CF6' },
-                { id: 'bar', label: '⏰ Bar Date', color: '#F59E0B' }
-              ].map(tag => (
-                <button
-                  key={tag.id}
-                  onClick={() => setPriorityTag(tag.id)}
-                  style={{
-                    padding: '6px 8px',
-                    borderRadius: '6px',
-                    fontSize: '0.7rem',
-                    fontWeight: 900,
-                    cursor: 'pointer',
-                    border: priorityTag === tag.id ? `1.5px solid ${tag.color}` : '1px solid rgba(255,255,255,0.1)',
-                    background: priorityTag === tag.id ? `${tag.color}25` : 'rgba(30, 41, 59, 0.5)',
-                    color: priorityTag === tag.id ? '#FFF' : '#94A3B8'
-                  }}
-                >
-                  {tag.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Section 3: PACER Citation Vault Trigger */}
-          <div style={{ background: 'rgba(3, 7, 18, 0.8)', border: '1px solid rgba(139, 92, 246, 0.3)', borderRadius: '8px', padding: '12px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-              <span style={{ fontSize: '0.72rem', color: '#C084FC', fontWeight: 900 }}>
-                📄 COURT BAR DATE NOTICE DOCKET
-              </span>
+          {/* Position #1: TOP-MOUNTED WORKSTATION ASSET SEARCH BAR */}
+          <div style={{ position: 'relative', width: '100%' }}>
+            <Search size={13} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#8B5CF6' }} />
+            <input
+              type="text"
+              placeholder="Search creditor assets & claims (e.g. 503(b)(9), lien)..."
+              value={assetSearchQuery}
+              onChange={(e) => setAssetSearchQuery(e.target.value)}
+              style={{
+                width: '100%',
+                background: 'rgba(15, 23, 42, 0.95)',
+                border: assetSearchQuery ? '1.5px solid #8B5CF6' : '1px solid rgba(139, 92, 246, 0.4)',
+                color: '#FFF',
+                padding: '6px 28px 6px 30px',
+                borderRadius: '6px',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                outline: 'none',
+                boxShadow: assetSearchQuery ? '0 0 12px rgba(139, 92, 246, 0.4)' : 'none',
+                boxSizing: 'border-box'
+              }}
+            />
+            {assetSearchQuery && (
               <button
-                onClick={() => setIsCitationWrapperOpen(true)}
-                style={{
-                  background: 'rgba(139, 92, 246, 0.2)',
-                  color: '#C084FC',
-                  border: '1px solid #8B5CF6',
-                  borderRadius: '4px',
-                  padding: '2px 6px',
-                  fontSize: '0.65rem',
-                  fontWeight: 900,
-                  cursor: 'pointer'
-                }}
+                onClick={() => setAssetSearchQuery('')}
+                style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer', fontSize: '0.7rem', fontWeight: 900 }}
               >
-                👁️ Preview Notice
+                ✕
               </button>
-            </div>
-            <div style={{ fontSize: '0.74rem', color: '#CBD5E1', lineHeight: 1.5 }}>
-              Official Court Bar Date Order establishing deadline for Proof of Claim filings for <strong>{selectedTargetCompany.name}</strong>.
-            </div>
-          </div>
-
-          {/* Section 4: Saved Creditor Claims Vault */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span style={{ fontSize: '0.72rem', color: '#FFF', fontWeight: 800 }}>
-                📁 Saved Claims ({savedClaims.length}):
-              </span>
-              <button
-                onClick={handleSaveClaim}
-                style={{
-                  padding: '3px 8px',
-                  background: 'rgba(139, 92, 246, 0.2)',
-                  color: '#C084FC',
-                  border: '1px solid #8B5CF6',
-                  borderRadius: '4px',
-                  fontSize: '0.68rem',
-                  fontWeight: 900,
-                  cursor: 'pointer'
-                }}
-              >
-                + Save Claim
-              </button>
-            </div>
-
-            {savedStatusText && (
-              <div style={{ fontSize: '0.7rem', color: '#C084FC', fontWeight: 900 }}>
-                {savedStatusText}
-              </div>
             )}
+          </div>
+
+          {/* Position #2: TARGET CREDITOR ENTITIES TRAY WITH DISMISS FUNCTIONALITY */}
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+              <span style={{ fontSize: '0.74rem', fontWeight: 950, color: '#C084FC', letterSpacing: '0.05em' }}>
+                {assetSearchQuery ? '🔍 SEARCH RESULTS' : `⭐ SAVED WORKSPACE FAVORITES (${watchlist.length})`}
+              </span>
+              {dismissedCompanyIds.length > 0 && (
+                <button
+                  onClick={() => setDismissedCompanyIds([])}
+                  style={{ fontSize: '0.62rem', color: '#94A3B8', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}
+                >
+                  Restore ({dismissedCompanyIds.length}) Hidden
+                </button>
+              )}
+            </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', overflowY: 'auto', flex: 1 }}>
-              {savedClaims.map(cl => (
-                <div
-                  key={cl.id}
-                  onClick={() => setActiveClaimId(cl.id)}
-                  style={{
-                    background: activeClaimId === cl.id ? 'rgba(139, 92, 246, 0.25)' : 'rgba(30, 41, 59, 0.6)',
-                    border: activeClaimId === cl.id ? '1px solid #8B5CF6' : '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '6px',
-                    padding: '8px 10px',
-                    fontSize: '0.72rem',
-                    cursor: 'pointer'
-                  }}
-                >
-                  <div style={{ fontWeight: 900, color: activeClaimId === cl.id ? '#C084FC' : '#F8FAFC' }}>
-                    {cl.title}
-                  </div>
-                  <div style={{ fontSize: '0.65rem', color: '#94A3B8', display: 'flex', justifyContent: 'space-between', marginTop: '2px' }}>
-                    <span>{cl.amount}</span>
-                    <span>{cl.date}</span>
-                  </div>
-                </div>
-              ))}
+              {companies
+                .filter(comp => {
+                  const compId = comp.id || comp.ticker || comp.name;
+                  if (dismissedCompanyIds.includes(compId)) return false;
+                  
+                  if (assetSearchQuery) {
+                    const q = assetSearchQuery.toLowerCase();
+                    return (comp.name && comp.name.toLowerCase().includes(q)) ||
+                           (comp.ticker && comp.ticker.toLowerCase().includes(q)) ||
+                           (comp.primaryCause && comp.primaryCause.toLowerCase().includes(q)) ||
+                           (comp.locationJurisdiction && comp.locationJurisdiction.toLowerCase().includes(q)) ||
+                           (comp.summary && comp.summary.toLowerCase().includes(q));
+                  }
+
+                  // STRICT FAVORITES + ACTIVE SELECTION ONLY (DUMP HUGE UNFILTERED LIST)
+                  const isFav = comp.isBookmarked || (watchlist && (watchlist.includes(comp.id) || watchlist.includes(comp.ticker)));
+                  const isSelected = (selectedTargetCompany.id && selectedTargetCompany.id === comp.id) || selectedTargetCompany.name === comp.name;
+                  return isFav || isSelected;
+                })
+                .map(comp => {
+                  const compId = comp.id || comp.ticker || comp.name;
+                  const isFav = comp.isBookmarked || (watchlist && (watchlist.includes(comp.id) || watchlist.includes(comp.ticker)));
+                  const isSelected = (selectedTargetCompany.id && selectedTargetCompany.id === comp.id) || selectedTargetCompany.name === comp.name;
+                  return (
+                    <div
+                      key={compId}
+                      onClick={() => {
+                        setSelectedTargetCompany(comp);
+                        setActiveDesk(null); // DIRECTLY DISPLAY FULL DOSSIER ON CANVAS BELOW TELEPORT MENU
+                      }}
+                      style={{
+                        background: isSelected ? 'rgba(139, 92, 246, 0.25)' : 'rgba(30, 41, 59, 0.6)',
+                        border: isSelected ? '1.5px solid #8B5CF6' : '1px solid rgba(255,255,255,0.08)',
+                        borderRadius: '8px',
+                        padding: '8px 10px',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        position: 'relative'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <span style={{ fontSize: '0.8rem', fontWeight: 950, color: isSelected ? '#FFF' : '#CBD5E1', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          {isFav && <Star size={11} color="#F59E0B" fill="#F59E0B" />}
+                          {comp.name}
+                        </span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          {/* EXPLICIT SAVE / FAVORITE BUTTON FOR SEARCHED AND SAVED ENTITIES */}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (onToggleBookmark) onToggleBookmark(compId);
+                            }}
+                            title={isFav ? "Remove from Favorites" : "Save to Workspace Favorites"}
+                            style={{
+                              background: isFav ? 'rgba(245, 158, 11, 0.3)' : 'rgba(255, 255, 255, 0.08)',
+                              border: isFav ? '1px solid #F59E0B' : '1px solid rgba(255, 255, 255, 0.2)',
+                              color: isFav ? '#FCD34D' : '#94A3B8',
+                              borderRadius: '4px',
+                              padding: '2px 6px',
+                              fontSize: '0.62rem',
+                              fontWeight: 900,
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '3px'
+                            }}
+                          >
+                            <Star size={9} color={isFav ? '#FCD34D' : '#94A3B8'} fill={isFav ? '#FCD34D' : 'none'} />
+                            {isFav ? 'SAVED' : 'SAVE'}
+                          </button>
+
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setDismissedCompanyIds([...dismissedCompanyIds, compId]);
+                            }}
+                            title="Dismiss from desk"
+                            style={{ background: 'none', border: 'none', color: '#64748B', cursor: 'pointer', fontSize: '0.7rem', fontWeight: 900, padding: '0 2px' }}
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      </div>
+                      <div style={{ fontSize: '0.7rem', color: '#94A3B8', marginTop: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span>{comp.debtAtCollapse || '$500M+ Debt'} • {comp.locationJurisdiction || 'US Court'}</span>
+                        <span style={{ fontSize: '0.6rem', fontWeight: 900, background: 'rgba(139,92,246,0.2)', color: '#C084FC', padding: '1px 4px', borderRadius: '3px' }}>
+                          {comp.ticker || 'CLAIM'}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
             </div>
           </div>
 
@@ -406,6 +409,121 @@ export default function CreditorActionWorkstation({
           flexDirection: 'column',
           gap: '20px'
         }}>
+
+          {/* UNIVERSAL CROSS-WORKSPACE TELEPORT STRIP (PERFECT ON ALL DESKS) */}
+          <div style={{
+            background: 'rgba(9, 13, 22, 0.98)',
+            border: '1.5px solid rgba(139, 92, 246, 0.4)',
+            borderRadius: '12px',
+            padding: '12px 18px',
+            display: 'flex',
+            alignItems: 'center',
+            justify: 'space-between',
+            gap: '12px',
+            boxShadow: '0 8px 20px rgba(0,0,0,0.4)',
+            flexWrap: 'wrap'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', fontWeight: 950, color: '#C084FC' }}>
+              <Sparkles size={16} color="#C084FC" />
+              <span>CROSS-WORKSPACE TELEPORT ({selectedTargetCompany.name.toUpperCase()}):</span>
+            </div>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('investor', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(16, 185, 129, 0.2)', color: '#34D399', border: '1px solid #10B981', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                💳 Investor & Lender
+              </button>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('marketplace', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(236, 72, 153, 0.2)', color: '#F472B6', border: '1px solid #EC4899', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                🔨 363 Marketplace
+              </button>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('headhunter', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(245, 158, 11, 0.2)', color: '#FCD34D', border: '1px solid #F59E0B', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                👔 Headhunter Radar
+              </button>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('media', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(56, 189, 248, 0.2)', color: '#38BDF8', border: '1px solid #38BDF8', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                📰 Media & Press
+              </button>
+            </div>
+          </div>
+
+          {/* DEFAULT OVERVIEW: CREDITOR CLAIM & CASE DOSSIER STAGE */}
+          {activeDesk === null && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              
+              {/* Company Dossier Banner */}
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(9, 13, 22, 0.98) 100%)',
+                border: '1.5px solid #8B5CF6',
+                borderRadius: '14px',
+                padding: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                justify: 'space-between',
+                boxShadow: '0 12px 30px rgba(0,0,0,0.6)'
+              }}>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 950, background: 'rgba(139, 92, 246, 0.2)', color: '#C084FC', padding: '3px 8px', borderRadius: '4px', border: '1px solid #8B5CF6' }}>
+                      CREDITOR CASE DOSSIER
+                    </span>
+                    <span style={{ fontSize: '0.7rem', color: '#94A3B8' }}>
+                      PACER Case #{selectedTargetCompany.courtCaseNumber || '26-10492'}
+                    </span>
+                  </div>
+                  <h2 style={{ margin: '8px 0 2px 0', fontSize: '1.4rem', fontWeight: 950, color: '#FFF' }}>
+                    {selectedTargetCompany.name} ({selectedTargetCompany.ticker || 'CLAIM'})
+                  </h2>
+                  <div style={{ fontSize: '0.82rem', color: '#94A3B8' }}>
+                    📍 {selectedTargetCompany.locationJurisdiction || 'Wilmington, DE'} • Unsecured Creditor Bar Date Approaching
+                  </div>
+                </div>
+
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: '0.72rem', color: '#94A3B8', fontWeight: 800 }}>ESTIMATED TOTAL CLAIMS</div>
+                  <div style={{ fontSize: '1.5rem', fontWeight: 950, color: '#A78BFA' }}>
+                    {selectedTargetCompany.debtAtCollapse || '$812,000,000'}
+                  </div>
+                </div>
+              </div>
+
+              {/* Creditor Claims Overview Grid — DYNAMICALLY SLAVED TO selectedTargetCompany */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
+                <div style={{ background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(139, 92, 246, 0.3)', borderRadius: '12px', padding: '18px' }}>
+                  <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', fontWeight: 950, color: '#C084FC' }}>
+                    🛡️ PROOF OF CLAIM DEADLINES & RIGHTS
+                  </h4>
+                  <div style={{ fontSize: '0.78rem', color: '#CBD5E1', lineHeight: 1.6 }}>
+                    • Official Form 410 Deadline: 18 Days Remaining<br/>
+                    • Section 503(b)(9) Priority Goods Claim Eligible<br/>
+                    • Automatic Stay (11 U.S.C. § 362) Enforced<br/>
+                    • Unsecured Creditor Committee (UCC) Formed
+                  </div>
+                </div>
+
+                <div style={{ background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '18px' }}>
+                  <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', fontWeight: 950, color: '#FCA5A5' }}>
+                    🚨 LEASE REJECTION & DEFAULT DISCLOSURE
+                  </h4>
+                  <div style={{ fontSize: '0.78rem', color: '#CBD5E1', lineHeight: 1.6 }}>
+                    • Motion to Reject Commercial Leases filed under § 365<br/>
+                    • 210 Facility Vendors Impacted Across State Lines<br/>
+                    • Cure Claim Deadline: 14 Days Post-Notice<br/>
+                    • PACER Filing Vault Verified
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          )}
 
           {/* DESK 1: OFFICIAL FORM 410 PROOF OF CLAIM WIZARD */}
           {activeDesk === 'wizard' && (

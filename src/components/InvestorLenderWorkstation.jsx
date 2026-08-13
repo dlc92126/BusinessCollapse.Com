@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   TrendingDown, DollarSign, Layers, ShieldCheck, Download, Share2, Sparkles, Send, Copy, 
   ExternalLink, Search, Filter, AlertTriangle, Clock, Briefcase, FileSpreadsheet, 
-  Linkedin, Mail, ArrowRight, Upload, RefreshCw, CheckCircle2, ChevronRight, MapPin, Building2, Lock, Tag, Folder, Eye, Edit3, Grid, BarChart3, PieChart
+  Linkedin, Mail, ArrowRight, Upload, RefreshCw, CheckCircle2, ChevronRight, MapPin, Building2, Lock, Tag, Folder, Eye, Edit3, Grid, BarChart3, PieChart, Star
 } from 'lucide-react';
 import DistressHeatmap from './DistressHeatmap';
 import DipFinancingMonitor from './DipFinancingMonitor';
@@ -13,8 +13,11 @@ import FullScreenAIEditorModal from './FullScreenAIEditorModal';
 
 export default function InvestorLenderWorkstation({
   companies = [],
+  watchlist = [],
+  onToggleBookmark,
   onSelectCompany,
   onOpenWaterfall,
+  onSwitchWorkspace,
   onGoBack
 }) {
   // Target Company Selection State (Left Sidebar DNA)
@@ -27,8 +30,11 @@ export default function InvestorLenderWorkstation({
   });
 
   // Workstation DNA State
-  const [activeDesk, setActiveDesk] = useState('heatmap'); // 'heatmap' (Desk 1) | 'dip' (Desk 2) | 'waterfall' (Desk 3) | 'memo' (Desk 4)
-  const [priorityTag, setPriorityTag] = useState('investigation');
+  const [activeDesk, setActiveDesk] = useState(null); // null (Default Executive Dossier Stage) | 'heatmap' (Desk 1) | 'dip' (Desk 2) | 'waterfall' (Desk 3) | 'memo' (Desk 4)
+  const [priorityTag, setPriorityTag] = useState('dip');
+  const [assetSearchQuery, setAssetSearchQuery] = useState('');
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [dismissedCompanyIds, setDismissedCompanyIds] = useState([]);
   const [aiMemoPrompt, setAiMemoPrompt] = useState('Draft an institutional investment committee memo detailing 1st Lien DIP loan opportunity & recovery shortfall.');
   const [isGeneratingMemo, setIsGeneratingMemo] = useState(false);
 
@@ -194,6 +200,7 @@ export default function InvestorLenderWorkstation({
         gap: '10px'
       }}>
         {[
+          { id: null, label: '📋 Executive Corporate Dossier (Overview)', icon: Building2, color: '#38BDF8' },
           { id: 'heatmap', label: '📊 Desk 1: Macro Distress Heatmap & Sector Intensity', icon: BarChart3, color: '#38BDF8' },
           { id: 'dip', label: '💳 Desk 2: DIP Loan & Pre-Filing Monitor', icon: DollarSign, color: '#10B981' },
           { id: 'waterfall', label: '🌊 Desk 3: Creditor Recovery Waterfall Simulator', icon: Layers, color: '#F59E0B' },
@@ -203,7 +210,7 @@ export default function InvestorLenderWorkstation({
           const isActive = activeDesk === desk.id;
           return (
             <button
-              key={desk.id}
+              key={desk.id || 'overview'}
               onClick={() => setActiveDesk(desk.id)}
               style={{
                 padding: '6px 14px',
@@ -230,7 +237,7 @@ export default function InvestorLenderWorkstation({
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
 
         {/* ---------------------------------------------------- */}
-        {/* LEFT COLUMN: SHARED WORKSTATION ORGANIZER & SELECTOR */}
+        {/* LEFT COLUMN: UNIFIED SHARED WORKSTATION SIDEBAR     */}
         {/* ---------------------------------------------------- */}
         <div style={{
           width: '340px',
@@ -239,157 +246,152 @@ export default function InvestorLenderWorkstation({
           padding: '16px',
           display: 'flex',
           flexDirection: 'column',
-          gap: '16px',
+          gap: '14px',
           overflowY: 'auto'
         }}>
 
-          {/* Section 1: Target Distressed Company Selector (Unified DNA) */}
-          <div>
-            <div style={{ fontSize: '0.76rem', fontWeight: 950, color: '#10B981', letterSpacing: '0.05em', marginBottom: '8px' }}>
-              🏢 TARGET DISTRESSED ENTITIES ({companies.length})
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '220px', overflowY: 'auto' }}>
-              {companies.map(comp => (
-                <div
-                  key={comp.id || comp.ticker}
-                  onClick={() => setSelectedTargetCompany(comp)}
-                  style={{
-                    background: selectedTargetCompany.ticker === comp.ticker ? 'rgba(16, 185, 129, 0.25)' : 'rgba(30, 41, 59, 0.6)',
-                    border: selectedTargetCompany.ticker === comp.ticker ? '1.5px solid #10B981' : '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '8px',
-                    padding: '10px 12px',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: '0.82rem', fontWeight: 950, color: selectedTargetCompany.ticker === comp.ticker ? '#FFF' : '#CBD5E1' }}>
-                      {comp.name}
-                    </span>
-                    <span style={{ fontSize: '0.65rem', fontWeight: 900, background: 'rgba(16,185,129,0.2)', color: '#34D399', padding: '2px 6px', borderRadius: '4px' }}>
-                      {comp.ticker || 'DEBT'}
-                    </span>
-                  </div>
-                  <div style={{ fontSize: '0.72rem', color: '#94A3B8', marginTop: '2px' }}>
-                    {comp.debtAtCollapse || '$500M+ Debt'} • {comp.locationJurisdiction || 'US Court'}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Section 2: Priority Tagging */}
-          <div>
-            <span style={{ fontSize: '0.72rem', color: '#FFF', fontWeight: 800, display: 'block', marginBottom: '8px' }}>
-              🏷️ Investment Thesis Priority Tag:
-            </span>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px' }}>
-              {[
-                { id: 'breaking', label: '🚨 Breaking', color: '#EF4444' },
-                { id: 'investigation', label: '📊 Deep Invest.', color: '#38BDF8' },
-                { id: 'dip', label: '💳 DIP Credit', color: '#10B981' },
-                { id: 'waterfall', label: '🌊 Waterfall', color: '#F59E0B' }
-              ].map(tag => (
-                <button
-                  key={tag.id}
-                  onClick={() => setPriorityTag(tag.id)}
-                  style={{
-                    padding: '6px 8px',
-                    borderRadius: '6px',
-                    fontSize: '0.7rem',
-                    fontWeight: 900,
-                    cursor: 'pointer',
-                    border: priorityTag === tag.id ? `1.5px solid ${tag.color}` : '1px solid rgba(255,255,255,0.1)',
-                    background: priorityTag === tag.id ? `${tag.color}25` : 'rgba(30, 41, 59, 0.5)',
-                    color: priorityTag === tag.id ? '#FFF' : '#94A3B8'
-                  }}
-                >
-                  {tag.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Section 3: PACER Citation Vault Trigger */}
-          <div style={{ background: 'rgba(3, 7, 18, 0.8)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: '8px', padding: '12px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-              <span style={{ fontSize: '0.72rem', color: '#34D399', fontWeight: 900 }}>
-                📄 COURT DIP CREDIT AGREEMENT
-              </span>
+          {/* Position #1: TOP-MOUNTED WORKSTATION ASSET SEARCH BAR */}
+          <div style={{ position: 'relative', width: '100%' }}>
+            <Search size={13} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#10B981' }} />
+            <input
+              type="text"
+              placeholder="Search distressed debt & DIP assets..."
+              value={assetSearchQuery}
+              onChange={(e) => setAssetSearchQuery(e.target.value)}
+              style={{
+                width: '100%',
+                background: 'rgba(15, 23, 42, 0.95)',
+                border: assetSearchQuery ? '1.5px solid #10B981' : '1px solid rgba(16, 185, 129, 0.4)',
+                color: '#FFF',
+                padding: '6px 28px 6px 30px',
+                borderRadius: '6px',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                outline: 'none',
+                boxShadow: assetSearchQuery ? '0 0 12px rgba(16, 185, 129, 0.4)' : 'none',
+                boxSizing: 'border-box'
+              }}
+            />
+            {assetSearchQuery && (
               <button
-                onClick={() => setIsCitationWrapperOpen(true)}
-                style={{
-                  background: 'rgba(16, 185, 129, 0.2)',
-                  color: '#34D399',
-                  border: '1px solid #10B981',
-                  borderRadius: '4px',
-                  padding: '2px 6px',
-                  fontSize: '0.65rem',
-                  fontWeight: 900,
-                  cursor: 'pointer'
-                }}
+                onClick={() => setAssetSearchQuery('')}
+                style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer', fontSize: '0.7rem', fontWeight: 900 }}
               >
-                👁️ Preview Docket
+                ✕
               </button>
-            </div>
-            <div style={{ fontSize: '0.74rem', color: '#CBD5E1', lineHeight: 1.5 }}>
-              Official $150M Senior DIP Credit Order & Stalking Horse Agreement for <strong>{selectedTargetCompany.name}</strong>.
-            </div>
-          </div>
-
-          {/* Section 4: Saved Investment Scenarios Vault */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span style={{ fontSize: '0.72rem', color: '#FFF', fontWeight: 800 }}>
-                📁 Saved Investment Scenarios ({savedScenarios.length}):
-              </span>
-              <button
-                onClick={handleSaveScenario}
-                style={{
-                  padding: '3px 8px',
-                  background: 'rgba(16, 185, 129, 0.2)',
-                  color: '#34D399',
-                  border: '1px solid #10B981',
-                  borderRadius: '4px',
-                  fontSize: '0.68rem',
-                  fontWeight: 900,
-                  cursor: 'pointer'
-                }}
-              >
-                + Save Thesis
-              </button>
-            </div>
-
-            {savedStatusText && (
-              <div style={{ fontSize: '0.7rem', color: '#10B981', fontWeight: 900 }}>
-                {savedStatusText}
-              </div>
             )}
+          </div>
+
+          {/* Position #2: TARGET DISTRESSED ENTITIES TRAY WITH DISMISS FUNCTIONALITY */}
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+              <span style={{ fontSize: '0.74rem', fontWeight: 950, color: '#34D399', letterSpacing: '0.05em' }}>
+                {assetSearchQuery ? '🔍 SEARCH RESULTS' : `⭐ SAVED WORKSPACE FAVORITES (${watchlist.length})`}
+              </span>
+              {dismissedCompanyIds.length > 0 && (
+                <button
+                  onClick={() => setDismissedCompanyIds([])}
+                  style={{ fontSize: '0.62rem', color: '#94A3B8', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}
+                >
+                  Restore ({dismissedCompanyIds.length}) Hidden
+                </button>
+              )}
+            </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', overflowY: 'auto', flex: 1 }}>
-              {savedScenarios.map(scen => (
-                <div
-                  key={scen.id}
-                  onClick={() => setActiveScenarioId(scen.id)}
-                  style={{
-                    background: activeScenarioId === scen.id ? 'rgba(16, 185, 129, 0.25)' : 'rgba(30, 41, 59, 0.6)',
-                    border: activeScenarioId === scen.id ? '1px solid #10B981' : '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '6px',
-                    padding: '8px 10px',
-                    fontSize: '0.72rem',
-                    cursor: 'pointer'
-                  }}
-                >
-                  <div style={{ fontWeight: 900, color: activeScenarioId === scen.id ? '#34D399' : '#F8FAFC' }}>
-                    {scen.title}
-                  </div>
-                  <div style={{ fontSize: '0.65rem', color: '#94A3B8', display: 'flex', justifyContent: 'space-between', marginTop: '2px' }}>
-                    <span>Debt: {scen.debt}</span>
-                    <span>{scen.date}</span>
-                  </div>
-                </div>
-              ))}
+              {companies
+                .filter(comp => {
+                  const compId = comp.id || comp.ticker || comp.name;
+                  if (dismissedCompanyIds.includes(compId)) return false;
+                  
+                  if (assetSearchQuery) {
+                    const q = assetSearchQuery.toLowerCase();
+                    return (comp.name && comp.name.toLowerCase().includes(q)) ||
+                           (comp.ticker && comp.ticker.toLowerCase().includes(q)) ||
+                           (comp.primaryCause && comp.primaryCause.toLowerCase().includes(q)) ||
+                           (comp.locationJurisdiction && comp.locationJurisdiction.toLowerCase().includes(q)) ||
+                           (comp.summary && comp.summary.toLowerCase().includes(q));
+                  }
+
+                  // STRICT FAVORITES + ACTIVE SELECTION ONLY (DUMP HUGE UNFILTERED LIST)
+                  const isFav = comp.isBookmarked || (watchlist && (watchlist.includes(comp.id) || watchlist.includes(comp.ticker)));
+                  const isSelected = (selectedTargetCompany.id && selectedTargetCompany.id === comp.id) || selectedTargetCompany.name === comp.name;
+                  return isFav || isSelected;
+                })
+                .map(comp => {
+                  const compId = comp.id || comp.ticker || comp.name;
+                  const isFav = comp.isBookmarked || (watchlist && (watchlist.includes(comp.id) || watchlist.includes(comp.ticker)));
+                  const isSelected = (selectedTargetCompany.id && selectedTargetCompany.id === comp.id) || selectedTargetCompany.name === comp.name;
+                  return (
+                    <div
+                      key={compId}
+                      onClick={() => {
+                        setSelectedTargetCompany(comp);
+                        if (onSelectCompany) onSelectCompany(comp);
+                        setActiveDesk(null); // DIRECTLY DISPLAY FULL DOSSIER ON CANVAS BELOW TELEPORT MENU
+                      }}
+                      style={{
+                        background: isSelected ? 'rgba(16, 185, 129, 0.25)' : 'rgba(30, 41, 59, 0.6)',
+                        border: isSelected ? '1.5px solid #10B981' : '1px solid rgba(255,255,255,0.08)',
+                        borderRadius: '8px',
+                        padding: '8px 10px',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        position: 'relative'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <span style={{ fontSize: '0.8rem', fontWeight: 950, color: isSelected ? '#FFF' : '#CBD5E1', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          {isFav && <Star size={11} color="#F59E0B" fill="#F59E0B" />}
+                          {comp.name}
+                        </span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          {/* EXPLICIT SAVE / FAVORITE BUTTON FOR SEARCHED AND SAVED ENTITIES */}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (onToggleBookmark) onToggleBookmark(compId);
+                            }}
+                            title={isFav ? "Remove from Favorites" : "Save to Workspace Favorites"}
+                            style={{
+                              background: isFav ? 'rgba(245, 158, 11, 0.3)' : 'rgba(255, 255, 255, 0.08)',
+                              border: isFav ? '1px solid #F59E0B' : '1px solid rgba(255, 255, 255, 0.2)',
+                              color: isFav ? '#FCD34D' : '#94A3B8',
+                              borderRadius: '4px',
+                              padding: '2px 6px',
+                              fontSize: '0.62rem',
+                              fontWeight: 900,
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '3px'
+                            }}
+                          >
+                            <Star size={9} color={isFav ? '#FCD34D' : '#94A3B8'} fill={isFav ? '#FCD34D' : 'none'} />
+                            {isFav ? 'SAVED' : 'SAVE'}
+                          </button>
+
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setDismissedCompanyIds([...dismissedCompanyIds, compId]);
+                            }}
+                            title="Dismiss from desk"
+                            style={{ background: 'none', border: 'none', color: '#64748B', cursor: 'pointer', fontSize: '0.7rem', fontWeight: 900, padding: '0 2px' }}
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      </div>
+                      <div style={{ fontSize: '0.7rem', color: '#94A3B8', marginTop: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span>{comp.debtAtCollapse || '$500M+ Debt'} • {comp.locationJurisdiction || 'US Court'}</span>
+                        <span style={{ fontSize: '0.6rem', fontWeight: 900, background: 'rgba(16,185,129,0.2)', color: '#34D399', padding: '1px 4px', borderRadius: '3px' }}>
+                          {comp.ticker || 'DEBT'}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
             </div>
           </div>
 
@@ -407,6 +409,175 @@ export default function InvestorLenderWorkstation({
           flexDirection: 'column',
           gap: '20px'
         }}>
+
+          {/* UNIVERSAL CROSS-WORKSPACE TELEPORT STRIP (PERFECT ON ALL DESKS) */}
+          <div style={{
+            background: 'rgba(9, 13, 22, 0.98)',
+            border: '1.5px solid rgba(16, 185, 129, 0.4)',
+            borderRadius: '12px',
+            padding: '12px 18px',
+            display: 'flex',
+            alignItems: 'center',
+            justify: 'space-between',
+            gap: '12px',
+            boxShadow: '0 8px 20px rgba(0,0,0,0.4)',
+            flexWrap: 'wrap'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', fontWeight: 950, color: '#34D399' }}>
+              <Sparkles size={16} color="#34D399" />
+              <span>CROSS-WORKSPACE TELEPORT ({selectedTargetCompany.name.toUpperCase()}):</span>
+            </div>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('marketplace', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(236, 72, 153, 0.2)', color: '#F472B6', border: '1px solid #EC4899', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                🔨 363 Marketplace
+              </button>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('creditor', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(139, 92, 246, 0.2)', color: '#C084FC', border: '1px solid #8B5CF6', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                🛡️ Creditor Action
+              </button>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('headhunter', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(245, 158, 11, 0.2)', color: '#FCD34D', border: '1px solid #F59E0B', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                👔 Headhunter Radar
+              </button>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('media', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(56, 189, 248, 0.2)', color: '#38BDF8', border: '1px solid #38BDF8', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                📰 Media & Press
+              </button>
+            </div>
+          </div>
+
+          {/* DEFAULT OVERVIEW: EXECUTIVE CORPORATE & FINANCIAL DOSSIER STAGE */}
+          {activeDesk === null && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              
+              {/* Company Dossier Banner */}
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(9, 13, 22, 0.98) 100%)',
+                border: '1.5px solid #10B981',
+                borderRadius: '14px',
+                padding: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                justify: 'space-between',
+                boxShadow: '0 12px 30px rgba(0,0,0,0.6)'
+              }}>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 950, background: 'rgba(16, 185, 129, 0.2)', color: '#34D399', padding: '3px 8px', borderRadius: '4px', border: '1px solid #10B981' }}>
+                      EXECUTIVE CORPORATE DOSSIER
+                    </span>
+                    <span style={{ fontSize: '0.7rem', color: '#94A3B8' }}>
+                      PACER Case #{selectedTargetCompany.courtCaseNumber || '26-10492'}
+                    </span>
+                  </div>
+                  <h2 style={{ margin: '8px 0 2px 0', fontSize: '1.4rem', fontWeight: 950, color: '#FFF' }}>
+                    {selectedTargetCompany.name} ({selectedTargetCompany.ticker || 'DEBT'})
+                  </h2>
+                  <div style={{ fontSize: '0.82rem', color: '#94A3B8' }}>
+                    📍 {selectedTargetCompany.locationJurisdiction || 'Wilmington, DE'} • {selectedTargetCompany.primaryCause || 'Chapter 11 Proceedings'}
+                  </div>
+                </div>
+
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: '0.72rem', color: '#94A3B8', fontWeight: 800 }}>TOTAL CAPITAL AT RISK</div>
+                  <div style={{ fontSize: '1.5rem', fontWeight: 950, color: '#EF4444' }}>
+                    {selectedTargetCompany.debtAtCollapse || '$812,000,000'}
+                  </div>
+                </div>
+              </div>
+
+              {/* Financial & Capital Stack Grid — DYNAMICALLY SLAVED TO selectedTargetCompany */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
+                
+                {/* Box 1: Senior DIP & 1st Lien Capital Stack */}
+                <div style={{ background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(16, 185, 129, 0.4)', borderRadius: '12px', padding: '18px' }}>
+                  <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', fontWeight: 950, color: '#34D399', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    💳 SENIOR DEBT & DIP CAPITAL STACK ({selectedTargetCompany.ticker || 'DEBT'})
+                  </h4>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.78rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '6px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                      <span style={{ color: '#94A3B8' }}>Super-Priority DIP Roll-Up:</span>
+                      <span style={{ color: '#FFF', fontWeight: 900 }}>
+                        {selectedTargetCompany.debtAtCollapse ? `$${Math.round(parseInt(selectedTargetCompany.debtAtCollapse.replace(/[^0-9]/g, '') || 500) * 0.25)}M` : '$150M'} (100% Par Recovery)
+                      </span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '6px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                      <span style={{ color: '#94A3B8' }}>1st Lien Senior Secured Notes:</span>
+                      <span style={{ color: '#FFF', fontWeight: 900 }}>
+                        {selectedTargetCompany.debtAtCollapse ? `$${Math.round(parseInt(selectedTargetCompany.debtAtCollapse.replace(/[^0-9]/g, '') || 500) * 0.55)}M` : '$450M'} (78% Recovery)
+                      </span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <span style={{ color: '#94A3B8' }}>Unsecured Claims & Trade Deficit:</span>
+                      <span style={{ color: '#EF4444', fontWeight: 900 }}>
+                        {selectedTargetCompany.debtAtCollapse ? `$${Math.round(parseInt(selectedTargetCompany.debtAtCollapse.replace(/[^0-9]/g, '') || 500) * 0.20)}M` : '$212M'} (&lt; 12% Recovery)
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Box 2: 363 Liquidation & Asset Terms */}
+                <div style={{ background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(245, 158, 11, 0.4)', borderRadius: '12px', padding: '18px' }}>
+                  <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', fontWeight: 950, color: '#FCD34D', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    💰 363 ASSET SALE & AUCTION STATUS
+                  </h4>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.78rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '6px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                      <span style={{ color: '#94A3B8' }}>Stalking Horse Opening Floor:</span>
+                      <span style={{ color: '#34D399', fontWeight: 900 }}>
+                        {selectedTargetCompany.debtAtCollapse ? `$${Math.round(parseInt(selectedTargetCompany.debtAtCollapse.replace(/[^0-9]/g, '') || 500) * 0.35)}M Cash` : '$185M Cash'}
+                      </span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '6px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                      <span style={{ color: '#94A3B8' }}>Break-Up Fee Protection:</span>
+                      <span style={{ color: '#FCD34D', fontWeight: 900 }}>3.0% Fee Approved</span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <span style={{ color: '#94A3B8' }}>Title Transfer Terms:</span>
+                      <span style={{ color: '#34D399', fontWeight: 900 }}>Free & Clear (§ 363(f))</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Box 3: Restructuring Timeline & PACER Court Dockets */}
+                <div style={{ background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(56, 189, 248, 0.4)', borderRadius: '12px', padding: '18px' }}>
+                  <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', fontWeight: 950, color: '#38BDF8', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    📄 RESTRUCTURING & COURT VAULT
+                  </h4>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.78rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '6px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                      <span style={{ color: '#94A3B8' }}>Court Jurisdiction:</span>
+                      <span style={{ color: '#FFF', fontWeight: 900 }}>{selectedTargetCompany.locationJurisdiction || 'US Court'}</span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '6px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                      <span style={{ color: '#94A3B8' }}>Insolvency Cause:</span>
+                      <span style={{ color: '#FCD34D', fontWeight: 900 }}>{selectedTargetCompany.primaryCause || 'Chapter 11 Petition'}</span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <span style={{ color: '#94A3B8' }}>PACER Evidence Vault:</span>
+                      <button
+                        onClick={() => setIsCitationWrapperOpen(true)}
+                        style={{ background: 'none', border: 'none', color: '#38BDF8', cursor: 'pointer', fontWeight: 900, textDecoration: 'underline', fontSize: '0.76rem' }}
+                      >
+                        Inspect Docket Filings
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          )}
 
           {/* DESK 1: MACRO DISTRESS HEATMAP */}
           {activeDesk === 'heatmap' && (

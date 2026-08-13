@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Filter, Calendar, DollarSign, ChevronRight, Skull, AlertCircle, RefreshCw, AlertTriangle, Layers, Star, Search, Clock, Share2, EyeOff } from 'lucide-react';
 import BreakingNewsHero from './BreakingNewsHero';
 import { extractStateCode } from '../utils/stateExtractor';
+import { formatCleanEntityName } from '../utils/entityNameFormatter';
+import VirtualizedGraveyardList from './VirtualizedGraveyardList';
 
 export function checkIsAuction(item) {
   if (!item) return false;
@@ -47,14 +49,35 @@ export default function CompanyGraveyard({
   const [statusFilter, setStatusFilter] = useState('ALL');
   const [causeFilter, setCauseFilter] = useState('ALL');
   const [valuationThresholdFilter, setValuationThresholdFilter] = useState('BOTH'); // 'BOTH' | 'INSTITUTIONAL_10M' | 'SUB_10M'
-  const [timeframeFilter, setTimeframeFilter] = useState('ALL'); // Default to 'ALL' so zero bankruptcies are hidden by date filters
+  const [timeframeFilter, setTimeframeFilter] = useState('30D'); // Default to 30D Hot Stream for 50ms initial boot
   const [customStartDate, setCustomStartDate] = useState('');
   const [customEndDate, setCustomEndDate] = useState('');
   const [layoutMode, setLayoutMode] = useState('compact'); // 'compact' (2-Row Dense) | 'full' (Rich Narrative) | 'grid'
   const [isControlsCollapsed, setIsControlsCollapsed] = useState(false);
   const [isMoreWorkstationsOpen, setIsMoreWorkstationsOpen] = useState(false);
+  const [workerFilteredCompanies, setWorkerFilteredCompanies] = useState(null);
+  const workerRef = useRef(null);
   const PRIMARY_INSTITUTIONAL_SUBTITLE = "⚡ REAL-TIME DISTRESS INTELLIGENCE • CHAPTER 11 DOCKET STREAM & EARLY WARN WIRE";
   const workstationsRef = useRef(null);
+
+  // Initialize Web Worker for non-blocking background filtering
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.Worker) {
+      try {
+        workerRef.current = new Worker(new URL('../workers/distressFilterWorker.js', import.meta.url), { type: 'module' });
+        workerRef.current.onmessage = (e) => {
+          if (e.data && Array.isArray(e.data.filteredCompanies)) {
+            setWorkerFilteredCompanies(e.data.filteredCompanies);
+          }
+        };
+      } catch (err) {
+        console.warn('Worker init fallback:', err);
+      }
+    }
+    return () => {
+      if (workerRef.current) workerRef.current.terminate();
+    };
+  }, []);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -330,14 +353,22 @@ export default function CompanyGraveyard({
         const isFav = Boolean(c.isBookmarked || (watchlist && (watchlist.includes(c.id) || watchlist.includes(c.ticker))));
         if (!isFav) return false;
       } else {
-        const isPre = Boolean(c.isPreJudicial || c.courtCaseStatus === 'PRE_PETITION_WARN_SIGNAL' || c.status?.includes('PRE-JUDICIAL') || c.status?.includes('WARN'));
+        const isPre = Boolean(
+          c.isPreJudicial ||
+          c.courtCaseStatus === 'PRE_PETITION_WARN_SIGNAL' ||
+          (c.id && typeof c.id === 'string' && c.id.startsWith('pre-judicial')) ||
+          (c.signalCategory && (c.signalCategory.includes('WARN') || c.signalCategory.includes('PRE_PETITION') || c.signalCategory.includes('REFINANCING_DEFAULT'))) ||
+          (c.signalType && c.signalType.includes('WARN')) ||
+          (c.statusBadge && (c.statusBadge.includes('WARN') || c.statusBadge.includes('pre-judicial'))) ||
+          (c.status && (c.status.toUpperCase().includes('PRE-JUDICIAL') || c.status.toUpperCase().includes('WARN')))
+        );
         const isAuc = checkIsAuction(c);
         const isChap = !isPre && !isAuc && (c.courtCaseStatus !== 'FINAL_DECREE_ISSUED' || c.status?.includes('CHAPTER 11') || c.status?.includes('DOCKET'));
         const isDis = c.courtCaseStatus === 'FINAL_DECREE_ISSUED' || c.statusBadge === 'discharge';
 
         if (statusFilter === 'pre-judicial' && !isPre) return false;
-        if (statusFilter === 'auction-363' && (isPre || !isAuc)) return false;
-        if (statusFilter === 'chapter-11' && !isChap) return false;
+        if ((statusFilter === '363-auction' || statusFilter === 'auction-363') && (isPre || !isAuc)) return false;
+        if ((statusFilter === 'chapter-11' || statusFilter === 'active-docket') && !isChap) return false;
         if (statusFilter === 'discharged' && !isDis) return false;
       }
     }
@@ -408,7 +439,40 @@ export default function CompanyGraveyard({
     return Math.max(1, Math.round((nowMs - tMs) / (1000 * 3600)));
   };
 
-  const sortedCompanies = [...filteredCompanies].sort((a, b) => {
+  // Post filter state updates to non-blocking Web Worker thread
+  useEffect(() => {
+    if (workerRef.current && allAggregatedCompanies.length > 0) {
+      workerRef.current.postMessage({
+        companies: allAggregatedCompanies,
+        searchQuery,
+        selectedSectorFilter,
+        statusFilter,
+        causeFilter,
+        valuationThresholdFilter,
+        timeframeFilter,
+        customStartDate,
+        customEndDate,
+        selectedStates,
+        watchlist
+      });
+    }
+  }, [
+    allAggregatedCompanies.length,
+    searchQuery,
+    selectedSectorFilter,
+    statusFilter,
+    causeFilter,
+    valuationThresholdFilter,
+    timeframeFilter,
+    customStartDate,
+    customEndDate,
+    selectedStates,
+    watchlist
+  ]);
+
+  const activeFilteredCompanies = workerFilteredCompanies || filteredCompanies;
+
+  const sortedCompanies = [...activeFilteredCompanies].sort((a, b) => {
     const timeA = getCompanyMaterialTime(a);
     const timeB = getCompanyMaterialTime(b);
 
@@ -574,6 +638,47 @@ export default function CompanyGraveyard({
                   <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#FF2A4B', boxShadow: '0 0 8px #FF2A4B' }} />
                   {filteredCompanies.length} OF {allAggregatedCompanies.length || companies.length} MONITORED
                 </span>
+
+                {timeframeFilter === '30D' ? (
+                  <button
+                    onClick={() => setTimeframeFilter('ALL')}
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(217, 119, 6, 0.3) 100%)',
+                      color: '#FCD34D',
+                      border: '1px solid #F59E0B',
+                      padding: '4px 12px',
+                      borderRadius: '20px',
+                      fontSize: '0.68rem',
+                      fontWeight: 900,
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      boxShadow: '0 0 12px rgba(245, 158, 11, 0.35)'
+                    }}
+                  >
+                    ⚡ 30-DAY HOT STREAM ACTIVE • STREAM FULL ARCHIVE (1,500+ DOCKETS) →
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => setTimeframeFilter('30D')}
+                    style={{
+                      background: 'rgba(16, 185, 129, 0.2)',
+                      color: '#A7F3D0',
+                      border: '1px solid #10B981',
+                      padding: '4px 12px',
+                      borderRadius: '20px',
+                      fontSize: '0.68rem',
+                      fontWeight: 900,
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px'
+                    }}
+                  >
+                    🌐 FULL ARCHIVE LOADED • SWITCH TO 30-DAY HOT STREAM →
+                  </button>
+                )}
 
                 {(statusFilter !== 'ALL' || causeFilter !== 'ALL' || timeframeFilter !== 'ALL' || selectedSectorFilter !== 'ALL' || searchQuery) && (
                   <button
@@ -1116,9 +1221,11 @@ export default function CompanyGraveyard({
                           />
                         </button>
 
-                        <h4 style={{ fontSize: '0.98rem', fontWeight: 900, color: '#FFF', margin: 0 }}>{company.name}</h4>
+                        <h4 style={{ fontSize: '0.98rem', fontWeight: 900, color: '#FFF', margin: 0 }}>
+                          {formatCleanEntityName(company)}
+                        </h4>
                         <span style={{ fontSize: '0.68rem', color: 'var(--text-dim)', background: 'rgba(255, 255, 255, 0.06)', padding: '1px 6px', borderRadius: '4px', fontFamily: 'var(--font-mono)' }}>
-                          {company.ticker}
+                          {company.ticker || company.symbol || (isAuction ? '363 BID' : 'CH-11')}
                         </span>
 
                         {/* Elegant Visual Regime Cue Badge */}
@@ -1451,7 +1558,7 @@ export default function CompanyGraveyard({
                     ) : null}
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                      <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#FFF' }}>{company.name}</h3>
+                      <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#FFF' }}>{formatCleanEntityName(company)}</h3>
                       <span style={{ fontSize: '0.7rem', color: 'var(--text-dim)', background: 'rgba(255, 255, 255, 0.06)', padding: '2px 6px', borderRadius: '4px', fontFamily: 'var(--font-mono)' }}>
                         {company.ticker}
                       </span>

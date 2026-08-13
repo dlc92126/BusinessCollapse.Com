@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Newspaper, FileText, CheckCircle2, ShieldCheck, Download, Share2, Maximize2, 
   Minimize2, ExternalLink, Sparkles, Send, Copy, Check, ChevronDown, ChevronUp, 
-  Edit3, Radio, Mic, BookOpen, Twitter, Linkedin, Building2, Search, FileSpreadsheet
+  Edit3, Radio, Mic, BookOpen, Twitter, Linkedin, Building2, Search, FileSpreadsheet, Star
 } from 'lucide-react';
 import ExecutiveYouTubeShareModal from './ExecutiveYouTubeShareModal';
 import FullScreenAIEditorModal from './FullScreenAIEditorModal';
@@ -11,10 +11,13 @@ import AINewsroomStudio from './AINewsroomStudio';
 
 export default function MediaPressWorkstation({
   companies = [],
+  watchlist = [],
   breakingNews = [],
+  onToggleBookmark,
   onSelectCompany,
   onOpenNewsroomStudio,
   onOpenEmailClient,
+  onSwitchWorkspace,
   onGoBack
 }) {
   // Target Company Selection State (Left Sidebar DNA)
@@ -27,8 +30,11 @@ export default function MediaPressWorkstation({
   });
 
   // Workstation DNA State
-  const [activeDesk, setActiveDesk] = useState('wire'); // 'wire' (Desk 1) | 'suite' (Desk 2) | 'voice' (Desk 3) | 'scoop' (Desk 4)
+  const [activeDesk, setActiveDesk] = useState(null); // null (Default Media Press Dossier Stage) | 'wire' (Desk 1) | 'editor' (Desk 2) | 'studio' (Desk 3) | 'syndicate' (Desk 4)
   const [priorityTag, setPriorityTag] = useState('breaking');
+  const [assetSearchQuery, setAssetSearchQuery] = useState('');
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [dismissedCompanyIds, setDismissedCompanyIds] = useState([]);
   const [selectedTone, setSelectedTone] = useState('bloomberg'); // 'bloomberg' | 'wsj' | 'seeking_alpha' | 'fintwit'
   const [wireArticleType, setWireArticleType] = useState('ap_press_release'); // 'ap_press_release' | 'executive_brief' | 'substack_memo'
   
@@ -197,6 +203,7 @@ export default function MediaPressWorkstation({
         gap: '10px'
       }}>
         {[
+          { id: null, label: '📋 Media & Press Release Dossier (Overview)', icon: Newspaper, color: '#38BDF8' },
           { id: 'wire', label: '📰 Desk 1: Breaking Chapter 11 Wire & AI Newsroom', icon: Newspaper, color: '#38BDF8' },
           { id: 'suite', label: '𝕏 Desk 2: 4-Venue Editorial & Social Press Suite', icon: Twitter, color: '#1DA1F2' },
           { id: 'voice', label: '🎙️ Desk 3: Executive Voice Agent & Podcast Dispatch', icon: Mic, color: '#F59E0B' },
@@ -206,7 +213,7 @@ export default function MediaPressWorkstation({
           const isActive = activeDesk === desk.id;
           return (
             <button
-              key={desk.id}
+              key={desk.id || 'overview'}
               onClick={() => setActiveDesk(desk.id)}
               style={{
                 padding: '6px 14px',
@@ -233,7 +240,7 @@ export default function MediaPressWorkstation({
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
 
         {/* ---------------------------------------------------- */}
-        {/* LEFT COLUMN: SHARED WORKSTATION ORGANIZER & SELECTOR */}
+        {/* LEFT COLUMN: UNIFIED SHARED WORKSTATION SIDEBAR     */}
         {/* ---------------------------------------------------- */}
         <div style={{
           width: '340px',
@@ -242,157 +249,152 @@ export default function MediaPressWorkstation({
           padding: '16px',
           display: 'flex',
           flexDirection: 'column',
-          gap: '16px',
+          gap: '14px',
           overflowY: 'auto'
         }}>
 
-          {/* Section 1: Target Distressed Entity Selector (Unified DNA) */}
-          <div>
-            <div style={{ fontSize: '0.76rem', fontWeight: 950, color: '#38BDF8', letterSpacing: '0.05em', marginBottom: '8px' }}>
-              🏢 TARGET MEDIA ENTITIES ({companies.length})
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '220px', overflowY: 'auto' }}>
-              {companies.map(comp => (
-                <div
-                  key={comp.id || comp.ticker}
-                  onClick={() => setSelectedTargetCompany(comp)}
-                  style={{
-                    background: selectedTargetCompany.ticker === comp.ticker ? 'rgba(56, 189, 248, 0.25)' : 'rgba(30, 41, 59, 0.6)',
-                    border: selectedTargetCompany.ticker === comp.ticker ? '1.5px solid #38BDF8' : '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '8px',
-                    padding: '10px 12px',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: '0.82rem', fontWeight: 950, color: selectedTargetCompany.ticker === comp.ticker ? '#FFF' : '#CBD5E1' }}>
-                      {comp.name}
-                    </span>
-                    <span style={{ fontSize: '0.65rem', fontWeight: 900, background: 'rgba(56,189,248,0.2)', color: '#38BDF8', padding: '2px 6px', borderRadius: '4px' }}>
-                      {comp.ticker || 'WIRE'}
-                    </span>
-                  </div>
-                  <div style={{ fontSize: '0.72rem', color: '#94A3B8', marginTop: '2px' }}>
-                    {comp.debtAtCollapse || '$500M+ Debt'} • {comp.locationJurisdiction || 'US Court'}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Section 2: Priority Tagging */}
-          <div>
-            <span style={{ fontSize: '0.72rem', color: '#FFF', fontWeight: 800, display: 'block', marginBottom: '8px' }}>
-              🏷️ Story & Press Priority Tag:
-            </span>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px' }}>
-              {[
-                { id: 'breaking', label: '🚨 Breaking', color: '#EF4444' },
-                { id: 'investigation', label: '📊 Deep Invest.', color: '#38BDF8' },
-                { id: 'talent', label: '💼 C-Suite Raid', color: '#F59E0B' },
-                { id: 'auction', label: '💰 363 Auction', color: '#10B981' }
-              ].map(tag => (
-                <button
-                  key={tag.id}
-                  onClick={() => setPriorityTag(tag.id)}
-                  style={{
-                    padding: '6px 8px',
-                    borderRadius: '6px',
-                    fontSize: '0.7rem',
-                    fontWeight: 900,
-                    cursor: 'pointer',
-                    border: priorityTag === tag.id ? `1.5px solid ${tag.color}` : '1px solid rgba(255,255,255,0.1)',
-                    background: priorityTag === tag.id ? `${tag.color}25` : 'rgba(30, 41, 59, 0.5)',
-                    color: priorityTag === tag.id ? '#FFF' : '#94A3B8'
-                  }}
-                >
-                  {tag.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Section 3: PACER Citation Vault Trigger */}
-          <div style={{ background: 'rgba(3, 7, 18, 0.8)', border: '1px solid rgba(56, 189, 248, 0.3)', borderRadius: '8px', padding: '12px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-              <span style={{ fontSize: '0.72rem', color: '#38BDF8', fontWeight: 900 }}>
-                📄 PACER COURT EVIDENCE VAULT
-              </span>
+          {/* Position #1: TOP-MOUNTED WORKSTATION ASSET SEARCH BAR */}
+          <div style={{ position: 'relative', width: '100%' }}>
+            <Search size={13} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#38BDF8' }} />
+            <input
+              type="text"
+              placeholder="Search press releases & disclosures..."
+              value={assetSearchQuery}
+              onChange={(e) => setAssetSearchQuery(e.target.value)}
+              style={{
+                width: '100%',
+                background: 'rgba(15, 23, 42, 0.95)',
+                border: assetSearchQuery ? '1.5px solid #38BDF8' : '1px solid rgba(56, 189, 248, 0.4)',
+                color: '#FFF',
+                padding: '6px 28px 6px 30px',
+                borderRadius: '6px',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                outline: 'none',
+                boxShadow: assetSearchQuery ? '0 0 12px rgba(56, 189, 248, 0.4)' : 'none',
+                boxSizing: 'border-box'
+              }}
+            />
+            {assetSearchQuery && (
               <button
-                onClick={() => setIsCitationWrapperOpen(true)}
-                style={{
-                  background: 'rgba(56, 189, 248, 0.2)',
-                  color: '#38BDF8',
-                  border: '1px solid #38BDF8',
-                  borderRadius: '4px',
-                  padding: '2px 6px',
-                  fontSize: '0.65rem',
-                  fontWeight: 900,
-                  cursor: 'pointer'
-                }}
+                onClick={() => setAssetSearchQuery('')}
+                style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer', fontSize: '0.7rem', fontWeight: 900 }}
               >
-                👁️ Preview Citation
+                ✕
               </button>
-            </div>
-            <div style={{ fontSize: '0.74rem', color: '#CBD5E1', lineHeight: 1.5 }}>
-              Official Court Petition Docket #001 & verified legal citations for <strong>{selectedTargetCompany.name}</strong>.
-            </div>
-          </div>
-
-          {/* Section 4: Saved Article Drafts Vault */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span style={{ fontSize: '0.72rem', color: '#FFF', fontWeight: 800 }}>
-                📁 Saved Article Drafts ({savedDrafts.length}):
-              </span>
-              <button
-                onClick={handleSaveDraft}
-                style={{
-                  padding: '3px 8px',
-                  background: 'rgba(56, 189, 248, 0.2)',
-                  color: '#38BDF8',
-                  border: '1px solid #38BDF8',
-                  borderRadius: '4px',
-                  fontSize: '0.68rem',
-                  fontWeight: 900,
-                  cursor: 'pointer'
-                }}
-              >
-                + Save Draft
-              </button>
-            </div>
-
-            {savedStatusText && (
-              <div style={{ fontSize: '0.7rem', color: '#38BDF8', fontWeight: 900 }}>
-                {savedStatusText}
-              </div>
             )}
+          </div>
+
+          {/* Position #2: TARGET MEDIA ENTITIES TRAY WITH DISMISS FUNCTIONALITY */}
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+              <span style={{ fontSize: '0.74rem', fontWeight: 950, color: '#38BDF8', letterSpacing: '0.05em' }}>
+                {assetSearchQuery ? '🔍 SEARCH RESULTS' : `⭐ SAVED WORKSPACE FAVORITES (${watchlist.length})`}
+              </span>
+              {dismissedCompanyIds.length > 0 && (
+                <button
+                  onClick={() => setDismissedCompanyIds([])}
+                  style={{ fontSize: '0.62rem', color: '#94A3B8', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}
+                >
+                  Restore ({dismissedCompanyIds.length}) Hidden
+                </button>
+              )}
+            </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', overflowY: 'auto', flex: 1 }}>
-              {savedDrafts.map(dr => (
-                <div
-                  key={dr.id}
-                  onClick={() => setActiveDraftId(dr.id)}
-                  style={{
-                    background: activeDraftId === dr.id ? 'rgba(56, 189, 248, 0.25)' : 'rgba(30, 41, 59, 0.6)',
-                    border: activeDraftId === dr.id ? '1px solid #38BDF8' : '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '6px',
-                    padding: '8px 10px',
-                    fontSize: '0.72rem',
-                    cursor: 'pointer'
-                  }}
-                >
-                  <div style={{ fontWeight: 900, color: activeDraftId === dr.id ? '#38BDF8' : '#F8FAFC' }}>
-                    {dr.title}
-                  </div>
-                  <div style={{ fontSize: '0.65rem', color: '#94A3B8', display: 'flex', justifyContent: 'space-between', marginTop: '2px' }}>
-                    <span>{dr.words}</span>
-                    <span>{dr.date}</span>
-                  </div>
-                </div>
-              ))}
+              {companies
+                .filter(comp => {
+                  const compId = comp.id || comp.ticker || comp.name;
+                  if (dismissedCompanyIds.includes(compId)) return false;
+                  
+                  if (assetSearchQuery) {
+                    const q = assetSearchQuery.toLowerCase();
+                    return (comp.name && comp.name.toLowerCase().includes(q)) ||
+                           (comp.ticker && comp.ticker.toLowerCase().includes(q)) ||
+                           (comp.primaryCause && comp.primaryCause.toLowerCase().includes(q)) ||
+                           (comp.locationJurisdiction && comp.locationJurisdiction.toLowerCase().includes(q)) ||
+                           (comp.summary && comp.summary.toLowerCase().includes(q));
+                  }
+
+                  // STRICT FAVORITES + ACTIVE SELECTION ONLY (DUMP HUGE UNFILTERED LIST)
+                  const isFav = comp.isBookmarked || (watchlist && (watchlist.includes(comp.id) || watchlist.includes(comp.ticker)));
+                  const isSelected = (selectedTargetCompany.id && selectedTargetCompany.id === comp.id) || selectedTargetCompany.name === comp.name;
+                  return isFav || isSelected;
+                })
+                .map(comp => {
+                  const compId = comp.id || comp.ticker || comp.name;
+                  const isFav = comp.isBookmarked || (watchlist && (watchlist.includes(comp.id) || watchlist.includes(comp.ticker)));
+                  const isSelected = (selectedTargetCompany.id && selectedTargetCompany.id === comp.id) || selectedTargetCompany.name === comp.name;
+                  return (
+                    <div
+                      key={compId}
+                      onClick={() => {
+                        setSelectedTargetCompany(comp);
+                        if (onSelectCompany) onSelectCompany(comp);
+                        setActiveDesk(null); // DIRECTLY DISPLAY FULL DOSSIER ON CANVAS BELOW TELEPORT MENU
+                      }}
+                      style={{
+                        background: isSelected ? 'rgba(56, 189, 248, 0.25)' : 'rgba(30, 41, 59, 0.6)',
+                        border: isSelected ? '1.5px solid #38BDF8' : '1px solid rgba(255,255,255,0.08)',
+                        borderRadius: '8px',
+                        padding: '8px 10px',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        position: 'relative'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <span style={{ fontSize: '0.8rem', fontWeight: 950, color: isSelected ? '#FFF' : '#CBD5E1', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          {isFav && <Star size={11} color="#F59E0B" fill="#F59E0B" />}
+                          {comp.name}
+                        </span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          {/* EXPLICIT SAVE / FAVORITE BUTTON FOR SEARCHED AND SAVED ENTITIES */}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (onToggleBookmark) onToggleBookmark(compId);
+                            }}
+                            title={isFav ? "Remove from Favorites" : "Save to Workspace Favorites"}
+                            style={{
+                              background: isFav ? 'rgba(245, 158, 11, 0.3)' : 'rgba(255, 255, 255, 0.08)',
+                              border: isFav ? '1px solid #F59E0B' : '1px solid rgba(255, 255, 255, 0.2)',
+                              color: isFav ? '#FCD34D' : '#94A3B8',
+                              borderRadius: '4px',
+                              padding: '2px 6px',
+                              fontSize: '0.62rem',
+                              fontWeight: 900,
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '3px'
+                            }}
+                          >
+                            <Star size={9} color={isFav ? '#FCD34D' : '#94A3B8'} fill={isFav ? '#FCD34D' : 'none'} />
+                            {isFav ? 'SAVED' : 'SAVE'}
+                          </button>
+
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setDismissedCompanyIds([...dismissedCompanyIds, compId]);
+                            }}
+                            title="Dismiss from desk"
+                            style={{ background: 'none', border: 'none', color: '#64748B', cursor: 'pointer', fontSize: '0.7rem', fontWeight: 900, padding: '0 2px' }}
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      </div>
+                      <div style={{ fontSize: '0.7rem', color: '#94A3B8', marginTop: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span>{comp.debtAtCollapse || '$500M+ Debt'} • {comp.locationJurisdiction || 'US Court'}</span>
+                        <span style={{ fontSize: '0.6rem', fontWeight: 900, background: 'rgba(56,189,248,0.2)', color: '#38BDF8', padding: '1px 4px', borderRadius: '3px' }}>
+                          {comp.ticker || 'WIRE'}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
             </div>
           </div>
 
@@ -410,6 +412,121 @@ export default function MediaPressWorkstation({
           flexDirection: 'column',
           gap: '20px'
         }}>
+
+          {/* UNIVERSAL CROSS-WORKSPACE TELEPORT STRIP (PERFECT ON ALL DESKS) */}
+          <div style={{
+            background: 'rgba(9, 13, 22, 0.98)',
+            border: '1.5px solid rgba(56, 189, 248, 0.4)',
+            borderRadius: '12px',
+            padding: '12px 18px',
+            display: 'flex',
+            alignItems: 'center',
+            justify: 'space-between',
+            gap: '12px',
+            boxShadow: '0 8px 20px rgba(0,0,0,0.4)',
+            flexWrap: 'wrap'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', fontWeight: 950, color: '#38BDF8' }}>
+              <Sparkles size={16} color="#38BDF8" />
+              <span>CROSS-WORKSPACE TELEPORT ({selectedTargetCompany.name.toUpperCase()}):</span>
+            </div>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('investor', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(16, 185, 129, 0.2)', color: '#34D399', border: '1px solid #10B981', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                💳 Investor & Lender
+              </button>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('marketplace', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(236, 72, 153, 0.2)', color: '#F472B6', border: '1px solid #EC4899', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                🔨 363 Marketplace
+              </button>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('creditor', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(139, 92, 246, 0.2)', color: '#C084FC', border: '1px solid #8B5CF6', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                🛡️ Creditor Action
+              </button>
+              <button
+                onClick={() => onSwitchWorkspace && onSwitchWorkspace('headhunter', selectedTargetCompany)}
+                style={{ padding: '6px 12px', background: 'rgba(245, 158, 11, 0.2)', color: '#FCD34D', border: '1px solid #F59E0B', borderRadius: '6px', fontSize: '0.74rem', fontWeight: 900, cursor: 'pointer' }}
+              >
+                👔 Headhunter Radar
+              </button>
+            </div>
+          </div>
+
+          {/* DEFAULT OVERVIEW: MEDIA & PRESS RELEASE DOSSIER STAGE */}
+          {activeDesk === null && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              
+              {/* Company Dossier Banner */}
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(9, 13, 22, 0.98) 100%)',
+                border: '1.5px solid #38BDF8',
+                borderRadius: '14px',
+                padding: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                justify: 'space-between',
+                boxShadow: '0 12px 30px rgba(0,0,0,0.6)'
+              }}>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 950, background: 'rgba(56, 189, 248, 0.2)', color: '#38BDF8', padding: '3px 8px', borderRadius: '4px', border: '1px solid #38BDF8' }}>
+                      PRESS RELEASE DOSSIER
+                    </span>
+                    <span style={{ fontSize: '0.7rem', color: '#94A3B8' }}>
+                      SEC 8-K / Court Disclosure Filing
+                    </span>
+                  </div>
+                  <h2 style={{ margin: '8px 0 2px 0', fontSize: '1.4rem', fontWeight: 950, color: '#FFF' }}>
+                    {selectedTargetCompany.name} ({selectedTargetCompany.ticker || 'NEWS'})
+                  </h2>
+                  <div style={{ fontSize: '0.82rem', color: '#94A3B8' }}>
+                    📍 {selectedTargetCompany.locationJurisdiction || 'Wilmington, DE'} • Chapter 11 Press Brief Verified
+                  </div>
+                </div>
+
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: '0.72rem', color: '#94A3B8', fontWeight: 800 }}>PRESS TONE IMPRESSION</div>
+                  <div style={{ fontSize: '1.5rem', fontWeight: 950, color: '#38BDF8' }}>
+                    High Impact Wire
+                  </div>
+                </div>
+              </div>
+
+              {/* Media Brief Overview Grid — DYNAMICALLY SLAVED TO selectedTargetCompany */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
+                <div style={{ background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(56, 189, 248, 0.3)', borderRadius: '12px', padding: '18px' }}>
+                  <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', fontWeight: 950, color: '#38BDF8' }}>
+                    📰 OFFICIAL PRESS WIRE SYNDICATION
+                  </h4>
+                  <div style={{ fontSize: '0.78rem', color: '#CBD5E1', lineHeight: 1.6 }}>
+                    • Bloomberg & Reuters Bankruptcy Wire Alert<br/>
+                    • Wall Street Journal Insolvency Desk Pitch Ready<br/>
+                    • Automated SEC Form 8-K Citation Embedded<br/>
+                    • Executive Statement Generated & Verified
+                  </div>
+                </div>
+
+                <div style={{ background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: '12px', padding: '18px' }}>
+                  <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', fontWeight: 950, color: '#FCD34D' }}>
+                    🎙️ EXECUTIVE VOICE DISPATCH & MULTI-CHANNEL
+                  </h4>
+                  <div style={{ fontSize: '0.78rem', color: '#CBD5E1', lineHeight: 1.6 }}>
+                    • 11 ElevenLabs Voice Engine Synthesis Active<br/>
+                    • LinkedIn Pulse Restructuring Editorial Draft<br/>
+                    • 𝕏 (Twitter) Live Bankruptcy Filing Thread<br/>
+                    • Substack Institutional Newsletter Brief
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          )}
 
           {/* DESK 1: BREAKING WIRE & AI NEWSROOM STUDIO */}
           {activeDesk === 'wire' && (
