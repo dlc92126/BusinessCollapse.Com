@@ -10,136 +10,152 @@ export default function PublicCatalogModal({ auction, onClose, onOpenBidderModal
   const entityName = auction.entityName || auction.name || auction.companyName || 'Corporate Asset';
   const sector = (auction.sectorId || auction.sectorName || auction.assetLiquidationType || auction.industry || entityName).toLowerCase();
 
-  // Dynamic Sector-Tailored Itemized Auction Lots with Photos & Detailed Specs
+  // Dynamic Entity-Specific Itemized Auction Lots with Photos & Detailed Specs
   const getDynamicLots = () => {
-    // 1. FLEET & HEAVY MACHINERY / INDUSTRIAL (e.g. Tulsa Regional Fleet & Machining, Yellow, Redline)
-    if (sector.includes('fleet') || sector.includes('machin') || sector.includes('truck') || sector.includes('logistics') || entityName.includes('Fleet') || entityName.includes('Machining')) {
+    const rawId = String(auction.id || auction.companyId || entityName);
+    let seed = 0;
+    for (let i = 0; i < rawId.length; i++) {
+      seed = (seed * 31 + rawId.charCodeAt(i)) % 100000;
+    }
+
+    const shortId = (seed % 900 + 100).toString();
+
+    // 1. FLEET & HEAVY MACHINERY / INDUSTRIAL
+    if (sector.includes('fleet') || sector.includes('machin') || sector.includes('truck') || sector.includes('logistics') || entityName.includes('Fleet') || entityName.includes('Machining') || entityName.includes('Logistics') || entityName.includes('Industrial') || entityName.includes('Freight')) {
+      const truckModels = ['2023 Freightliner Cascadia 126', '2024 Kenworth T680 Next Gen', '2022 Peterbilt 579 Sleeper', '2023 Volvo VNL 860 High-Roof'];
+      const cncModels = ['Haas VF-4SS 4-Axis Vertical Center', 'Mazak Variaxis i-700 5-Axis Center', 'Doosan Lynx 2100LSY CNC Turning Center', 'Okuma Genos M560-V Vertical Center'];
+      const trailerModels = ['Great Dane 53ft Air-Ride Dry Vans', 'Utility 4000D-X Composite Dry Vans', 'Wabash National Duraplate 53ft Vans', 'Vanguard VIP 53ft Refrigerated Trailers'];
+
+      const truckIndex = seed % truckModels.length;
+      const cncIndex = (seed + 1) % cncModels.length;
+      const trailerIndex = (seed + 2) % trailerModels.length;
+
       return [
         {
-          lotNo: 'LOT #101-125',
+          lotNo: `LOT #${shortId}-101`,
           category: 'Fleet Tractors',
-          title: '2023 Freightliner Cascadia 126 Sleeper Tractors (12 Units • Cummins X15 Engine)',
+          title: `${entityName} — ${truckModels[truckIndex]} Sleeper Units (${(seed % 12) + 8} Tractors)`,
           condition: 'Certified Operational (Clean Title)',
-          specs: '125,000 avg mileage • Automated Transmission • 11 U.S.C. § 363 Free & Clear',
-          estVal: '$1,450,000',
-          startingBid: '$450,000',
+          specs: `${((seed % 80) + 90).toLocaleString()},000 avg mileage • Automated Transmission • 11 U.S.C. § 363 Free & Clear`,
+          estVal: `$${(((seed % 8) + 8) * 100000 + 450000).toLocaleString()}`,
+          startingBid: `$${(((seed % 4) + 3) * 100000 + 150000).toLocaleString()}`,
           photo: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=400&q=80'
         },
         {
-          lotNo: 'LOT #126-150',
+          lotNo: `LOT #${shortId}-102`,
           category: 'Precision Machinery',
-          title: 'Haas VF-4SS 4-Axis Vertical Machining Centers & Tooling Systems (4 Machines)',
+          title: `${entityName} — ${cncModels[cncIndex]} & Tooling Package`,
           condition: 'Low Spindle Hours (1,200 hrs)',
           specs: '12,000 RPM Spindle • High-Speed Side Mount Tool Changer • Tooling Package Included',
-          estVal: '$520,000',
-          startingBid: '$280,000',
+          estVal: `$${(((seed % 5) + 3) * 100000 + 180000).toLocaleString()}`,
+          startingBid: `$${(((seed % 3) + 1) * 100000 + 80000).toLocaleString()}`,
           photo: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=400&q=80'
         },
         {
-          lotNo: 'LOT #151-180',
+          lotNo: `LOT #${shortId}-103`,
           category: 'Trailers & Logistics',
-          title: 'Great Dane 53ft Dry Van Trailers & Thermo King Refrigerated Units (18 Trailers)',
+          title: `${entityName} — ${trailerModels[trailerIndex]} (${(seed % 10) + 14} Trailers)`,
           condition: 'DOT Inspected',
           specs: 'Air Ride Suspension • Aluminum Wheels • Active Refrigerator Compressors',
-          estVal: '$680,000',
-          startingBid: '$320,000',
+          estVal: `$${(((seed % 4) + 4) * 100000 + 120000).toLocaleString()}`,
+          startingBid: `$${(((seed % 2) + 2) * 100000 + 50000).toLocaleString()}`,
           photo: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=400&q=80'
         },
         {
-          lotNo: 'LOT #181-210',
+          lotNo: `LOT #${shortId}-104`,
           category: 'IP & Patents',
-          title: 'Corporate Intellectual Property, Fleet Tracking Software Patents & Trade Names',
+          title: `${entityName} — Corporate Intellectual Property, Dispatch Software & Trade Names`,
           condition: 'Free & Clear Title',
-          specs: 'Registered Trademarks • Custom Fleet Dispatch Source Code • Client Directory',
-          estVal: '$1,800,000',
-          startingBid: '$600,000',
+          specs: 'Registered Trademarks • Custom Dispatch Source Code • Client Directory',
+          estVal: `$${(((seed % 12) + 10) * 100000 + 200000).toLocaleString()}`,
+          startingBid: `$${(((seed % 5) + 4) * 100000 + 100000).toLocaleString()}`,
           photo: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80'
         }
       ];
     }
 
     // 2. AVIATION & AIRCRAFT FLEET
-    if (sector.includes('aviation') || sector.includes('air') || entityName.includes('Spirit') || entityName.includes('Thunderbird')) {
+    if (sector.includes('aviation') || sector.includes('air') || entityName.includes('Spirit') || entityName.includes('Thunderbird') || entityName.includes('Aviation')) {
       return [
         {
-          lotNo: 'LOT #A-101',
+          lotNo: `LOT #${shortId}-A1`,
           category: 'Aircraft Engines',
-          title: 'CFM International CFM56-5B Turbofan Engine (Full Overhaul Logbooks)',
+          title: `${entityName} — CFM International CFM56-5B Turbofan Engine`,
           condition: 'Fresh Compliance Inspection',
-          specs: '4,200 Cycles Remaining • FAA Form 8130-3 Dual Release • S.D.N.Y. Court Authorized',
-          estVal: '$4,800,000',
-          startingBid: '$1,800,000',
+          specs: '4,200 Cycles Remaining • FAA Form 8130-3 Dual Release • Court Authorized',
+          estVal: `$${(((seed % 6) + 35) * 100000).toLocaleString()}`,
+          startingBid: `$${(((seed % 4) + 12) * 100000).toLocaleString()}`,
           photo: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=400&q=80'
         },
         {
-          lotNo: 'LOT #A-102',
+          lotNo: `LOT #${shortId}-A2`,
           category: 'Avionics & Spares',
-          title: 'Honeywell Pegasus Flight Management Systems & Cockpit Instrument Spares Package',
+          title: `${entityName} — Honeywell Pegasus Flight Management Avionics Package`,
           condition: 'New in Original Packing',
           specs: 'ARINC 429 Interfaces • Dual MCDU Assemblies • FAA Certified Logbooks',
-          estVal: '$890,000',
-          startingBid: '$340,000',
+          estVal: `$${(((seed % 4) + 6) * 100000).toLocaleString()}`,
+          startingBid: `$${(((seed % 2) + 2) * 100000).toLocaleString()}`,
           photo: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=400&q=80'
         }
       ];
     }
 
-    // 3. RETAIL, POS & CONSUMER STORES (e.g. Big Lots, Bed Bath & Beyond, Express)
-    if (sector.includes('retail') || entityName.includes('Big Lots') || entityName.includes('Casual')) {
+    // 3. RETAIL, POS & CONSUMER STORES
+    if (sector.includes('retail') || sector.includes('dining') || entityName.includes('Big Lots') || entityName.includes('Casual') || entityName.includes('Dining')) {
       return [
         {
-          lotNo: 'LOT #R-101',
+          lotNo: `LOT #${shortId}-R1`,
           category: 'Store Fixtures',
-          title: 'Heavy-Duty Steel Gondola Shelving Racks & Checkout Counters (45 Store Footprints)',
+          title: `${entityName} — Steel Gondola Shelving & Checkout Counters (${(seed % 30) + 20} Footprints)`,
           condition: 'Dismantled & Palletized',
           specs: 'Adjustable Shelving • Powder Coated Steel • Includes Signage Fixtures',
-          estVal: '$650,000',
-          startingBid: '$180,000',
+          estVal: `$${(((seed % 5) + 3) * 100000).toLocaleString()}`,
+          startingBid: `$${(((seed % 3) + 1) * 50000).toLocaleString()}`,
           photo: 'https://images.unsplash.com/photo-1556742049-0a670fc8077a?auto=format&fit=crop&w=400&q=80'
         },
         {
-          lotNo: 'LOT #R-102',
+          lotNo: `LOT #${shortId}-R2`,
           category: 'POS Systems',
-          title: 'NCR RealPOS Touchscreen Terminals, Cash Drawers & Thermal Receipt Printers (120 Units)',
+          title: `${entityName} — NCR RealPOS Touchscreen Terminals & Scanners (${(seed % 60) + 40} Units)`,
           condition: 'Refurbished',
           specs: 'Intel Core i5 POS Terminals • Barcode Scanners • Customer Facing Displays',
-          estVal: '$240,000',
-          startingBid: '$85,000',
+          estVal: `$${(((seed % 3) + 2) * 80000).toLocaleString()}`,
+          startingBid: `$${(((seed % 2) + 1) * 40000).toLocaleString()}`,
           photo: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=400&q=80'
         }
       ];
     }
 
-    // 4. GENERAL COMMERCIAL RESTRUCTURING LOTS (Default Fallback)
+    // 4. GENERAL COMMERCIAL RESTRUCTURING LOTS (Default Fallback for any corporate entity)
     return [
       {
-        lotNo: 'LOT #501-540',
+        lotNo: `LOT #${shortId}-G1`,
         category: 'Commercial Equipment',
-        title: 'Vulcan Stainless Steel Heavy Commercial Cooking & Processing Assemblies (32 Units)',
+        title: `${entityName} — Heavy Processing Assemblies & Commercial Equipment (${(seed % 20) + 15} Units)`,
         condition: 'Commercial Inspected',
         specs: 'UL Listed Commercial Spec • Stainless Steel Construction • Pre-tested Operational',
-        estVal: '$380,000',
-        startingBid: '$120,000',
+        estVal: `$${(((seed % 5) + 3) * 80000).toLocaleString()}`,
+        startingBid: `$${(((seed % 3) + 1) * 40000).toLocaleString()}`,
         photo: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=400&q=80'
       },
       {
-        lotNo: 'LOT #541-580',
+        lotNo: `LOT #${shortId}-G2`,
         category: 'Refrigeration & Power',
-        title: 'Walk-In Commercial Refrigeration Units & Caterpillar Emergency Generator (350kW)',
+        title: `${entityName} — Walk-In Refrigeration Units & Caterpillar Emergency Generator (350kW)`,
         condition: 'Operational',
         specs: 'Automatic Transfer Switch • Weatherproof Sound Attenuated Enclosure • Low Hours',
-        estVal: '$420,000',
-        startingBid: '$150,000',
+        estVal: `$${(((seed % 4) + 3) * 100000).toLocaleString()}`,
+        startingBid: `$${(((seed % 2) + 1) * 60000).toLocaleString()}`,
         photo: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=400&q=80'
       },
       {
-        lotNo: 'LOT #581-620',
+        lotNo: `LOT #${shortId}-G3`,
         category: 'Real Estate Leases',
-        title: 'Prime Commercial Real Estate & Industrial Warehouse Leasehold Rights (12 Facilities)',
+        title: `${entityName} — Prime Industrial Facility Leasehold Transfer Rights (${(seed % 6) + 4} Locations)`,
         condition: 'Court Order Pending',
         specs: 'Section 365 Assumption & Assignment • Below-Market Master Rents • Long-Term Options',
-        estVal: '$1,250,000',
-        startingBid: '$450,000',
+        estVal: `$${(((seed % 6) + 8) * 100000).toLocaleString()}`,
+        startingBid: `$${(((seed % 3) + 3) * 100000).toLocaleString()}`,
         photo: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80'
       }
     ];
