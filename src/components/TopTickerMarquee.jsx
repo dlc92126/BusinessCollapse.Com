@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Flame, Clock, ShieldAlert, ChevronRight, Zap, Play, Pause, Filter, Search, Grid, List, Bookmark, Check, MapPin, X, CheckSquare, Square } from 'lucide-react';
 import { extractStateCode } from '../utils/stateExtractor';
+import { formatCleanEntityName } from '../utils/entityNameFormatter';
 
 export default function TopTickerMarquee({
   breakingNews = [],
@@ -120,7 +121,7 @@ export default function TopTickerMarquee({
           rawItem: item,
           id: item.id || `ticker-${idx}`,
           itemMs,
-          entityName: item.entityName || item.name || 'Commercial Entity',
+          entityName: formatCleanEntityName(item),
           ticker: item.ticker || 'DISTRESS',
           headline: item.headline || item.summary || `${item.name || item.entityName} — Live PACER Filing`,
           hoursAgo: Math.max(1, Math.round(hoursAgo)),
